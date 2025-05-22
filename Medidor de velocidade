@@ -9,7 +9,7 @@ def avaliação_multa(velocidade):
         print("Levou multa grave.")
     elif velocidade > 100 and velocidade <= 200:
         print("Levou multa gravíssima.")
-    elif velocidade > 200:
+    else:
         print("Levou multa gravíssima e morreu :(")
 
 velocidade = int(input("Insira a velocidade em km/h: "))
