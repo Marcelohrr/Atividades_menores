@@ -1,0 +1,26 @@
+# Escreva um programa que ao iniciar gera um valor aleatório de 1 a 10, permite que o usuário chute um número e indique se o valor chutado foi abaixo ou acima até que o número seja chutado corretamente
+
+import random
+
+def chute_o_número():
+    valor = random.randint(1, 10)
+    chute = int(input("Tente acertar o número de 1 a 10! "))
+    while chute != valor:
+        if chute < valor / 2:
+            chute = int(input("Chute muito baixo! Tente de novo: "))
+        if chute > 2 * valor:
+            chute = int(input("Chute muito alto! Tente de novo: "))
+        elif chute < valor:
+            chute = int(input("Chute baixo. Tente de novo: "))
+        elif chute > valor:
+            chute = int(input("Chute alto. Tente de novo: "))
+    print("Acertou! Parabéns!")
+
+chute_o_número()
+
+# Teste
+Tente acertar o número de 1 a 10! 10
+Chute muito alto! Tente de novo: 1
+Chute muito baixo! Tente de novo: 5
+Chute alto. Tente de novo: 3
+Acertou! Parabéns!
