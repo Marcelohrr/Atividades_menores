@@ -1,0 +1,20 @@
+# Crie um programa que recebe do usuário um valor que representa a velocidade e aponte a multa relacionada para o limite de velocidade 80km/h
+
+def avaliação_multa(velocidade):
+    if velocidade <= 80:
+        print("Não houve multa.")
+    elif velocidade > 80 and velocidade <= 90:
+        print("Levou multa leve.")
+    elif velocidade > 90 and velocidade <= 100:
+        print("Levou multa grave.")
+    elif velocidade > 100 and velocidade <= 200:
+        print("Levou multa gravíssima.")
+    elif velocidade > 200:
+        print("Levou multa gravíssima e morreu :(")
+
+velocidade = int(input("Insira a velocidade em km/h: "))
+avaliação_multa(velocidade)
+
+# Teste
+Insira a velocidade em km/h: 1000
+Levou multa gravíssima e morreu :(
