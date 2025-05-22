@@ -1,0 +1,15 @@
+# Crie um programa que recebe um número e imprime seu fatorial
+
+def fatorial(número):
+    resultado = 1
+    while número != 0:
+        resultado *= número
+        número -= 1
+    print(resultado)
+
+número = int(input("Digite o número: "))
+fatorial(número)
+
+# Teste
+Digite o número: 10
+3628800
