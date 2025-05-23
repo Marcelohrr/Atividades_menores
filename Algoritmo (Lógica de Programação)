@@ -1,0 +1,118 @@
+# PASSO 01 - SEQUÊNCIAS BÁSICAS
+# 2) Faça um programa que leia o nome de uma pessoa e mostre uma mensagem de boasvindas para ela
+def boas_vindas():
+    nome = str(input("Qual é o seu nome?"))
+    print(f"Olá {nome}, é um prazer te conhecer!")
+
+boas_vindas()
+
+# 3) Crie um programa que leia o nome e o salário de um funcionário, mostrando no final uma mensagem
+def nome_salário():
+    nome = str(input("Nome do funcionário: "))
+    salário = float(input("Salário: "))
+    print(f"A(o) funcionária(o) {nome} tem um salário de R${salário:.2f}.")
+
+nome_salário()
+
+# 4) Desenvolva um algoritmo que leia dois números inteiros e mostre o somatório entre eles
+def somar_números():
+    n1 = int(input("Dê o primeiro número: "))
+    n2 = int(input("Dê o segundo número: "))
+    print(f"O resultado é: {n1 + n2}")
+
+somar_números()
+
+# 5) Faça um programa que leia as duas notas de um aluno em uma matéria e mostre na tela a sua média na disciplina
+def média_notas():
+    nota_1 = float(input("Dê o primeiro número: "))
+    nota_2 = float(input("Dê o segundo número: "))
+    print(f"O resultado é: {((nota_1 + nota_2)/2):.1f}")
+
+média_notas()
+
+# 6) Faça um programa que leia um número inteiro e mostre o seu antecessor e seu sucessor
+def anterior_sucessor():
+    n = int(input("Dê o número: "))
+    print(f"Seu antecessor é {n - 1} e seu sucessor é {n + 1}")
+
+anterior_sucessor()
+
+# 7) Crie um algoritmo que leia um número real e mostre na tela o seu dobro e a sua terça parte
+def dobro_terça():
+    n = float(input("Dê o número: "))
+    print(f"O dobro é {n * 2} e sua terça parte é {n / 3}")
+
+dobro_terça()
+
+# 8) Desenvolva um programa que leia uma distância em metros e mostre os valores relativos em outras medidas
+def transformar_distância():
+    d = float(input("Digite uma distância em metros: "))
+    print(f"A distância de {d} metros corresponde a:\n"
+        f"{d / 1000} quilômetros\n"
+        f"{d * 100} centímetros")
+
+transformar_distância()
+
+# 9) Faça um algoritmo que leia quanto dinheiro uma pessoa tem na carteira (em R$) e mostre quantos dólares ela pode comprar
+def real_dólar():
+    real = float(input("Dinheiro em reais: "))
+    dólar = real / 5.67
+    print(f"R${real} vale US${dólar:.2f}.")
+
+real_dólar()
+
+# 10) Faça um algoritmo que leia a largura e altura de uma parede, calcule e mostre a área a ser pintada e a quantidade de tinta necessária para o serviço, sabendo que cada litro de tinta pinta uma área de 2metros quadrados
+def área_tinta():
+    altura = float(input("Altura da parede em metros: "))
+    largura = float(input("Largura da parede em metros: "))
+    área = altura * largura
+    tinta = área / 2
+    print(f"Área a ser pintada: {área:.3f} metros².\n"
+        f"Tinta necessária: {tinta:.2f} litros.\n"
+        f"Sobra recomendada: {tinta / 5:.2f} litros")
+
+área_tinta()
+
+# 11) Desenvolva uma lógica que leia os valores de A, B e C de uma equação do segundo grau e mostre o valor de Delta
+def Delta_Bhaskara():
+    a = float(input("Para ax² + bx + c = 0, insira a: "))
+    b = float(input("Insira b: "))
+    c = float(input("Insira c: "))
+    print(f"Δ = {b ** 2 -  4 * a * c}")
+
+Delta_Bhaskara()
+
+# 12) Crie um programa que leia o preço de um produto, calcule e mostre o seu preço promocional, com 5% de desconto
+def promoção():
+    preço_original = float(input("Insira o preço original em reais: "))
+    preço_desconto = preço_original - preço_original * 0.05
+    print(f"O valor com desconto é R${preço_desconto:.2f}.")
+
+promoção()
+
+# 13) Faça um algoritmo que leia o salário de um funcionário, calcule e mostre o seu novo salário, com 15% de aumento
+def aumento():
+    salário_atual = float(input("Insira o salário atual em reais: "))
+    salário_aumento = salário_atual + salário_atual * 0.15
+    print(f"O valor do salário com aumento é R${salário_aumento:.2f}.")
+
+aumento()
+
+# 14) A locadora de carros precisa da sua ajuda para cobrar seus serviços. Escreva um programa que pergunte a quantidade de Km percorridos por um carro alugado e a quantidade de dias pelos quais ele foi alugado. Calcule o preço total a pagar, sabendo que o carro custa R$90 por dia e R$0,20 por Km rodado
+def preço_locadora():
+    km_percorridos = float(input("Insira a quilometragem percorrida: "))
+    dias_aluguel = int(input("Insira os dias de aluguel: "))
+    preço = dias_aluguel * 90 + km_percorridos * 0.2
+    print(f"O preço total é: R${preço:.2f}.")
+
+preço_locadora()
+
+# 16) [DESAFIO] Escreva um programa para calcular a redução do tempo de vida de um fumante. Pergunte a quantidade de cigarros fumados por dia e quantos anos ele já fumou. Considere que um fumante perde 10 min de vida a cada cigarro. Calcule quantos dias de vida um fumante perderá e exiba o total em dias
+def cigarro():
+    cigarros_dia = int(input("Insira uma estimativa da média de cigarros que fuma por dia em todo o período de fumante: "))
+    anos_fumante = int(input("Insira há quantos anos fuma: "))
+    cada_dia = cigarros_dia * 10 / 1440
+    dias_vida = int(cada_dia * 365 * anos_fumante)
+    print(f"O débito de vida estimado é de: {dias_vida} dias. Pare de fumar, trem feio!")
+
+cigarro()
