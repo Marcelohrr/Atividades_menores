@@ -107,7 +107,7 @@ def preço_locadora():
 
 preço_locadora()
 
-# 16) [DESAFIO] Escreva um programa para calcular a redução do tempo de vida de um fumante. Pergunte a quantidade de cigarros fumados por dia e quantos anos ele já fumou. Considere que um fumante perde 10 min de vida a cada cigarro. Calcule quantos dias de vida um fumante perderá e exiba o total em dias
+# 16) Escreva um programa para calcular a redução do tempo de vida de um fumante. Pergunte a quantidade de cigarros fumados por dia e quantos anos ele já fumou. Considere que um fumante perde 10 min de vida a cada cigarro. Calcule quantos dias de vida um fumante perderá e exiba o total em dias
 def cigarro():
     cigarros_dia = int(input("Insira uma estimativa da média de cigarros que fuma por dia em todo o período de fumante: "))
     anos_fumante = int(input("Insira há quantos anos fuma: "))
@@ -227,3 +227,210 @@ def triângulo():
         print("Não é possível formar um triângulo com os valores informados.")
 
 triângulo()
+
+# PASSO 03 - CONDIÇÕES COMPOSTAS
+# 26) Escreva um algoritmo que leia dois números inteiros e compare-os
+def comparação():
+    n1 = int(input("Insira o primeiro número."))
+    n2 = int(input("Insira o segundo número."))
+    if n1 > n2:
+        print(f"{n1} é maior do que {n2}")
+    elif n1 < n2:
+        print(f"{n2} é maior do que {n1}")
+    else:
+        print(f"{n1} é igual a {n2}")
+    
+comparação()
+
+# 27) Crie um programa que leia duas notas de um aluno e calcule a sua média, mostrando uma mensagem no final, de acordo com a média atingida
+def média_situação():
+    nota_1 = float(input("Dê a primeira nota: "))
+    nota_2 = float(input("Dê a segunda nota: "))
+    média = (nota_1 + nota_2)/2
+    print(f"A média é: {média:.1f}")
+    if média <= 4.9:
+        print(f"REPROVADO!")
+    elif média <= 6.9:
+        print(f"RECUPERAÇÃO!")
+    else:
+        print(f"APROVADO!")
+
+média_situação()
+
+# 28) Faça um programa que leia a largura e o comprimento de um terreno retangular, calculando e mostrando a sua área em m². O programa também devemostrar a classificação desse terreno
+def área_terreno():
+    largura = float(input("Largura do terreno em metros: "))
+    comprimento = float(input("Comprimento do terreno em metros: "))
+    área = largura * comprimento
+    print(f"A área do terreno é de {área:.2f}m².")
+    if área < 100:
+        print("TERRENO POPULAR.")
+    elif área <= 500:
+        print("TERRENO MASTER.")
+    else:
+        print("TERRENO VIP.")
+    
+área_terreno()
+
+# 29) Desenvolva um programa que leia o nome de um funcionário, seu salário, quantos anos ele trabalha na empresa e mostre seu novo salário
+def reajuste_salário():
+    nome = str(input("Nome do funcionário: "))
+    salário = float(input("Salário: "))
+    anos = int(input("Anos de trabalho na empresa: "))
+    if anos <= 3:
+        print(f"O salário com reajuste é R${salário + salário * 0.03:.2f}")
+    elif anos < 10:
+        print(f"O salário com reajuste é R${salário + salário * 0.125:.2f}")
+    else:
+        print(f"O salário com reajuste é R${salário + salário * 0.2:.2f}")
+
+reajuste_salário()
+
+# 30) Refaça o algoritmo 25, acrescentando o recurso de mostrar que tipo de triângulo será formado
+def triângulo():
+    a = float(input("Digite o comprimento da primeira aresta: "))
+    b = float(input("Digite o comprimento da segunda aresta: "))
+    c = float(input("Digite o comprimento da terceira aresta: "))
+    if a < (b + c) and b < (a + c) and c < (a + b):
+        print("É possível formar um triângulo com os valores informados.")
+        if a == b == c:
+            print("O triângulo é equilátero.")
+        elif a == b or a == c or b == c:
+            print("O triângulo é isósceles.")
+        else:
+            print("O triângulo é escaleno.")
+    else:
+        print("Não é possível formar um triângulo com os valores informados.")
+
+triângulo()
+
+# 31) Crie um jogo de JoKenPo (Pedra-Papel-Tesoura)
+import random
+
+def JoKenPo():
+    while True:
+        jogada_Player = input("Faça sua jogada!").strip().lower()
+        jogada_NPC = random.choice(["pedra", "papel", "tesoura"])
+        if ((jogada_Player == "pedra" and jogada_NPC == "tesoura") or
+            (jogada_Player == "papel" and jogada_NPC == "pedra") or
+            (jogada_Player == "tesoura" and jogada_NPC == "papel")):
+            print(jogada_NPC)
+            print("Venceu!")
+        elif ((jogada_NPC == "pedra" and jogada_Player == "tesoura") or
+            (jogada_NPC == "papel" and jogada_Player == "pedra") or
+            (jogada_NPC == "tesoura" and jogada_Player == "papel")):
+            print(jogada_NPC)
+            print("Perdeu!")
+        elif jogada_NPC == jogada_Player:
+            print(jogada_NPC)
+            print("Empate!")
+        else:
+            print("Jogada não entendida, escreva de novo!")
+            continue
+        repetir = input("Quer tentar de novo?").strip().lower()
+        if repetir == "não":
+            break
+
+JoKenPo()
+
+# 32) Crie um jogo onde o computador vai sortear um número entre 1 e 5, e o jogador tenta descobrir qual foi o valor sorteado
+import random
+
+def jogo_chute():
+    n = random.randint(1, 5)
+    while True:
+        chute = int(input("Chute de 1 a 5!"))
+        if (chute == n):
+            print("Acertou, miserável!")
+            break
+        else:
+            print("Errou! Tente novamente.")
+        
+jogo_chute()
+
+# 33) Escreva um programa para aprovar ou não o empréstimo bancário para a compra de uma casa. O programa vai perguntar o valor da casa, o salário do comprador e em quantos anos ele vai pagar. Calcule o valor da prestação mensal, sabendo que ela não pode exceder 30% do salário ou então o empréstimo será negado
+def aprovar_empréstimo():
+    valor = float(input("Valor da casa: "))
+    salário = float(input("Salário do comprador: "))
+    anos_pagar = int(input("Anos para pagar: "))
+    prestação_mensal = valor / (anos_pagar * 12)
+    if prestação_mensal > salário * 0.3:
+        print("Empréstimo negado!")
+    else:
+        print("Empréstimo válido.")
+
+aprovar_empréstimo()
+
+# 34) O Índice de Massa Corpórea (IMC) é um valor calculado baseado na altura e no peso de uma pessoa. De acordo com o valor do IMC, classifique o indivíduo
+def imc():
+    altura = float(input("Altura em metro: "))
+    peso = float(input("Peso em kg: "))
+    imc = peso/(altura ** 2)
+    if imc < 18.5:
+        print("Abaixo do peso")
+    elif imc < 25:
+        print("Peso ideal")
+    elif imc < 30:
+        print("Sobrepeso")
+    elif imc < 40:
+        print("Obesidade")
+    else:
+        print("Obesidade mórbida")
+
+imc()
+
+# 35) Uma empresa de aluguel de carros precisa cobrar pelos seus serviços. O aluguel de um carro custa R$90 por dia para carro popular e R$150 por dia para carro de luxo. Além disso, o cliente paga por Km percorrido. Faça um programa que leia o tipo de carro alugado (popular ou luxo), quantos dias de aluguel e quantos Km foram percorridos. No final mostre o preço a ser pago
+def aluguel_carros():
+    tipo_carro = input("Qual é o tipo do carro?").strip().lower()
+    dias_aluguel = int(input("Insira os dias de aluguel: "))
+    km_percorridos = float(input("Insira a quilometragem percorrida: "))
+    if tipo_carro == "popular":
+        if km_percorridos <= 100:
+            preço = dias_aluguel * 90 + km_percorridos * 0.2
+        else:
+            preço = dias_aluguel * 90 + km_percorridos * 0.1
+    elif tipo_carro == "luxo":
+        if km_percorridos <= 200:
+            preço = dias_aluguel * 150 + km_percorridos * 0.3
+        else:
+            preço = dias_aluguel * 150 + km_percorridos * 0.25
+    print(f"O preço total é: R${preço:.2f}.")
+
+aluguel_carros()
+
+# 36) Um programa de vida saudável quer dar pontos para atividades físicas que podem ser trocados por dinheiro. Faça um programa que leia quantas horas de atividade uma pessoa teve por mês, calcule e mostre quantos pontos ela teve e quanto dinheiro ela conseguiu ganhar
+def pontos_atividade_física():
+    horas_atividade = int(input("Quantas horas de atividade por mês?"))
+    if horas_atividade <= 10:
+        pontos = horas_atividade * 2
+    elif horas_atividade <= 20:
+        pontos = horas_atividade * 5
+    else:
+        pontos = horas_atividade * 10
+    print(f"Pontuação total no mês = {pontos}.")
+    troco = pontos * 0.05
+    print(f"Recompensa em dinheiro = R${troco}.")
+
+pontos_atividade_física()
+
+# 37) Uma empresa precisa reajustar o salário dos seus funcionários, dando um aumento de acordo com o tempo e gênero. Faça um programa que leia o salário atual, o gênero do funcionário e há quantos anos esse funcionário trabalha na empresa. No final, mostre o seu novo salário
+def reajuste_salário_gênero():
+    salário = float(input("Salário: "))
+    gênero = input("Gênero com o qual o funcionário se identifica: ").strip().lower()
+    anos = int(input("Anos de trabalho na empresa: "))
+    if gênero == "feminino":
+        if anos < 15:
+            print(f"O salário com reajuste é R${salário + salário * 0.05:.2f}")
+        elif anos < 20:
+            print(f"O salário com reajuste é R${salário + salário * 0.12:.2f}")
+        else:
+            print(f"O salário com reajuste é R${salário + salário * 0.23:.2f}")
+    elif gênero == "masculino":
+        if anos < 20:
+            print(f"O salário com reajuste é R${salário + salário * 0.03:.2f}")
+        elif anos < 30:
+            print(f"O salário com reajuste é R${salário + salário * 0.13:.2f}")
+        else:
+            print(f"O salário com reajuste é R${salário + salário * 0.25:.2f}")
+
+reajuste_salário_gênero()
