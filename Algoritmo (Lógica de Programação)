@@ -708,3 +708,119 @@ def jogo_chute():
         contador += 1
         
 jogo_chute()
+
+# PASSO 05 – ENQUANTO COM FLAG
+# 56) Crie um programa que leia vários números pelo teclado e mostre no final o somatório entre eles (interrompido quando 1111 for digitado)
+def soma_flag():
+    total = 0
+    while True:
+        n = float(input("Digite o número para somar: "))
+        if n == 1111:
+            break
+        else:
+            total += n
+    print(f"Total: {total}.")
+
+soma_flag()
+
+# 57) Desenvolva um aplicativo que leia o salário e o sexo de vários funcionários. No final, mostre o total de salários pagos aos homens e o total pago às mulheres. O programa vai perguntar ao usuário se ele quer continuar ou não sempre que ler os dados de um funcionário
+def salário_gênero():
+    total_h = 0
+    total_m = 0
+    total_outros = 0
+    while True:
+        salário = float(input("Qual o salário?"))
+        gênero = input("Com qual gênero se identifica?").strip().lower()
+        if gênero == "masculino":
+            total_h += salário
+        elif gênero == "feminino":
+            total_m += salário
+        else:
+            total_outros += salário
+        continua = input("Gostaria de adicionar outro?").strip().lower()
+        if continua in ["não", "nao", "n"]:
+            break
+    print(f"Total: {total_h:.2f}. Total feminino: {total_m:.2f}. Total outros: {total_outros:.2f}.")
+
+salário_gênero()
+
+# 58) Faça um algoritmo que leia a idade de vários alunos de uma turma. O programa vai parar quando for digitada a idade 999. No final, mostre quantos alunos existem na turma e qual é a média de idade do grupo
+def idades_turma():
+    total_alunos = 0
+    soma_idades = 0
+    while True:
+        aluno = int(input("Digite a idade: "))
+        if aluno == 999:
+            break
+        else:
+            total_alunos += 1
+            soma_idades += aluno
+    média_idades = soma_idades / total_alunos
+    print(f"Total de alunos: {total_alunos}. Média de idade: {média_idades}")
+
+idades_turma()
+
+# 59) Crie um programa que leia o sexo e a idade de várias pessoas. O programa vai perguntar se o usuário quer continuar ou não a cada pessoa. No final, mostre qual é a maior idade lida, quantos homens foram cadastrados, qual é a idade da mulher mais jovem, qual é a média de idade entre os homens
+def gênero_idade():
+    maior = 0
+    total_h = 0
+    menor_m = None
+    soma_h = 0
+    while True:
+        gênero = input("Com qual gênero se identifica?").strip().lower()
+        idade = int(input("Qual sua idade?"))
+        if idade > maior:
+            maior = idade
+        if gênero == "masculino":
+            total_h += 1
+            soma_h += idade
+        elif gênero == "feminino":
+            if menor_m == None or idade < menor_m:
+                menor_m = idade
+        continua = input("Gostaria de continuar?").strip().lower()
+        if continua in ["não", "nao", "n"]:
+            break
+    média_h = soma_h / total_h
+    print(f"Maior idade: {maior}. Total homens: {total_h}. Idade da mulher mais jovem: {menor_m}. Média de idade entre homens: {média_h}")
+
+gênero_idade()
+
+# 60) Desenvolva um algoritmo que leia o nome, a idade e o sexo de várias pessoas. O programa vai perguntar se o usuário quer ou não continuar. No final, mostre o nome da pessoa mais velha, o nome da mulher mais jovem a média de idade do grupo, quantos homens tem mais de 30 anos, quantas mulheres tem menos de 18 anos
+def nome_idade_gênero():
+    mais_velho_nome = None
+    mais_velho_idade = 0
+    mais_nova_nome = None
+    mais_nova_idade = None
+    soma_idades = 0
+    homens_mais_30 = 0
+    mulheres_menos_18 = 0
+    contador = 0
+    while True:
+        nome = input("Qual o seu nome?")
+        gênero = input("Com qual gênero se identifica?").strip().lower()
+        idade = int(input("Qual sua idade?"))
+        if idade > mais_velho_idade:
+            mais_velho_nome = nome
+            mais_velho_idade = idade
+        if gênero == "feminino":
+            if mais_nova_idade == None or idade < mais_nova_idade:
+                mais_nova_nome = nome
+                mais_nova_idade = idade
+            if idade < 18:
+                mulheres_menos_18 += 1
+        elif gênero == "masculino":
+            if idade >= 30:
+                homens_mais_30 += 1
+        soma_idades += idade
+        contador += 1
+        continua = input("Gostaria de continuar?").strip().lower()
+        if continua in ["não", "nao", "n"]:
+            break
+    média = soma_idades / contador
+    print(f"Pessoa mais velha: {mais_velho_nome} ({mais_velho_idade} anos)")
+    print(f"Mulher mais jovem: {mais_nova_nome} ({mais_nova_idade} anos)" if mais_nova_nome else "Nenhuma mulher cadastrada.")
+    print(f"Média de idade do grupo: {média:.2f}")
+    print(f"Homens com mais de 30 anos: {homens_mais_30}")
+    print(f"Mulheres com menos de 18 anos: {mulheres_menos_18}")
+
+nome_idade_gênero()
