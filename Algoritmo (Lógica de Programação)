@@ -824,3 +824,57 @@ def nome_idade_gênero():
     print(f"Mulheres com menos de 18 anos: {mulheres_menos_18}")
 
 nome_idade_gênero()
+
+# PASSO 06 – REPETIÇÃO COM FAÇA ENQUANTO
+# 61) Crie um programa usando a estrutura faça enquanto que mostre na tela a seguinte contagem: 0 3 6 9 12 15 18 21 24 27 30 Acabou!
+def contagem():
+    contador = 0
+    while True:
+        print(contador, end=' ')
+        contador += 3
+        if contador > 30:
+            break
+    print("Acabou!")
+
+contagem()
+
+# 62) Faça um programa usando a estrutura “faça enquanto” que leia a idade de várias pessoas. A cada laço, você deverá perguntar para o usuário se ele quer ou não continuar a digitar dados. No final, quando o usuário decidir parar, mostre na tela quantas idades foram digitadas, qual é a média entre as idades digitadas, quantas pessoas tem 21 anos ou mais
+def idades():
+    registro = 0
+    soma = 0
+    mais_21 = 0
+    while True:
+        idade = int(input("Qual sua idade?"))
+        registro += 1
+        soma += idade
+        if idade >= 21:
+            mais_21 += 1
+        continua = input("Gostaria de continuar?").strip().lower()
+        if continua in ["não", "nao", "n"]:
+            break
+    média = soma / registro
+    print(f"Idades registradas: {registro}. Média de idades: {média:.2f}. Maiores de 21: {mais_21}.")
+
+idades()
+
+# 63) Crie um programa usando a estrutura “faça enquanto” que leia vários números. A cada laço, pergunte se o usuário quer continuar ou não. No final, mostre na tela o somatório entre todos os valores, qual foi o menor valor digitado, a média entre todos os valores, quantos valores são pares
+def números():
+    soma = 0
+    registro = 0
+    menor = None
+    pares = 0
+    while True:
+        n = int(input("Número: "))
+        soma += n
+        registro += 1
+        if menor is None or n < menor:
+            menor = n
+        if n % 2 == 0:
+            pares += 1
+        continua = input("Gostaria de continuar?").strip().lower()
+        if continua in ["não", "nao", "n"]:
+            break
+    média = soma / registro
+    print(f"Somatório: {soma}. Menor valor: {menor}. Média: {média:.2f}. Valores pares: {pares}.")
+
+números()
