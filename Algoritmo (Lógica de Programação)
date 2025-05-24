@@ -434,3 +434,277 @@ def reajuste_salário_gênero():
             print(f"O salário com reajuste é R${salário + salário * 0.25:.2f}")
 
 reajuste_salário_gênero()
+
+# PASSO 04 – REPETIÇÕES ENQUANTO
+# 38) Escreva um programa que mostre na tela a seguinte contagem: 6 7 8 9 10 11 Acabou!
+def contagem1():
+    contador = 6
+    while contador <= 11:
+        print(contador, end=' ')
+        contador += 1
+    print("Acabou!")
+    
+contagem1()
+
+# 39) Faça um algoritmo que mostre na tela a seguinte contagem: 10 9 8 7 6 5 4 3 Acabou!
+def contagem2():
+    contador = 10
+    while contador >= 3:
+        print(contador, end=' ')
+        contador -= 1
+    print("Acabou!")
+
+contagem2()
+
+# 40) Crie um aplicativo que mostre na tela a seguinte contagem: 0 3 6 9 12 15 18 Acabou!
+def contagem3():
+    contador = 0
+    while contador <= 18:
+        print(contador, end=' ')
+        contador += 3
+    print("Acabou!")
+
+contagem3()
+
+# 41) Desenvolva um programa que mostre na tela a seguinte contagem: 100 95 90 85 80 ... 0 Acabou!
+def contagem4():
+    contador = 100
+    while contador >= 0:
+        print(contador, end=' ')
+        contador -= 5
+    print("Acabou!")
+
+contagem4()
+
+# 42) Faça um algoritmo que pergunte ao usuário um número inteiro e positivo qualquer e mostre uma contagem até esse valor
+def contagem5():
+    contador = 1
+    valor = int(input("Dê um valor inteiro e positivo: "))
+    while contador <= valor:
+        print(contador, end=' ')
+        contador += 1
+    print("Acabou!")
+
+contagem5()
+
+# 43) Desenvolva um algoritmo que mostre uma contagem regressiva de 30 até 1, marcando os números que forem divisíveis por 4
+def contagem6():
+    contador = 30
+    while contador >= 1:
+        if contador % 4 == 0:
+            print(f"[{contador}]", end=' ')
+        else:
+            print(contador, end=' ')
+        contador -= 1
+
+contagem6()
+
+# 44 e 45) Crie um algoritmo que leia o valor inicial da contagem, o valor final e o incremento, mostrando em seguida todos os valores no intervalo
+def contagem7():
+    primeiro_valor = int(input("Digite o primeiro valor: "))
+    último_valor = int(input("Digite o último valor: "))
+    incremento = int(input("Digite o incremento (positivo): "))
+    if primeiro_valor > último_valor:
+        while primeiro_valor >= último_valor:
+            print(primeiro_valor, end=' ')
+            primeiro_valor -= incremento
+    elif primeiro_valor < último_valor:
+        while primeiro_valor <= último_valor:
+            print(primeiro_valor, end=' ')
+            primeiro_valor += incremento
+    else:
+        print("O primeiro valor é igual ao último!")
+
+contagem7()
+
+# 46) Crie um programa que calcule e mostre na tela o resultado da soma entre 6 + 8 + 10 + ... + 97 + 98 + 100
+def soma_contagem():
+    total = 0
+    n = 6
+    while n <= 100:
+        total += n
+        n += 2
+    print(total)
+
+soma_contagem()
+
+# 47) Desenvolva um aplicativo que mostre na tela o resultado da expressão 500 + 450 + 400 + ... + 100 + 50 + 0
+def subtração_contagem():
+    total = 0
+    n = 500
+    while n >= 0:
+        total += n
+        n -= 50
+    print(total)
+
+subtração_contagem()
+
+# 48) Faça um programa que leia 7 números inteiros e no final mostre o somatório entre eles
+def soma():
+    contagem = 1
+    total = 0
+    while contagem <= 7:
+        n = int(input(f"Número {contagem}: "))
+        total += n
+        contagem += 1
+    print(total)
+
+soma()
+
+# 49) Crie um programa que leia 6 números inteiros e no final mostre quantos deles são pares e quantos são ímpares
+def par_ímpar():
+    contagem = 1
+    pares = []
+    ímpares = []
+    while contagem <= 6:
+        n = int(input(f"Número {contagem}: "))
+        if n % 2 == 0:
+            pares.append(n)
+        else:
+            ímpares.append(n)
+        contagem += 1
+    print(f"Pares: {pares}.\nÍmpares: {ímpares}")
+
+par_ímpar()
+
+# 50) Desenvolva um programa que faça o sorteio de 20 números entre 0 e 10 e mostre na tela quais foram os números sorteados, quantos números estão acima de 5 e quantos números são divisíveis por 3
+import random
+
+def sorteio():
+    contagem = 1
+    sorteados = []
+    acima_5 = []
+    divisíveis_3 = []
+    while contagem <= 20:
+        n = random.randint(0,10)
+        sorteados.append(n)
+        if n > 5:
+            acima_5.append(n)
+        if n % 3 == 0:
+            divisíveis_3.append(n)
+        contagem += 1
+    print(f"Números sorteados: {sorteados}")
+    print(f"Quantidade de números acima de 5: {len(acima_5)} ({acima_5})")
+    print(f"Quantidade de números divisíveis por 3: {len(divisíveis_3)} ({divisíveis_3})")
+
+sorteio()
+
+# 51) Faça um aplicativo que leia o preço de 8 produtos. No final, mostre na tela qual foi o maior e qual foi o menor preço digitados
+def preços():
+    contagem = 2
+    p = float(input("Insira o 1º preço: "))
+    maior = menor = p
+    while contagem <= 8:
+        p = float(input(f"Insira o {contagem}º preço: "))
+        if p > maior:
+            maior = p
+        elif p < menor:
+            menor = p
+        contagem += 1
+    print(f"O maior preço foi de: {maior}.")
+    print(f"O menor preço foi de: {menor}.")
+
+preços()
+
+# 52) Crie um algoritmo que leia a idade de 10 pessoas, mostrando no final qual é a média de idade do grupo, quantas pessoas tem mais de 18 anos, quantas pessoas tem menos de 5 anos, qual foi a maior idade lida
+def idades():
+    contagem = 1
+    soma = 0
+    mais_18 = []
+    menos_5 = []
+    maior = 0
+    while contagem <= 10:
+        i = int(input(f"Insira a {contagem}ª idade: "))
+        soma += i
+        if i >= 18:
+            mais_18.append(i)
+        if i < 5:
+            menos_5.append(i)
+        if i  > maior:
+            maior = i
+        contagem += 1
+    média = soma / 10
+    print(f"A média é de {int(média)}.")
+    print(f"Pessoas com mais de 18 anos: {len(mais_18)}")
+    print(f"Pessoas com menos de 5 anos: {len(menos_5)}")
+    print(f"A maior idade foi de: {maior} anos.")
+
+idades()
+
+# 53) Faça um programa que leia a idade e o sexo de 5 pessoas, mostrando no final quantos homens foram cadastrados, quantas mulheres foram cadastradas, a média de idade do grupo, a média de idade dos homens, quantas mulheres tem mais de 20 anos
+def idades_gênero():
+    contagem = 1
+    homens = 0
+    mulheres = 0
+    outro = 0
+    soma = 0
+    soma_homens = 0
+    mulheres_mais20 = 0
+    while contagem <= 5:
+        i = int(input(f"Insira a {contagem}ª idade: "))
+        g = input(f"Insira o {contagem}º gênero: ").strip().lower()
+        if g == "masculino":
+            homens += 1
+            soma_homens += i
+        elif g == "feminino":
+            mulheres += 1
+            if i >= 20:
+                mulheres_mais20 += 1
+        else:
+            outro += 1
+        soma += i
+        contagem += 1
+    média = soma / (homens + mulheres + outro)
+    média_homens = soma_homens / homens if homens > 0 else 0
+    print(f"O total de homens é de {homens}.")
+    print(f"O total de mulheres é de {mulheres}.")  
+    print(f"A média de idade do grupo é de {média}.")
+    print(f"A média de idade dos homens é de {média_homens}.")
+
+idades_gênero()
+
+# 54) Desenvolva um aplicativo que leia o peso e a altura de 7 pessoas, mostrando no final, qual foi a média de altura do grupo, quantas pessoas pesam mais de 90Kg, quantas pessoas que pesam menos de 50Kg tem menos de 1.60m, quantas pessoas que medem mais de 1.90m pesam mais de 100Kg
+def peso_altura():
+    contagem = 1
+    soma_altura = 0
+    peso_mais_90 = 0
+    peso_menos_50_altura_menos_160 = 0
+    altura_mais_190_peso_mais_100 = 0
+    while contagem <= 7:
+        p = float(input(f"Insira o {contagem}º peso em kg: "))
+        a = float(input(f"Insira a {contagem}ª altura em m: "))
+        soma_altura += a
+        if p > 90:
+            peso_mais_90 += 1
+        if p < 50 and a < 1.60:
+            peso_menos_50_altura_menos_160 += 1
+        if a > 1.90 and p > 100:
+            altura_mais_190_peso_mais_100 += 1
+        contagem += 1
+    média_altura = soma_altura / 7
+    print(f"A média das alturas é de {média_altura:.2f} metro(s).")
+    print(f"{peso_mais_90} pessoas pesam mais de 90kg.")
+    print(f"{peso_menos_50_altura_menos_160} pessoas pesam menos de 50Kg tem menos de 1.60m.")
+    print(f"{altura_mais_190_peso_mais_100} pessoas medem mais de 1.90m pesam mais de 100Kg.")
+
+peso_altura()
+
+# 55) Vamos melhorar o jogo que fizemos no exercício 32. A partir de agora, o computador vai sortear um número entre 1 e 10 e o jogador vai ter 4 tentativas para tentar acertar
+import random
+
+def jogo_chute():
+    contador = 1
+    n = random.randint(1, 10)
+    while contador <= 4:
+        chute = int(input("Chute de 1 a 10!"))
+        if chute == n:
+            print("Acertou, miserável!")
+            break
+        else:
+            if contador == 4:
+                print("Perdeu!")
+            else:
+                print(f"Errou! Tem mais {4 - contador} tentativas. Tente novamente!")
+        contador += 1
+        
+jogo_chute()
