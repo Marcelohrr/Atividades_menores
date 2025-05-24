@@ -878,3 +878,110 @@ def números():
     print(f"Somatório: {soma}. Menor valor: {menor}. Média: {média:.2f}. Valores pares: {pares}.")
 
 números()
+
+# PASSO 07 – REPETIÇÃO COM PARA
+# 64) Desenvolva um programa usando a estrutura “para” que mostre na tela a seguinte contagem: 0 5 10 15 20 25 30 35 40 Acabou!
+def contagem1():
+    for n in range(0, 41, 5):
+        print(n, end=' ')
+    print("Acabou!")
+
+contagem()
+
+# 65) Desenvolva um programa usando a estrutura “para” que mostre na tela a seguinte contagem: 100 90 80 70 60 50 40 30 20 10 0 Acabou!
+def contagem2():
+    for n in range(100, -1, -10):
+        print(n, end=' ')
+    print("Acabou!")
+
+contagem2()
+
+# 66) Escreva um programa que leia um número qualquer e mostre a tabuada desse número, usando a estrutura “para”
+def tabuada():
+    n = int(input("Digite o número: "))
+    for x in range(1, 11):
+        print(f"{n} x {x} = {n * x}")
+    print("Acabou!")
+
+tabuada()
+
+# 67) Faça um programa usando a estrutura “para” que leia um número inteiro positivo e mostre na tela uma contagem de 0 até o valor digitado
+def contagem3():
+    n = int(input("Digite o número: "))
+    if n < 0:
+        print("O número deve ser positivo.")
+    else:
+        for x in range(0, n + 1):
+            print(x, end=' ')
+        print("FIM!")
+
+contagem3()
+
+# 68) Crie um programa que leia sexo e peso de 8 pessoas, usando a estrutura “para”. No final, mostre na tela quantas mulheres foram cadastradas, quantos homens pesam mais de 100Kg, a média de peso entre as mulheres, o maior peso entre os homens
+def gênero_peso():
+    mulheres = 0
+    homens_mais_100 = 0
+    soma_peso_mulheres = 0
+    maior_peso_homens = 0
+    for x in range(1, 9):
+        g = input("Qual gênero?").strip().lower()
+        p = float(input("Qual peso?"))
+        if g == "feminino":
+            mulheres += 1
+            soma_peso_mulheres += p
+        if g == "masculino":
+            if p > 100:
+                homens_mais_100 += 1
+            if p > maior_peso_homens:
+                maior_peso_homens = p
+    média_peso_mulheres = soma_peso_mulheres / mulheres
+    print(f"Mulheres cadastradas: {mulheres}")
+    print(f"Homens com mais de 100Kg: {homens_mais_100}")
+    print(f"Média de peso das mulheres: {média_peso_mulheres:.2f}")
+    print(f"Maior peso entre os homens: {maior_peso_homens}")
+
+gênero_peso()
+
+# 69) Desenvolva um programa que leia o primeiro termo e a razão de uma PA, mostrando na tela os 10 primeiros elementos da PA e a soma entre todos os valores da sequência
+def progressão_aritmética():
+    primeiro = float(input("Digite o primeiro termo: "))
+    razão = float(input("Digite a razão: "))
+    soma = 0
+    for n in range(10):
+        número = primeiro + (n) * razão
+        print(número, end=' ')
+        soma += número
+    print(f"Soma = {soma}")
+
+progressão_aritmética()
+
+# 70) Faça um programa que mostre os 10 primeiros elementos da Sequência de Fibonacci
+# A) Fibonacci while
+def fibonacci():
+    a = 0
+    b = 1
+    soma = a + b
+    lista = [a, b]
+    while len(lista) < 10:
+        lista.append(soma)
+        a = b
+        b = soma
+        soma = a + b
+    print(lista)
+
+fibonacci()
+
+# B) Fibonacci for
+def fibonacci():
+    a = 0
+    b = 1
+    soma = a + b
+    lista = [a, b]
+    for f in range(8):
+        lista.append(soma)
+        a = b
+        b = soma
+        soma = a + b
+    print(lista)
+
+fibonacci()
