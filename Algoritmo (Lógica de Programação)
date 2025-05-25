@@ -985,3 +985,281 @@ def fibonacci():
     print(lista)
 
 fibonacci()
+
+# PASSO 08 – VETORES
+# 71) Faça um programa que preencha automaticamente um vetor numérico com 8 posições, com 999
+def preencher_lista1():
+    lista = []
+    while len(lista) < 8:
+        lista.append(999)
+    print(lista)
+
+preencher_lista1()
+
+# 72) Crie um programa que preencha automaticamente um vetor numérico com 10 posições, com 5, 10, 15, ..., 50
+def preencher_lista2():
+    lista = []
+    n = 5
+    while len(lista) < 10:
+        lista.append(n)
+        n += 5
+    print(*lista)
+
+preencher_lista2()
+
+# 73) Crie um programa que preencha automaticamente um vetor numérico com 10 posições, com 9, 8, 7, ..., 0
+def preencher_lista3():
+    lista = []
+    n = 9
+    while len(lista) < 10:
+        lista.append(n)
+        n -= 1
+    print(*lista)
+
+preencher_lista3()
+
+# 74) Crie um programa que preencha automaticamente um vetor numérico com 10 posições, com 5 3 5 3 5 3 ... 5 3
+def preencher_lista4():
+    lista = []
+    n = 5
+    while len(lista) < 10:
+        lista.append(n)
+        if n == 5:
+            n = 3
+        elif n == 3:
+            n = 5
+    print(*lista)
+
+preencher_lista4()
+
+# 75) Crie um programa que preencha automaticamente um vetor numérico com 15 posições, com os primeiros elementos da sequência de Fibonacci
+def preencher_fibonacci():
+    a = 0
+    b = 1
+    lista = [a, b]
+    while len(lista) < 15:
+        soma = a + b
+        lista.append(soma)
+        a = b
+        b = soma
+    print(*lista)
+
+preencher_fibonacci()
+
+# 76) Crie um programa que preencha automaticamente um vetor numérico com 7 números gerados aleatoriamente pelo computador e depois mostre os valores gerados na tela
+import random
+
+def preencher_aleatório():
+    lista = []
+    while len(lista) < 7:
+        n = random.randint(1, 100)
+        lista.append(n)
+    print(*lista)
+
+preencher_aleatório()
+
+# 77) Faça um programa que leia 7 nomes de pessoas e guarde-os em um vetor. No final, mostre uma listagem com todos os nomes informados, na ordem inversa daquela em que eles foram informados
+def preencher_nomes():
+    lista = []
+    contador = 1
+    while len(lista) < 7:
+        nome = input(f"Insira o {contador}º nome: ")
+        lista.append(nome)
+        contador += 1
+    print(*reversed(lista))
+
+preencher_nomes()
+
+# 78) Escreva um programa que leia 15 números e guarde-os em um vetor. No final, mostre o vetor inteiro na tela e em seguida mostre em que posições foram digitados valores que são múltiplos de 10
+def preencher_posições():
+    lista = []
+    lista_posições = []
+    contador = 1
+    while len(lista) < 15:
+        n = float(input(f"Insira o {contador}º número: "))
+        lista.append(n)
+        if n % 10 == 0:
+            lista_posições.append(len(lista) - 1)
+        contador += 1
+    print(lista)
+    print(f"Posições dos valores múltiplos de 10: {lista_posições}")
+
+preencher_posições()
+
+# 79) Desenvolva um programa que leia 10 números inteiros e guarde-os em um vetor. No final, mostre quais são os números pares que foram digitados e em que posições eles estão armazenados
+def preencher_pares():
+    lista = []
+    pares = []
+    posição_pares = []
+    contador = 1
+    while len(lista) < 10:
+        n = int(input(f"Insira o {contador}º número: "))
+        lista.append(n)
+        if n % 2 == 0:
+            pares.append(n)
+            posição_pares.append(len(lista) - 1)
+        contador += 1
+    print(f"Pares: {pares}.")
+    print(f"Posições dos pares: {posição_pares}.")
+
+preencher_pares()
+
+# 80) Faça um algoritmo que preencha um vetor de 30 posições com números entre 1 e 15 sorteados pelo computador. Depois disso, peça para o usuário digitar um número (chave) e seu programa deve mostrar em que posições essa chave foi encontrada. Mostre também quantas vezes a chave foi sorteada
+import random
+
+def preencher_sorteio():
+    lista = []
+    while len(lista) < 30:
+        número_aleatório = random.randint(1, 15)
+        lista.append(número_aleatório)
+    lista_acertos = []
+    n_user = int(input("Digite um número: "))
+    for posição, n in enumerate(lista):
+        if n == n_user:
+            lista_acertos.append(posição)
+    print(lista_acertos)
+    print(f"{len(lista_acertos)} coincidências.")
+
+preencher_sorteio()
+
+# 81) Crie um programa que leia a idade de 8 pessoas e guarde-as em um vetor. No final, mostre qual é a média de idade das pessoas cadastradas, em quais posições temos pessoas com mais de 25 anos, qual foi a maior idade digitada (podem haver repetições), em que posições digitamos a maior idade
+def preencher_idades():
+    lista = []
+    soma_idades = 0
+    maior_idade = 0
+    contador = 1
+    while len(lista) < 8:
+        idade = int(input(f"Digite a {contador}ª idade: "))
+        lista.append(idade)
+        soma_idades += idade
+        if idade > maior_idade:
+            maior_idade = idade
+        contador += 1
+    lista_posições_mais_25 = []
+    lista_posições_maior_idade = []
+    for posição, i in enumerate(lista):
+        if i >= 25:
+            lista_posições_mais_25.append(posição)
+        if i == maior_idade:
+            lista_posições_maior_idade.append(posição)
+    média_idades = soma_idades / len(lista)
+    print(f"A média de idades é de: {média_idades}.")
+    print(f"Posições com pessoas maiores de 25: {lista_posições_mais_25}")
+    print(f"A maior idade é: {maior_idade}. Na(s) posição(ões): {lista_posições_maior_idade}")
+
+preencher_idades()
+
+# 82) Faça um algoritmo que leia a nota de 10 alunos de uma turma e guarde-as em um vetor. No final, mostre qual é a média da turma, quantos alunos estão acima da média da turma qual foi a maior nota digitada, em que posições a maior nota aparece
+def preencher_notas():
+    lista = []
+    soma = 0
+    maior_nota = 0
+    contador = 1
+    while len(lista) < 10:
+        nota = float(input(f"Digite a {contador}ª nota: "))
+        lista.append(nota)
+        soma += nota
+        if nota > maior_nota:
+            maior_nota = nota
+        contador += 1
+    média_turma = soma / len(lista)
+    alunos_acima_média = 0
+    lista_estrelinhas = []
+    for posição, n in enumerate(lista):
+        if n > média_turma:
+            alunos_acima_média += 1
+        if n == maior_nota:
+            lista_estrelinhas.append(posição)
+    print(f"A média de notas da turma é de: {média_turma}.")
+    print(f"{alunos_acima_média} estão acima da média da turma.")
+    print(f"Maior nota: {maior_nota}. Aparece na(s) posição(ões): {lista_estrelinhas}")
+
+preencher_notas()
+
+# 83) Crie uma lógica que preencha um vetor de 20 posições com números aleatórios (entre 0 e 99) gerados pelo computador. Logo em seguida, mostre os números gerados e depois coloque o vetor em ordem crescente, mostrando no final os valores ordenados
+# A) Com lista provisória
+import random
+
+def busca_menor(lista):
+    menor = None
+    for n in lista:
+        if menor == None or n < menor:
+            menor = n
+    return menor
+
+def ordenar():
+    lista = []
+    lista_ordenada = []
+    while len(lista) < 20:
+        número_aleatório = random.randint(0, 99)
+        lista.append(número_aleatório)
+
+    lista_provisória = lista[:]
+
+    while lista_provisória:
+        menor = busca_menor(lista_provisória)
+        lista_ordenada.append(menor)
+        lista_provisória.remove(menor)
+
+    print(lista)
+    print(lista_ordenada)
+
+ordenar()
+
+# B) Selection sort clássico
+import random
+
+def selection_sort():
+    lista = []
+    while len(lista) < 20:
+        n = random.randint(0, 99)
+        lista.append(n)
+    print(f"Lista original: {lista}.")
+    for i in range(len(lista)):
+        posição_menor = i
+        for j in range(i + 1, len(lista)):
+            if lista[j] < lista[posição_menor]:
+                posição_menor = j
+        lista[i], lista[posição_menor] = lista[posição_menor], lista[i]
+    print(f"Lista ordenada: {lista}.")
+
+selection_sort()
+
+# 84) Crie um programa que leia o nome e a idade de 9 pessoas e guarde esses valores em dois vetores, em posições relacionadas. No final, mostre uma listagem contendo apenas os dados das pessoas menores de idade
+def preencher_menores():
+    lista_nomes = []
+    lista_idades = []
+    lista_menores = []
+    contador = 1
+    while len(lista_nomes) < 9:
+        nome = input(f"Digite o {contador}º nome: ")
+        lista_nomes.append(nome)
+        idade = int(input(f"Digite a {contador}ª idade: "))
+        lista_idades.append(idade)
+        contador += 1
+        if idade < 18:
+            lista_menores.append((nome, idade))
+    print(lista_menores)
+
+preencher_menores()
+
+# 85) Faça um algoritmo que leia o nome, o sexo e o salário de 5 funcionários e guarde esses dados em três vetores. No final, mostre uma listagem contendo apenas os dados das funcionárias mulheres que ganham mais de R$5 mil
+def preencher_funcionários():
+    lista_nomes = []
+    lista_gênero = []
+    lista_salário = []
+    lista_mulheres_5k = []
+    contador = 1
+    while len(lista_nomes) < 5:
+        nome = input(f"Digite o {contador}º nome: ")
+        lista_nomes.append(nome)
+        gênero = input(f"Digite o {contador}º gênero: ").strip().lower()
+        lista_gênero.append(gênero)
+        salário = float(input(f"Digite o {contador}º salário: "))
+        lista_salário.append(salário)
+        contador += 1
+        if gênero == "feminino" and salário > 5000:
+            lista_mulheres_5k.append((nome, gênero, salário))
+    print(lista_mulheres_5k)
+
+preencher_funcionários()
