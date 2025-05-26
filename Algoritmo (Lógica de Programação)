@@ -1308,7 +1308,7 @@ gerador4("Não vou aprender portugol! >:p", 2, 3)
 # 90) Desenvolva um algoritmo que leia dois valores pelo teclado e passe esses valores para um procedimento Somador() que vai calcular e mostrar a soma entre eles
 def somador(n1, n2):
     soma = n1 + n2
-    print(f"A soma de {n1} + {n2} é igual à {soma}.")
+    print(f"A soma de {n1} + {n2} é igual a {soma}.")
 
 n1 = float(input("Digite o primeiro valor: "))
 n2 = float(input("Digite o segundo valor: "))
@@ -1366,3 +1366,90 @@ def procedimento_fibonacci(n):
 n = int(input("Digite a quantidade de itens desejados: "))
 
 procedimento_fibonacci(n)
+
+# PASSO 10 – FUNÇÕES
+# 95) Refaça o exercício 90, só que agora em forma de função Somador(), que vai receber dois parâmetros e vai retornar o resultado da soma entre eles para o programa principal
+def somador(n1, n2):
+    soma = n1 + n2
+    return soma
+
+n1 = float(input("Digite o primeiro valor: "))
+n2 = float(input("Digite o segundo valor: "))
+
+soma = somador(n1, n2)
+print(f"A soma de {n1} + {n2} é igual a {soma}.")
+
+# 96) Crie um programa que tenha uma função Media(), que vai receber as 2 notas de um aluno e retornar a sua média para o programa principal
+def média(n1, n2):
+    m = (n1 + n2) / 2
+    return m
+
+n1 = float(input("Digite a primeira nota: "))
+n2 = float(input("Digite a segunda nota: "))
+
+m = média(n1, n2)
+print(f"A média entre {n1} e {n2} é igual a {m}.")
+
+# 97) Refaça o exercício 91, só que agora em forma de função Maior(), mas faça uma adaptação que vai receber TRÊS números como parâmetro e vai retornar qual foi o maior entre eles
+def maior(n1, n2, n3):
+    m = max(n1, n2, n3)
+    return m
+
+n1 = float(input("Digite o primeiro valor: "))
+n2 = float(input("Digite o segundo valor: "))
+n3 = float(input("Digite o terceiro valor: "))
+
+m = maior(n1, n2, n3)
+print(f"{m} é maior entre {n1}, {n2} e {n3}.")
+
+# 98) Crie um programa que tenha uma função SuperSomador(), que vai receber dois números como parâmetro e depois vai retornar a soma de todos os valores no intervalo entre os valores recebidos
+def super_somador(n1, n2):
+    super_soma = 0
+    if n1 < n2:
+        for n in range(n1, n2 + 1):
+            super_soma += n
+        return super_soma
+    if n1 > n2:
+        for n in range(n2, n1 + 1):
+            super_soma += n
+        return super_soma
+
+n1 = int(input("Digite o primeiro valor: "))
+n2 = int(input("Digite o segundo valor: "))
+
+soma = super_somador(n1, n2)
+print(f"A soma de todos os números de {n1} a {n2} é igual a {soma}.")
+
+# 99) Faça um programa que possua uma função chamada Potencia(), que vai receber dois parâmetros numéricos (base e expoente) e vai calcular o resultado da exponenciação
+def potência(n1, n2):
+    p = n1 ** n2
+    return p
+
+n1 = float(input("Digite a base: "))
+n2 = float(input("Digite o expoente: "))
+
+resultado = potência(n1, n2)
+print(f"{n1} elevado a {n2} é igual a {resultado}.")
+
+# 100) Melhore o exercício 96, criando além da função Media() uma outra função chamada Situacao(), que vai retornar para o programa principal se o aluno está APROVADO, em RECUPERAÇÃO ou REPROVADO. Essa nova função, vai receber como parâmetro o resultado retornado pela função Media()
+def média(n1, n2):
+    return (n1 + n2) / 2
+
+def situação(m):
+    if m == 100:
+        return "CONTRATADO."
+    elif m >= 70:
+        return "APROVADO."
+    elif m >= 60:
+        return "Infelizmente, APROVADO. Faz a recuperação lá, que tá feio."
+    elif m >= 50:
+        return "RECUPERAÇÃO."
+    else:
+        return "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK\nreprovadokkkkkkkkk"
+
+n1 = float(input("Digite a primeira nota: "))
+n2 = float(input("Digite a segunda nota: "))
+
+m = média(n1, n2)
+print(f"A média entre {n1} e {n2} é igual a {m}.")
+print(situação(m))
