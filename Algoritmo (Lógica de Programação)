@@ -1263,3 +1263,106 @@ def preencher_funcionários():
     print(lista_mulheres_5k)
 
 preencher_funcionários()
+
+# PASSO 09 – PROCEDIMENTOS
+# 86) Crie um programa que tenha um procedimento Gerador() que, quando chamado, mostre a mensagem "Olá, Mundo!" com algum componente visual (linhas)
+def gerador():
+    print("+-------==================------+")
+    print("Não vou dar olá para o mundo. >:(")
+    print("+-------==================------+")
+
+gerador()
+
+# 87) Crie um programa que melhore o procedimento Gerador() da questão anterior para que mostre uma mensagem personalizada, passada como parâmetro
+def gerador2(x):
+    print("+-------==================------+")
+    print(x)
+    print("+-------==================------+")
+
+gerador2("Não vou aprender portugol! >:p")
+
+# 88) Crie um programa que melhore o procedimento Gerador() da questão anterior para que mostre uma mensagem várias vezes
+def gerador3(mensagem, repetições):
+    print("+-------==================------+")
+    for _ in range(repetições):
+        print(mensagem)
+    print("+-------==================------+")
+
+gerador3("Não vou aprender portugol! >:p", 2)
+
+# 89) Crie um programa que melhore o procedimento Gerador() da questão anterior para que o programador possa escolher uma entre três bordas
+def gerador4(mensagem, repetições, estilo):
+    if estilo == 1:
+        borda = "+-------=======------+"
+    elif estilo == 2:
+        borda = "~~~~~~~~:::::::~~~~~~~"
+    elif estilo == 3:
+        borda = "<<<<<<<<------->>>>>>>"
+    print(borda)
+    for _ in range(repetições):
+        print(mensagem)
+    print(borda)
+
+gerador4("Não vou aprender portugol! >:p", 2, 3)
+
+# 90) Desenvolva um algoritmo que leia dois valores pelo teclado e passe esses valores para um procedimento Somador() que vai calcular e mostrar a soma entre eles
+def somador(n1, n2):
+    soma = n1 + n2
+    print(f"A soma de {n1} + {n2} é igual à {soma}.")
+
+n1 = float(input("Digite o primeiro valor: "))
+n2 = float(input("Digite o segundo valor: "))
+
+somador(n1, n2)
+
+# 91) Desenvolva um algoritmo que leia dois valores pelo teclado e passe esses valores para um procedimento Maior() que vai verificar qual deles é o maior e mostrá-lo na tela. Caso os dois valores sejam iguais, mostrar uma mensagem informando essa característica
+def maior(n1, n2):
+    if n1 > n2:
+        print(f"{n1} é maior do que {n2}.")
+    elif n2 > n1:
+        print(f"{n2} é maior do que {n1}.")
+    else:
+        print(f"{n1} é igual a {n2}.")
+
+n1 = float(input("Digite o primeiro valor: "))
+n2 = float(input("Digite o segundo valor: "))
+
+maior(n1, n2)
+
+# 92) Crie uma lógica que leia um número inteiro e passe para um procedimento ParOuImpar() que vai verificar e mostrar na tela se o valor passado como parâmetro é PAR ou ÍMPAR
+def par_ou_ímpar(n):
+    if n % 2 == 0:
+        print(f"{n} é par.")
+    else:
+        print(f"{n} é ímpar.")
+
+n = int(input("Digite o número: "))
+
+par_ou_ímpar(n)
+
+# 93) Faça um programa que tenha um procedimento chamado Contador() que recebe três valores como parâmetro: o início, o fim e o incremento de uma contagem. O programa principal deve solicitar a digitação desses valores e passá-los ao procedimento, que vai mostrar a contagem na tela
+def contador(início, fim, incremento):
+    for n in range(início, fim + 1, incremento):
+        print(n, end=" >> ")
+    print("FIM")
+
+início = int(input("Digite o valor de início: "))
+fim = int(input("Digite o valor de fim: "))
+incremento = int(input("Digite o valor de incremento: "))
+
+contador(início, fim, incremento)
+
+# 94) Desenvolva um aplicativo que tenha um procedimento chamado Fibonacci() que recebe um único valor inteiro como parâmetro, indicando quantos termos da sequência serão mostrados na tela. O seu procedimento deve receber esse valor e mostrar a quantidade de elementos solicitados
+def procedimento_fibonacci(n):
+    a, b = 0, 1
+    lista = []
+    while len(lista) < n:
+        lista.append(a)
+        a, b = b, a + b
+    for n in lista:
+        print(n, end=" >> ")
+    print("FIM")
+
+n = int(input("Digite a quantidade de itens desejados: "))
+
+procedimento_fibonacci(n)
