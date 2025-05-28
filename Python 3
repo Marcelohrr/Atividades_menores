@@ -1,0 +1,87 @@
+# Mundo 1
+# 17) Faça um programa que leia o comprimento do cateto oposto e do cateto adjacente de um triângulo retângulo, calcule e mostre o comprimento da hipotenusa
+# A) Sem import math
+co = float(input('Insira o cateto oposto: '))
+ca = float(input('Insira o cateto adjacente: '))
+h = (co ** 2 + ca ** 2) ** 0.5
+
+print(f'A hipotenusa é {h}.')
+
+# B) Com import hypot
+from math import hypot
+
+co = float(input('Insira o cateto oposto: '))
+ca = float(input('Insira o cateto adjacente: '))
+h = hypot(co, ca)
+
+print(f'A hipotenusa é {h}.')
+
+# 18) Faça um programa que leia um ângulo qualquer e mostre na tela o valor do seno, cosseno e tangente desse ângulo
+from math import sin, cos, tan, radians
+
+ângulo = float(input('Digite um ângulo em graus sexagesimais: '))
+s = sin(radians(ângulo))
+c = cos(radians(ângulo))
+t = tan(radians(ângulo))
+
+print(f'O seno, cosseno e tangente de {ângulo} graus são, respectivamente: {s}, {c} e {t}.')
+
+# 19) Um professor quer sortear um dos seus quatro alunos para apagar o quadro. Faça um programa que ajude ele, lendo o nome deles e escrevendo o nome do escolhido
+from random import choice
+
+alunos = ['A', 'B', 'C', 'D']
+escolhido = choice(alunos)
+
+print(f'O aluno escolhido é {escolhido}.')
+
+# 20) O mesmo professor do desafio anterior quer sortear a ordem de apresentação de trabalhos dos alunos. Faça um programa que leia o nome dos quatro alunos e mostre a ordem sorteada
+from random import shuffle
+
+alunos = ['A', 'B', 'C', 'D']
+shuffle(alunos)
+
+print(f"A ordem de apresentações é {', '.join(alunos)}.")
+
+# 21) Faça um programa em Python que abra e reproduza o áudio de um arquivo MP3
+import pygame
+
+pygame.init()
+pygame.mixer.music.load('01. Above Ground BGM.mp3')
+pygame.mixer.music.play()
+while pygame.mixer.music.get_busy():
+    pygame.time.Clock().tick(10)
+
+# 22) Crie um programa que leia o nome completo de uma pessoa e mostre o nome com todas as letras maiúsculas, com todas minúsculas, o total de letras (sem considerar espaços), quantas letras tem o primeiro nome
+nome = input('Escreva seu nome completo: ')
+print(nome.upper(), nome.lower(), len(nome.replace(' ', '')), len(nome.split()[0]))
+
+# 23) Faça um programa que leia um número de 0 a 9999 e mostre na tela cada um dos dígitos separados
+# A) Como string
+n = input('Dê um número de 0 a 9999: ').zfill(4)
+print(n[0], n[1], n[2], n[3])
+
+# B) Matematicamente
+n = int(input('Dê um número de 0 a 9999: '))
+print(f'O número {n} possui {n // 1000} na casa dos milhares, {(n % 1000) // 100} na das centenas, {(n % 100) // 10} na das dezenas e {n % 10} na das unidades.')
+
+# 24) Crie um programa que leia o nome de uma cidade e diga se ela começa ou não com o nome "Santo"
+cidade = input('Qual a cidade?').strip().lower()
+if cidade.split()[0] == 'santo':
+    print('Começa!')
+else:
+    print('Não começa!')
+
+# 25) Crie um programa que leia o nome de uma pessoa e diga se ela tem "Silva" no nome
+nome = input('Qual seu nome?').strip().lower()
+if 'silva' in nome:
+    print('Tem!')
+else:
+    print('Não tem!')
+
+# 26) Faça um programa que leia uma frase pelo teclado e mostre quantas vezes aparece a letra 'A', em que posição ela aparece a primeira vez, em que posição ela aparece a última vez
+frase = input('Escreva a frase: ').strip().lower()
+print(frase.count('a'), frase.find('a'), frase.rfind('a'))
+
+# 27) Faça um programa que leia o nome completo de uma pessoa, mostrando em seguida o primeiro e o último nome separadamente
+nome = input('Qual seu nome?')
+print(nome.split()[0], nome.split()[-1])
