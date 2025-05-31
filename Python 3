@@ -89,7 +89,6 @@ print(nome.split()[0], nome.split()[-1])
 # Mundo 2
 # 37) Escreva um programa que leia um número inteiro qualquer e peça para o usuário escolher qual será a base de conversão (1 para binário, 2 para octal e 3 para hexadecimal)
 def conversor_numérico():
-
     n = int(input('Insira o número para conversão: '))
     escolha_base = int(input('Escolha a conversão desejada: 1 = binário, 2 = octal, 3 = hexadecimal.'))
     if escolha_base == 1:
@@ -390,3 +389,183 @@ def caixa_eletrônico():
         contador += 1
 
 caixa_eletrônico()
+
+# 72) Crie um programa que tenha uma tupla totalmente preenchida com uma contagem por extenso, de zero até vinte. Seu programa deverá ler um número pelo teclado e mostrá-lo por extenso
+tupla = ('zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez',
+         'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove', 'vinte')
+n = int(input('Número: '))
+print(f'{n} por extenso é: "{tupla[n]}"')
+
+# 73) Crie uma tupla preenchida com os 20 primeiros colocados da Tabela do Campeonato Brasileiro de Futebol, na ordem de colocação. Depois mostre apenas os 5 primeiros colocados, os últimos 4, uma lista com os times em ordem alfabética, em que posição está o time do Cruzeiro
+brasileirão = ('Palmeiras', 'Flamengo', 'Cruzeiro', 'RB Bragantino', 'Fluminense',
+               'Ceará', 'Bahia', 'Corinthians', 'Mirassol', 'Atlético-MG',
+               'Botafogo', 'Grêmio', 'São Paulo', 'Internacional', 'Vasco',
+               'Fortaleza', 'Vitória', 'Santos', 'Juventude', 'Sport')
+print('Os 5 primeiros colocados são:', brasileirão[:5])
+print('Os 4 últimos colocados são:', brasileirão[-4:])
+print('Times em ordem alfabética:', sorted(brasileirão))
+print('O Cruzeiro está na posição:', brasileirão.index('Cruzeiro') + 1)
+
+# 74) Crie um programa que vai gerar cinco números aleatórios e colocar em uma tupla. Depois disso, mostre a listagem de números gerados e também indique o menor e o maior valor que estão na tupla
+from random import randint
+
+tupla = (randint(0, 10), randint(0, 10), randint(0, 10), randint(0, 10), randint(0, 10))
+print(tupla, max(tupla), min(tupla))
+
+# 75) Desenvolva um programa que leia quatro valores pelo teclado e guarde-os em uma tupla. No final, mostre quantas vezes apareceu o valor 9, em que posição foi digitado o primeiro valor 3, quais foram os números pares
+tupla = (int(input('Valor 1: ')), int(input('Valor 2: ')), int(input('Valor 3: ')), int(input('Valor 4: ')))
+print(f'O número 9 apareceu {tupla.count(9)} vez(es).')
+if 3 in tupla:
+    print(f'O número 3 apareceu primeiro no índice {tupla.index(3)}.')
+else:
+    print('O número 3 não foi digitado.')
+print('Números pares digitados:', end=' ')
+for v in tupla:
+    if v % 2 == 0:
+        print(v, end=' ')
+
+# 76) Crie um programa que tenha uma tupla única com nomes de produtos e seus respectivos preços, na sequência. No final, mostre uma listagem de preços, organizando os dados em forma tabular
+tupla = ('Notebook', 3499.90, 'Teclado', 149.99, 'Monitor', 899.00, 'Cadeira Gamer', 1299.50, 'Mouse', 89.90)
+print('_' * 50)
+print(f'{"PREÇOS":^50}')
+print('_' * 50)
+for i in range(0, len(tupla), 2):
+    print(f'{tupla[i]:.<40}', end='')
+    print(f'R${tupla[i + 1]:>8}')
+
+# 77) Crie um programa que tenha uma tupla com várias palavras (sem acentos). Depois disso, mostre, para cada palavra, quais são as suas vogais
+tupla = ('casa', 'carro', 'livro', 'janela', 'porta', 'floresta', 'gato', 'praia', 'cachorro', 'escola')
+v = ('a', 'e', 'i', 'o', 'u')
+for palavra in tupla:
+    print(f'\nNa palavra {palavra.upper()}, há as vogais:', end=' ')
+    for letra in palavra:
+        if letra in 'aeiou':
+            print(letra.upper(), end=' ')
+
+# 78) Faça um programa que leia 5 valores numéricos e guarde-os em uma lista. No final, mostre qual foi o maior e o menor valor digitado e as suas respectivas posições na lista
+lista = []
+for v in range(1, 6):
+    lista.append(float(input(f'Digite o {v}º valor: ')))
+maior = None
+posições_maior = []
+menor = None
+posições_menor = []
+for p, x in enumerate(lista):
+    if maior == None or x > maior:
+        maior = x
+        posições_maior = []
+        posições_maior.append(p)
+    elif x == maior:
+        posições_maior.append(p)
+    if menor == None or x < menor:
+        menor = x
+        posições_menor = []
+        posições_menor.append(p)
+    elif x == menor:
+        posições_menor.append(p)
+print(f'O maior valor é: {maior}, na posição {posições_maior}.\n'
+      f'O menor é: {menor}, na posição {posições_menor}.')
+
+# 79) Crie um programa em que o usuário possa digitar vários valores numéricos e cadastre-os em uma lista. Caso o número já exista lá, ele não será adicionado. No final, serão exibidos todos os valores únicos digitados em ordem crescente
+lista = []
+while True:
+    v = float(input('Insira um valor: '))
+    if v not in lista:
+        lista.append(v)
+    continuar = (input('Deseja continuar?')).strip().lower()
+    if continuar == 'não':
+        break
+lista.sort()
+print(lista)
+
+# 80) Crie um programa em que o usuário possa digitar cinco valores numéricos e cadastre-os em uma lista, já na posição correta de inserção (sem usar o sort()). No final, mostre a lista ordenada na tela
+# A) Minha resposta original (limitada a 5 valores)
+lista = []
+for v in range(1, 6):
+    n = float(input(f'Digite o {v}º valor: '))
+    if v == 1 or n >= lista[-1]:
+        lista.append(n)
+    elif n < lista [0]:
+        lista.insert(0, n)
+    else:
+        if n >= lista[-2]:
+            lista.insert(-1, n)
+        elif n < lista[1]:
+            lista.insert(1, n)
+        else:
+            lista.insert(2, n)
+print(lista)
+
+# B) Código otimizado
+lista = []
+for v in range(1, 6):
+    n = float(input(f'Digite o {v}º valor: '))
+    posição = 0
+    while posição < len(lista) and n > lista[posição]:
+        posição += 1
+    lista.insert(posição, n)
+print(lista)
+
+# 81) Crie um programa que leia vários números e coloque-os em uma lista. Depois disso, mostre quantos números foram digitados, a lista de valores ordenada de forma decrescente, se o valor 5 foi digitado e está ou não na lista
+lista = []
+while True:
+    v = float(input('Insira um valor: '))
+    lista.append(v)
+    continuar = (input('Deseja continuar?')).strip().lower()
+    if continuar in ('não', 'nao', 'n'):
+        break
+lista.sort(reverse=True)
+if 5 in lista:
+    cinco = 'Cinco está na lista.'
+else:
+    cinco = 'Cinco não está na lista'
+print(len(lista), lista, cinco)
+
+# 82) Crie um programa que leia vários números e coloque-os em uma lista. Depois disso, crie duas listas extras que conterão apenas os valores digitados pares e os ímpares, respectivamente. No final, mostre o conteúdo das três listas geradas
+lista = []
+while True:
+    v = int(input('Insira um valor: '))
+    lista.append(v)
+    continuar = (input('Deseja continuar?')).strip().lower()
+    if continuar in ('não', 'nao', 'n'):
+        break
+pares = []
+ímpares = []
+for n in lista:
+    if n % 2 == 0:
+        pares.append(n)
+    else:
+        ímpares.append(n)
+print(f'Lista original: {lista}. Pares: {pares}. Ímpares: {ímpares}.')
+
+# 83) Crie um programa em que o usuário digite uma expressão qualquer que use parênteses. Seu aplicativo deverá analisar se a expressão passada está com os parênteses abertos e fechados na ordem correta
+# A) Minha resposta original (gambiarra, errada)
+expressão = input('Expressão com parênteses: ')
+posição_fecha = 0
+posição_abre = len(expressão) - 1
+erros = 0
+for posição, caractere in enumerate(expressão):
+    if caractere == '(':
+        busca_fecha = expressão.find(')', posição_fecha)
+        if busca_fecha < 0:
+            print(f'Há parênteses aberto sem fechar.')
+            erros += 1
+            break
+        elif posição < busca_fecha:
+            posição_fecha = busca_fecha + 1
+    elif caractere == ')':
+        busca_abre = expressão.rfind('(', 0, posição_abre)
+        if busca_abre < 0:
+            print(f'Há parênteses fechado não aberto.')
+            erros += 1
+            break
+        elif busca_abre >= 0 and posição > busca_abre:
+            posição_abre = busca_abre - 1
+        else:
+            print(f'Há erro de parênteses.')
+            erros += 1
+            break
+if erros == 0:
+    print(f'Parênteses corretos.')
+
+# B) Código otimizado (tentar fazer)
