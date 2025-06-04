@@ -4,7 +4,6 @@
 co = float(input('Insira o cateto oposto: '))
 ca = float(input('Insira o cateto adjacente: '))
 h = (co ** 2 + ca ** 2) ** 0.5
-
 print(f'A hipotenusa é {h}.')
 
 # B) Com import hypot
@@ -13,7 +12,6 @@ from math import hypot
 co = float(input('Insira o cateto oposto: '))
 ca = float(input('Insira o cateto adjacente: '))
 h = hypot(co, ca)
-
 print(f'A hipotenusa é {h}.')
 
 # 18) Faça um programa que leia um ângulo qualquer e mostre na tela o valor do seno, cosseno e tangente desse ângulo
@@ -23,7 +21,6 @@ from math import sin, cos, tan, radians
 s = sin(radians(ângulo))
 c = cos(radians(ângulo))
 t = tan(radians(ângulo))
-
 print(f'O seno, cosseno e tangente de {ângulo} graus são, respectivamente: {s}, {c} e {t}.')
 
 # 19) Um professor quer sortear um dos seus quatro alunos para apagar o quadro. Faça um programa que ajude ele, lendo o nome deles e escrevendo o nome do escolhido
@@ -31,7 +28,6 @@ from random import choice
 
 alunos = ['A', 'B', 'C', 'D']
 escolhido = choice(alunos)
-
 print(f'O aluno escolhido é {escolhido}.')
 
 # 20) O mesmo professor do desafio anterior quer sortear a ordem de apresentação de trabalhos dos alunos. Faça um programa que leia o nome dos quatro alunos e mostre a ordem sorteada
@@ -39,7 +35,6 @@ from random import shuffle
 
 alunos = ['A', 'B', 'C', 'D']
 shuffle(alunos)
-
 print(f"A ordem de apresentações é {', '.join(alunos)}.")
 
 # 21) Faça um programa em Python que abra e reproduza o áudio de um arquivo MP3
@@ -390,6 +385,7 @@ def caixa_eletrônico():
 
 caixa_eletrônico()
 
+# Mundo 3
 # 72) Crie um programa que tenha uma tupla totalmente preenchida com uma contagem por extenso, de zero até vinte. Seu programa deverá ler um número pelo teclado e mostrá-lo por extenso
 tupla = ('zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez',
          'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove', 'vinte')
@@ -568,4 +564,376 @@ for posição, caractere in enumerate(expressão):
 if erros == 0:
     print(f'Parênteses corretos.')
 
-# B) Código otimizado (tentar fazer)
+# B) Minha resposta funcional, com pilha (nem foi difícil!)
+def parênteses():
+    expressão = input('Digite uma frase com parênteses: ')
+    controle = []
+    erro = 0
+    for caractere in expressão:
+        if caractere == '(':
+            controle.append('(')
+        elif caractere == ')':
+            if '(' in controle:
+                controle.pop()
+            else:
+                print('Há parênteses fechado sem ser aberto.')
+                erro = 1
+    if '(' in controle:
+        print('Há parênteses aberto sem ser fechado.')
+    elif erro == 0:
+        print('Parênteses corretos.')
+
+parênteses()
+
+# 84) Faça um programa que leia nome e peso de várias pessoas, guardando tudo em uma lista. No final, mostre quantas pessoas foram cadastradas, uma listagem com as pessoas mais pesadas uma listagem com as pessoas mais leves
+# A) Mais pesadas/leves pela média
+pessoas = []
+dados = []
+soma = 0
+while True:
+    dados.append(input('Nome: '))
+    dados.append(float(input('Peso: ')))
+    pessoas.append(dados[:])
+    dados.clear()
+    soma += p
+    c = input('Continuar?').strip().lower()
+    if c in ('não', 'nao', 'n'):
+        break
+print(f'{len(pessoas)} pessoas foram cadastradas.')
+média = soma / len(pessoas)
+pesados = []
+leves = []
+for dado in pessoas:
+    if dado[1] > média:
+        pesados.append(dado[0])
+        print(f'As pessoas mais pesadas são: {pesados}.')
+    else:
+        leves.append(dado[0])
+        print(f'As pessoas mais leves são: {leves}.')
+
+# B) Mais pesadas/leves em absoluto
+pessoas = []
+dados = []
+while True:
+    n = input('Nome: ')
+    p = float(input('Peso: '))
+    dados.append(n)
+    dados.append(p)
+    pessoas.append(dados[:])
+    dados.clear()
+    c = input('Continuar?').strip().lower()
+    if c in ('não', 'nao', 'n'):
+        break
+mais_pesado = mais_leve = 0
+pesados = []
+leves = []
+for dado in pessoas:
+    if mais_pesado == 0:
+        mais_pesado = mais_leve = dado[1]
+        pesados.append(dado[0])
+        leves.append(dado[0])
+    else:
+        if dado[1] > mais_pesado:
+            mais_pesado = dado[1]
+            pesados.clear()
+            pesados.append(dado[0])
+        elif dado[1] == mais_pesado:
+            pesados.append(dado[0])
+        if dado[1] < mais_leve:
+            mais_leve = dado[1]
+            leves.clear()
+            leves.append(dado[0])
+        elif dado[1] == mais_leve:
+            leves.append(dado[0])
+print(f'{len(pessoas)} pessoas foram cadastradas.')
+print(f'As pessoas mais pesadas são: {pesados}.')
+print(f'As pessoas mais leves são: {leves}.')
+
+# 85) Crie um programa em que o usuário possa digitar sete valores numéricos e cadastre-os em uma lista única que mantenha separados os valores pares e ímpares. No final, mostre os valores pares e ímpares em ordem crescente
+lista = []
+pares = []
+ímpares = []
+for x in range(7):
+    n = int(input('Valor: '))
+    posição = 0
+    if n % 2 == 0:
+        while posição < len(pares) and n > pares[posição]:
+            posição += 1
+        pares.insert(posição, n)
+        print(pares)
+    else:
+        while posição < len(ímpares) and n > ímpares[posição]:
+            posição += 1
+        ímpares.insert(posição, n)
+        print(ímpares)
+lista.append(pares[:])
+lista.append(ímpares[:])
+print(f'Valores pares: {lista[0]}. Valores ímpares: {lista[1]}.')
+
+# 86) Crie um programa que faça uma matriz de dimensão 3x3 e preencha com valores lidos pelo teclado. No final, mostre a matriz na tela, com formatação correta
+# A) Primeira resolução
+lista_maior = []
+linha_a = []
+linha_b = []
+linha_c = []
+x = 0
+for a in range(3):
+    n = int(input(f'Digite o valor da posição {0}.{a}: '))
+    linha_a.append(n)
+lista_maior.append(linha_a[:])
+for b in range(3):
+    n = int(input(f'Digite o valor da posição {1}.{b}: '))
+    linha_b.append(n)
+lista_maior.append(linha_b[:])
+for c in range(3):
+    n = int(input(f'Digite o valor da posição {2}.{c}: '))
+    linha_c.append(n)
+lista_maior.append(linha_c[:])
+print('___ ___ ___')
+for d in range(3):
+    print(f' {lista_maior[x][0]} | {lista_maior[x][1]} | {lista_maior[x][2]} ')
+    print('___ ___ ___')
+    x += 1
+
+# B) Mais compacto
+matriz = []
+for y in range(3):
+    linha = []
+    for x in range(3):
+        n = int(input(f'Digite o valor da posição {y}.{x}: '))
+        linha.append(n)
+    matriz.append(linha[:])
+print('___ ___ ___')
+for l in matriz:
+    print(f' {l[0]} | {l[1]} | {l[2]} ')
+    print('___ ___ ___')
+
+# C) Versão do professor (mais compacto ainda)
+matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+for y in range(3):
+    for x in range(3):
+        matriz[y][x] = int(input(f'Digite o valor da posição {y}.{x}: '))
+for l in range(3):
+    for c in range(3):
+        print(f' {matriz[l][c]} ', end='|' if c < 2 else '\n')
+    if l < 2:
+        print('___ ___ ___')
+
+# 87) Aprimore o desafio anterior, mostrando no final a soma de todos os valores pares digitados, a soma dos valores da terceira coluna o maior valor da segunda linha
+matriz = []
+soma_pares = 0
+for y in range(3):
+    linha = []
+    for x in range(3):
+        n = int(input(f'Digite o valor da posição {y}.{x}: '))
+        if n % 2 == 0:
+            soma_pares += n
+        linha.append(n)
+    matriz.append(linha[:])
+print('___ ___ ___')
+for l in matriz:
+    print(f' {l[0]} | {l[1]} | {l[2]} ')
+    print('___ ___ ___')
+print(f'Soma dos pares: {soma_pares}.\n'
+      f'Soma da terceira coluna: {matriz[0][2] + matriz[1][2] + matriz[2][2]}.\n'
+      f'Maior valor da segunda linha: {max(matriz[1])}.')
+
+# 88) Faça um programa que ajude um jogador da MEGA SENA a criar palpites. O programa vai perguntar quantos jogos serão gerados e vai sortear 6 números entre 1 e 60 para cada jogo, cadastrando tudo em uma lista composta
+# A) Sorteio número a número com randint (com verificação de repetição) e ordenação manual
+from random import randint
+
+j = int(input('Quantos jogos?'))
+lista_composta = []
+for x in range(j):
+    lista = []
+    for y in range(6):
+        n = randint(1, 60)
+        while n in lista:
+            n = randint(1, 60)
+        posição = 0
+        while posição < len(lista) and n > lista[posição]:
+            posição += 1
+        lista.insert(posição, n)
+    lista_composta.append(lista[:])
+print(f'Sorteios: {lista_composta}.')
+
+# B) Sorteio completo com sample e ordenação com sorted
+from random import sample
+
+j = int(input('Quantos jogos?'))
+lista_composta = []
+for x in range(j):
+    lista = []
+    números = sorted(sample(range(1, 61), 6))
+    lista_composta.append(números)
+print(f'Sorteios: {lista_composta}.')
+
+# 89) Crie um programa que leia nome e duas notas de vários alunos e guarde tudo em uma lista composta. No final, mostre um boletim contendo a média de cada um e permita que o usuário possa mostrar as notas de cada aluno individualmente
+def boletim():
+    boletim = []
+    while True:
+        aluno = []
+        a = input('Aluno: ').strip()
+        n1 = float(input('Nota 1: '))
+        n2 = float(input('Nota 2: '))
+        média = (n1 + n2) / 2
+        aluno += [a, n1, n2, média]
+        boletim.append(aluno[:])
+        c = input('Continuar?').strip().lower()
+        if c in ('não', 'nao', 'n'):
+            break
+    print('Média de cada aluno:')
+    for médias in boletim:
+        print(f'{médias[0]}: {médias[3]:.2f}.')
+    consulta = input('Consultar aluno: ').strip()
+    achou = 0
+    for alunos in boletim:
+        if consulta == alunos[0]:
+            print(f'Boletim do aluno {alunos[0]}: {alunos}')
+            achou = 1
+            break
+    if achou == 0:
+        print('Aluno não cadastrado.')
+
+boletim()
+
+# 90) Faça um programa que leia nome e média de um aluno, guardando também a situação em um dicionário. No final, mostre o conteúdo da estrutura na tela
+dicionário = {}
+dicionário['nome'] = input('Nome: ')
+dicionário['média'] = float(input('Média: '))
+if dicionário['média'] >= 6:
+    dicionário['situação'] = 'Aprovado'
+else:
+    dicionário['situação'] = 'Reprovado'
+for key, value in dicionário.items():
+    print(f'{key}: {value}')
+
+# 91) Crie um programa em que 4 jogadores joguem um dado e tenham resultados aleatórios. Guarde esses resultados em um dicionário. No final, faça um dicionário em ordem, sabendo que o vencedor tirou o maior número no dado
+from random import randint
+from operator import itemgetter
+
+dicionário = {}
+dicionário['Bokk'] = randint(1, 20)
+dicionário['Len'] = randint(1, 20)
+dicionário['NPC Mestre'] = randint(1, 20)
+dicionário['Boss Mestre'] = randint(1, 20)
+ranking = sorted(dicionário.items(), key=itemgetter(1), reverse=True)
+print(f'Ordem de iniciativa:')
+for i, (jogador, resultado) in enumerate(ranking):
+    print(f'{jogador} ({resultado});') if i < len(ranking) - 1 else print(f'{jogador} ({resultado}).')
+
+# 92) Crie um programa que leia nome, ano de nascimento e carteira de trabalho e cadastre-os (idade ao invés de ano de nascimento) em um dicionário. Se a CTPS for diferente de ZERO, o dicionário receberá também o ano de contratação e o salário. Calcule e acrescente, além da idade, com quantos anos a pessoa vai se aposentar
+dicionário = {}
+dicionário['Nome'] = input('Nome: ')
+dicionário['Idade'] = 2025 - int(input('Ano de nascimento: '))
+carteira = input('Possui carteira de trabalho?').strip().lower()
+if carteira in ('não', 'nao', 'n'):
+    dicionário['CTPS'] = 0
+else:
+    dicionário['CTPS'] = 'Possui carteira.'
+    gênero = input('Gênero: ').strip().lower()
+    dicionário['Contratação'] = int(input('Ano de contratação: '))
+    dicionário['Salário'] = f'R${float(input("Salário: "))}'
+    if gênero == 'feminino':
+        tempo_falta_idade = 62 - dicionário['Idade']
+        tempo_falta_trabalho = 15 - (2025 - dicionário['Contratação'])
+        if tempo_falta_idade <= 0 and tempo_falta_trabalho <= 0:
+            dicionário['Aposentadoria'] = 'Aposentada.'
+        elif tempo_falta_idade >= tempo_falta_trabalho:
+            dicionário['Aposentadoria'] = f'Se aposenta em {tempo_falta_trabalho} anos.'
+        else:
+            dicionário['Aposentadoria'] = f'Se aposenta em {tempo_falta_idade} anos.'
+    elif gênero == 'masculino':
+        tempo_falta_idade = 65 - dicionário['Idade']
+        tempo_falta_trabalho = 15 - (2025 - dicionário['Contratação'])
+        if tempo_falta_idade <= 0 and tempo_falta_trabalho <= 0:
+            dicionário['Aposentadoria'] = 'Aposentado.'
+        elif tempo_falta_idade >= tempo_falta_trabalho:
+            dicionário['Aposentadoria'] = f'Se aposenta em {tempo_falta_trabalho} anos.'
+        else:
+            dicionário['Aposentadoria'] = f'Se aposenta em {tempo_falta_idade} anos.'
+for key, value in dicionário.items():
+    print(f'{key}: {value}.')
+
+# 93) Crie um programa que gerencie o aproveitamento de um jogador de futebol. O programa vai ler o nome do jogador, quantas partidas ele jogou e ler a quantidade de gols feitos em cada partida. No final, tudo isso será guardado em um dicionário, incluindo o total de gols feitos durante o campeonato. Exiba o resultado de três maneiras diferentes
+dicionário = {}
+lista_gols = []
+soma_gols = 0
+dicionário['Nome'] = input('Nome do jogador: ')
+partidas = int(input('Partidas jogadas: '))
+dicionário['Partidas'] = partidas
+for partida in range(partidas):
+    gols = int(input(f'Quantos gols na partida {partida + 1}?'))
+    lista_gols.append(gols)
+    soma_gols += gols
+dicionário['Gols'] = lista_gols
+dicionário['Total de gols'] = soma_gols
+print(dicionário)
+for key, value in dicionário.items():
+    print(f'{key}: {value}.')
+print(f'O jogador {dicionário["Nome"]} jogou {partidas} partidas.')
+for p in range(partidas):
+    print(f'--> Na partida {p + 1}, fez {lista_gols[p]} gols.')
+print(f'Um total de {soma_gols} gols.')
+
+# 94) Crie um programa que leia nome, gênero e idade de várias pessoas, guardando os dados de cada uma em um dicionário e todos os dicionários em uma lista. No final, mostre quantas pessoas foram cadastradas, a média de idade do grupo, uma lista com todas as mulheres, uma lista com todas as pessoas com idade acima da média
+lista = []
+dicionário = {}
+soma_idades = 0
+while True:    
+    dicionário['Nome'] = input('Nome: ')
+    dicionário['Gênero'] = input('Gênero: ').strip().capitalize()
+    idade = int(input('Idade: '))
+    dicionário['Idade'] = idade
+    soma_idades += idade
+    lista.append(dicionário.copy())
+    continuar = input('Quer continuar?').strip().lower()
+    if continuar in ('não', 'nao', 'n'):
+        break
+média_idades = soma_idades / len(lista)
+print(f'{len(lista)} pessoas foram cadastradas.\n'
+      f'A média de idade é de {média_idades:.2f}.')
+lista_mulheres = []
+for pessoa in lista:
+    if pessoa['Gênero'] == 'Feminino':
+        lista_mulheres.append(pessoa['Nome'])
+print(f'Lista de mulheres: {lista_mulheres}.')
+lista_velhos = []
+for pessoa in lista:
+    if pessoa['Idade'] > média_idades:
+        lista_velhos.append(pessoa['Nome'])
+print(f'Lista das pessoas com idade acima da média: {lista_velhos}.')
+
+# 95) Aprimore o desafio 93 para que ele funcione com vários jogadores, incluindo um sistema de visualização de detalhes do aproveitamento de cada jogador
+jogadores = []
+while True:
+    dicionário = {}
+    lista_gols = []
+    soma_gols = 0
+    dicionário['Nome'] = input('Nome do jogador: ')
+    partidas = int(input('Partidas jogadas: '))
+    dicionário['Partidas'] = partidas
+    for partida in range(partidas):
+        gols = int(input(f'Quantos gols na partida {partida + 1}?'))
+        lista_gols.append(gols)
+        soma_gols += gols
+    dicionário['Gols'] = lista_gols
+    dicionário['Total de gols'] = soma_gols
+    jogadores.append(dicionário.copy())
+    continuar = input('Quer continuar?').strip().lower()
+    if continuar in ('não', 'nao', 'n'):
+        break
+print('Dados de todos os jogadores:')
+for jogador in jogadores:
+    print(jogador)
+    for key, value in jogador.items():
+        print(f'{key}: {value}.')
+    print(f'O jogador {jogador["Nome"]} jogou {jogador["Partidas"]} partidas.')
+    for p in range(jogador['Partidas']):
+        print(f'--> Na partida {p + 1}, fez {jogador["Gols"][p]} gols.')
+    print(f'Um total de {jogador["Total de gols"]} gols.')
+print('*' * 50)
+busca = input('Pesquise os dados de um jogador. Insira o nome para busca: ').strip().capitalize()
+for jogador in jogadores:
+    if busca in jogador['Nome']:
+        print(f'Dados do jogador {jogador["Nome"]}:\n{jogador}.')
