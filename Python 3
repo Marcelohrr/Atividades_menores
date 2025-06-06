@@ -937,3 +937,202 @@ busca = input('Pesquise os dados de um jogador. Insira o nome para busca: ').str
 for jogador in jogadores:
     if busca in jogador['Nome']:
         print(f'Dados do jogador {jogador["Nome"]}:\n{jogador}.')
+
+# 96) Faça um programa que tenha uma função chamada área(), que receba as dimensões de um terreno retangular (largura e comprimento) e mostre a área do terreno
+def área(largura, comprimento):
+    área = largura * comprimento
+    print(f'A área do terreno é igual a {área:.2f} m².')
+
+l = float(input('Largura do terreno (em metros): '))
+c = float(input('Comprimento do terreno (em metros): '))
+área(l, c)
+
+# 97) Faça um programa que tenha uma função chamada escreva(), que receba um texto qualquer como parâmetro e mostre uma mensagem com tamanho adaptável
+def escreva(texto):
+    formatação = len(texto) + 10
+    print('~' * formatação)
+    print(f'{texto:^{formatação}}')
+    print('~' * formatação)
+
+escreva('TEXTO')
+
+# 98) Faça um programa que tenha uma função chamada contador(), que receba três parâmetros: início, fim e passo, e realize a contagem. Seu programa tem que realizar três contagens através da função criada: de 1 até 10, de 1 em 1; de 10 até 0, de 2 em 2; contagem personalizada
+def contador(início, fim, passo):
+    if passo == 0:
+        print('Erro: o passo não pode ser zero.')
+        return
+    print('~' * 36)
+    for x in range(início, fim + (1 if passo > 0 else - 1), passo):
+        if passo > 0 and x >= fim - passo:
+            print(f'{x} - FIM!')
+        elif passo < 0 and x <= fim - passo:
+            print(f'{x} - FIM!')
+        else:
+            print(x, end=', ')
+    print('~' * 36)
+
+contador(1, 10, 1)
+contador(10, 0, -2)
+i = int(input('Digite o valor de início: '))
+f = int(input('Digite o valor de fim: '))
+p = int(input('Digite o passo (negativo para contagens regressivas): '))
+contador(i, f, p)
+
+# 99) Faça um programa que tenha uma função chamada maior(), que receba vários parâmetros com valores inteiros. Seu programa tem que analisar todos os valores e dizer qual deles é o maior
+def maior(*números):
+    maior = None
+    for n in números:
+        if maior == None or n > maior:
+            maior = n
+    print(f'O maior número entre {números} é {maior}.')
+
+maior(-1, 2, 0, 7)
+
+# 100) Faça um programa que tenha uma lista chamada números e duas funções chamadas sorteia() e somaPar(). A primeira sorteia 5 números e os coloca dentro da lista; a segunda mostra a soma entre todos os valores pares sorteados pela função anterior
+# A) Sem parâmetro
+from random import randint
+
+def sorteia():
+    for _ in range(5):
+        n = randint(1, 100)
+        números.append(n)
+
+def somaPar():
+    soma_pares = 0
+    for n in números:
+        if n % 2 == 0:
+            soma_pares += n
+    print(f'A soma entre os números pares em {números} é igual a {soma_pares}.')
+
+números = []
+sorteia()
+somaPar()
+
+# B) Lista como parâmetro
+from random import randint
+
+def sorteia(lista):
+    for _ in range(5):
+        lista.append(randint(1, 100))
+
+def somaPar(lista):
+    soma_pares = 0
+    for n in lista:
+        if n % 2 == 0:
+            soma_pares += n
+    print(f'A soma entre os números pares em {lista} é igual a {soma_pares}.')
+
+números = []
+sorteia(números)
+somaPar(números)
+
+# 101) Crie um programa que tenha uma função chamada voto() que vai receber como parâmetro o ano de nascimento de uma pessoa, retornando um valor literal indicando se uma pessoa tem voto negado, opcional ou obrigatório nas eleições
+def voto(nascimento):
+    from datetime import date
+    ano_atual = date.today().year
+    idade = ano_atual - nascimento
+    if idade == 16 or idade == 18 or idade == 70:
+        if input('Já fez aniversário esse ano?').strip().lower() in ('não', 'nao', 'n'):
+            idade -= 1
+    if idade >= 18 and idade < 70:
+        return 'Voto obrigatório.'
+    elif idade >= 16 or idade >= 70:
+        return 'Voto facultativo.'
+    else:
+        return 'Voto proibido.'
+
+print(voto(2000))
+
+# 102) Crie um programa que tenha uma função chamada fatorial() que receba dois parâmetros: o primeiro que indique o número a calcular e o outro chamado mostre, que será um valor lógico (opcional) indicando se será mostrado ou não na tela o processo de cálculo do fatorial
+def fatorial(número, mostre=True):
+    total = número
+    while número > 1:
+        if mostre:
+            print(f'{número} * ', end='')
+        número -= 1
+        total *= número
+    if mostre:
+        print(f'1 = ', end='')
+    return total
+
+print(fatorial(3, False))
+
+# 103) Faça um programa que tenha uma função chamada ficha(), que receba dois parâmetros opcionais: o nome de um jogador e quantos gols ele marcou. O programa deve mostrar a ficha, mesmo que algum dado não tenha sido informado
+def ficha(jogador='<dado vazio>', gols=0):
+    return f'O jogador {jogador}, marcou {gols} gols.'
+
+print(ficha('Ronaldinho', 1000))
+
+# 104) Crie um programa que tenha a função leiaInt(), com funcionamento semelhante à função input(), só que fazendo a validação para aceitar apenas um valor numérico (erro personalizado se não for inserido um número inteiro)
+def leiaInt(pedido):
+    valor = 0
+    while True:
+        x = str(input(pedido))
+        if x.isnumeric():
+            valor = int(x)
+            break
+        else:
+            print(f'\033[31mERRO: insira um número inteiro.\033[0m')
+    return valor
+
+n = leiaInt('Digite um número inteiro: ')
+print(f'Valor aceito: {n}.')
+
+# 105) Faça um programa que tenha uma função notas() que pode receber várias notas de alunos e retorne um dicionário com as seguintes informações referentes às notas: quantidade, a maior, a menor, a média da turma e a situação (que seja opcional). Adicione também as docstrings da função
+def notas(dados_alunos, situação=False):
+    """
+    Identifica dados de uma lista com dicionários com os nomes de alunos e listas com suas respectivas notas.
+    
+    Parâmetros:
+    > dados_alunos -> lista de dicionários com chave 'Notas' e lista de notas como valor
+    > situação -> (opcional) se True, inclui a situação da turma em função da média
+
+    Retorna: dicionário com a quantidade de provas; a maior nota; a menor nota; a média da turma e a situação da turma (opcional).
+    """
+    dicionário_final = {}
+    quantidade = 0
+    maior = 0
+    menor = None
+    soma = 0
+    for aluno in dados_alunos:
+        for nota in aluno['Notas']:
+            quantidade += 1
+            soma += nota
+            if nota > maior:
+                maior = nota
+            if menor == None or nota < menor:
+                menor = nota
+    média = soma / quantidade
+    dicionário_final['Quantidade de provas'] = quantidade
+    dicionário_final['Maior nota'] = maior
+    dicionário_final['Menor nota'] = menor
+    dicionário_final['Média da turma'] = média
+    if situação == True:
+        if média == 10:
+            dicionário_final['Situação'] = 'Ok'
+        else:
+            dicionário_final['Situação'] = 'Fracos'
+    return dicionário_final
+
+lista_alunos = []
+dicionário = {}
+lista_notas = []
+contador_notas = 1
+while True:
+    aluno = input('Nome do aluno: ')
+    dicionário['Aluno'] = aluno
+    while True:
+        nota = float(input(f'{contador_notas}ª nota de {aluno}: '))
+        lista_notas.append(nota)
+        contador_notas += 1
+        continuar = input('Continuar?').strip().lower()
+        if continuar in ('não', 'nao', 'n'):
+            break
+    dicionário['Notas'] = lista_notas[:]
+    lista_alunos.append(dicionário.copy())
+    lista_notas.clear()
+    contador_notas = 1
+    encerrar = input('Encerrar?').strip().lower()
+    if encerrar in ('sim', 's'):
+        break
+print(notas(lista_alunos, True))
