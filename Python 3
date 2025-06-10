@@ -1136,3 +1136,305 @@ while True:
     if encerrar in ('sim', 's'):
         break
 print(notas(lista_alunos, True))
+
+# 107 e 108) Crie um módulo chamado moeda.py que tenha as funções incorporadas aumentar(), diminuir(), dobro() e metade(). Faça também um programa que importe esse módulo e use essas funções. Crie uma função adicional chamada moeda() que consiga mostrar os valores como valor monetário formatado
+# Módulo/arquivo moeda.py
+def aumentar(n, aumento):
+    resultado = n + aumento
+    return resultado
+
+def diminuir(n, diminuição):
+    resultado = n - diminuição
+    return resultado
+
+def dobro(n):
+    resultado = n * 2
+    return resultado
+
+def metade(n):
+    resultado = n / 2
+    return resultado
+
+def moeda(n):
+    resultado = f'R${n:,.2f}'.replace(',', 'x').replace('.', ',').replace('x', '.')
+    return resultado
+
+# Módulo/arquivo programa_principal
+import moeda
+
+while True:
+    número = float(input('Digite um número: '))
+    operação = input('Para realizar a adição de 1, digite 1.\n'
+                    'Para realizar a subtração de 1, digite 2.\n'
+                    'Para realizar a multiplicação por 2, digite 3.\n'
+                    'Para realizar a divisão por 2, digite 4.\n'
+                    'Para visualizar como valor monetário, digite 5.\n')
+    if operação in ('1', '2', '3', '4', '5'):
+        if operação == '1':
+            a = float(input('Gostaria de aumentar quanto?'))
+            print(f'Resultado: {moeda.aumentar(número, a)}.')
+        elif operação == '2':
+            d = float(input('Gostaria de diminuir quanto?'))
+            print(f'Resultado: {moeda.diminuir(número, d)}.')
+        elif operação == '3':
+            print(f'Resultado: {moeda.dobro(número)}.')
+        elif operação == '4':
+            print(f'Resultado: {moeda.metade(número)}.')
+        elif operação == '5':
+            print(f'Formatação para valor monetário: {moeda.moeda(número)}')
+        continuar = input('Deseja realizar outra operação?\n').strip().lower()
+        if continuar in ('não', 'nao', 'n'):
+            break
+    else:
+        print('Insira um comando válido.')
+
+# 109, 110 e 111) Modifique as funções que foram criadas no desafio 107 para que elas aceitem um parâmetro a mais, informando se o valor retornado por elas vai ser ou não formatado pela função moeda(), desenvolvida no desafio 108. Adicione uma função chamada resumo(), que mostre na tela as informações geradas pelas funções que já temos no módulo criado até aqui. Crie um pacote chamado geral; dentro dele, outro pacote chamado exercícios_módulos, que tenha dois pacotes chamados moeda e dado, e um módulo chamado programa_principal. Transfira todas as funções dos desafios 107, 108 e 109 para o pacote moeda e mantenha tudo funcionando
+# Módulo/arquivo __init__.py, no pacote/pasta moeda, no pacote/pasta exercícios_módulos, no pacote/pasta geral
+def aumentar(n, aumento, moeda=False):
+    resultado = n + aumento
+    if moeda == True:
+        resultado = f'R${resultado:,.2f}'.replace(',', 'x').replace('.', ',').replace('x', '.')
+    return resultado
+
+def diminuir(n, diminuição, moeda=False):
+    resultado = n - diminuição
+    if moeda == True:
+        resultado = f'R${resultado:,.2f}'.replace(',', 'x').replace('.', ',').replace('x', '.')
+    return resultado
+
+def dobro(n, moeda=False):
+    resultado = n * 2
+    if moeda == True:
+        resultado = f'R${resultado:,.2f}'.replace(',', 'x').replace('.', ',').replace('x', '.')
+    return resultado
+
+def metade(n, moeda=False):
+    resultado = n / 2
+    if moeda == True:
+        resultado = f'R${resultado:,.2f}'.replace(',', 'x').replace('.', ',').replace('x', '.')
+    return resultado
+
+def resumo(n, aumento, diminuição, moeda=False):
+    resultado = (f'Aumento de {aumento} = {aumentar(n, aumento, moeda)},\n'
+                 f'Diminuição de {diminuição} = {diminuir(n, diminuição, moeda)},\n'
+                 f'Dobro = {dobro(n, moeda)},\n'
+                 f'Metade = {metade(n, moeda)}')
+    return resultado
+
+# Módulo/arquivo programa_principal, no pacote/pasta exercícios_módulos, no pacote/pasta geral
+from geral.exercícios_módulos import moeda
+
+while True:
+    número = float(input('Digite um número: '))
+    operação = input('Para realizar a adição de 1, digite 1.\n'
+                    'Para realizar a subtração de 1, digite 2.\n'
+                    'Para realizar a multiplicação por 2, digite 3.\n'
+                    'Para realizar a divisão por 2, digite 4.\n'
+                    'Para obter todas as operações, digite 5.\n')
+    dinheiro = input('Para visualizar em valor monetário, digite DINHEIRO.\n')
+    dimdim = False
+    if dinheiro == 'DINHEIRO':
+        dimdim = True
+    if operação in ('1', '2', '3', '4', '5'):
+        if operação == '1':
+            a = float(input('Gostaria de aumentar quanto?'))
+            print(f'Resultado: {moeda.aumentar(número, a, dimdim)}.')
+        elif operação == '2':
+            d = float(input('Gostaria de diminuir quanto?'))
+            print(f'Resultado: {moeda.diminuir(número, d, dimdim)}.')
+        elif operação == '3':
+            print(f'Resultado: {moeda.dobro(número, dimdim)}.')
+        elif operação == '4':
+            print(f'Resultado: {moeda.metade(número, dimdim)}.')
+        elif operação == '5':
+            a = float(input('Gostaria de aumentar quanto?'))
+            d = float(input('Gostaria de diminuir quanto?'))
+            print(f'Resultados:\n{moeda.resumo(número, a, d, dimdim)}.')
+        continuar = input('Deseja realizar outra operação?\n').strip().lower()
+        if continuar in ('não', 'nao', 'n'):
+            break
+    else:
+        print('Insira um comando válido.')
+
+# 112) No pacote dado, crie uma função chamada leiaDinheiro() que seja capaz de funcionar como a função input(), mas com uma validação de dados para aceitar apenas valores que sejam monetários (sem tratamento de erros)
+# Módulo/arquivo __init__.py, no pacote/pasta moeda, no pacote/pasta exercícios_módulos, no pacote/pasta geral igual ao exercício anterior
+# Módulo/arquivo __init__.py, no pacote/pasta dado, no pacote/pasta exercícios_módulos, no pacote/pasta geral
+def leiaDinheiro(mensagem):
+    válido = False
+    while not válido:
+        entrada = input(mensagem).strip().replace(',', '.')
+        if entrada.isalpha() or entrada == '':
+            print(f'\033[31mERRO: "{entrada}" não é um valor monetário.\033[m')
+        else:
+            válido = True
+            return float(entrada)
+
+# Módulo/arquivo programa_principal, no pacote/pasta exercícios_módulos, no pacote/pasta geral
+from geral.exercícios_módulos import moeda, dado
+
+while True:
+    número = dado.leiaDinheiro('Digite um valor monetário: ') # tirei float()
+    operação = input('Para realizar a adição de 1, digite 1.\n'
+                    'Para realizar a subtração de 1, digite 2.\n'
+                    'Para realizar a multiplicação por 2, digite 3.\n'
+                    'Para realizar a divisão por 2, digite 4.\n'
+                    'Para obter todas as operações, digite 5.\n')
+    if operação in ('1', '2', '3', '4', '5'):
+        if operação == '1':
+            a = float(input('Gostaria de aumentar quanto?'))
+            print(f'Resultado: {moeda.aumentar(número, a)}.')
+        elif operação == '2':
+            d = float(input('Gostaria de diminuir quanto?'))
+            print(f'Resultado: {moeda.diminuir(número, d)}.')
+        elif operação == '3':
+            print(f'Resultado: {moeda.dobro(número)}.')
+        elif operação == '4':
+            print(f'Resultado: {moeda.metade(número)}.')
+        elif operação == '5':
+            a = float(input('Gostaria de aumentar quanto?'))
+            d = float(input('Gostaria de diminuir quanto?'))
+            print(f'Resultados:\n{moeda.resumo(número, a, d)}.')
+        continuar = input('Deseja realizar outra operação?\n').strip().lower()
+        if continuar in ('não', 'nao', 'n'):
+            break
+    else:
+        print(f'\033[31mERRO: O comando inserido não é válido.\033[m')
+
+# 113) Reescreva a função leiaInt() do desafio 104, incluindo a possibilidade da digitação de um número de tipo inválido. Aproveite e crie também uma função leiaFloat() com a mesma funcionalidade
+def leiaInt(pedido):
+    while True:
+        try:
+            x = int(input(pedido))
+        except:
+            print(f'\033[31mERRO: insira um número inteiro.\033[0m')
+        else:
+            return x
+
+def leiaFloat(pedido):
+    while True:
+        try:
+            x = float(input(pedido).replace(',', '.'))
+        except:
+            print(f'\033[31mERRO: insira um número flutuante.\033[0m')
+        else:
+            return x
+
+n = leiaInt('Digite um número inteiro: ')
+print(f'Valor aceito: {n}.')
+n = leiaFloat('Digite um número flutuante: ')
+print(f'Valor aceito: {n}.')
+
+# 114) Crie um código em Python que teste se o site Pudim está acessível pelo computador usado
+import urllib.request, urllib.error
+
+try:
+    site = urllib.request.urlopen('http://pudim.com.br')
+except urllib.error.URLError:
+    print('Não foi possível acessar o site no momento.')
+else:
+    print('Site acessado.')
+
+# 115) Crie um pequeno sistema modularizado que permita cadastrar pessoas pelo seu nome e idade em um arquivo de texto simples. O sistema só vai ter 2 opções: cadastrar uma nova pessoa e listar todas as pessoas cadastradas
+# Módulo/arquivo funções.py, no pacote/pasta pacote_funções, no pacote/pasta sistema
+branco_preto = '\033[37;40m'
+vermelho = '\033[31m'
+verde = '\033[32m'
+amarelo = '\033[33m'
+azul = '\033[34m'
+magenta = '\033[35m'
+ciano = '\033[36m'
+
+def programa():
+    arquivo_registro = 'registro.txt'
+    verificar_criar_arquivo(arquivo_registro)
+    while True:
+        menu('SISTEMA DE CADASTRO')
+        opção = input(f'{amarelo}1 {ciano}- Realizar novo cadastro\n'
+                      f'{amarelo}2 {ciano}- Listar todos os cadastros\n'
+                      f'{amarelo}3 {ciano}- Sair{amarelo}\n')
+        if opção == '1':
+            menu('CADASTRAR PESSOA')
+            c = cadastro()
+            if c != None:
+                with open(arquivo_registro, 'at') as arquivo:
+                    arquivo.write(f"{c['Nome']};{c['Idade']}\n")
+        elif opção == '2':
+            menu('LISTA DE CADASTROS')
+            print(f"{azul}{'Nome':<44} {'Idade'}")
+            with open(arquivo_registro, 'rt') as arquivo:
+                for linha in arquivo:
+                    dado = linha.strip().split(';')
+                    print(f"{magenta}{dado[0]:.<42}{dado[1]:.>3} anos")
+        elif opção == '3':
+            print(f'{branco_preto}Até a próxima!')
+            break 
+        else:
+            print(f'{vermelho}ERRO: Opção não reconhecida.')
+            continuar = input(f'{ciano}Tentar novamente?{amarelo}\n').strip().lower()
+            if continuar in ('não', 'nao', 'n'):
+                print(f'{branco_preto}Até a próxima!')
+                break
+        if opção in ('1', '2'):
+            sair = input(f'{ciano}Deseja sair?{amarelo}\n').strip().lower()
+            if sair in ('sim', 's'):
+                print(f'{branco_preto}Lista salva. Até a próxima!')
+                break
+
+def verificar_criar_arquivo(nome):
+    try:
+        a = open(nome, 'rt')
+        a.close()
+    except FileNotFoundError:
+        a = open(nome, 'wt+')
+        a.close()
+
+def menu(mensagem):
+    print(branco_preto)
+    print('~' * 50)
+    print(f'{mensagem:^50}')
+    print('~' * 50)
+
+def cadastro():
+    dados = {}
+    while True:
+        nome = input(f'{verde}Nome: {amarelo}')
+        if nome.strip() == '':
+            print(f'{vermelho}ERRO: O nome precisa ser cadastrado.')
+            continuar = input(f'{ciano}Tentar novamente?{amarelo}\n').strip().lower()
+            if continuar in ('não', 'nao', 'n'):
+                print(f'{branco_preto}Programa interrompido! Voltando para o painel principal...')
+                return None
+        else:
+            dados['Nome'] = nome
+            break
+    while True:
+        try:
+            idade = int(input(f'{verde}Idade: {amarelo}'))
+        except (ValueError, TypeError):
+            print(f'{vermelho}ERRO: A idade precisa ser um valor numérico inteiro.')
+            continuar = input(f'{ciano}Tentar novamente?{amarelo}\n').strip().lower()
+            if continuar in ('não', 'nao', 'n'):
+                print(f'{branco_preto}Programa interrompido! Voltando para o painel principal...')
+                return None
+        except (EOFError, KeyboardInterrupt):
+            print(f'{vermelho}ERRO: A idade precisa ser cadastrada.')
+            continuar = input(f'{ciano}Tentar novamente?{amarelo}\n').strip().lower()
+            if continuar in ('não', 'nao', 'n'):
+                print(f'{branco_preto}Programa interrompido! Voltando para o painel principal...')
+                return None
+        else:
+            if idade >= 150:
+                print(f'{vermelho}ERRO: A idade precisa ser real.')
+                continuar = input(f'{ciano}Tentar novamente?{amarelo}\n').strip().lower()
+                if continuar in ('não', 'nao', 'n'):
+                    print(f'{branco_preto}Programa interrompido! Voltando para o painel principal...')
+                    return None
+            else:
+                dados['Idade'] = idade
+                print(f'{branco_preto}Cadastro realizado com sucesso!')
+                return dados
+
+# Módulo/arquivo programa_principal.py, no pacote/pasta sistema
+from pacote_funções import funções
+
+funções.programa()
