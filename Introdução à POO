@@ -10,35 +10,41 @@ def dormir():
     sono = False
     return sono
 
-nome_cachorro_1 = 'Nelson'
+nome_cachorro_1 = 'Prince'
 comida_cachorro_1 = 3
 sono_cachorro_1 = False
 
-nome_cachorro_2 = 'Jeremias'
+nome_cachorro_2 = 'Sebastian'
 comida_cachorro_2 = 1
 sono_cachorro_2 = True
 
-# Colocando o Nelson para comer
+# Colocando o Prince para comer
 comida_cachorro_1 = comer(comida_cachorro_1)
-# Colocando o Jeremias para dormir
+# Colocando o Sebastian para dormir
 sono_cachorro_2 = dormir()
 
 # Programação Orientada a Objetos:
 # Classe de nome Cachorro, com atributos nome, comida e sono, e métodos comer() e dormir()
 class Cachorro:
-    def __init__(self, nome, comida, sono):
+    def __init__(self, nome, comida, sono, quer_brincar): # Método construtor, serve para inicializar os atributos do objeto
         self.nome = nome
         self.comida = comida
         self.sono = sono
+        self.quer_brincar = quer_brincar
     
     def comer(self):
         self.comida -= 1
     
     def dormir(self):
         self.sono = False
+    
+    def exibir_situação(self):
+        print(f'Situação de {self.nome}:\n- Ração: {self.comida};\n- Sono: {self.sono};\n- Quer brincar: {self.quer_brincar}.')
 
-cachorro_1 = Cachorro('Nelson', 3, False)
-cachorro_2 = Cachorro('Jeremias', 1, True)
+# Instâncias cachorro_1 e cachorro_2, da classe Cachorro
+cachorro_1 = Cachorro('Prince', 3, False, True)
+cachorro_2 = Cachorro('Sebastian', 1, True, False)
 
 cachorro_1.comer()
 cachorro_2.dormir()
+cachorro_1.exibir_situação(); cachorro_2.exibir_situação()
