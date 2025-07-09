@@ -1,0 +1,44 @@
+# Exemplo do vídeo "Programação Orientada a Objetos | Explicação Simples" (Dobra de Bits, 2023)
+
+# Programação procedural:
+
+def comer(comida):
+    comida = comida - 1
+    return comida
+
+def dormir():
+    sono = False
+    return sono
+
+nome_cachorro_1 = 'Nelson'
+comida_cachorro_1 = 3
+sono_cachorro_1 = False
+
+nome_cachorro_2 = 'Jeremias'
+comida_cachorro_2 = 1
+sono_cachorro_2 = True
+
+# Colocando o Nelson para comer
+comida_cachorro_1 = comer(comida_cachorro_1)
+# Colocando o Jeremias para dormir
+sono_cachorro_2 = dormir()
+
+# Programação Orientada a Objetos:
+# Classe de nome Cachorro, com atributos nome, comida e sono, e métodos comer() e dormir()
+class Cachorro:
+    def __init__(self, nome, comida, sono):
+        self.nome = nome
+        self.comida = comida
+        self.sono = sono
+    
+    def comer(self):
+        self.comida -= 1
+    
+    def dormir(self):
+        self.sono = False
+
+cachorro_1 = Cachorro('Nelson', 3, False)
+cachorro_2 = Cachorro('Jeremias', 1, True)
+
+cachorro_1.comer()
+cachorro_2.dormir()
