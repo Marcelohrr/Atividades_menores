@@ -24,9 +24,9 @@ comida_cachorro_1 = comer(comida_cachorro_1)
 sono_cachorro_2 = dormir()
 
 # Programação Orientada a Objetos:
-# Classe de nome Cachorro, com atributos nome, comida e sono, e métodos comer() e dormir()
+# Classe de nome Cachorro, com atributos nome, comida, sono e quer_brincar, e métodos comer(), dormir() e exibir_situação()
 class Cachorro:
-    def __init__(self, nome, comida, sono, quer_brincar): # Método construtor, serve para inicializar os atributos do objeto
+    def __init__(self, nome, comida, sono, quer_brincar): # Método construtor, serve para inicializar os atributos do objeto (chamado automaticamente quando um objeto é criado na classe)
         self.nome = nome
         self.comida = comida
         self.sono = sono
