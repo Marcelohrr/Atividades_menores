@@ -1,0 +1,161 @@
+# 1. Conceitos básicos
+
+# Classe Cachorro, com atributos nome e dono (que recebe uma instância da classe Dono), e métodos latir() e exibir_informações()
+class Cachorro:
+    def __init__(self, nome, dono):
+        self.nome = nome.strip().capitalize()
+        self.dono = dono
+    
+    def latir(self):
+        if self.nome != 'Sebastian':
+            print(f'{self.nome}: Au! Au!')
+        else:
+            print('Sebastian: Auuu!')
+    
+    def exibir_informações(self):
+        print(f'Nome do cachorro: {self.nome};\nNome do dono: {self.dono.nome_dono};\nBairro: {self.dono.bairro}.')
+        # self.nome acessa o atributo nome do objeto atual da classe Cachorro
+        # "dot notation" (notação de ponto) = acesso a atributos e métodos de um objeto com . entre o nome do objeto e o nome do atributo ou método:
+        # self.dono.nome_dono acessa o atributo nome_dono da classe Dono, pelo atributo dono da classe Cachorro
+        # self.dono.bairro acessa o atributo bairro da classe Dono, pelo atributo dono da classe Cachorro
+
+class Dono:
+    def __init__(self, nome_dono, bairro):
+        self.nome_dono = nome_dono.strip().capitalize()
+        self.bairro = bairro.strip().capitalize()
+
+# Objetos/instâncias da classe Dono
+dono_1 = Dono('Marcelo', 'Esplanada')
+dono_2 = Dono('Adriana', 'Santa Efigênia')
+# Objetos/instâncias da classe Cachorro
+cachorro_1 = Cachorro('Prince', dono_1) # O atributo dono da instância cachorro_1 aponta para o objeto dono_1
+cachorro_2 = Cachorro('Sebastian', dono_2) # O atributo dono da instância cachorro_2 aponta para o objeto dono_2
+
+# dot notation:
+cachorro_1.exibir_informações()
+cachorro_1.latir()
+cachorro_2.exibir_informações()
+cachorro_2.latir()
+print(f'Acesso direto ao atributo bairro do objeto dono_1 da classe Dono, que é valor do atributo dono do objeto cachorro_1 da classe Cachorro: {cachorro_1.dono.bairro}.') # cachorro_1.dono acessa o argumento dono_1 em Cachorro('Prince', dono_1), que é o objeto Dono('Marcelo', 'Esplanada') e .bairro acessa 'Esplanada' (objeto_maior.objeto_menor.atributo_do_objeto_menor)
+
+'''
+Definições:
+    • Classe: estrutura que define os atributos (dados) e métodos (comportamentos) de objetos
+    • Objeto: instância de uma classe
+    • Atributo: variável que armazena informação da classe (atributo de classe) ou de um objeto (atributos de instância), quando criados dentro de qualquer método da classe (principalmente __init__), a partir de self.
+    • Método: função de objetos
+        o __init__ (em def __init__(self):): “método construtor”, método especial da classe, inicializa os atributos do objeto (chamado automaticamente quando um objeto é criado)
+        o self (em def método(self):): parâmetro que recebe automaticamente a instância como argumento. Representa a própria instância (referência ao objeto atual), usado para acessar atributos e métodos de um objeto. Em self.atributo ou self.método(), self é o próprio objeto, através do qual se acessa um atributo ou um método
+'''
+
+# 2. Acesso e modificação de atributos de um objeto
+
+class Usuário:
+    def __init__(self, nome_usuário, email, senha):
+        self.nome_usuário = nome_usuário
+        self.email = email
+        self.senha = senha
+    
+    def cumprimentar(self, usuário_destinatário):
+        print(f'Enviando mensagem para {usuário_destinatário.nome_usuário}: Olá {usuário_destinatário.nome_usuário}, quem fala é {self.nome_usuário}.')
+
+user1 = Usuário('João', 'joao@mail.com', '123')
+user2 = Usuário('Ana', 'ana@mail.com', 'abc')
+
+user1.cumprimentar(user2)
+
+# Para modificar o dado da variável:
+user1.email = 'isso não é um e-mail'
+print(user1.email)
+# 'isso não é um e-mail' não possui uma estrutura de e-mail válida, então para controlar a forma de acessar (get) e atribuir (set) os dados em um objeto há duas formas principais:
+
+    # Forma tradicional (estilo Java) -> torna os atributos protegidos ou privados e usa métodos getters e setters
+
+# Atributo protegido (protected): self._atributo -> convenção que indica uso interno, significa que não se deve acessar o atributo fora da classe
+# Atributo privado (private): self.__atributo -> o Python altera internamente o nome do atributo para dificultar o acesso direto de fora da classe (técnica "name mangling")
+
+class Usuário:
+    def __init__(self, nome_usuário, email, senha):
+        self.nome_usuário = nome_usuário
+        self._email = email
+        self.senha = senha
+
+    def get_email(self): # Método getter (convenção de nome, para atributo protegido ou privado: get_atributo)
+        return self._email
+
+    def set_email(self, novo_email):
+        self._email = novo_email
+
+user1 = Usuário('João', 'joao@mail.com', '123')
+
+print(user1._email) # O atributo protegido é acessível fora da classe, porém isso é inadequado
+# Se o atributo estivesse definido como privado (self.__email = email), daria erro
+print(user1.get_email()) # Forma correta de acessar o atributo protegido
+
+# O Python não dá erro ao redefinir o atributo fora da classe, mas a sintaxe indica a inadequação:
+user1._email = 'isso não é um e-mail'
+# Ao invés de permitir a atribuição de qualquer valor fora da classe, o que se deve fazer é criar métodos dentro da classe para modificar os atributos de forma controlada:
+user1.set_email('isso não é um e-mail')
+
+    # Forma moderna (estilo Python/C#) -> torna os atributos protegidos ou privados e usa propriedades (@property) getters e setters para encapsular o acesso, permitindo que métodos se comportem como atributos
+
+class Usuário:
+    def __init__(self, nome_usuário, email, senha):
+        self.nome_usuário = nome_usuário
+        self._email = email
+        self.senha = senha
+
+# Propriedade getter
+    @property # Decorador que transforma o método em um objeto do tipo property, com o método __get__(objeto_property, objeto, classe), chamado com o acesso objeto.atributo
+    def email(self): # Método que define a propriedade pública 'email', que acessa o atributo protegido '_email'
+        return self._email
+
+# Propriedade setter
+    @email.setter # Decorador que adiciona à propriedade 'email' o método __set__(objeto_property, objeto, valor), chamado com objeto.atributo = valor
+    def email(self, novo_email): # Método que define o comportamento de modificação da propriedade 'email', que acessa o atributo protegido '_email'
+        self._email = novo_email
+
+user1 = Usuário('João', 'joao@mail.com', '123')
+
+print(user1.email) # Internamente, chama o método email decorado com @property (getter)
+user1.email = 'isso não é um e-mail' # Internamente, chama o método email decorado com @email.setter
+
+# Vantagem de usar métodos getters e setters ou propriedades: controle do que acontece quando o atributo é lido ou modificado (poder de adicionar código diretamente aos métodos)
+
+# Exemplo com métodos getter e setter:
+from datetime import datetime
+[...]
+    def get_email(self):
+        print(f'E-mail acessado em {datetime.now()}:')
+        return self._email
+
+    def set_email(self, novo_email):
+        if '@' in novo_email:
+            self._email = novo_email
+        else:
+            print('Erro: e-mail inválido!')
+
+user1 = Usuário('João', 'joao@mail.com', '123')
+
+print(user1.get_email())
+user1.set_email('jojo@mail.com')
+
+# Exemplo com propriedade:
+from datetime import datetime
+[...]
+    @property
+    def email(self):
+        print(f'E-mail acessado em {datetime.now()}:')
+        return self._email
+
+    @email.setter
+    def email(self, novo_email):
+        if '@' in novo_email:
+            self._email = novo_email
+        else:
+            print('Erro: e-mail inválido!')
+
+user1 = Usuário('João', 'joao@mail.com', '123')
+
+print(user1.email)
+user1.email = 'jojo@mail.com'
