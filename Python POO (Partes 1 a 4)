@@ -1,3 +1,4 @@
+# I. Fundamentos
 # 1. Conceitos básicos
 
 # Classe Cachorro, com atributos nome e dono (que recebe uma instância da classe Dono), e métodos latir() e exibir_informações()
@@ -71,8 +72,11 @@ print(user1.email)
 
     # Forma tradicional (estilo Java) -> torna os atributos protegidos ou privados e usa métodos getters e setters
 
-# Atributo protegido (protected): self._atributo -> convenção que indica uso interno, significa que não se deve acessar o atributo fora da classe
+# Atributo protegido (protected): self._atributo -> convenção que indica uso interno, significa que não se deve acessar o atributo fora da classe ou de suas subclasses
 # Atributo privado (private): self.__atributo -> o Python altera internamente o nome do atributo para dificultar o acesso direto de fora da classe (técnica "name mangling")
+# A mesma lógica e estrutura para métodos protegidos e privados:
+# def _método() -> apenas deve ser chamado dentro da classe ou de suas subclasses
+# def __método() -> apenas pode ser chamado dentro da própria classe
 
 class Usuário:
     def __init__(self, nome_usuário, email, senha):
@@ -194,3 +198,46 @@ print(Usuário.contador_usuários) # Print com acesso direto ao atributo de clas
 Usuário.mostrar_registro_classmethod() # Método de classe com o atributo estático/de classe
 Usuário.mostrar_registro_staticmethod() # Método estático com o atributo estático/de classe
 Usuário.mensagem_despedida() # Método estático
+
+# II. Princípios
+# 1. Encapsulamento
+
+# Consiste em agrupar atributos e métodos em uma unidade (classe), controlando e restringindo o acesso e a modificação, para proteger a integridade dos objetos
+
+# Exemplo sem encapsulamento
+class ContaBancáriaRuim:
+    def __init__(self, saldo):
+        self.saldo = saldo
+
+conta_ruim = ContaBancáriaRuim(0)
+
+conta_ruim.saldo = -1
+print(f'{conta_ruim.saldo}!!!')
+
+# Exemplo com encapsulamento
+class ContaBancária:
+    def __init__(self):
+        self._saldo = 0 # Encapsulamento do atributo, indicando uso interno
+    
+    @property
+    def saldo(self): # Cria uma interface pública de leitura (conta.saldo) que esconde o atributo _saldo, sem permitir sua modificação direta
+        return self._saldo
+    
+    def depósito(self, valor): # Método controlado para acréscimos ao saldo
+        if valor <= 0:
+            raise ValueError('ERRO: O valor de depósito deve ser positivo.')
+        self._saldo += valor
+
+    def saque(self, valor): # Método controlado para decréscimos ao saldo
+        if valor <= 0:
+            raise ValueError('ERRO: O valor de saque deve ser positivo.')
+        elif valor > self._saldo:
+            raise ValueError('ERRO: Saldo insuficiente.')
+        self._saldo -= valor
+
+conta = ContaBancária()
+
+conta.depósito(20)
+print(conta.saldo)
+conta.saque(10)
+print(conta.saldo)
