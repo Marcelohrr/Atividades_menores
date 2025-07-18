@@ -48,7 +48,7 @@ Definições:
         o self (em def método(self):): parâmetro que recebe automaticamente a instância como argumento. Representa a própria instância (referência ao objeto atual), usado para acessar atributos e métodos de um objeto. Em self.atributo ou self.método(), self é o próprio objeto, através do qual se acessa um atributo ou um método
 '''
 
-# 2. Acesso e modificação de atributos de um objeto
+# 2. Acesso e modificação de atributos de um objeto (atributos de instância)
 
 class Usuário:
     def __init__(self, nome_usuário, email, senha):
@@ -159,3 +159,38 @@ user1 = Usuário('João', 'joao@mail.com', '123')
 
 print(user1.email)
 user1.email = 'jojo@mail.com'
+
+# 3. Atributos de classe (atributos estáticos), métodos de classe e métodos estáticos
+
+class Usuário:
+    contador_usuários = 0
+
+    def __init__(self, nome_usuário, email):
+        self.nome_usuário = nome_usuário
+        self.email = email
+        Usuário.contador_usuários += 1
+    
+    def mostrar_usuário(self):
+        print(f'Nome de usuário: {self.nome_usuário}.\nE-mail: {self.email}.')
+
+    @classmethod # Decorador para criar um método que recebe automaticamente a classe como primeiro parâmetro (cls) em vez da instância (self) -> útil para herança (cls referencia a classe que chamou o método, que pode ser uma subclasse da original)
+    def mostrar_registro_classmethod(cls): # Parâmetro cls (convenção para acessar a própria classe) para acessar atributos e métodos de classe diretamente dentro do método
+        print(f'Usuários registrados: {cls.contador_usuários}.')
+    
+    # Também funciona nesse caso, em que não há herança (porém é inadequado, pois é menos flexível):
+    @staticmethod # Decorador para criar um método que não recebe self nem cls automaticamente, funcionando como um método independente
+    def mostrar_registro_staticmethod():
+        print(f'Usuários registrados: {Usuário.contador_usuários}.')
+
+    # Exemplo de uso apropriado para método estático (sem atributos ou métodos de instância nem de classe):
+    @staticmethod
+    def mensagem_despedida():
+        print('Até mais! :)')
+
+user1 = Usuário('João', 'joao@mail.com')
+
+user1.mostrar_usuário() # Método com os atributos de instância
+print(Usuário.contador_usuários) # Print com acesso direto ao atributo de classe
+Usuário.mostrar_registro_classmethod() # Método de classe com o atributo estático/de classe
+Usuário.mostrar_registro_staticmethod() # Método estático com o atributo estático/de classe
+Usuário.mensagem_despedida() # Método estático
