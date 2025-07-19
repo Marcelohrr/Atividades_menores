@@ -241,3 +241,49 @@ conta.depósito(20)
 print(conta.saldo)
 conta.saque(10)
 print(conta.saldo)
+
+# 2. Abstração
+
+# Significa ocultar detalhes internos (implementação) e mostrar apenas o necessário para o uso de um objeto (interface)
+
+class ServiçoEmail:
+    def __init__(self, usuário, senha):
+        self.__usuário = usuário
+        self.__senha = senha
+
+    def _conectar(self):
+        print('Conectado ao servidor.')
+    
+    def _autenticar(self):
+        while True:
+            verificação_usuário = input('Usuário: ')
+            if self.__usuário == verificação_usuário:
+                verificação_senha = input('Senha: ')
+                if self.__senha == verificação_senha:
+                    return True
+                else:
+                    continuar = input('Tentar novamente?').lower()
+                    if continuar in ('não', 'nao', 'n'):
+                        return False
+            else:
+                continuar = input('Tentar novamente?').lower()
+                if continuar in ('não', 'nao', 'n'):
+                    return False
+
+    def enviar_email(self):
+        self._conectar()
+        if self._autenticar():
+            print('Acesso autenticado.')
+            print('E-mail enviado.')
+        self._desconectar()
+    
+    def _desconectar(self):
+        print('Desconectado do servidor.')
+
+# Métodos _conectar, _autenticar e _desconectar foram abstraídos (ocultados do usuário da classe) -> assim, o usuário não precisa saber e executar manualmente todas as etapas necessárias para a funcionalidade desejada
+
+email1 = ServiçoEmail('João', '123')
+email1.enviar_email() # Único método público disponível
+
+# Encapsulamento foca em agrupar atributos e métodos dentro da classe e restringir o acesso aos detalhes da implementação, definindo atributos e métodos como protegidos e/ou privados e expondo apenas uma interface controlada (os métodos públicos)
+# Abstração foca em simplificar a interface para uso, ocultando as complexidades desnecessárias (para o usuário focar no objetivo da funcionalidade, ao invés de como ela funciona)
