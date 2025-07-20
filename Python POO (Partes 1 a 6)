@@ -287,3 +287,32 @@ email1.enviar_email() # Único método público disponível
 
 # Encapsulamento foca em agrupar atributos e métodos dentro da classe e restringir o acesso aos detalhes da implementação, definindo atributos e métodos como protegidos e/ou privados e expondo apenas uma interface controlada (os métodos públicos)
 # Abstração foca em simplificar a interface para uso, ocultando as complexidades desnecessárias (para o usuário focar no objetivo da funcionalidade, ao invés de como ela funciona)
+
+# 3. Herança
+
+# Mecanismo que permite a uma classe (subclasse) herdar atributos e métodos de outra classe (superclasse), promovendo reutilização de código e especialização de comportamentos
+
+class Veículo:
+    def __init__(self, marca, modelo, ano): # Os veículos de todos os tipos (subclasses) herdarão os atributos da classe Veículo
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+    
+    def mover(self): # Os veículos de todos os tipos (subclasses) herdarão o método mover
+        print(f'Destino alcançado por {self.__dict__}.') # Dicionário com todos os atributos de instância do objeto e seus valores atuais
+
+class Carro(Veículo):
+    def __init__(self, marca, modelo, ano, placa): # Sem o __init__ da subclasse, Python usaria automaticamente o __init__ da superclasse. Mas ao definir o __init__ da subclasse, ela deve receber todos os atributos da superclasse
+        super().__init__(marca, modelo, ano) # Inicializa os atributos da superclasse (Python passa self automaticamente)
+        self.placa = placa # Inicializa o atributo específico da subclasse Carro
+
+class Avião(Veículo):
+    def __init__(self, marca, modelo, ano, companhia):
+        super().__init__(marca, modelo, ano)
+        self.companhia = companhia
+
+carro1 = Carro('Chevrolet', 'Vectra', 2000, 'ABC-1234')
+avião1 = Avião('Embraer', 'E195', 2015, 'Azul')
+
+carro1.mover() # Destino alcançado por {'marca': 'Chevrolet', 'modelo': 'Vectra', 'ano': 2000, 'placa': 'ABC-1234'}.
+avião1.mover() # Destino alcançado por {'marca': 'Embraer', 'modelo': 'E195', 'ano': 2015, 'companhia': 'Azul'}.
