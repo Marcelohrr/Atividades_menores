@@ -212,7 +212,6 @@ class ContaBancáriaRuim:
 conta_ruim = ContaBancáriaRuim(0)
 
 conta_ruim.saldo = -1
-print(f'{conta_ruim.saldo}!!!')
 
 # Exemplo com encapsulamento
 class ContaBancária:
@@ -238,9 +237,7 @@ class ContaBancária:
 conta = ContaBancária()
 
 conta.depósito(20)
-print(conta.saldo)
 conta.saque(10)
-print(conta.saldo)
 
 # 2. Abstração
 
@@ -316,3 +313,79 @@ avião1 = Avião('Embraer', 'E195', 2015, 'Azul')
 
 carro1.mover() # Destino alcançado por {'marca': 'Chevrolet', 'modelo': 'Vectra', 'ano': 2000, 'placa': 'ABC-1234'}.
 avião1.mover() # Destino alcançado por {'marca': 'Embraer', 'modelo': 'E195', 'ano': 2015, 'companhia': 'Azul'}.
+
+# 4. Polimorfismo
+
+# Uniformização do tratamento de objetos de diferentes classes, ao compartilharem uma interface comum (métodos com o mesmo nome)
+
+# Exemplo sem polimorfismo
+class Carro:
+    def __init__(self, marca, modelo, ano, placa):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+        self.placa = placa
+    
+    def mover_carro(self):
+        print('O carro alcançou o destino.')
+
+class Avião:
+    def __init__(self, marca, modelo, ano, companhia):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+        self.companhia = companhia
+
+    def mover_avião(self):
+        print('O avião alcançou o destino.')
+
+veículos = [
+    Carro('Chevrolet', 'Vectra', 2000, 'ABC-1234'),
+    Avião('Embraer', 'E195', 2015, 'Azul')
+]
+
+# Não há consistência entre as classes Carro e Avião, portanto é necessário checar todas as possibilidades de classes antes de acessar os atributos e métodos dos objetos:
+for veículo in veículos:
+    if isinstance(veículo, Carro):
+        print(f'Inspecionando um {type(veículo).__name__}:\n{veículo.marca} - {veículo.modelo}.')
+        veículo.mover_carro()
+    elif isinstance(veículo, Avião):
+        print(f'Inspecionando um {type(veículo).__name__}:\n{veículo.marca} - {veículo.modelo}.')
+        veículo.mover_avião()
+    else:
+        raise Exception('O objeto não é um veículo válido.')
+
+# Exemplo com polimorfismo
+class Veículo:
+    def __init__(self, marca, modelo, ano):
+        self.marca = marca
+        self.modelo = modelo
+        self.ano = ano
+    
+    def mover(self): # Método que define a interface comum que todas as subclasses devem seguir para garantir o polimorfismo. Também funciona como comportamento padrão, caso uma subclasse não sobrescreva esse método
+        print('O veículo alcançou o destino.') # {type(self).__name__.lower()} poderia substituir "veículo" para exibir mensagens personalizadas para cada tipo de veículo
+
+class Carro(Veículo):
+    def __init__(self, marca, modelo, ano, placa):
+        super().__init__(marca, modelo, ano)
+        self.placa = placa
+    
+    def mover(self): # Método mover redefinido especificamente para a classe Carro
+        print(f'O carro alcançou o destino.')
+
+class Avião(Veículo):
+    def __init__(self, marca, modelo, ano, companhia):
+        super().__init__(marca, modelo, ano)
+        self.companhia = companhia
+    
+    def mover(self): # Método mover redefinido especificamente para a classe Avião
+        print(f'O avião alcançou o destino.')
+
+veículos: list[Veículo] = [
+    Carro('Chevrolet', 'Vectra', 2000, 'ABC-1234'),
+    Avião('Embraer', 'E195', 2015, 'Azul')
+]
+
+for veículo in veículos:
+    print(f'Inspecionando {type(veículo).__name__}:\n{veículo.marca}; {veículo.modelo}; {veículo.ano}.')
+    veículo.mover() # Um método de nome padronizado e com comportamentos específicos pode ser chamado em objetos diferentes
