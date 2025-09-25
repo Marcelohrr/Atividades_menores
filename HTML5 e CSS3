@@ -1,0 +1,39 @@
+<!DOCTYPE html> <!-- Declaração simplificada do tipo de documento - por padrão, os navegadores entendem como HTML5 -->
+<html lang="pt-br"> <!-- Definição do idioma -->
+<head> <!-- Cabeçalho do documento, com metadados e informações gerais -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para responsividade em dispositivos móveis -->
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon"> <!-- relationship = indica para que serve o recurso que você está vinculando; hypertext reference = define o caminho do arquivo; type = tipo MIME do arquivo (seu formato, informa ao navegador como interpretá-lo) -->
+    <title>Exercícios HTML</title> <!-- Título da página, mostrado na aba do navegador -->
+</head>
+<body> <!-- Corpo do documento, onde fica o conteúdo visível -->
+    <h1>Título principal da página</h1>
+    <hr> <!-- Linha horizontal -->
+    <p>
+        Parágrafo de texto.
+    </p>
+    <p>
+        Símbolos especiais: <!-- & indica início e ; fim de um caracter especial -->
+        &lt; <!-- less than -->
+        &gt; <!-- greater than -->
+        &amp; <!-- ampersand, e comercial -->
+        &quot; <!-- quote (aspas duplas), recomendado em atributos delimitados por " -->
+        &apos; <!-- (ou &#39;) apostrophe (apóstrofo/aspas simples) recomendado em atributos delimitados por ' -->
+        &nbsp; <!-- non-breaking space, usado para evitar quebras de linha -->
+    </p>
+    <p>
+        Emojis: <!-- #x para indicar que o valor é em hexadecimal -->
+        &#x1F496; <!-- Sparkling Heart -->
+        &#x2705; <!-- Check Mark Button -->
+        &#x26A0;&#xFE0F; <!-- Warning Sign (&#xFE0F; força o estilo para emoji colorido) -->
+    </p>
+    <p>
+        Para quebra de linhas, <br>
+        use a tag &lt;br&gt;.
+    </p>
+    <p>Imagens:</p> <!-- source = caminho do arquivo de imagem; alternative text = descrição exibida quando a imagem não carrega e para acessibilidade -->
+    <img src="logo_html5.png" alt="Logo HTML5"> <!-- Imagem na mesma pasta -->
+    <img src="imagens/logo_css3.jpg" alt="Logo CSS3"> <!-- Imagem em subpasta -->
+    <img src="https://t4.ftcdn.net/jpg/00/75/92/23/240_F_75922332_V8jiJ9I2F9d9HqV7RtPzUAxr5s7YHWOd.jpg" alt="Logo JavaScript"> <!-- Imagem externa -->
+</body>
+</html>
