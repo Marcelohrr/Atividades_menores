@@ -5,13 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para responsividade em dispositivos móveis -->
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon"> <!-- relationship = indica para que serve o recurso que você está vinculando; hypertext reference = define o caminho do arquivo; type = tipo MIME do arquivo (seu formato, informa ao navegador como interpretá-lo) -->
     <title>Exercícios HTML</title> <!-- Título da página, mostrado na aba do navegador -->
+    <style> /* CSS interno */
+        body {
+            background-color: rgb(234, 212, 255);
+        }
+    </style>
 </head>
 <body> <!-- Corpo do documento, onde fica o conteúdo visível -->
-    <h1>Título principal da página</h1>
+    <h1>Título principal da página</h1> <!-- h = header; a hierarquia de títulos vai até h6 -->
+        <h2>Subtítulo 1</h2>
+            <h3>Subtítulo 1.1</h3>    
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perferendis deserunt harum rerum asperiores quos iure quisquam, optio voluptate ad voluptas esse modi et doloremque numquam ullam, vel ex quis.</p>
+            <h3>Subtítulo 1.2</h3> 
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, enim iste a fugit repellat provident ducimus vitae, accusamus eos iure quibusdam rem? Vel repellendus nemo facere architecto quam consequatur asperiores!</p>
+                <h4>Subtítulo 1.2.1</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis quis cupiditate illum quasi accusamus magni neque fugiat. Maxime, aliquid reiciendis officia repellendus aut eaque doloremque vitae id iste! Est, quaerat!</p>
+                <h4>Subtítulo 1.2.2</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto dolores eveniet et omnis ex dolorum obcaecati ipsum temporibus, quae reiciendis, nihil, dolore est velit molestiae totam! Quam voluptatem magnam fuga.</p>
+        <h2>Subtítulo 2</h2>
+            <h3>Subtítulo 2.1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, optio cum ad, aliquid natus ut delectus, error adipisci dignissimos eius repellendus illo tempore? Similique earum laborum quia minus commodi unde?</p>
+            <h3>Subtítulo 2.2</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores culpa veritatis placeat, rem est dicta nobis amet, facilis maxime iure! Quod, eos! Reprehenderit provident quaerat blanditiis enim reiciendis neque.</p>
     <hr> <!-- Linha horizontal -->
-    <p>
-        Parágrafo de texto.
-    </p>
     <p>
         Símbolos especiais: <!-- & indica início e ; fim de um caracter especial -->
         &lt; <!-- less than -->
@@ -35,5 +51,6 @@
     <img src="logo_html5.png" alt="Logo HTML5"> <!-- Imagem na mesma pasta -->
     <img src="imagens/logo_css3.jpg" alt="Logo CSS3"> <!-- Imagem em subpasta -->
     <img src="https://t4.ftcdn.net/jpg/00/75/92/23/240_F_75922332_V8jiJ9I2F9d9HqV7RtPzUAxr5s7YHWOd.jpg" alt="Logo JavaScript"> <!-- Imagem externa -->
+
 </body>
 </html>
