@@ -9,7 +9,6 @@
         body {
             background-color: rgb(234, 212, 255);
         }
-
         mark {
             background-color: rgb(91, 255, 113);
         }
@@ -17,87 +16,144 @@
 </head>
 <body> <!-- Corpo do documento, onde fica o conteúdo visível -->
     <h1>Título principal da página</h1> <!-- h = header; a hierarquia de títulos vai até h6 -->
+
         <h2>Subtítulo 1</h2>
             <h3>Subtítulo 1.1</h3>    
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perferendis deserunt harum rerum asperiores quos iure quisquam, optio voluptate ad voluptas esse modi et doloremque numquam ullam, vel ex quis.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perferendis deserunt harum rerum asperiores quos iure quisquam, optio voluptate ad voluptas esse modi et doloremque numquam ullam, vel ex quis.</p>
+
             <h3>Subtítulo 1.2</h3> 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, enim iste a fugit repellat provident ducimus vitae, accusamus eos iure quibusdam rem? Vel repellendus nemo facere architecto quam consequatur asperiores!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, enim iste a fugit repellat provident ducimus vitae, accusamus eos iure quibusdam rem? Vel repellendus nemo facere architecto quam consequatur asperiores!</p>
+
                 <h4>Subtítulo 1.2.1</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis quis cupiditate illum quasi accusamus magni neque fugiat. Maxime, aliquid reiciendis officia repellendus aut eaque doloremque vitae id iste! Est, quaerat!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis quis cupiditate illum quasi accusamus magni neque fugiat. Maxime, aliquid reiciendis officia repellendus aut eaque doloremque vitae id iste! Est, quaerat!</p>
+
                 <h4>Subtítulo 1.2.2</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto dolores eveniet et omnis ex dolorum obcaecati ipsum temporibus, quae reiciendis, nihil, dolore est velit molestiae totam! Quam voluptatem magnam fuga.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto dolores eveniet et omnis ex dolorum obcaecati ipsum temporibus, quae reiciendis, nihil, dolore est velit molestiae totam! Quam voluptatem magnam fuga.</p>
+
         <h2>Subtítulo 2</h2>
             <h3>Subtítulo 2.1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, optio cum ad, aliquid natus ut delectus, error adipisci dignissimos eius repellendus illo tempore? Similique earum laborum quia minus commodi unde?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, optio cum ad, aliquid natus ut delectus, error adipisci dignissimos eius repellendus illo tempore? Similique earum laborum quia minus commodi unde?</p>
+
             <h3>Subtítulo 2.2</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores culpa veritatis placeat, rem est dicta nobis amet, facilis maxime iure! Quod, eos! Reprehenderit provident quaerat blanditiis enim reiciendis neque.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores culpa veritatis placeat, rem est dicta nobis amet, facilis maxime iure! Quod, eos! Reprehenderit provident quaerat blanditiis enim reiciendis neque.</p>
+
     <hr> <!-- Linha horizontal -->
+
         <h2>Símbolos especiais</h2> <!-- & indica início e ; fim de um caracter especial -->
-            <p>
-                &lt; <!-- less than -->
-                &gt; <!-- greater than -->
-                &amp; <!-- ampersand, e comercial -->
-                &quot; <!-- quote (aspas duplas), recomendado em atributos delimitados por " -->
-                &apos; <!-- (ou &#39;) apostrophe (apóstrofo/aspas simples) recomendado em atributos delimitados por ' -->
-                &nbsp; <!-- non-breaking space, usado para evitar quebras de linha -->
-            </p>
+        <p>
+            &lt; <!-- less than -->
+            &gt; <!-- greater than -->
+            &amp; <!-- ampersand, e comercial -->
+            &quot; <!-- quote (aspas duplas), recomendado em atributos delimitados por " -->
+            &apos; <!-- (ou &#39;) apostrophe (apóstrofo/aspas simples) recomendado em atributos delimitados por ' -->
+            &nbsp; <!-- non-breaking space, usado para evitar quebras de linha -->
+        </p>
+
         <h2>Emojis</h2> <!-- #x para indicar que o valor é em hexadecimal -->
-            <p>
-                &#x1F496; <!-- Sparkling Heart -->
-                &#x2705; <!-- Check Mark Button -->
-                &#x26A0;&#xFE0F; <!-- Warning Sign (&#xFE0F; força o estilo para emoji colorido) -->
-            </p>
+        <p>
+            &#x1F496; <!-- Sparkling Heart -->
+            &#x2705; <!-- Check Mark Button -->
+            &#x26A0;&#xFE0F; <!-- Warning Sign (&#xFE0F; força o estilo para emoji colorido) -->
+        </p>
+
     <hr>
+
     <p>
         Para quebra de linhas, <br>
-        use a tag &lt;br&gt;.
+        use a tag &lt;br&gt; (break).
     </p>
+
     <hr>
+
         <h2>Imagens</h2> <!-- source = caminho do arquivo de imagem; alternative text = descrição exibida quando a imagem não carrega e para acessibilidade -->
         <img src="logo_html5.png" alt="Logo HTML5"> <!-- Imagem na mesma pasta -->
         <img src="imagens/logo_css3.jpg" alt="Logo CSS3"> <!-- Imagem em subpasta -->
         <img src="https://t4.ftcdn.net/jpg/00/75/92/23/240_F_75922332_V8jiJ9I2F9d9HqV7RtPzUAxr5s7YHWOd.jpg" alt="Logo JavaScript"> <!-- Imagem externa -->
+
     <hr>
-        <h2>Principais formatações</h2>
+
+        <h2>Principais formatações, elementos semânticos e estruturais</h2>
             <h3>Negrito</h3>
-                <p><b>Negrito</b> (&lt;b&gt;, de bold), apenas visual.</p>
-                <p>O mesmo <strong>destaque</strong>, porém com valor semântico (&lt;strong&gt;).</p>
+            <p><b>Negrito</b> (&lt;b&gt;, de bold), apenas visual.</p>
+            <p>O mesmo <strong>destaque</strong>, porém com valor semântico (&lt;strong&gt;).</p>
+
             <h3>Itálico</h3>
-                <p><i>Itálico</i> (&lt;i&gt;), apenas visual.</p>
-                <p>A mesma <em>ênfase</em>, porém com valor semântico (&lt;em&gt;, de emphasis).</p>
+            <p><i>Itálico</i> (&lt;i&gt;), apenas visual.</p>
+            <p>A mesma <em>ênfase</em>, porém com valor semântico (&lt;em&gt;, de emphasis).</p>
+
             <h3>Marcação</h3>
-                <p><mark style="background-color: rgb(255, 91, 192);">Marcação</mark> (&lt;mark&gt;), com valor semântico.</p> <!-- CSS interno para formatação pontual, diferente do estilo definido no head como padrão -->
+            <p><mark style="background-color: rgb(255, 91, 192);">Marcação</mark> (&lt;mark&gt;), com valor semântico.</p> <!-- CSS interno para formatação pontual, diferente do estilo definido no head como padrão -->
+
             <h3>Riscado</h3>
-                <p><s>Riscado</s> (&lt;s&gt;, de strike-through), apenas visual.</p>
-                <p>A mesma <del>formatação</del>, porém com valor semântico de texto deletado (&lt;del&gt;, de deleted).</p>
+            <p><s>Riscado</s> (&lt;s&gt;, de strike-through), apenas visual.</p>
+            <p>A mesma <del>formatação</del>, porém com valor semântico de texto deletado (&lt;del&gt;, de deleted).</p>
+
             <h3>Sublinhado</h3>
-                <p><u>Sublinhado</u> (&lt;u&gt;, de underline), apenas visual.</p>
-                <p>A mesma <ins>formatação</ins>, porém com valor semântico de texto inserido (&lt;ins&gt;, de inserted).</p>
+            <p><u>Sublinhado</u> (&lt;u&gt;, de underline), apenas visual.</p>
+            <p>A mesma <ins>formatação</ins>, porém com valor semântico de texto inserido (&lt;ins&gt;, de inserted).</p>
+
             <h3>Texto sobrescrito e subscrito</h3>
-                <p><sup>Texto sobrescrito</sup> (&lt;sup&gt;, de superscript), apenas visual.</p>
-                <p><sub>Texto subscrito</sub> (&lt;sub&gt;, de subscript), apenas visual.</p>
+            <p><sup>Texto sobrescrito</sup> (&lt;sup&gt;, de superscript), apenas visual.</p>
+            <p><sub>Texto subscrito</sub> (&lt;sub&gt;, de subscript), apenas visual.</p>
+
             <h3>Código-fonte e pré-formatação</h3>
-                <p><code>Texto de código</code> (&lt;code&gt;), com valor semântico.</p>
-                <pre>
-A tag &lt;pre&gt;, de preformatted, preserva espaços e quebras de linha:
-                    <code>
-    n = int(input('Insira número:'))
+            <p><code>Texto de código</code> (&lt;code&gt;), com valor semântico.</p>
+<pre>
+A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
+<code>n = int(input('Insira número:'))
     if n % 2 == 0:
         print('O número inserido é par.')
     else:
-        print('O número inserido é ímpar.')
-                    </code>
-                </pre>
+        print('O número inserido é ímpar.')</code>
+</pre>
+
             <h3>Citações</h3>
                 <h4>Citação curta</h4>
-                    <p>"Aspas" (", diretamente), apenas visual.</p>
-                    <p>O mesmo <q>caractere</q>, porém com valor semântico de citação (&lt;q&gt;, de quote).</p>
+                <p>"Aspas" (", diretamente), apenas visual.</p>
+                <p>O mesmo <q>caractere</q>, porém com valor semântico de citação (&lt;q&gt;, de quote).</p>
+
                 <h4>Citação longa</h4>
-                    <blockquote cite="nome, obra ou URL">
-                        A tag &lt;blockquote&gt; tem valor semântico.
-                    </blockquote>
+                <blockquote cite="nome, obra ou URL">
+                    A tag &lt;blockquote&gt; tem valor semântico.
+                </blockquote>
+
             <h3>Abreviação ou sigla</h3> <!-- Para exibir tooltip com o significado de uma abreviação ou sigla, -->
-                <p>A tag &lt;abbr&gt; tem valor semântico. Exemplo:</p>
-                <p>Estou aprendendo <abbr title="HyperText Markup Language">HTML</abbr> e <abbr title="Cascading Style Sheets">CSS</abbr>!</p>
+            <p>A tag &lt;abbr&gt; (abbreviation) tem valor semântico. Exemplo:</p>
+            <p>Estou aprendendo <abbr title="HyperText Markup Language">HTML</abbr> e <abbr title="Cascading Style Sheets">CSS</abbr>!</p>
+
+            <h3>Listas</h3>
+                <h4>Lista ordenada</h4>
+                <ol type="a" start="2"> <!-- type=["1", "A", "a", "I", "i"] -->
+                    <li>&lt;li&gt; (list item)...</li>
+                    <li>...em &lt;ol&gt; (ordered list).</li>
+                </ol>
+
+                <h4>Lista não ordenada</h4>
+                <ul> <!-- CSS para o type -->
+                    <li>&lt;li&gt;...</li>
+                    <li>...em &lt;ul&gt; (unordered list).</li>
+                </ul>
+
+                <h4>Listas aninhadas</h4>
+                <ol type="I">
+                    <li>Exemplo:</li>
+                    <ol>
+                        <li>exemplo.</li>
+                    </ol>
+                    <li>Exemplo:</li>
+                    <ul>
+                        <li>exemplo.</li>
+                    </ul>
+                </ol>
+
+                <h4>Lista de definições</h4>
+                <dl>
+                    <dt>&lt;dl&gt;</dt>
+                    <dd>definition list</dd>
+                    <dt>&lt;dt&gt;</dt>
+                    <dd>definition term</dd>
+                    <dt>&lt;dd&gt;</dt>
+                    <dd>definition description</dd>
+                </dl>
 </body>
 </html>
