@@ -9,6 +9,10 @@
         body {
             background-color: rgb(234, 212, 255);
         }
+
+        mark {
+            background-color: rgb(91, 255, 113);
+        }
     </style>
 </head>
 <body> <!-- Corpo do documento, onde fica o conteúdo visível -->
@@ -28,29 +32,72 @@
             <h3>Subtítulo 2.2</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores culpa veritatis placeat, rem est dicta nobis amet, facilis maxime iure! Quod, eos! Reprehenderit provident quaerat blanditiis enim reiciendis neque.</p>
     <hr> <!-- Linha horizontal -->
-    <p>
-        Símbolos especiais: <!-- & indica início e ; fim de um caracter especial -->
-        &lt; <!-- less than -->
-        &gt; <!-- greater than -->
-        &amp; <!-- ampersand, e comercial -->
-        &quot; <!-- quote (aspas duplas), recomendado em atributos delimitados por " -->
-        &apos; <!-- (ou &#39;) apostrophe (apóstrofo/aspas simples) recomendado em atributos delimitados por ' -->
-        &nbsp; <!-- non-breaking space, usado para evitar quebras de linha -->
-    </p>
-    <p>
-        Emojis: <!-- #x para indicar que o valor é em hexadecimal -->
-        &#x1F496; <!-- Sparkling Heart -->
-        &#x2705; <!-- Check Mark Button -->
-        &#x26A0;&#xFE0F; <!-- Warning Sign (&#xFE0F; força o estilo para emoji colorido) -->
-    </p>
+        <h2>Símbolos especiais</h2> <!-- & indica início e ; fim de um caracter especial -->
+            <p>
+                &lt; <!-- less than -->
+                &gt; <!-- greater than -->
+                &amp; <!-- ampersand, e comercial -->
+                &quot; <!-- quote (aspas duplas), recomendado em atributos delimitados por " -->
+                &apos; <!-- (ou &#39;) apostrophe (apóstrofo/aspas simples) recomendado em atributos delimitados por ' -->
+                &nbsp; <!-- non-breaking space, usado para evitar quebras de linha -->
+            </p>
+        <h2>Emojis</h2> <!-- #x para indicar que o valor é em hexadecimal -->
+            <p>
+                &#x1F496; <!-- Sparkling Heart -->
+                &#x2705; <!-- Check Mark Button -->
+                &#x26A0;&#xFE0F; <!-- Warning Sign (&#xFE0F; força o estilo para emoji colorido) -->
+            </p>
+    <hr>
     <p>
         Para quebra de linhas, <br>
         use a tag &lt;br&gt;.
     </p>
-    <p>Imagens:</p> <!-- source = caminho do arquivo de imagem; alternative text = descrição exibida quando a imagem não carrega e para acessibilidade -->
-    <img src="logo_html5.png" alt="Logo HTML5"> <!-- Imagem na mesma pasta -->
-    <img src="imagens/logo_css3.jpg" alt="Logo CSS3"> <!-- Imagem em subpasta -->
-    <img src="https://t4.ftcdn.net/jpg/00/75/92/23/240_F_75922332_V8jiJ9I2F9d9HqV7RtPzUAxr5s7YHWOd.jpg" alt="Logo JavaScript"> <!-- Imagem externa -->
-
+    <hr>
+        <h2>Imagens</h2> <!-- source = caminho do arquivo de imagem; alternative text = descrição exibida quando a imagem não carrega e para acessibilidade -->
+        <img src="logo_html5.png" alt="Logo HTML5"> <!-- Imagem na mesma pasta -->
+        <img src="imagens/logo_css3.jpg" alt="Logo CSS3"> <!-- Imagem em subpasta -->
+        <img src="https://t4.ftcdn.net/jpg/00/75/92/23/240_F_75922332_V8jiJ9I2F9d9HqV7RtPzUAxr5s7YHWOd.jpg" alt="Logo JavaScript"> <!-- Imagem externa -->
+    <hr>
+        <h2>Principais formatações</h2>
+            <h3>Negrito</h3>
+                <p><b>Negrito</b> (&lt;b&gt;, de bold), apenas visual.</p>
+                <p>O mesmo <strong>destaque</strong>, porém com valor semântico (&lt;strong&gt;).</p>
+            <h3>Itálico</h3>
+                <p><i>Itálico</i> (&lt;i&gt;), apenas visual.</p>
+                <p>A mesma <em>ênfase</em>, porém com valor semântico (&lt;em&gt;, de emphasis).</p>
+            <h3>Marcação</h3>
+                <p><mark style="background-color: rgb(255, 91, 192);">Marcação</mark> (&lt;mark&gt;), com valor semântico.</p> <!-- CSS interno para formatação pontual, diferente do estilo definido no head como padrão -->
+            <h3>Riscado</h3>
+                <p><s>Riscado</s> (&lt;s&gt;, de strike-through), apenas visual.</p>
+                <p>A mesma <del>formatação</del>, porém com valor semântico de texto deletado (&lt;del&gt;, de deleted).</p>
+            <h3>Sublinhado</h3>
+                <p><u>Sublinhado</u> (&lt;u&gt;, de underline), apenas visual.</p>
+                <p>A mesma <ins>formatação</ins>, porém com valor semântico de texto inserido (&lt;ins&gt;, de inserted).</p>
+            <h3>Texto sobrescrito e subscrito</h3>
+                <p><sup>Texto sobrescrito</sup> (&lt;sup&gt;, de superscript), apenas visual.</p>
+                <p><sub>Texto subscrito</sub> (&lt;sub&gt;, de subscript), apenas visual.</p>
+            <h3>Código-fonte e pré-formatação</h3>
+                <p><code>Texto de código</code> (&lt;code&gt;), com valor semântico.</p>
+                <pre>
+A tag &lt;pre&gt;, de preformatted, preserva espaços e quebras de linha:
+                    <code>
+    n = int(input('Insira número:'))
+    if n % 2 == 0:
+        print('O número inserido é par.')
+    else:
+        print('O número inserido é ímpar.')
+                    </code>
+                </pre>
+            <h3>Citações</h3>
+                <h4>Citação curta</h4>
+                    <p>"Aspas" (", diretamente), apenas visual.</p>
+                    <p>O mesmo <q>caractere</q>, porém com valor semântico de citação (&lt;q&gt;, de quote).</p>
+                <h4>Citação longa</h4>
+                    <blockquote cite="nome, obra ou URL">
+                        A tag &lt;blockquote&gt; tem valor semântico.
+                    </blockquote>
+            <h3>Abreviação ou sigla</h3> <!-- Para exibir tooltip com o significado de uma abreviação ou sigla, -->
+                <p>A tag &lt;abbr&gt; tem valor semântico. Exemplo:</p>
+                <p>Estou aprendendo <abbr title="HyperText Markup Language">HTML</abbr> e <abbr title="Cascading Style Sheets">CSS</abbr>!</p>
 </body>
 </html>
