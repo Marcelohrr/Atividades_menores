@@ -225,7 +225,21 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
         <p>Exemplos:</p>
         <ul>
             <li><a href="https://github.com/Marcelohrr?tab=repositories" target="_blank" rel="external">Link externo</a>.</li>
-            <li><a href="pagina2.html" rel="next">Link interno</a>.</li>
+            <li><a href="pagina2.html" rel="next">Link interno</a>.</li> <!-- Se o caminho estiver em uma pasta: pasta/link.html; para voltar da pasta: ../link.html -->
+            <li><a href="download/meulivro.pdf" download>Link para download</a>.</li>
         </ul>
+    
+    <hr>
+
+        <h2>Desafio: apresentação pessoal</h2>
+            <h3>Apresentação:</h3>
+            <img src="imagens/eu.jpg" alt="Foto do Marcelo sorrindo, com seus cachorrinhos">
+            <p>Meu nome é <b>Marcelo Henrique Rosa Reis</b>, tenho 25 anos e sou de Belo Horizonte (MG). Sou bacharel em <i>Filosofia</i> pela PUC Minas (2024) e estou estudando HTML e CSS!</p>
+            <h3>Minhas redes sociais:</h3>
+            <ul>
+                <li>GitHub: <img src="imagens/icone-github.png" alt="Ícone do GitHub"><a href="https://github.com/Marcelohrr" target="_blank" rel="external">/Marcelohrr</a>.</li>
+                <li>LinkedIn: <img src="imagens/icone-linkedin.png" alt="Ícone do LinkedIn"><a href="https://www.linkedin.com/in/marcelohrr/" target="_blank" rel="external">/marcelohrr</a>.</li>
+                <li>Instagram: <img src="imagens/icone-instagram.png" alt="Ícone do Instagram"><a href="https://www.instagram.com/marcelohrr.ti/" target="_blank" rel="external">/marcelohrr.ti</a>.</li>
+            </ul>
 </body>
 </html>
