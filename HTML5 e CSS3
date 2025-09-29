@@ -117,7 +117,7 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                     A tag &lt;blockquote&gt; tem valor semântico.
                 </blockquote>
 
-            <h3>Abreviação ou sigla</h3> <!-- Para exibir tooltip com o significado de uma abreviação ou sigla, -->
+            <h3>Abreviação ou sigla</h3> <!-- Para exibir tooltip com o significado de uma abreviação ou sigla -->
             <p>A tag &lt;abbr&gt; (abbreviation) tem valor semântico. Exemplo:</p>
             <p>Estou aprendendo <abbr title="HyperText Markup Language">HTML</abbr> e <abbr title="Cascading Style Sheets">CSS</abbr>!</p>
 
@@ -136,14 +136,16 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
 
                 <h4>Listas aninhadas</h4>
                 <ol type="I">
-                    <li>Exemplo:</li>
-                    <ol>
-                        <li>exemplo.</li>
-                    </ol>
-                    <li>Exemplo:</li>
-                    <ul>
-                        <li>exemplo.</li>
-                    </ul>
+                    <li>Exemplo:
+                        <ol>
+                            <li>exemplo.</li>
+                        </ol>
+                    </li>
+                    <li>Exemplo:
+                        <ul>
+                            <li>exemplo.</li>
+                        </ul>
+                    </li>
                 </ol>
 
                 <h4>Lista de definições</h4>
@@ -155,5 +157,75 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                     <dt>&lt;dd&gt;</dt>
                     <dd>definition description</dd>
                 </dl>
+
+    <hr>
+
+        <h2>Links</h2>
+        <p>A tag &lt;a&gt; (anchor) cria hiperlinks (ligações clicáveis que conectam uma página ou parte de um documento a outro recurso).</p>
+        <ul>
+            <li>Âncora = destino do link</li>
+            <li>href (hypertext reference) = define o caminho do recurso</li>
+            <li>target = define onde o link será aberto
+                <ul>
+                    <li>_self (padrão): mesma aba</li>
+                    <li>_blank: nova aba</li>
+                </ul>
+            </li>
+            <li>rel (relationship) = indica a relação entre o documento atual e o recurso vinculado
+                <ul>
+                    <li>Segurança e privacidade
+                        <ul>
+                            <li>noopener: evita que a página referenciada acesse window.opener (previne tabnabbing, nos quais a página externa poderia redirecionar a aba original para um site falso)</li>
+                            <li>noreferrer: também bloqueia window.opener e não envia o Referer HTTP ao link externo (impede que dados da URL original sejam expostos para o site externo)</li>
+                        </ul>
+                    </li>
+                    <li>Navegação e indexação (SEO)
+                        <ul>
+                            <li>dofollow (padrão): motor de busca pode seguir o link</li>
+                            <li>nofollow: instrui motores de busca a não seguirem o link (não transfere autoridade ao site vinculado)</li>
+                            <li>canonical: indica a URL canônica (a versão “oficial” ou principal) de uma página para SEO, quando existem URLs diferentes que mostram o mesmo conteúdo</li>
+                        </ul>
+                    </li>
+                    <li>Performance
+                        <ul>
+                            <li>preload: indica que o recurso deve ser carregado antecipadamente</li>
+                            <li>prefetch: sugere que o navegador carregue o recurso para uso futuro</li>
+                            <li>preconnect: estabelece conexão antecipada com um domínio externo</li>
+                        </ul>
+                    </li>
+                    <li>Estilo
+                        <ul>
+                            <li>stylesheet: define que o link é uma folha de estilo CSS</li>
+                        </ul>
+                    </li>
+                    <li>Navegação e estrutura de documentos
+                        <ul>
+                            <li>next / prev: indicam aos buscadores a relação entre páginas</li>
+                            <li>alternate: versão alternativa do documento (ex: RSS, tradução)</li>
+                        </ul>
+                    </li>
+                    <li>Metadados e conteúdo
+                        <ul>
+                            <li>author: link para o autor do documento</li>
+                            <li>license: indica a licença de uso do conteúdo</li>
+                            <li>help: fornece documentação de ajuda</li>
+                        </ul>
+                    </li>
+                    <li>Informação
+                        <ul>
+                            <li>external: indica que o link leva para um site externo</li>
+                            <li>friend: indica link de amizade ou rede social</li>
+                            <li>tag: relaciona link a uma tag ou categoria</li>
+                            <li>me: indica perfil próprio (WebID / OpenID)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>Exemplos:</p>
+        <ul>
+            <li><a href="https://github.com/Marcelohrr?tab=repositories" target="_blank" rel="external">Link externo</a>.</li>
+            <li><a href="pagina2.html" rel="next">Link interno</a>.</li>
+        </ul>
 </body>
 </html>
