@@ -262,7 +262,7 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
         <ul>
             <li><a href="https://github.com/Marcelohrr?tab=repositories" target="_blank" rel="external">Link externo</a>.</li>
             <li><a href="pagina2.html" rel="next">Link interno</a>.</li> <!-- Se o caminho estiver em uma pasta: pasta/link.html; para voltar da pasta: ../link.html -->
-            <li><a href="download/meulivro.pdf" download>Link para download</a>.</li>
+            <li><a href="download/livro.pdf" download>Link para download</a>.</li>
         </ul>
     
     <hr>
@@ -301,24 +301,28 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                     <td>audio/mpeg</td>
                 </tr>
                 <tr>
-                    <td>WAV</td>
-                    <td>audio/wav, audio/x-wav</td>
-                </tr>
-                <tr>
                     <td>OGG</td>
                     <td>audio/ogg</td>
+                </tr>
+                <tr>
+                    <td>WAV</td>
+                    <td>audio/wav, audio/x-wav</td>
                 </tr>
                 <tr>
                     <td>MP4</td>
                     <td>video/mp4</td>
                 </tr>
                 <tr>
-                    <td>M4V</td>
-                    <td>video/x-m4v</td>
-                </tr>
-                <tr>
                     <td>WebM</td>
                     <td>video/webm</td>
+                </tr>
+                <tr>
+                    <td>OGV</td>
+                    <td>video/ogg</td>
+                </tr>
+                <tr>
+                    <td>M4V</td>
+                    <td>video/x-m4v</td>
                 </tr>
                 <tr>
                     <td>PDF</td>
@@ -341,7 +345,7 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
 
     <hr>
     
-        <h2>Apresentação:</h2>
+        <h2>Apresentação</h2>
         <p>Meu nome é <b>Marcelo Henrique Rosa Reis</b>, tenho 25 anos e sou de Belo Horizonte (MG). Sou bacharel em <i>Filosofia</i> pela PUC Minas (2024) e estou estudando HTML e CSS!</p>
         <h2>Minhas redes sociais:</h2>
         <ul>
@@ -387,5 +391,10 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                 
                 <h4>Vimeo</h4> <!-- Para vídeos de acesso restrito (como por assinatura), uma alternativa é o Vimeo (e pagar pela hospedagem do vídeo) -->
                 <div style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1114297044?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="i am a crunchwrap supreme"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+            <h3>Referência</h3>
+            <a href="pagina-referencia.html" rel="next" title="Link interno para página de referência do vídeo de exercício que estou praticando">
+                <img src="https://img.youtube.com/vi/gqrySQQzvvQ/maxresdefault.jpg" alt="Thumbnail do vídeo 'Desafio: um site com vídeos - @Curso em Vídeo HTML5 e CSS3' no YouTube">
+            </a>
 </body>
 </html>
