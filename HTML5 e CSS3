@@ -302,7 +302,7 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                 </tr>
                 <tr>
                     <td>WAV</td>
-                    <td>audio/wav</td>
+                    <td>audio/wav, audio/x-wav</td>
                 </tr>
                 <tr>
                     <td>OGG</td>
@@ -311,6 +311,10 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                 <tr>
                     <td>MP4</td>
                     <td>video/mp4</td>
+                </tr>
+                <tr>
+                    <td>M4V</td>
+                    <td>video/x-m4v</td>
                 </tr>
                 <tr>
                     <td>WebM</td>
@@ -330,7 +334,7 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                 </tr>
                 <tr>
                     <td>JavaScript</td>
-                    <td>application/javascript</td>
+                    <td>application/javascript, text/javascript</td>
                 </tr>
             </tbody>
         </table>
@@ -358,15 +362,25 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
     <hr>
 
         <h2>Reprodução de áudio</h2>
-        <audio controls preload="metadata"> <!-- Para garantir a compatibilidade com diferentes navegadores -->
+        <audio controls preload="metadata"> <!-- Adiciona controles e carrega apenas metadados. E para garantir a compatibilidade com diferentes navegadores: -->
             <source src="midia/audio.mp3" type="audio/mpeg"> <!-- Primeiro tenta reproduzir o MP3 (melhor compatibilidade) -->
             <source src="midia/audio.ogg" type="audio/ogg"> <!-- Se MP3 não for suportado, tenta OGG (compacto) -->
-            <source src="midia/audio.wav" type="audio/wav"> <!-- Se MP3 e OGG não forem suportados, tenta WAV (sem compressão, pesado) -->
+            <source src="midia/audio.wav" type="audio/wav"> <!-- Se OGG também não for suportado, tenta WAV (sem compressão, pesado) -->
             <p>O navegador não conseguiu reproduzir o áudio. Para baixar o arquivo MP3, <a href="midia/audio.mp3">clique aqui</a>.</p> <!-- Fallback: se nenhum formato for reproduzido, exibe este conteúdo -->
         </audio>
     
     <hr>
 
         <h2>Reprodução de vídeo</h2>
+            <h3>Hospedagem própria</h3>
+            <video controls preload="metadata" width="500" poster="imagens/capa.png"> <!-- Adiciona controles, carrega apenas metadados, define largura e thumbnail. E para garantir a compatibilidade com diferentes navegadores: -->
+                <source src="midia/video.mp4" type="video/mp4"> <!-- Primeiro tenta reproduzir o MP4 (melhor compatibilidade) -->
+                <source src="midia/video.webm" type="video/webm"> <!-- Se MP4 não for suportado, tenta WebM (compacto) -->
+                <source src="midia/video.ogv" type="video/ogg"> <!-- Se WebM também não for suportado, tenta OGV (variação de OGG para vídeo) -->
+                <source src="midia/video.m4v" type="video/x-m4v"> <!-- Se OGV também não for suportado, tenta M4V (variação menos comum de MP4, usada pela Apple) -->
+                <p>O navegador não conseguiu reproduzir o vídeo. Para baixar o arquivo MP4, <a href="midia/video.mp4">clique aqui</a>.</p>
+            </video>
+
+            <h3>Incorporação de vídeos externos</h3>
 </body>
 </html>
