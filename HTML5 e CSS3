@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para responsividade em dispositivos móveis -->
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon"> <!-- relationship = indica para que serve o recurso que você está vinculando; hypertext reference = define o caminho do arquivo; type = tipo MIME do arquivo (seu formato, informa ao navegador como interpretá-lo) -->
     <title>Exercícios HTML</title> <!-- Título da página, mostrado na aba do navegador -->
-    <style> /* CSS interno */
+    <link rel="stylesheet" href="style.css"> <!-- Link ao CSS externo, para a formatação de várias páginas -->
+    <style> /* CSS interno / local, para a formatação de apenas um documento (sobrepõe o estilo externo) */
         body {
-            background-color: rgb(234, 212, 255);
+            background-color: rgb(234, 212, 255); /* Declaração = propriedade: valor */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        h1 {
+            color: purple;
+            text-align: center;
+            text-decoration: underline;
+        }
+        h2 {
+            color: darkblue;
+            background-color: mediumseagreen;
         }
         mark {
             background-color: rgb(91, 255, 113);
@@ -18,8 +30,8 @@
     <h1>Título principal da página</h1> <!-- h = header; a hierarquia de títulos vai até h6 -->
 
         <h2>Subtítulo 1</h2>
-            <h3>Subtítulo 1.1</h3>    
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perferendis deserunt harum rerum asperiores quos iure quisquam, optio voluptate ad voluptas esse modi et doloremque numquam ullam, vel ex quis.</p>
+            <h3>Subtítulo 1.1</h3>
+            <p style="color: crimson; background-color: cornflowerblue; font-family: 'Times New Roman', Times, serif; text-align: justify; font-size: 35px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perferendis deserunt harum rerum asperiores quos iure quisquam, optio voluptate ad voluptas esse modi et doloremque numquam ullam, vel ex quis.</p> <!-- CSS inline, para formatação pontual (prioridade, sobrepõe os estilos externo e interno) -->
 
             <h3>Subtítulo 1.2</h3> 
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, enim iste a fugit repellat provident ducimus vitae, accusamus eos iure quibusdam rem? Vel repellendus nemo facere architecto quam consequatur asperiores!</p>
@@ -82,7 +94,7 @@
             <p>A mesma <em>ênfase</em>, porém com valor semântico (&lt;em&gt;, de emphasis).</p>
 
             <h3>Marcação</h3>
-            <p><mark style="background-color: rgb(255, 91, 192);">Marcação</mark> (&lt;mark&gt;), com valor semântico.</p> <!-- CSS interno para formatação pontual, diferente do estilo definido no head como padrão -->
+            <p><mark style="background-color: rgb(255, 91, 192);">Marcação</mark> (&lt;mark&gt;), com valor semântico.</p> <!-- CSS inline -->
 
             <h3>Riscado</h3>
             <p><s>Riscado</s> (&lt;s&gt;, de strike-through), apenas visual.</p>
