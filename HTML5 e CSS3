@@ -373,7 +373,7 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
 
         <h2>Reprodução de vídeo</h2>
             <h3>Hospedagem própria</h3>
-            <video controls preload="metadata" width="500" poster="imagens/capa.png"> <!-- Adiciona controles, carrega apenas metadados, define largura e thumbnail. E para garantir a compatibilidade com diferentes navegadores: -->
+            <video controls preload="metadata" width="608" height="342" poster="imagens/capa.png"> <!-- Adiciona controles, carrega apenas metadados, define largura e thumbnail. E para garantir a compatibilidade com diferentes navegadores: -->
                 <source src="midia/video.mp4" type="video/mp4"> <!-- Primeiro tenta reproduzir o MP4 (melhor compatibilidade) -->
                 <source src="midia/video.webm" type="video/webm"> <!-- Se MP4 não for suportado, tenta WebM (compacto) -->
                 <source src="midia/video.ogv" type="video/ogg"> <!-- Se WebM também não for suportado, tenta OGV (variação de OGG para vídeo) -->
@@ -381,6 +381,11 @@ A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
                 <p>O navegador não conseguiu reproduzir o vídeo. Para baixar o arquivo MP4, <a href="midia/video.mp4">clique aqui</a>.</p>
             </video>
 
-            <h3>Incorporação de vídeos externos</h3>
+            <h3>Incorporação de vídeos externos</h3> <!-- No site do vídeo: compartilhar, incorporar e copiar -->
+                <h4>YouTube</h4> <!-- Para vídeos públicos e gratuitos, o YouTube é a melhor opção -->
+                <iframe width="608" height="342" src="https://www.youtube.com/embed/c5vh7jtrW2Y?si=Q1XWxkmkO1no-1Zk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                
+                <h4>Vimeo</h4> <!-- Para vídeos de acesso restrito (como por assinatura), uma alternativa é o Vimeo (e pagar pela hospedagem do vídeo) -->
+                <div style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1114297044?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="i am a crunchwrap supreme"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
