@@ -1,0 +1,411 @@
+<!DOCTYPE html> <!-- Declaração simplificada do tipo de documento - por padrão, os navegadores entendem como HTML5 -->
+<html lang="pt-br"> <!-- Definição do idioma -->
+<head> <!-- Cabeçalho do documento, com metadados e informações gerais -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a viewport para responsividade em dispositivos móveis -->
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon"> <!-- relationship = indica para que serve o recurso que você está vinculando; hypertext reference = define o caminho do arquivo; type = tipo MIME do arquivo (seu formato, informa ao navegador como interpretá-lo) -->
+    <title>Exercícios HTML</title> <!-- Título da página, mostrado na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Link ao CSS externo, para a formatação de várias páginas -->
+    <style> /* CSS interno / local, para a formatação de apenas um documento (sobrepõe o estilo externo) */
+        body {
+            background-color: rgb(234, 212, 255); /* Declaração = propriedade: valor */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        h1 {
+            color: purple;
+            text-align: center;
+            text-decoration: underline;
+        }
+        h2 {
+            color: darkblue;
+            background-color: mediumseagreen;
+        }
+        mark {
+            background-color: rgb(91, 255, 113);
+        }
+    </style>
+</head>
+<body> <!-- Corpo do documento, onde fica o conteúdo visível -->
+    <h1>Título principal da página</h1> <!-- h = header; a hierarquia de títulos vai até h6 -->
+
+        <h2>Subtítulo 1</h2>
+            <h3>Subtítulo 1.1</h3>
+            <p style="color: crimson; background-color: cornflowerblue; font-family: 'Times New Roman', Times, serif; text-align: justify; font-size: 35px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perferendis deserunt harum rerum asperiores quos iure quisquam, optio voluptate ad voluptas esse modi et doloremque numquam ullam, vel ex quis.</p> <!-- CSS inline, para formatação pontual (prioridade, sobrepõe os estilos externo e interno) -->
+
+            <h3>Subtítulo 1.2</h3> 
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, enim iste a fugit repellat provident ducimus vitae, accusamus eos iure quibusdam rem? Vel repellendus nemo facere architecto quam consequatur asperiores!</p>
+
+                <h4>Subtítulo 1.2.1</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis quis cupiditate illum quasi accusamus magni neque fugiat. Maxime, aliquid reiciendis officia repellendus aut eaque doloremque vitae id iste! Est, quaerat!</p>
+
+                <h4>Subtítulo 1.2.2</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto dolores eveniet et omnis ex dolorum obcaecati ipsum temporibus, quae reiciendis, nihil, dolore est velit molestiae totam! Quam voluptatem magnam fuga.</p>
+
+        <h2>Subtítulo 2</h2>
+            <h3>Subtítulo 2.1</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, optio cum ad, aliquid natus ut delectus, error adipisci dignissimos eius repellendus illo tempore? Similique earum laborum quia minus commodi unde?</p>
+
+            <h3>Subtítulo 2.2</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam maiores culpa veritatis placeat, rem est dicta nobis amet, facilis maxime iure! Quod, eos! Reprehenderit provident quaerat blanditiis enim reiciendis neque.</p>
+
+    <hr> <!-- Linha horizontal -->
+
+        <h2>Símbolos especiais</h2> <!-- & indica início e ; fim de um caracter especial -->
+        <p>
+            &lt; <!-- less than -->
+            &gt; <!-- greater than -->
+            &amp; <!-- ampersand, e comercial -->
+            &quot; <!-- quote (aspas duplas), recomendado em atributos delimitados por " -->
+            &apos; <!-- (ou &#39;) apostrophe (apóstrofo/aspas simples) recomendado em atributos delimitados por ' -->
+            &nbsp; <!-- non-breaking space, usado para evitar quebras de linha -->
+        </p>
+
+        <h2>Emojis</h2> <!-- #x para indicar que o valor é em hexadecimal -->
+        <p>
+            &#x1F496; <!-- Sparkling Heart -->
+            &#x2705; <!-- Check Mark Button -->
+            &#x26A0;&#xFE0F; <!-- Warning Sign (&#xFE0F; força o estilo para emoji colorido) -->
+        </p>
+
+    <hr>
+
+    <p>
+        Para quebra de linhas, <br>
+        use a tag &lt;br&gt; (break).
+    </p>
+
+    <hr>
+
+        <h2>Imagens</h2> <!-- source = caminho do arquivo de imagem; alternative text = descrição exibida quando a imagem não carrega e para acessibilidade -->
+        <img src="logo_html5.png" alt="Logo HTML5"> <!-- Imagem na mesma pasta -->
+        <img src="imagens/logo_css3.jpg" alt="Logo CSS3"> <!-- Imagem em subpasta -->
+        <img src="https://t4.ftcdn.net/jpg/00/75/92/23/240_F_75922332_V8jiJ9I2F9d9HqV7RtPzUAxr5s7YHWOd.jpg" alt="Logo JavaScript"> <!-- Imagem externa -->
+
+    <hr>
+
+        <h2>Principais formatações, elementos semânticos e estruturais</h2>
+            <h3>Negrito</h3>
+            <p><b>Negrito</b> (&lt;b&gt;, de bold), apenas visual.</p>
+            <p>O mesmo <strong>destaque</strong>, porém com valor semântico (&lt;strong&gt;).</p>
+
+            <h3>Itálico</h3>
+            <p><i>Itálico</i> (&lt;i&gt;), apenas visual.</p>
+            <p>A mesma <em>ênfase</em>, porém com valor semântico (&lt;em&gt;, de emphasis).</p>
+
+            <h3>Marcação</h3>
+            <p><mark style="background-color: rgb(255, 91, 192);">Marcação</mark> (&lt;mark&gt;), com valor semântico.</p> <!-- CSS inline -->
+
+            <h3>Riscado</h3>
+            <p><s>Riscado</s> (&lt;s&gt;, de strike-through), apenas visual.</p>
+            <p>A mesma <del>formatação</del>, porém com valor semântico de texto deletado (&lt;del&gt;, de deleted).</p>
+
+            <h3>Sublinhado</h3>
+            <p><u>Sublinhado</u> (&lt;u&gt;, de underline), apenas visual.</p>
+            <p>A mesma <ins>formatação</ins>, porém com valor semântico de texto inserido (&lt;ins&gt;, de inserted).</p>
+
+            <h3>Texto sobrescrito e subscrito</h3>
+            <p><sup>Texto sobrescrito</sup> (&lt;sup&gt;, de superscript), apenas visual.</p>
+            <p><sub>Texto subscrito</sub> (&lt;sub&gt;, de subscript), apenas visual.</p>
+
+            <h3>Código-fonte e pré-formatação</h3>
+            <p><code>Texto de código</code> (&lt;code&gt;), com valor semântico.</p>
+<pre>
+A tag &lt;pre&gt; (preformatted) preserva espaços e quebras de linha:
+<code>n = int(input('Insira número:'))
+    if n % 2 == 0:
+        print('O número inserido é par.')
+    else:
+        print('O número inserido é ímpar.')</code>
+</pre>
+
+            <h3>Citações</h3>
+                <h4>Citação curta</h4>
+                <p>"Aspas" (", diretamente), apenas visual.</p>
+                <p>O mesmo <q>caractere</q>, porém com valor semântico de citação (&lt;q&gt;, de quote).</p>
+
+                <h4>Citação longa</h4>
+                <blockquote cite="nome, obra ou URL">
+                    A tag &lt;blockquote&gt; tem valor semântico.
+                </blockquote>
+
+            <h3>Abreviação ou sigla</h3> <!-- Para exibir tooltip com o significado de uma abreviação ou sigla -->
+            <p>A tag &lt;abbr&gt; (abbreviation) tem valor semântico. Exemplo:</p>
+            <p>Estou aprendendo <abbr title="HyperText Markup Language">HTML</abbr> e <abbr title="Cascading Style Sheets">CSS</abbr>!</p>
+
+            <h3>Listas</h3>
+                <h4>Lista ordenada</h4>
+                <ol type="a" start="2"> <!-- type=["1", "A", "a", "I", "i"] -->
+                    <li>&lt;li&gt; (list item)...</li>
+                    <li>...em &lt;ol&gt; (ordered list).</li>
+                </ol>
+
+                <h4>Lista não ordenada</h4>
+                <ul> <!-- CSS para o type -->
+                    <li>&lt;li&gt;...</li>
+                    <li>...em &lt;ul&gt; (unordered list).</li>
+                </ul>
+
+                <h4>Listas aninhadas</h4>
+                <ol type="I">
+                    <li>Exemplo:
+                        <ol>
+                            <li>exemplo.</li>
+                        </ol>
+                    </li>
+                    <li>Exemplo:
+                        <ul>
+                            <li>exemplo.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Lista de definições</h4>
+                <dl>
+                    <dt>&lt;dl&gt;</dt>
+                    <dd>definition list</dd>
+                    <dt>&lt;dt&gt;</dt>
+                    <dd>definition term</dd>
+                    <dt>&lt;dd&gt;</dt>
+                    <dd>definition description</dd>
+                </dl>
+            
+            <h3>Tabela</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;table&gt;</td>
+                        <td>Define a tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;thead&gt;</td>
+                        <td>Define o cabeçalho da tabela (opcional)</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;tbody&gt;</td>
+                        <td>Define o corpo da tabela</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;tr&gt; (table row)</td>
+                        <td>Define uma linha</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;th&gt; (table header)</td>
+                        <td>Define uma célula de cabeçalho</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;td&gt; (table data)</td>
+                        <td>Define uma célula de dados</td>
+                    </tr>
+                </tbody>
+            </table>
+
+    <hr>
+
+        <h2>Links</h2>
+        <p>A tag &lt;a&gt; (anchor) cria hiperlinks (ligações clicáveis que conectam uma página ou parte de um documento a outro recurso).</p>
+        <ul>
+            <li>Âncora = destino do link</li>
+            <li>href (hypertext reference) = define o caminho do recurso</li>
+            <li>target = define onde o link será aberto
+                <ul>
+                    <li>_self (padrão): mesma aba</li>
+                    <li>_blank: nova aba</li>
+                </ul>
+            </li>
+            <li>rel (relationship) = indica a relação entre o documento atual e o recurso vinculado
+                <ul>
+                    <li>Segurança e privacidade
+                        <ul>
+                            <li>noopener: evita que a página referenciada acesse window.opener (previne tabnabbing, nos quais a página externa poderia redirecionar a aba original para um site falso)</li>
+                            <li>noreferrer: também bloqueia window.opener e não envia o Referer HTTP ao link externo (impede que dados da URL original sejam expostos para o site externo)</li>
+                        </ul>
+                    </li>
+                    <li>Navegação e indexação (SEO)
+                        <ul>
+                            <li>dofollow (padrão): motor de busca pode seguir o link</li>
+                            <li>nofollow: instrui motores de busca a não seguirem o link (não transfere autoridade ao site vinculado)</li>
+                            <li>canonical: indica a URL canônica (a versão “oficial” ou principal) de uma página para SEO, quando existem URLs diferentes que mostram o mesmo conteúdo</li>
+                        </ul>
+                    </li>
+                    <li>Performance
+                        <ul>
+                            <li>preload: indica que o recurso deve ser carregado antecipadamente</li>
+                            <li>prefetch: sugere que o navegador carregue o recurso para uso futuro</li>
+                            <li>preconnect: estabelece conexão antecipada com um domínio externo</li>
+                        </ul>
+                    </li>
+                    <li>Estilo
+                        <ul>
+                            <li>stylesheet: define que o link é uma folha de estilo CSS</li>
+                        </ul>
+                    </li>
+                    <li>Navegação e estrutura de documentos
+                        <ul>
+                            <li>next / prev: indicam aos buscadores a relação entre páginas</li>
+                            <li>alternate: versão alternativa do documento (ex: RSS, tradução)</li>
+                        </ul>
+                    </li>
+                    <li>Metadados e conteúdo
+                        <ul>
+                            <li>author: link para o autor do documento</li>
+                            <li>license: indica a licença de uso do conteúdo</li>
+                            <li>help: fornece documentação de ajuda</li>
+                        </ul>
+                    </li>
+                    <li>Informação
+                        <ul>
+                            <li>external: indica que o link leva para um site externo</li>
+                            <li>friend: indica link de amizade ou rede social</li>
+                            <li>tag: relaciona link a uma tag ou categoria</li>
+                            <li>me: indica perfil próprio (WebID / OpenID)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>Exemplos:</p>
+        <ul>
+            <li><a href="https://github.com/Marcelohrr?tab=repositories" target="_blank" rel="external">Link externo</a>.</li>
+            <li><a href="pagina2.html" rel="next">Link interno</a>.</li> <!-- Se o caminho estiver em uma pasta: pasta/link.html; para voltar da pasta: ../link.html -->
+            <li><a href="download/livro.pdf" download>Link para download</a>.</li>
+        </ul>
+    
+    <hr>
+
+        <h2>Principais media types / tipos MIME (Multipurpose Internet Mail Extensions):</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Formato</th>
+                    <th>Tipo MIME</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>JPEG</td>
+                    <td>image/jpeg</td>
+                </tr>
+                <tr>
+                    <td>PNG</td>
+                    <td>image/png</td>
+                </tr>
+                <tr>
+                    <td>GIF</td>
+                    <td>image/gif</td>
+                </tr>
+                <tr>
+                    <td>SVG</td>
+                    <td>image/svg+xml</td>
+                </tr>
+                <tr>
+                    <td>WebP</td>
+                    <td>image/webp</td>
+                </tr>
+                <tr>
+                    <td>MP3</td>
+                    <td>audio/mpeg</td>
+                </tr>
+                <tr>
+                    <td>OGG</td>
+                    <td>audio/ogg</td>
+                </tr>
+                <tr>
+                    <td>WAV</td>
+                    <td>audio/wav, audio/x-wav</td>
+                </tr>
+                <tr>
+                    <td>MP4</td>
+                    <td>video/mp4</td>
+                </tr>
+                <tr>
+                    <td>WebM</td>
+                    <td>video/webm</td>
+                </tr>
+                <tr>
+                    <td>OGV</td>
+                    <td>video/ogg</td>
+                </tr>
+                <tr>
+                    <td>M4V</td>
+                    <td>video/x-m4v</td>
+                </tr>
+                <tr>
+                    <td>PDF</td>
+                    <td>application/pdf</td>
+                </tr>
+                <tr>
+                    <td>HTML</td>
+                    <td>text/html</td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>text/css</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>application/javascript, text/javascript</td>
+                </tr>
+            </tbody>
+        </table>
+
+    <hr>
+    
+        <h2>Apresentação</h2>
+        <p>Meu nome é <b>Marcelo Henrique Rosa Reis</b>, tenho 25 anos e sou de Belo Horizonte (MG). Sou bacharel em <i>Filosofia</i> pela PUC Minas (2024) e estou estudando HTML e CSS!</p>
+        <h2>Minhas redes sociais:</h2>
+        <ul>
+            <li>GitHub: <img src="imagens/icone-github.png" alt="Ícone do GitHub"><a href="https://github.com/Marcelohrr" target="_blank" rel="external">/Marcelohrr</a>.</li>
+            <li>LinkedIn: <img src="imagens/icone-linkedin.png" alt="Ícone do LinkedIn"><a href="https://www.linkedin.com/in/marcelohrr/" target="_blank" rel="external">/marcelohrr</a>.</li>
+            <li>Instagram: <img src="imagens/icone-instagram.png" alt="Ícone do Instagram"><a href="https://www.instagram.com/marcelohrr.ti/" target="_blank" rel="external">/marcelohrr.ti</a>.</li>
+        </ul>
+    
+    <hr>
+
+        <h2>Imagem responsiva</h2>
+        <picture> <!-- Para garantir a compatibilidade com diferentes telas -->
+            <source media="(max-width: 520px)" srcset="imagens/eu-p.jpg" type="image/jpeg"> <!-- Com a largura da área de visualização até 520px, carrega a imagem P -->
+            <source media="(max-width: 1000px)" srcset="imagens/eu-m.jpg" type="image/jpeg"> <!-- Se exceder 520px, até 1000px, carrega a imagem M -->
+            <img src="imagens/eu-g.jpg" alt="Foto do Marcelo sorrindo, com seus cachorrinhos (imagem dinâmica)"> <!-- Se exceder 1000px, carrega a imagem G -->
+        </picture>
+
+    <hr>
+
+        <h2>Reprodução de áudio</h2>
+        <audio controls preload="metadata"> <!-- Adiciona controles e carrega apenas metadados. E para garantir a compatibilidade com diferentes navegadores: -->
+            <source src="midia/audio.mp3" type="audio/mpeg"> <!-- Primeiro tenta reproduzir o MP3 (melhor compatibilidade) -->
+            <source src="midia/audio.ogg" type="audio/ogg"> <!-- Se MP3 não for suportado, tenta OGG (compacto) -->
+            <source src="midia/audio.wav" type="audio/wav"> <!-- Se OGG também não for suportado, tenta WAV (sem compressão, pesado) -->
+            <p>O navegador não conseguiu reproduzir o áudio. Para baixar o arquivo MP3, <a href="midia/audio.mp3">clique aqui</a>.</p> <!-- Fallback: se nenhum formato for reproduzido, exibe este conteúdo -->
+        </audio>
+    
+    <hr>
+
+        <h2>Reprodução de vídeo</h2>
+            <h3>Hospedagem própria</h3>
+            <video controls preload="metadata" width="608" height="342" poster="imagens/capa.png"> <!-- Adiciona controles, carrega apenas metadados, define largura e thumbnail. E para garantir a compatibilidade com diferentes navegadores: -->
+                <source src="midia/video.mp4" type="video/mp4"> <!-- Primeiro tenta reproduzir o MP4 (melhor compatibilidade) -->
+                <source src="midia/video.webm" type="video/webm"> <!-- Se MP4 não for suportado, tenta WebM (compacto) -->
+                <source src="midia/video.ogv" type="video/ogg"> <!-- Se WebM também não for suportado, tenta OGV (variação de OGG para vídeo) -->
+                <p>O navegador não conseguiu reproduzir o vídeo. Para baixar o arquivo MP4, <a href="midia/video.mp4">clique aqui</a>.</p>
+            </video>
+
+            <h3>Incorporação de vídeos externos</h3> <!-- No site do vídeo: compartilhar, incorporar e copiar -->
+                <h4>YouTube</h4> <!-- Para vídeos públicos e gratuitos, o YouTube é a melhor opção -->
+                <iframe width="608" height="342" src="https://www.youtube.com/embed/c5vh7jtrW2Y?si=Q1XWxkmkO1no-1Zk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                
+                <h4>Vimeo</h4> <!-- Para vídeos de acesso restrito (como por assinatura), uma alternativa é o Vimeo (e pagar pela hospedagem do vídeo) -->
+                <div style="padding:177.78% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1114297044?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="i am a crunchwrap supreme"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+            <h3>Referência</h3>
+            <a href="pagina-referencia.html" rel="next" title="Link interno para página de referência do vídeo de exercício que estou praticando">
+                <img src="https://img.youtube.com/vi/gqrySQQzvvQ/maxresdefault.jpg" alt="Thumbnail do vídeo 'Desafio: um site com vídeos - @Curso em Vídeo HTML5 e CSS3' no YouTube">
+            </a>
+</body>
+</html>
