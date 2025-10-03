@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-* {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
     background-image: linear-gradient(to bottom, #BF8563, #594B2F);
     background-attachment: fixed;
@@ -19,6 +15,10 @@ main { /* Retângulo de conteúdo dentro da página */
     box-shadow: 10px 10px 80px #8c262680; /* Parâmetros de sombreamento: deslocamento horizontal (offset-x), deslocamento vertical (offset-y), raio de desfoque (blur-radius) e cor da sombra */
 }
 
+h1, h2 {
+    font-family: 'Times New Roman', Times, serif; /* Categorias de fontes: serif (serifadas); sans-serif (não-serifadas); monospace (monoespaçadas); cursive/script (imitações de manuscrita); fantasy/decorative/display (decorativas) */
+}
+
 h1 {
     color: #8C2626;
     text-align: center;
@@ -30,5 +30,6 @@ h2 {
 }
 
 p {
+    font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
 }
