@@ -2,6 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap'); /* Importa fonte do Google Fonts */
 
+@font-face { /* Regra para importar fontes externas */
+    font-family:'MorrisRomanBlack';
+    src: url('fonts/MorrisRomanBlack.otf') format('opentype'), url('fonts/MorrisRomanBlack.ttf') format('truetype'); /* O melhor entre .otf e .ttf depende do navegador. Tipos de format(): opentype (.otf), truetype (.ttf), embedded-opentype, truetype-aat (Apple Advanced Typography), svg */
+}
+
 html {
     font-size: 1rem; /* Existem várias formas para representar medidas de fonte: medidas absolutas (cm, mm, in, px, pt, pc) e medidas relativas (em, ex, ch, rem, vw, vh, vmin, vmax, %). O W3C recomenda o uso de medidas relativas para melhorar a acessibilidade, especialmente rem (root em = tamanho da fonte definido no elemento <html>, raiz, que é por padrão 16px), mais previsível que em (que pode acumular tamanhos) */
 }
@@ -27,7 +32,7 @@ main { /* Retângulo de conteúdo dentro da página */
 }
 
 h1, h2 {
-    font: oblique 700 2rem 'Times New Roman', Times, serif; /* Shorthand font: font-style font-weight font-size font-family */
+    font: oblique 700 2rem 'MorrisRomanBlack', Times, serif; /* Shorthand font: font-style font-weight font-size font-family */
 }
 
 h1 {
