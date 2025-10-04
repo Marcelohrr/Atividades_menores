@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+html {
+    font-size: 1rem; /* Existem várias formas para representar medidas de fonte: medidas absolutas (cm, mm, in, px, pt, pc) e medidas relativas (em, ex, ch, rem, vw, vh, vmin, vmax, %). O W3C recomenda o uso de medidas relativas para melhorar a acessibilidade, especialmente rem (root em = tamanho da fonte definido no elemento <html>, raiz, que é por padrão 16px), mais previsível que em (que pode acumular tamanhos) */
+}
+
 body {
     background-image: linear-gradient(to bottom, #BF8563, #594B2F);
     background-attachment: fixed;
