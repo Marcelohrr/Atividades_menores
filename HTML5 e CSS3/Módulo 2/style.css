@@ -47,4 +47,13 @@ h2 {
 
 p {
     text-align: justify;
+    text-indent: 20px; /* Indenta a primeira linha do parágrafo */
+}
+
+p#identificador { /* Seletor personalizado para todos os parágrados marcados com a tag id="identificador" */
+    color: crimson
+}
+
+#id-diferentes-elementos { /* Seletor personalizado para todos os elementos marcados com a tag id="id-diferentes-elementos" */
+    color: darkgoldenrod;
 }
