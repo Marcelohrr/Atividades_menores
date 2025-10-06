@@ -50,10 +50,18 @@ p {
     text-indent: 20px; /* Indenta a primeira linha do parágrafo */
 }
 
-p#identificador { /* Seletor personalizado para todos os parágrados marcados com a tag id="identificador" */
-    color: crimson
+h2#identificador { /* Seletor personalizado para o título de segundo nível marcado com a tag id="identificador" */
+    color: darkgoldenrod;
 }
 
-#id-diferentes-elementos { /* Seletor personalizado para todos os elementos marcados com a tag id="id-diferentes-elementos" */
-    color: darkgoldenrod;
+#id-generico { /* Seletor personalizado para o elemento (qualquer) marcado com a tag id="id-generico" */
+    color: blueviolet;
+}
+
+.classe { /* Cada identificador deve ser exclusivo a uma única tag; para aplicar o mesmo estilo a multiplos elementos, o correto é usar classes. Também pode ser especificado qual elemento, como no id, mas é mais usual não especificar, pela reusabilidade */
+    color: crimson;
+}
+
+.destaque {
+    background-color: #ffff0080;
 }
