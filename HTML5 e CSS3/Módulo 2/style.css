@@ -124,14 +124,55 @@ a:active {
     color: darkgoldenrod;
 }
 
-a::before { /* Pseudo-elemento = aplica estilo ou insere conteúdo em partes específicas de um elemento */
+a#personalizando-links::before { /* Pseudo-elemento = aplica estilo ou insere conteúdo em partes específicas de um elemento */
     content: '🔗';
     color: #BF8563;
     text-decoration: none;
 }
 
-a::after { 
+a#personalizando-links::after { 
     content: ' (link externo)';
     color: #BF8563;
     text-decoration: none;
+}
+
+p#box-level { /* display: block (padrão) */
+    background-color: #BF8563;
+    height: 100px;
+    width: 400px;
+
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    /* Shorthand = padding: 20px 20px 20px 20px; (top right bottom left) - se todas as medidas forem iguais, basta: padding: 20px; */
+
+    border-width: 10px;
+    border-style: solid;
+    border-color: #594B2F;
+    /* Shorthand = border: 10px solid #594B2F; (width style color) */
+
+    outline-width: 10px;
+    outline-style: dashed;
+    outline-color:#8C2626; /* Contorno dentro da margem */
+    /* Shorthand = outline: 10px dashed #8C2626; (width style color) */
+
+    margin-top: 40px; /* "margin: auto" centraliza a caixa horizontalmente*/
+    margin-right: 20px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    /* Shorthand = margin: 40px 20px 40px 20px; (top right bottom left) - se a medida de top for igual à de bottom e a de left à de right, basta: margin: 40px 20px; (top+bottom right+left) */
+}
+
+a#inline-level { /* display: inline (padrão) */
+    background-color: #BF8563;
+
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    border-color: #594B2F;
+    border-style: solid;
+    border-width: 10px;
 }
