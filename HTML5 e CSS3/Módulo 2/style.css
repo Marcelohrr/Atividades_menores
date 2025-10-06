@@ -24,7 +24,8 @@ body {
 main { /* Retângulo de conteúdo dentro da página */
     background-color: white;
     color: black;
-    width: 1000px; /* Largura fixa */
+    width: 90%; /* Largura fluida */
+    max-width: 1000px;
     padding: 10px; /* Preenchimento ou margem interna para o texto */
     margin: auto; /* Margem externa para centralizar o conteúdo, independentemente do tamanho da janela */
     border-radius: 10px; /* Arredonda as bordas */
@@ -64,4 +65,43 @@ h2#identificador { /* Seletor personalizado para o título de segundo nível mar
 
 .destaque {
     background-color: #ffff0080;
+}
+
+div {
+    display: inline-block; /* define como um elemento é exibido na página (inline, block, inline-block, none) */
+    background-color: #BF8563;
+    border: 1px solid black; /* shorthand que aceita os parâmetros: largura estilo (none, solid, dashed, dotted, double, groove, ridge, inset, outset) cor */
+    height: 200px;
+    width: 250px;
+}
+
+div:hover { /* Pseudoclasse = estado de um elemento estilizável (deve estar relacionada a um elemento ou a uma classe) */
+    background-color: #594B2F;
+}
+
+div:active {
+    background-color: #8C2626;
+}
+
+div > p.invisivel-hover, /* div > p = para o p que é filho de div */
+div > p.invisivel-active {
+    display: none; /* Por padrão não exibe nenhum texto escondido */
+}
+
+div:hover > p.visivel,
+div:hover > p.invisivel-active {
+    display: none; /* Ao passar o mouse, oculta o texto inicial e o que aparece no clique */
+}
+
+div:hover > p.invisivel-hover {
+    display: block; /* Ao passar o mouse, exibe o texto escondido */
+}
+
+div:active > p.visivel,
+div:active > p.invisivel-hover {
+    display: none; /* Ao clicar, oculta o texto inicial e o que aparece no clique */
+}
+
+div:active > p.invisivel-active {
+    display: block; /* Ao clicar, exibe o segundo texto escondido */
 }
