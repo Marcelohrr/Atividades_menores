@@ -105,3 +105,33 @@ div:active > p.invisivel-hover {
 div:active > p.invisivel-active {
     display: block; /* Ao clicar, exibe o segundo texto escondido */
 }
+
+a {
+    color: crimson;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:visited {
+    color:#594B2F;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    color: darkgoldenrod;
+}
+
+a::before { /* Pseudo-elemento = aplica estilo ou insere conteúdo em partes específicas de um elemento */
+    content: '🔗';
+    color: #BF8563;
+    text-decoration: none;
+}
+
+a::after { 
+    content: ' (link externo)';
+    color: #BF8563;
+    text-decoration: none;
+}
