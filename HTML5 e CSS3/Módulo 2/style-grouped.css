@@ -14,7 +14,7 @@ header {
     max-width: 1000px;
     padding: 0px 10px 10px 10px;
     margin: 10px auto;
-    border-radius: 10px;
+    border-radius: 10px 0px;
     box-shadow: 10px 10px 50px #034159;
 }
 
@@ -58,7 +58,7 @@ main {
     max-width: 1000px;
     padding: 10px 10px 10px 10px;
     margin: 10px auto;
-    border-radius: 10px;
+    border-radius: 10px 0px;
     box-shadow: 10px 10px 50px #034159;
 }
 
@@ -112,3 +112,15 @@ footer {
         padding: 10px;
         margin: 0px;
     }
+
+div#circulo {
+    background-color: white;
+
+    height: 100px;
+    width: 100px;
+
+    margin: 10px auto;
+    border-radius: 50%;
+    
+    text-align: center;
+}
