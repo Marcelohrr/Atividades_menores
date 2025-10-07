@@ -18,6 +18,39 @@ header {
     box-shadow: 10px 10px 50px #034159;
 }
 
+    h1{
+        padding: 10px;
+        margin: 0px auto;
+
+        text-align: center;
+    }
+
+    nav {
+        background-color: #02735E80;
+
+        padding: 10px;
+        margin: 0px;
+        border-radius: 10px;
+    }
+
+    nav > a {
+        display: block;
+
+        color: #038C3E;
+
+        margin: 0px;
+
+        text-decoration: none;
+    }
+
+    nav > a:hover {
+        text-decoration: underline;
+    }
+
+    nav > a:visited {
+        color: #034159;
+    }
+
 main {
     background-color: white;
 
@@ -29,6 +62,43 @@ main {
     box-shadow: 10px 10px 50px #034159;
 }
 
+    section {
+        background-color: #02735E80;
+
+        padding: 10px 10px;
+        margin: 0px;
+        border-radius: 10px;
+    }
+
+    section#assuntos {
+        margin: 0px 0px 10px 0px;
+    }
+
+        section > p {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        article {
+            background-color: #02735E80;
+            
+            padding: 0px 10px 10px 10px;
+            margin: 0px;
+            border-radius: 10px;
+        }
+
+            article > h2 {
+                padding: 10px 0px 0px 0px;
+                margin: 0px
+            }
+
+            article > aside {
+                background-color: #02595180;
+
+                padding: 10px;
+                border-radius: 10px;
+            }
+
 footer {
     background-color: black;
     color: white;
@@ -38,78 +108,7 @@ footer {
     text-align: center;
 }
 
-h1{
-    padding: 10px;
-    margin: 0px auto;
-
-    text-align: center;
-}
-
-nav {
-    background-color: #02735E80;
-
-    padding: 10px;
-    margin: 0px;
-    border-radius: 10px;
-}
-
-nav > a {
-    display: block;
-
-    color: #038C3E;
-
-    margin: 0px;
-
-    text-decoration: none;
-}
-
-nav > a:hover {
-    text-decoration: underline;
-}
-
-nav > a:visited {
-    color: #034159;
-}
-
-section {
-    background-color: #02735E80;
-
-    padding: 10px 10px;
-    margin: 0px;
-    border-radius: 10px;
-}
-
-section#assuntos {
-    margin: 0px 0px 10px 0px;
-}
-
-section > p {
-    padding: 0px;
-    margin: 0px;
-}
-
-article {
-    background-color: #02735E80;
-    
-    padding: 0px 10px 10px 10px;
-    margin: 0px;
-    border-radius: 10px;
-}
-
-article > h2 {
-    padding: 10px 0px 0px 0px;
-    margin: 0px
-}
-
-article > aside {
-    background-color: #02595180;
-
-    padding: 10px;
-    border-radius: 10px;
-
-}
-
-footer > p {
-    padding: 10px;
-    margin: 0px;
-}
+    footer > p {
+        padding: 10px;
+        margin: 0px;
+    }
