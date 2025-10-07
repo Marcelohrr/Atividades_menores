@@ -136,7 +136,7 @@ a#personalizando-links::after {
     text-decoration: none;
 }
 
-p#box-level { /* display: block (padrão) */
+p#block-level { /* display: block (padrão) */
     background-color: #BF8563;
     height: 100px;
     width: 400px;
