@@ -1,15 +1,171 @@
 @charset "UTF-8";
 
-html, body {
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+@font-face {
+    font-family: "Philosopher";
+    src: url(../fontes/Philosopher.ttf) format("truetype");
+    font-weight: normal;
+}
+
+:root {
+    --cor-logo: #0033bf;
+    --cor-cabecalho1: #F3E278;
+    --cor-cabecalho2: #C59538;
+    --cor-cabecalho3: #805B1D;
+
+    --cor-menu-e-footer: #44220b;
+    
+    --cor-aside-e-links: #8ba6c7;
+    --cor-background-claro: #D9C8A9;
+    --cor-background-escuro: #C8A36A;
+
+    --fonte-padrao: "Times New Roman", Times, serif;
+    --fonte-titulos: "Lora", serif; /*entender melhor função, depois trocar nome "destaque"*/
+    --fonte-logo: "Philosopher", serif;
+}
+
+* {
     margin: 0;
+    padding: 0;
+}
+
+html, body {
     min-height: 100%; /* Garante que o body tenha pelo menos a altura da tela, mas permite que aumente se houver mais conteúdo (evitando scroll com fundo em branco) */
+
+    font-family: var(--fonte-padrao);
 }
 
 body {
-    background-image: linear-gradient(0deg, #BFAE99, #D9C8A9);
+    background-image: linear-gradient(0deg, var(--cor-background-escuro), var(--cor-background-claro));
     background-size: cover; /* Faz o gradiente cobrir toda a área do <body>, ajustando-se à largura e altura do conteúdo */
 }
 
-cores {
-    background-color: #656A73, #65768C, #D9C8A9, #BFAE99, #0D0D0D;
+header {
+    background-image: linear-gradient(45deg, var(--cor-cabecalho1), var(--cor-cabecalho2), var(--cor-cabecalho3));
+}
+
+header > h1 {
+    color: var(--cor-logo);
+
+    font: 2.5rem var(--fonte-logo);
+    font-weight: 800;
+    
+    padding: 1rem 0 0 1rem;
+}
+
+header > p {
+    color: var(--cor-logo);
+    
+    font: 1.2rem var(--fonte-titulos);
+    font-weight: 800;
+
+    margin: 0.5rem 0 0 0;
+    padding: 0 0 1rem 1rem;
+}
+
+nav {
+    background-color: var(--cor-menu-e-footer);
+
+    padding: 1rem 0 1rem 1rem;
+}
+
+nav > a {
+    color: var(--cor-aside-e-links);
+
+    margin: 0 1rem 0 0;
+
+    font: 1rem var(--fonte-titulos);
+    font-weight: 800;
+}
+
+main {
+    background-color: white;
+
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+main h2 {
+    font: 2rem var(--fonte-titulos);
+    font-weight: 800;
+    
+    text-align: center;
+    text-decoration: underline;
+}
+
+main h3 {
+    margin: 1rem 0 0 0;
+    
+    font: 1.8rem var(--fonte-titulos);
+    font-weight: 600;
+}
+
+p {
+    font: 1.2rem var(--fonte-padrao);
+    font-weight: 500;
+    text-align: justify;
+}
+
+main p {
+    margin: 1rem 0;
+}
+
+main p#ultimo {
+    margin: 1rem 0 0 0;
+}
+
+/*
+main img {
+
+}
+*/
+
+main div#video {
+    margin: 0 0 0.5rem 0;
+}
+
+aside {
+    background-color: var(--cor-aside-e-links);
+
+    margin: 0.5rem 0 0 0;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+aside > h4 {
+    margin: 0 0 1rem 0;
+
+    font: 1.8rem var(--fonte-titulos);
+    font-weight: 600;
+}
+
+aside > p {
+    margin: 0;
+}
+
+aside > ul {
+    margin: 0.5rem 0 0.5rem 2rem;
+}
+
+li {
+    margin: 0.2rem 0;
+}
+
+footer {
+    background-color: var(--cor-menu-e-footer);
+
+    font-weight: 800;
+    font-family: var(--fonte-titulos);
+
+    padding: 1rem 0 1rem 1rem;
+}
+
+footer > p {
+    color: white;
+}
+
+footer a {
+    color: var(--cor-aside-e-links);
 }
