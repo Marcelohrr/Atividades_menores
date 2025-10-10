@@ -15,10 +15,11 @@
     --cor-cabecalho3: #805B1D;
 
     --cor-menu-e-footer: #44220b;
-    
     --cor-aside-e-links: #8ba6c7;
+
     --cor-background-claro: #D9C8A9;
     --cor-background-escuro: #C8A36A;
+    --cor-sombra: #282115;
 
     --fonte-padrao: "Times New Roman", Times, serif;
     --fonte-titulos: "Lora", serif; /*entender melhor função, depois trocar nome "destaque"*/
@@ -82,8 +83,10 @@ nav > a {
 main {
     background-color: white;
 
-    margin: 0.5rem;
-    border-radius: 0.5rem;
+    min-width: 320px; /* Largura de celulares bem antigos */
+    max-width: 1245px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px var(--cor-sombra);
     padding: 0.5rem;
 }
 
@@ -116,11 +119,14 @@ main p#ultimo {
     margin: 1rem 0 0 0;
 }
 
-/*
-main img {
-
+main img.responsiva {
+    width: 100%;
 }
-*/
+
+main img#fixa {
+    display: block;
+    margin: auto;
+}
 
 main div#video {
     margin: 0 0 0.5rem 0;
