@@ -89,6 +89,8 @@ nav {
 }
 
 nav > a {
+    white-space: nowrap; /* Impede a quebra de linha dentro do texto */
+
     color: var(--cor-aside-e-links1);
 
     margin: 0 1rem 0 0;
@@ -171,7 +173,21 @@ main img#fixa {
 }
 
 main div#video {
-    margin: 0 0 0.5rem 0;
+    background-color: var(--cor-sombra-e-strong);
+
+    margin: 0 -0.5rem 0.5rem -0.5rem;
+    padding: 0.2rem 0 51.7% 0;
+
+    position: relative; /* Necessário para o posicionamento absoluto do iframe */
+}
+
+main div#video > iframe {
+    position: absolute;
+
+    top: 0.5%;
+    left: 5%;
+    width: 90%;
+    height: 99%;
 }
 
 aside {
@@ -212,6 +228,8 @@ li {
 }
 
 aside a {
+    white-space: nowrap;
+
     color: var(--cor-logo-e-links2);
     background-color: var(--cor-cabecalho1-e-links3);
 
@@ -246,6 +264,8 @@ footer > p {
 }
 
 footer a {
+    white-space: nowrap;
+    
     color: var(--cor-aside-e-links1);
     text-decoration: none;
 }
