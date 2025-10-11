@@ -1438,3 +1438,4 @@ def cadastro():
 from pacote_funções import funções
 
 funções.programa()
+.
