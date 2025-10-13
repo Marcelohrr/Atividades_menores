@@ -152,6 +152,7 @@ main p {
 
 main p#ultimo {
     margin: 1rem 0 0 0;
+    text-indent: 0;
 }
 
 main strong {
