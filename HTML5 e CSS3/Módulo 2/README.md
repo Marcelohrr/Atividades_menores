@@ -3,3 +3,4 @@
 1. [cores.html](https://marcelohrr.github.io/Atividades_menores/HTML5%20e%20CSS3/M%C3%B3dulo%202/cores.html)
 2. [site.html](https://marcelohrr.github.io/Atividades_menores/HTML5%20e%20CSS3/M%C3%B3dulo%202/site.html)
 3. [exercicio-grupos.html](https://marcelohrr.github.io/Atividades_menores/HTML5%20e%20CSS3/M%C3%B3dulo%202/exercicio-grupos.html)
+4. [projeto-filosofia.html](https://marcelohrr.github.io/Atividades_menores/HTML5%20e%20CSS3/M%C3%B3dulo%202/projeto/projeto-filosofia.html)
