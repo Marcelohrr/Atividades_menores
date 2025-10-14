@@ -192,6 +192,10 @@ main div#video > iframe {
     height: 99%;
 }
 
+main a {
+    color: var(--cor-logo-e-links2);
+}
+
 aside {
     background-color: var(--cor-aside-e-links1);
 
