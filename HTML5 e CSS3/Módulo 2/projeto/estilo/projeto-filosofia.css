@@ -153,6 +153,7 @@ main p {
 main p#ultimo {
     margin: 1rem 0 0 0;
     text-indent: 0;
+    overflow-wrap: break-word; /* Para quebrar URL longa */
 }
 
 main strong {
@@ -260,6 +261,8 @@ footer {
 
 footer > p {
     color: white;
+
+    padding: 0 1rem 0 0;
 
     text-align: center;
 }
