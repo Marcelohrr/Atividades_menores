@@ -1,5 +1,61 @@
 @charset "UTF-8";
 
-body {
-    background-color: lightgray;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh; /* Garante que o fundo sempre ocupe a tela inteira, mesmo que o conteúdo seja pequeno */
+    background-color: darkgray;
+}
+
+header, footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+header > h1 {
+    padding: 1rem 0 0.5rem 0;
+}
+
+header > p {
+    padding: 0.5rem 0 1rem 0;
+}
+
+header a, footer a {
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+header a:hover, footer a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 10vh;
+    line-height: 1.5rem;
+}
+
+section.normal {
+    background-color: white;
+    color: black;
+}
+
+section.imagem {
+    background-color: #222222;
+    background-position: right center;
+    color: white;
+    text-align: right;
+}
+
+section > p {
+    padding: 1rem;
+}
+
+section.imagem > p {
+    background-color: #00000050;
 }
