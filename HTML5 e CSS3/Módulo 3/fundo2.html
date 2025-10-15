@@ -3,16 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalização dos fundos</title>
+    <title>Fundos 2</title>
     <style>
         body {
             background-image: url("https://marcelohrr.github.io/Atividades_menores/HTML5%20e%20CSS3/M%C3%B3dulo%202/projeto/imagens/school-of-athens.jpg");
             background-size: 400px 183px; /* Padrão = dimensões originais; Parâmetros: width height */
-            background-repeat: repeat-y;/* Padrão = repeat; Outros parâmetros: no-repeat / repeat-x / repeat-y */
+            background-repeat: repeat-x;/* Padrão = repeat; Outros parâmetros: no-repeat / repeat-x / repeat-y */
+        }
+
+        h1#contraste {
+            color: black;
+            background-color: white;
+            width: fit-content; /* Ajusta a largura do elemento ao conteúdo */
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        h1#distancia {
+            margin-top: 150px;
+        }
+
+        div.bloco {
+            background-image: url(imagens/wallpaper003.jpg);
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 1000px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        div#b1 {
+            background-position: left top; /* Padrão = 0% 0% */
+        }
+
+        div#b2 {
+            background-position: left center;
+        }
+
+        div#b3 {
+            background-position: right bottom;
+        }
+
+        div#b4 {
+            background-position: center center;
         }
     </style>
 </head>
 <body>
-    
+    <h1 id="contraste">Personalização dos fundos</h1>
+
+    <h1 id="distancia">Posição dos fundos</h1>
+    <div class="bloco" id="b1">
+
+    </div>
+    <div class="bloco" id="b2">
+
+    </div>
+    <div class="bloco" id="b3">
+
+    </div>
+    <div class="bloco" id="b4">
+
+    </div>
 </body>
 </html>
