@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas</title>
+    <style>
+        table {
+            width: 500px;
+            border-collapse: collapse; /* Padrão = separate */
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>1</h1>
+    <!--
+        Hierarquia de tabelas simplificada:
+        table
+            tr (table row)
+                th (célula de cabeçalho)
+                td (célula de dado)
+
+        Hierarquia completa:
+        table
+            caption (título da tabela)
+            thead
+                tr
+                    th
+            tbody (mesmo ausente, é inserido automaticamente pelo navegador)
+                tr
+                    td
+            tfoot (rodapé)
+                tr
+                    td
+    -->
+    <table>
+        <tr>
+            <td>A1</td>
+            <td>B1</td>
+            <td>C1</td>
+        </tr>
+        <tr>
+            <td>A2</td>
+            <td>B2</td>
+            <td>C2</td>
+        </tr>
+        <tr>
+            <td>A3</td>
+            <td>B3</td>
+            <td>C3</td>
+        </tr>
+        <tr>
+            <td>A4</td>
+            <td>B4</td>
+            <td>C4</td>
+        </tr>
+    </table>
+</body>
+</html>
