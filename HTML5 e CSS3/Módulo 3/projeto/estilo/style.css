@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: "UnifrakturMaguntia";
+    src: url(../fontes/UnifrakturMaguntia-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url(../fontes/CormorantGaramond-VariableFont_wght.ttf) format("truetype");
+}
+
+:root {
+    --fonte-padrao: "CormorantGaramond", Times, serif;
+    --fonte-titulo: "UnifrakturMaguntia", "CormorantGaramond", Times, serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,27 +23,31 @@
 html, body {
     min-height: 100vh; /* Garante que o fundo sempre ocupe a tela inteira, mesmo que o conteúdo seja pequeno */
     background-color: darkgray;
+
+    font: 500 25px var(--fonte-padrao); /* font-weight font-size font-family */
 }
 
 header, footer {
     background-color: black;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 20px;
 }
 
 header > h1 {
-    padding: 1rem 0 0.5rem 0;
+    padding: 20px 0 10px 0;
+    font: 500 50px var(--fonte-titulo);
 }
 
 header > p {
-    padding: 0.5rem 0 1rem 0;
+    padding: 10px 0 20px 0;
 }
 
 header a, footer a {
     color: white;
     font-weight: 800;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 header a:hover, footer a:hover {
@@ -36,7 +55,7 @@ header a:hover, footer a:hover {
 }
 
 section {
-    padding: 10vh;
+    padding: 5vh 10vh;
     line-height: 1.5rem;
 }
 
@@ -52,10 +71,15 @@ section.imagem {
     text-align: right;
 }
 
-section > p {
-    padding: 1rem;
+div.fundo {
+    display: inline-block;
+    background-color: #00000050;
 }
 
-section.imagem > p {
-    background-color: #00000050;
+section p {
+    padding: 20px;
+}
+
+footer > p {
+    font-size: 20px;
 }
