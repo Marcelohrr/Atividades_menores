@@ -121,17 +121,21 @@
         }
 
         table.tres {
-            
             width: 200px;
             height: 200px;
             border-collapse: collapse;
         }
 
-        td.tres {
+        td.tres, th.tres {
             border: 1px solid black;
             padding: 5px;
             text-align: center;
             vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        caption.tres {
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -181,7 +185,7 @@
             <tr>
                 <th scope="col" class="dois">Nº na Pokédex</th>
                 <th scope="col" class="dois">Nome</th>
-                <th colspan="2" scope="col" class="dois">Tipo</th>
+                <th scope="colgroup" colspan="2" class="dois">Tipo(s)</th>
             </tr>
         </thead>
 
@@ -674,6 +678,58 @@
         <tr>
             <td colspan="4" class="tres">M</td>
         </tr>
+    </table>
+
+    <table class="tres">
+        <caption class="tres">Filmes favoritos entre mulheres e homens</caption>
+        <thead>
+            <tr>
+                <th scope="col" class="tres">Grupo</th>
+                <th scope="col" class="tres">Nomes</th>
+                <th scope="colgroup" class="tres" colspan="3">Filmes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th scope="rowgroup" class="tres" rowspan="3">Mulheres</th>
+                <td class="tres">Ana</td>
+                <td class="tres">Meninas Malvadas</td>
+                <td class="tres">Legalmente Loira</td>
+                <td class="tres">Meninas Malvadas 2</td>
+            </tr>
+            <tr>
+                <td class="tres">Beatriz</td>
+                <td class="tres">Me Chame Pelo Seu Nome</td>
+                <td class="tres">La La Land</td>
+                <td class="tres">Titanic</td>
+            </tr>
+            <tr>
+                <td class="tres">Carla</td>
+                <td class="tres">O Labirinto do Fauno</td>
+                <td class="tres">O Fabuloso Destino de Amélie Poulain</td>
+                <td class="tres">Sociedade dos Poetas Mortos</td>
+            </tr>
+            <tr>
+                <th scope="rowgroup" class="tres" rowspan="3">Homens</th>
+                <td class="tres">Daniel</td>
+                <td class="tres">Matrix</td>
+                <td class="tres">Taxi Driver</td>
+                <td class="tres">Clube da Luta</td>
+            </tr>
+            <tr>
+                <td class="tres">João</td>
+                <td class="tres">The Wolf House</td>
+                <td class="tres">The Babadook</td>
+                <td class="tres">Irreversible</td>
+            </tr>
+            <tr>
+                <td class="tres">Eduardo</td>
+                <td class="tres">Star Wars: Episódio V - O Império Contra-Ataca</td>
+                <td class="tres">O Senhor dos Anéis: A Sociedade do Anel</td>
+                <td class="tres">De Volta para o Futuro</td>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>
