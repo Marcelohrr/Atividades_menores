@@ -27,7 +27,7 @@
             position: relative; /* Necessário para o sticky funcionar */
         }
 
-        thead.dois {
+        thead.dois, tfoot.dois {
             background-color: #ff2222;
             color: white;
         }
@@ -38,14 +38,100 @@
             text-align: center;
         }
 
+        td.dois.planta {
+            background-color: #2dcd45;
+        }
+
+        td.dois.venenoso {
+            background-color: #883688;
+            color: white;
+        }
+
+        td.dois.fogo {
+            background-color: #f08030;
+        }
+
+        td.dois.agua {
+            background-color: #149eff;
+        }
+
+        td.dois.inseto {
+            background-color: #a8b820;
+        }
+
+        td.dois.normal {
+            background-color: #a8a878;
+        }
+
+        td.dois.voador {
+            background-color: #a890f0;
+        }
+
+        td.dois.eletrico {
+            background-color: #f8d030;
+        }
+
+        td.dois.terra {
+            background-color: #e0c068;
+        }
+
+        td.dois.fada {
+            background-color: #ee99ac;
+        }
+
+        td.dois.lutador {
+            background-color: #94352d;
+            color: white;
+        }
+
+        td.dois.psiquico {
+            background-color: #ff6996;
+        }
+
+        td.dois.pedra {
+            background-color: #b8a038;
+        }
+
+        td.dois.aço {
+            background-color: #b8b8d0;
+        }
+
+        td.dois.fantasma {
+            background-color: #614c83;
+            color: white;
+        }
+
+        td.dois.gelo {
+            background-color: #98d8d8;
+        }
+
+        td.dois.dragao {
+            background-color: #614c83;
+            color: white;
+        }
+
         thead.dois th.dois {
             position: sticky; /* Fixa o cabeçalho */
             background-color: #ff2222; /* Necessário redefinir a cor de fundo */
             top: -1px; /* Distância do topo da página */
         }
 
-        tbody > tr:nth-child(even) {
+        tbody > tr.dois:nth-child(even) {
             background-color: lightgray;
+        }
+
+        table.tres {
+            
+            width: 200px;
+            height: 200px;
+            border-collapse: collapse;
+        }
+
+        td.tres {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -95,434 +181,499 @@
             <tr>
                 <th scope="col" class="dois">Nº na Pokédex</th>
                 <th scope="col" class="dois">Nome</th>
-                <th scope="col" class="dois">Tipo</th>
+                <th colspan="2" scope="col" class="dois">Tipo</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr>
+            <tr class="dois">
                 <td class="dois">001</td>
                 <td class="dois">Bulbasaur</td>
-                <td class="dois">Planta/Venenoso</td>
+                <td class="dois planta">Planta</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">004</td>
                 <td class="dois">Charmander</td>
-                <td class="dois">Fogo</td>
+                <td colspan="2" class="dois fogo">Fogo</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">007</td>
                 <td class="dois">Squirtle</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">010</td>
                 <td class="dois">Caterpie</td>
-                <td class="dois">Inseto</td>
+                <td colspan="2" class="dois inseto">Inseto</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">013</td>
                 <td class="dois">Weedle</td>
-                <td class="dois">Inseto/Venenoso</td>
+                <td class="dois inseto">Inseto</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">016</td>
                 <td class="dois">Pidgey</td>
-                <td class="dois">Normal/Voador</td>
+                <td class="dois normal">Normal</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">019</td>
                 <td class="dois">Rattata</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">021</td>
                 <td class="dois">Spearow</td>
-                <td class="dois">Normal/Voador</td>
+                <td class="dois normal">Normal</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">023</td>
                 <td class="dois">Ekans</td>
-                <td class="dois">Venenoso</td>
+                <td colspan="2" class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">025</td>
                 <td class="dois">Pikachu</td>
-                <td class="dois">Elétrico</td>
+                <td colspan="2" class="dois eletrico">Elétrico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">027</td>
                 <td class="dois">Sandshrew</td>
-                <td class="dois">Terra</td>
+                <td colspan="2" class="dois terra">Terra</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">029</td>
                 <td class="dois">Nidoran♀</td>
-                <td class="dois">Venenoso</td>
+                <td colspan="2" class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">032</td>
                 <td class="dois">Nidoran♂</td>
-                <td class="dois">Venenoso</td>
+                <td colspan="2" class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">035</td>
                 <td class="dois">Clefairy</td>
-                <td class="dois">Fada</td>
+                <td colspan="2" class="dois fada">Fada</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">037</td>
                 <td class="dois">Vulpix</td>
-                <td class="dois">Fogo</td>
+                <td colspan="2" class="dois fogo">Fogo</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">039</td>
                 <td class="dois">Jigglypuff</td>
-                <td class="dois">Normal/Fada</td>
+                <td class="dois normal">Normal</td>
+                <td class="dois fada">Fada</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">041</td>
                 <td class="dois">Zubat</td>
-                <td class="dois">Venenoso/Voador</td>
+                <td class="dois venenoso">Venenoso</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">043</td>
                 <td class="dois">Oddish</td>
-                <td class="dois">Planta/Venenoso</td>
+                <td class="dois planta">Planta</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">046</td>
                 <td class="dois">Paras</td>
-                <td class="dois">Inseto/Planta</td>
+                <td class="dois inseto">Inseto</td>
+                <td class="dois planta">Planta</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">048</td>
                 <td class="dois">Venonat</td>
-                <td class="dois">Inseto/Venenoso</td>
+                <td class="dois inseto">Inseto</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">050</td>
                 <td class="dois">Diglett</td>
-                <td class="dois">Terra</td>
+                <td colspan="2" class="dois terra">Terra</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">052</td>
                 <td class="dois">Meowth</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">054</td>
                 <td class="dois">Psyduck</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">056</td>
                 <td class="dois">Mankey</td>
-                <td class="dois">Lutador</td>
+                <td colspan="2" class="dois lutador">Lutador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">058</td>
                 <td class="dois">Growlithe</td>
-                <td class="dois">Fogo</td>
+                <td colspan="2" class="dois fogo">Fogo</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">060</td>
                 <td class="dois">Poliwag</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">063</td>
                 <td class="dois">Abra</td>
-                <td class="dois">Psíquico</td>
+                <td colspan="2" class="dois psiquico">Psíquico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">066</td>
                 <td class="dois">Machop</td>
-                <td class="dois">Lutador</td>
+                <td colspan="2" class="dois lutador">Lutador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">069</td>
                 <td class="dois">Bellsprout</td>
-                <td class="dois">Planta/Venenoso</td>
+                <td class="dois planta">Planta</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">072</td>
                 <td class="dois">Tentacool</td>
-                <td class="dois">Água/Venenoso</td>
+                <td class="dois agua">Água</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">074</td>
                 <td class="dois">Geodude</td>
-                <td class="dois">Pedra/Terra</td>
+                <td class="dois pedra">Pedra</td>
+                <td class="dois terra">Terra</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">077</td>
                 <td class="dois">Ponyta</td>
-                <td class="dois">Fogo</td>
+                <td colspan="2" class="dois fogo">Fogo</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">079</td>
                 <td class="dois">Slowpoke</td>
-                <td class="dois">Água/Psíquico</td>
+                <td class="dois agua">Água</td>
+                <td class="dois psiquico">Psíquico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">081</td>
                 <td class="dois">Magnemite</td>
-                <td class="dois">Elétrico/Aço</td>
+                <td class="dois eletrico">Elétrico</td>
+                <td class="dois aço">Aço</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">083</td>
                 <td class="dois">Farfetch’d</td>
-                <td class="dois">Normal/Voador</td>
+                <td class="dois normal">Normal</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">084</td>
                 <td class="dois">Doduo</td>
-                <td class="dois">Normal/Voador</td>
+                <td class="dois normal">Normal</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">086</td>
                 <td class="dois">Seel</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">088</td>
                 <td class="dois">Grimer</td>
-                <td class="dois">Venenoso</td>
+                <td colspan="2" class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">090</td>
                 <td class="dois">Shellder</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">092</td>
                 <td class="dois">Gastly</td>
-                <td class="dois">Fantasma/Venenoso</td>
+                <td class="dois fantasma">Fantasma</td>
+                <td class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">095</td>
                 <td class="dois">Onix</td>
-                <td class="dois">Pedra/Terra</td>
+                <td class="dois pedra">Pedra</td>
+                <td class="dois terra">Terra</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">096</td>
                 <td class="dois">Drowzee</td>
-                <td class="dois">Psíquico</td>
+                <td colspan="2" class="dois psiquico">Psíquico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">098</td>
                 <td class="dois">Krabby</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">100</td>
                 <td class="dois">Voltorb</td>
-                <td class="dois">Elétrico</td>
+                <td colspan="2" class="dois eletrico">Elétrico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">102</td>
                 <td class="dois">Exeggcute</td>
-                <td class="dois">Planta/Psíquico</td>
+                <td class="dois planta">Planta</td>
+                <td class="dois psiquico">Psíquico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">104</td>
                 <td class="dois">Cubone</td>
-                <td class="dois">Terra</td>
+                <td colspan="2" class="dois terra">Terra</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">106</td>
                 <td class="dois">Hitmonlee</td>
-                <td class="dois">Lutador</td>
+                <td colspan="2" class="dois lutador">Lutador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">107</td>
                 <td class="dois">Hitmonchan</td>
-                <td class="dois">Lutador</td>
+                <td colspan="2" class="dois lutador">Lutador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">108</td>
                 <td class="dois">Lickitung</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">109</td>
                 <td class="dois">Koffing</td>
-                <td class="dois">Venenoso</td>
+                <td colspan="2" class="dois venenoso">Venenoso</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">111</td>
                 <td class="dois">Rhyhorn</td>
-                <td class="dois">Terra/Pedra</td>
+                <td class="dois terra">Terra</td>
+                <td class="dois pedra">Pedra</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">113</td>
                 <td class="dois">Chansey</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">114</td>
                 <td class="dois">Tangela</td>
-                <td class="dois">Planta</td>
+                <td colspan="2" class="dois planta">Planta</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">115</td>
                 <td class="dois">Kangaskhan</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">116</td>
                 <td class="dois">Horsea</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">118</td>
                 <td class="dois">Goldeen</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">120</td>
                 <td class="dois">Staryu</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">122</td>
                 <td class="dois">Mr. Mime</td>
-                <td class="dois">Psíquico/Fada</td>
+                <td class="dois psiquico">Psíquico</td>
+                <td class="dois fada">Fada</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">123</td>
                 <td class="dois">Scyther</td>
-                <td class="dois">Inseto/Voador</td>
+                <td class="dois inseto">Inseto</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">124</td>
                 <td class="dois">Jynx</td>
-                <td class="dois">Gelo/Psíquico</td>
+                <td class="dois gelo">Gelo</td>
+                <td class="dois psiquico">Psíquico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">125</td>
                 <td class="dois">Electabuzz</td>
-                <td class="dois">Elétrico</td>
+                <td colspan="2" class="dois eletrico">Elétrico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">126</td>
                 <td class="dois">Magmar</td>
-                <td class="dois">Fogo</td>
+                <td colspan="2" class="dois fogo">Fogo</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">127</td>
                 <td class="dois">Pinsir</td>
-                <td class="dois">Inseto</td>
+                <td colspan="2" class="dois inseto">Inseto</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">128</td>
                 <td class="dois">Tauros</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">129</td>
                 <td class="dois">Magikarp</td>
-                <td class="dois">Água</td>
+                <td colspan="2" class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">131</td>
                 <td class="dois">Lapras</td>
-                <td class="dois">Água/Gelo</td>
+                <td class="dois agua">Água</td>
+                <td class="dois gelo">Gelo</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">132</td>
                 <td class="dois">Ditto</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">133</td>
                 <td class="dois">Eevee</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">137</td>
                 <td class="dois">Porygon</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">138</td>
                 <td class="dois">Omanyte</td>
-                <td class="dois">Pedra/Água</td>
+                <td class="dois pedra">Pedra</td>
+                <td class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">140</td>
                 <td class="dois">Kabuto</td>
-                <td class="dois">Pedra/Água</td>
+                <td class="dois pedra">Pedra</td>
+                <td class="dois agua">Água</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">142</td>
                 <td class="dois">Aerodactyl</td>
-                <td class="dois">Pedra/Voador</td>
+                <td class="dois pedra">Pedra</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">143</td>
                 <td class="dois">Snorlax</td>
-                <td class="dois">Normal</td>
+                <td colspan="2" class="dois normal">Normal</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">144</td>
                 <td class="dois">Articuno</td>
-                <td class="dois">Gelo/Voador</td>
+                <td class="dois gelo">Gelo</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">145</td>
                 <td class="dois">Zapdos</td>
-                <td class="dois">Elétrico/Voador</td>
+                <td class="dois eletrico">Elétrico</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">146</td>
                 <td class="dois">Moltres</td>
-                <td class="dois">Fogo/Voador</td>
+                <td class="dois fogo">Fogo</td>
+                <td class="dois voador">Voador</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">147</td>
                 <td class="dois">Dratini</td>
-                <td class="dois">Dragão</td>
+                <td colspan="2" class="dois dragao">Dragão</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">150</td>
                 <td class="dois">Mewtwo</td>
-                <td class="dois">Psíquico</td>
+                <td colspan="2" class="dois psiquico">Psíquico</td>
             </tr>
-            <tr>
+            <tr class="dois">
                 <td class="dois">151</td>
                 <td class="dois">Mew</td>
-                <td class="dois">Psíquico</td>
+                <td colspan="2" class="dois psiquico">Psíquico</td>
             </tr>
         </tbody>
 
-        <tfoot>
+        <tfoot class="dois">
             <tr>
-                <th scope="row" class="dois">Total</th>
-                <td class="dois"><strong>67</strong></td>
+                <th colspan="2" scope="row" class="dois">Total</th>
+                <td colspan="2" class="dois"><strong>67</strong></td>
             </tr>
         </tfoot>
     </table>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perspiciatis esse sit eligendi odit incidunt, doloribus minima, doloremque in at est eaque iste tempora temporibus illo debitis placeat. Eveniet, corrupti? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste delectus, ipsa, ducimus sit non nam ea odio facere, aliquid quod nesciunt vel unde explicabo dolor officiis? Qui, autem sit?</p>
+    
+    <h1>3. Desafios de mesclagem</h1>
+    <table class="tres">
+        <tr>
+            <td class="tres">1</td>
+            <td class="tres">2</td>
+            <td rowspan="2" class="tres">3</td>
+            <td class="tres">4</td>
+        </tr>
+        <tr>
+            <td class="tres">5</td>
+            <td class="tres">6</td>
+            <td class="tres">7</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="tres">8</td>
+            <td class="tres">9</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="tres">10</td>
+            <td colspan="2" class="tres">11</td>
+            <td class="tres">12</td>
+        </tr>
+        <tr>
+            <td class="tres">13</td>
+            <td class="tres">14</td>
+            <td class="tres">15</td>
+        </tr>
+    </table>
+
+    <table class="tres">
+        <tr>
+            <td colspan="4" class="tres">A</td>
+            <td rowspan="4" class="tres">B</td>
+        </tr>
+        <tr>
+            <td rowspan="4" class="tres">C</td>
+            <td class="tres">D</td>
+            <td class="tres">E</td>
+            <td class="tres">F</td>
+        </tr>
+        <tr>
+            <td class="tres">G</td>
+            <td class="tres">H</td>
+            <td class="tres">I</td>
+        </tr>
+        <tr>
+            <td class="tres">J</td>
+            <td class="tres">K</td>
+            <td class="tres">L</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="tres">M</td>
+        </tr>
+    </table>
 </body>
 </html>
