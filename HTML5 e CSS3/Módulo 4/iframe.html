@@ -10,20 +10,37 @@
             margin: auto;
             border: 2px dashed black;
         }
+
+        iframe.tres {
+            width: 1000px;
+            height: 700px;
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body>
     <h1>1. Uso de um iframe</h1>
-    
     <p>Assistindo o <a href="https://www.cursoemvideo.com/curso/curso-html5-e-css3-modulo-4-de-5-40-horas/" target="_blank">módulo 4 do curso de HTML5 e CSS3 do Curso em Vídeo</a>:</p>
+
     <iframe src="https://www.cursoemvideo.com/curso/curso-html5-e-css3-modulo-4-de-5-40-horas/" frameborder="0" width="450" height="400" title="Módulo 4 do curso de HTML5 e CSS3 do Curso em Vídeo" class="um"></iframe> <!-- Dimensões padrão = 300px (width) x 150px (height). As configurações no HTML são sobrescritas pelas do CSS -->
 
     <p>Alguns sites possuem proteção para impedir que seu conteúdo seja exibido dentro de iframes em sites de terceiros, pois iframes podem apresentar problemas de segurança. Com o HTML5, é possível prever e reduzir alguns desses riscos. Exemplo com o site do Google:</p>
+    
     <iframe src="https://www.google.com.br" height="100" class="um"></iframe>
 
 
     <h1>2. Conteúdo local no iframe</h1>
 
-    <iframe src="pagina.html" frameborder="0" class="dois"></iframe>
+    <iframe src="paginas/pagina1.html" frameborder="0" class="dois"></iframe>
+
+
+    <h1>3. Navegação no iframe</h1>
+    <p>Escolha:</p>
+    <ul>
+        <li><a href="paginas/pagina1.html" target="frame-tres">Página 1</a></li>
+        <li><a href="paginas/pagina2.html" target="frame-tres">Página 2</a></li>
+    </ul>
+
+    <iframe srcdoc="<h1>Escolha uma das opções acima!</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima fuga doloribus molestias assumenda corrupti eos officiis labore, at minus magni ad atque, earum maiores fugiat doloremque nesciunt non a sed.</p><img src='imagens/escolha.png' alt='Print do vídeo instrucional Choice do jogo The Stanley Parable' style='width:100%; height:auto;'>" name="frame-tres" frameborder="0" class="tres"></iframe>
 </body>
 </html>
