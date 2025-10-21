@@ -12,9 +12,14 @@
         }
 
         iframe.tres {
-            width: 1000px;
-            height: 700px;
+            width: 600px;
+            height: 500px;
             border: 2px solid black;
+        }
+
+        iframe.quatro {
+            width: 300px;
+            height: 250px;
         }
     </style>
 </head>
@@ -42,5 +47,29 @@
     </ul>
 
     <iframe srcdoc="<h1>Escolha uma das opções acima!</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima fuga doloribus molestias assumenda corrupti eos officiis labore, at minus magni ad atque, earum maiores fugiat doloremque nesciunt non a sed.</p><img src='imagens/escolha.png' alt='Print do vídeo instrucional Choice do jogo The Stanley Parable' style='width:100%; height:auto;'>" name="frame-tres" frameborder="0" class="tres"></iframe>
+
+
+    <h1>4. Segurança</h1>
+    <ul>
+        <li>
+            sandbox
+            <p>O atributo sandbox bloqueia todo acesso dos sites dentro do iframe (ativa várias restrições de segurança para o conteúdo do iframe, incluindo desabilitar scripts, formulários, plugins, etc.). Se quiser permitir algumas funcionalidades, pode adicionar valores separados por espaço, como:</p>
+            <ul>
+                <li>allow-forms (permite o uso de formulários dentro do iframe)</li>
+                <li>allow-scripts (permite a execução de scripts dentro do iframe)</li>
+                <li>allow-same-origin (permite que o conteúdo do iframe seja tratado como originário do mesmo domínio que a página pai)</li>
+                <li>allow-popups (permite que o conteúdo do iframe abra pop-ups)</li>
+            </ul>
+        </li>
+        <br>
+        <li>
+            referrerpolicy="no-referrer"
+            <p>O valor "no-referrer" impede que o site dentro do iframe saiba de qual site ele foi chamado (não envia o cabeçalho HTTP Referer)</p>
+        </li>
+    </ul>
+
+    <iframe src="paginas/formulario.html" sandbox referrerpolicy="no-referrer" class="quatro"></iframe>
+
+    <iframe src="paginas/script.html" sandbox="allow-scripts" referrerpolicy="no-referrer" class="quatro"></iframe>
 </body>
 </html>
