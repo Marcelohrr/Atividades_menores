@@ -11,6 +11,7 @@ html, body {
     height: 100vh;
     background: #110320 url("../imagens/fundo-cyberpunk.png") no-repeat center right fixed;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 main {
@@ -40,5 +41,19 @@ iframe#tela {
 }
 
 section#redes-sociais {
-    position: absolute;
+    text-align: right;
+}
+
+section#redes-sociais img {
+    width: 50px;
+    margin: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffffff80;
+}
+
+section#redes-sociais img:hover {
+    border: 2px solid #ffffff;
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 10px #ffffff;
+    transition: transform .2s, box-shadow .2s;
 }
