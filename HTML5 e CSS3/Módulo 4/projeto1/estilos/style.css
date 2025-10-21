@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclui padding e border na largura e altura totais do elemento */
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background: #110320 url("../imagens/fundo-cyberpunk.png") no-repeat center right fixed;
+    background-size: cover;
+}
+
+main {
+    height: 100vh;
+    
+    position: relative;
+}
+
+section#telefone {
+    width: 311px;
+    height: 627px;
+    background: url("../imagens/frame-iphone.png") no-repeat;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+iframe#tela {
+    position: relative;
+    top: 83px;
+    left: 24px;
+
+    width: 263px;
+    height: 466px;
+}
+
+section#redes-sociais {
+    position: absolute;
+}
