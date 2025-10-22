@@ -18,16 +18,37 @@
 </head>
 <body>
     <h1>1.</h1>
-    <form action="cadastro.php" autocomplete="off">
+    <form action="cadastro.php" method="get" autocomplete="off">
     <!--
-        autocomplete="off" desliga a sugestão automática do navegador;
-        action="cadastro.php" define o arquivo de script que processará os dados do formulário quando o botão de submit for clicado
+        - autocomplete="off" desliga a sugestão automática do navegador;
+        - action="cadastro.php" define o arquivo de script que processará os dados do formulário quando o botão de submit for clicado;
+        - method define o método HTTP usado para enviar os dados ao servidor — get (padrão, envia dados pela URL, para quando os dados não forem sensíveis; URL compartilhável; limite de dados de 2 KB a 8 KB) ou post (envia no corpo da requisição, para dados sensíveis; limite de dados muito maior)
     -->
-        <p><label for="id-nome">Nome:</label> <!-- O elemento label associa o texto ao campo de entrada através do id -->
-            <input type="text" name="nome" id="id-nome"></p> <!-- Os campos de entrada precisam ser identificados com name e id — name envia dados ao servidor (PHP, por exemplo) e id identifica o elemento para CSS ou JavaScript -->
-        <p><label for="id-sobrenome">Sobrenome:</label>
-            <input type="text" name="sobrenome" id="id-sobrenome"></p>
+        <p> <!-- <p> serve para formulários mais simples ou textuais, mas <div> é o ideal e mais usado para organizar layout e agrupar campos com CSS em formulários estruturados -->
+            <label for="id-nome">Nome:</label> <!-- label associa o texto ao campo de entrada através do id -->
+            <input type="text" name="nome" id="id-nome"> <!-- Os campos de entrada precisam ser identificados com name e id — name envia dados ao servidor (PHP, por exemplo) e id identifica o elemento para CSS ou JavaScript -->
+        </p>
+        <p>
+            <label for="id-sobrenome">Sobrenome:</label>
+            <input type="text" name="sobrenome" id="id-sobrenome">
+        </p>
         <p><input type="submit" value="Enviar"></p>
+    </form>
+
+    <h1>2.</h1>
+    <form action="cadastro.php" method="post" autocomplete="on">
+        <p>
+            <label for="id-usuario">Usuário:</label>
+            <input type="text" name="usuario" id="id-usuario" required minlength="5" maxlength="15" size="15" placeholder="Nome de usuário" autocomplete="username">
+        </p>
+        <p>
+            <label for="id-senha">Senha:</label>
+            <input type="password" name="senha" id="id-senha" required minlength="8" maxlength="20" size="20" placeholder="De 8 a 20 caracteres" autocomplete="current-password">
+        </p>
+        <p>
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Limpar">
+        </p>
     </form>
 </body>
 </html>
