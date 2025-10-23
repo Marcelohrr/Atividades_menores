@@ -22,11 +22,28 @@
 </head>
 <body>
     <h1>1.</h1>
+    <h2>Elementos:</h2>
+    <ul>
+        <li>&lt;form&gt;</li>
+        <li>&lt;label&gt;</li>
+        <li>&lt;input&gt;</li>
+    </ul>
+    <h2>Atributos:</h2>
+    <ul>
+        <li>action</li>
+        <li>method</li>
+        <li>autocomplete</li>
+    </ul>
+    <h2>input type=</h2>
+    <ul>
+        <li>"text"</li>
+        <li>"submit"</li>
+    </ul>
     <form action="cadastro.php" method="get" autocomplete="off">
     <!--
-        - autocomplete="off" desliga a sugestão automática do navegador;
         - action="cadastro.php" define o arquivo de script que processará os dados do formulário quando o botão de submit for clicado;
-        - method define o método HTTP usado para enviar os dados ao servidor — get (padrão, envia dados pela URL, para quando os dados não forem sensíveis; URL compartilhável; limite de dados de 2 KB a 8 KB) ou post (envia no corpo da requisição, para dados sensíveis; limite de dados muito maior)
+        - method define o método HTTP usado para enviar os dados ao servidor — get (padrão, envia dados pela URL, para quando os dados não forem sensíveis; URL compartilhável; limite de dados de 2 KB a 8 KB) ou post (envia no corpo da requisição, para dados sensíveis; limite de dados muito maior);
+        - autocomplete="off" desliga a sugestão automática do navegador
     -->
         <p> <!-- <p> serve para formulários mais simples ou textuais, mas <div> é o ideal e mais usado para organizar layout e agrupar campos com CSS em formulários estruturados -->
             <label for="id-nome">Nome:</label> <!-- label associa o texto ao campo de entrada através do id -->
@@ -40,6 +57,18 @@
     </form>
 
     <h1>2.</h1>
+    <h2>Atributos:</h2>
+    <ul>
+        <li>required</li>
+        <li>minlength e maxlength</li>
+        <li>size</li>
+        <li>placeholder</li>
+    </ul>
+    <h2>input type=</h2>
+    <ul>
+        <li>"password"</li>
+        <li>"reset"</li>
+    </ul>
     <form action="cadastro.php" method="post" autocomplete="on">
         <p>
             <label for="id-usuario">Usuário:</label>
@@ -56,10 +85,22 @@
     </form>
 
     <h1>3.</h1>
+    <h2>Atributos:</h2>
+    <ul>
+        <li>min e max</li>
+        <li>step</li>
+    </ul>
+    <h2>input type=</h2>
+    <ul>
+        <li>"month"</li>
+        <li>"number"</li>
+        <li>"date"</li>
+        <li>"time"</li>
+    </ul>
     <form action="cadastro.php" method="get" autocomplete="on">
         <p>
-            <label for="id-nome">Nome:</label>
-            <input type="text" name="nome" id="id-nome" required maxlength="30" placeholder="Nome completo" autocomplete="name">
+            <label for="id-nome-completo">Nome:</label>
+            <input type="text" name="nome-completo" id="id-nome-completo" required maxlength="30" placeholder="Nome completo" autocomplete="name">
         </p>
         <p>
             <label for="id-mes">Período atual:</label>
@@ -84,6 +125,20 @@
     </form>
 
     <h1>4.</h1>
+    <h2>Elementos:</h2>
+    <ul>
+        <li>&lt;fieldset&gt;</li>
+        <li>&lt;legend&gt;</li>
+    </ul>
+    <h2>Atributo:</h2>
+    <ul>
+        <li>pattern</li>
+    </ul>
+    <h2>input type=</h2>
+    <ul>
+        <li>"email"</li>
+        <li>"tel"</li>
+    </ul>
     <form action="cadastro.php" method="get" autocomplete="on">
         <fieldset>
             <legend>Dados pessoais</legend>
@@ -103,6 +158,15 @@
     </form>
 
     <h1>5.</h1>
+    <h2>Atributo:</h2>
+    <ul>
+        <li>checked</li>
+    </ul>
+    <h2>input type=</h2>
+    <ul>
+        <li>"radio"</li>
+        <li>"checkbox"</li>
+    </ul>
     <form action="cadastro.php" method="get" autocomplete="on">
         <fieldset>
             <legend>Sexo</legend>
@@ -145,6 +209,12 @@
     </form>
 
     <h1>6.</h1>
+    <h2>input type=</h2>
+    <ul>
+        <li>"color"</li>
+        <li>"range"</li>
+        <li>"file"</li>
+    </ul>
     <form action="cadastro.php" method="post">
         <p>
             <label for="id-cor">Cor:</label>
@@ -165,6 +235,22 @@
     </form>
 
     <h1>7.</h1>
+    <h2>Elementos:</h2>
+    <ul>
+        <li>&lt;select&gt;</li>
+        <li>&lt;option&gt;</li>
+        <li>&lt;optgroup&gt;</li>
+        <li>&lt;datalist&gt;</li>
+        <li>&lt;textarea&gt;</li>
+    </ul>
+    <h2>Atributos:</h2>
+    <ul>
+        <li>disabled</li>
+        <li>selected</li>
+        <li>label</li>
+        <li>list</li>
+        <li>cols e rows</li>
+    </ul>
     <form action="cadastro.php" method="post" autocomplete="on">
         <p>
             <label for="id-estado">Estado:</label>
@@ -213,11 +299,11 @@
             <label for="id-profissao">Profissão:</label>
             <input type="text" name="profissao" id="id-profissao" list="lista-profissoes" placeholder="Selecione ou digite uma profissão" style="width: 220px;">
             <datalist id="lista-profissoes">
-                <option value="Advogada(o)">a</option> <!-- Em datalist, são exibidos o texto interno de option e o value, mas só o value é enviado (se não houver value, o texto de option é enviado) -->
-                <option value="Desenvolvedor(a)">aa</option>
-                <option value="Engenheira(o)">aaa</option>
-                <option value="Médica(o)">aaaa</option>
-                <option value="Professor(a)">aaaaa</option>
+                <option value="Advogada(o)"></option> <!-- Em datalist, são exibidos o texto interno de option e o value, mas só o value é enviado (se não houver value, o texto de option é enviado) -->
+                <option value="Desenvolvedor(a)"></option>
+                <option value="Engenheira(o)"></option>
+                <option value="Médica(o)"></option>
+                <option value="Professor(a)"></option>
             </datalist>
         </p>
         <p>
@@ -229,5 +315,77 @@
             <input type="reset" value="Limpar">
         </p>
     </form>
+
+    <h1>8. (JavaScript!)</h1>
+    <h2>Elementos:</h2>
+    <ul>
+        <li>&lt;output&gt;</li>
+        <li>&lt;script&gt;</li>
+    </ul>
+    <h2>Atributo:</h2>
+    <ul>
+        <li>oninput</li>
+        <li>onclick</li>
+    </ul>
+    <form action="cadastro.php" method="get">
+        <fieldset>
+            <legend>Soma</legend>
+            <p>
+                <label for="id-n1">Número 1:</label>
+                <input type="number" name="n1" id="id-n1" min="0" max="50" required oninput="document.getElementById('id-soma').innerHTML = Number(this.value) + Number(document.getElementById('id-n2').value)">
+            </p>
+            <p>
+                <label for="id-n2">Número 2:</label>
+                <input type="number" name="n2" id="id-n2" min="0" max="50" required oninput="document.getElementById('id-soma').innerHTML = Number(document.getElementById('id-n1').value) + Number(this.value)">
+            </p>
+            <p>
+                <label for="id-soma">Soma:</label>
+                <output for="id-n1 id-n2" id="id-soma">0</output>
+            </p>
+            <p>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpar">
+            </p>
+        </fieldset>
+        <fieldset style="width: 230px;">
+            <legend>Exibição de valor do range</legend>
+            <p>
+                <label for="id-numero">Número:</label>
+                <input type="range" name="numero" id="id-numero" min="0" max="10" value="5" step="0.5" oninput="document.getElementById('id-valor').textContent = this.value">
+                <output id="id-valor">5</output>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Cálculo de idade</legend>
+            <p>
+                <label for="id-ano">Em que ano você nasceu?</label>
+                <input type="number" name="ano" id="id-ano" min="1900" max="2025" oninput="calcularIdade()">
+            </p>
+            <p>Já fez aniversário esse ano?</p>
+            <p>
+                <input type="radio" name="aniversario" id="id-aniversario-sim" value="S" onclick="calcularIdade()">
+                <label for="id-aniversario-sim">Sim</label>
+            </p>
+            <p>
+                <input type="radio" name="aniversario" id="id-aniversario-nao" value="N" checked onclick="calcularIdade()">
+                <label for="id-aniversario-nao">Não</label>
+            </p>
+            <p>
+                <label for="id-idade">Sua idade é:</label>
+                <output id="id-idade">0</output>
+            </p>
+        </fieldset>
+        <p>
+            <input type="submit" value="Enviar">
+        </p>
+    </form>
+
+    <script>
+        function calcularIdade() {
+            let anoAtual = new Date().getFullYear();
+            let aniversario = document.querySelector("input[name='aniversario']:checked")?.value;
+            document.getElementById("id-idade").textContent = Number(anoAtual) - Number(document.getElementById("id-ano").value) - (aniversario === "N" ? 1 : 0);
+        }
+    </script>
 </body>
 </html>
