@@ -140,6 +140,92 @@
         </fieldset>
         <p>
             <input type="submit" value="Enviar">
+            <input type="reset" value="Reset">
+        </p>
+    </form>
+
+    <h1>6.</h1>
+    <form action="cadastro.php" method="post">
+        <p>
+            <label for="id-cor">Cor:</label>
+            <input type="color" name="cor" id="id-cor" value="#ffffff">
+        </p>
+        <p>
+            <label for="id-nivel">Nível:</label>
+            <input type="range" name="nivel" id="id-nivel" min="1" max="5" value="2" step="0.5">
+        </p>
+        <p>
+            <label for="id-foto">Foto:</label>
+            <input type="file" name="foto" id="id-foto"> <!-- Para upload de arquivos, form precisa de: method="post" e enctype="multipart/form-data" (define que o formulário enviará os dados em partes separadas, permitindo o envio de arquivos junto com texto) -->
+        </p>
+        <p>
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Limpar">
+        </p>
+    </form>
+
+    <h1>7.</h1>
+    <form action="cadastro.php" method="post" autocomplete="on">
+        <p>
+            <label for="id-estado">Estado:</label>
+            <select name="estado" id="id-estado">
+                <option value="" disabled selected>Selecione um estado</option> <!-- Placeholder padrão recomendado para select -->
+                <optgroup label="Centro-Oeste">
+                    <option value="DF">Distrito Federal</option> <!-- Em select, o texto interno de option é exibido e value é enviado -->
+                    <option value="GO">Goiás</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                </optgroup>
+                <optgroup label="Nordeste">
+                    <option value="AL">Alagoas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="SE">Sergipe</option>
+                </optgroup>
+                <optgroup label="Norte">
+                    <option value="AC">Acre</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="PA">Pará</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="TO">Tocantins</option>
+                </optgroup>
+                <optgroup label="Sudeste">
+                    <option value="ES">Espírito Santo</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="SP">São Paulo</option>
+                </optgroup>
+                <optgroup label="Sul">
+                    <option value="PR">Paraná</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="SC">Santa Catarina</option>
+                </optgroup>
+            </select>
+        </p>
+        <p>
+            <label for="id-profissao">Profissão:</label>
+            <input type="text" name="profissao" id="id-profissao" list="lista-profissoes" placeholder="Selecione ou digite uma profissão" style="width: 220px;">
+            <datalist id="lista-profissoes">
+                <option value="Advogada(o)">a</option> <!-- Em datalist, são exibidos o texto interno de option e o value, mas só o value é enviado (se não houver value, o texto de option é enviado) -->
+                <option value="Desenvolvedor(a)">aa</option>
+                <option value="Engenheira(o)">aaa</option>
+                <option value="Médica(o)">aaaa</option>
+                <option value="Professor(a)">aaaaa</option>
+            </datalist>
+        </p>
+        <p>
+            <label for="id-mensagem">Mensagem:</label><br>
+            <textarea name="mensagem" id="id-mensagem" cols="30" rows="10" placeholder="Sua mensagem!"></textarea> <!-- Usando textarea, method deve ser post para evitar limite de dados na URL -->
+        </p>
+        <p>
+            <input type="submit" value="Enviar">
             <input type="reset" value="Limpar">
         </p>
     </form>
