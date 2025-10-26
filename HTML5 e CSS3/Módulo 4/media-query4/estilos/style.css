@@ -1,0 +1,50 @@
+@charset "UFT-8";
+
+/* Versão mobile first */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    background: black url("../imagens/background-celular.jpg") center center;
+    background-size: cover;
+    text-align: center;
+}
+
+main {
+    display: inline-block;
+    background-color: #ffffff80;
+    margin: 10px auto;
+    border-radius: 0 10px;
+    padding: 10px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 5px black;
+    margin-bottom: 20px;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+main img#celular { display: block; }
+main img#tablet { display: none; }
+main img#pc { display: none; }
+main img#tv { display: none; }
+main img#impressora { display: none; }
+
+footer {
+        display: none;
+    }

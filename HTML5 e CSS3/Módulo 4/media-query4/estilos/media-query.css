@@ -1,0 +1,107 @@
+@charset "UFT-8";
+
+/* Todas as demais mídias */
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        background: red url("../imagens/background-tablet.jpg") center right;
+        background-size: cover;
+    }
+
+    main {
+        width: 500px;
+    }
+
+    main img#celular { display: none; }
+    main img#tablet { display: block; }
+    main img#pc { display: none; }
+    main img#tv { display: none; }
+    main img#impressora { display: none; }
+
+    footer {
+        display: none;
+    }
+}
+
+/* PC */
+@media screen and (min-width: 1024px) and (max-width: 1535px) {
+    body {
+        background: green url("../imagens/background-pc.jpg") center center;
+        background-size: cover;
+    }
+
+    main {
+        width: 600px;
+    }
+
+    main img#celular { display: none; }
+    main img#tablet { display: none; }
+    main img#pc { display: block; }
+    main img#tv { display: none; }
+    main img#impressora { display: none; }
+
+    footer {
+        display: none;
+    }
+}
+
+/* TV */
+@media screen and (min-width: 1536px) {
+    body {
+        background: blue url("../imagens/background-tv.webp") center center;
+        background-size: cover;
+    }
+
+    main {
+        width: 700px;
+    }
+
+    main img#celular { display: none; }
+    main img#tablet { display: none; }
+    main img#pc { display: none; }
+    main img#tv { display: block; }
+    main img#impressora { display: none; }
+
+    footer {
+        display: none;
+    }
+}
+
+/* Impressora */
+@media print {
+    * {
+        font-family:'Courier New', Courier, monospace;
+    }
+
+    /*
+    background-image e background-color não funcionam:
+    a maioria dos navegadores bloqueia fundos em @media print por padrão para economizar tinta e deixar a impressão mais legível
+    */
+
+    main {
+        width: 500px;
+        border: 2px solid black;
+    }
+
+    h1 {
+        color: black;
+        text-shadow: none;
+    }
+
+    main img#celular { display: none; }
+    main img#tablet { display: none; }
+    main img#pc { display: none; }
+    main img#tv { display: none; }
+    main img#impressora { display: block; }
+
+    footer {
+        display: block;
+        text-decoration: overline;
+
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+}
