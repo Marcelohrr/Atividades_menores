@@ -5,21 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/media-query.css">
 </head>
 <body>
     <main>
-        <section id="login">
-            <div id="imagem">
-                <img src="imagens/halloween.jpg" alt="Abóbora entalhada sobre a grama (tema de halloween)">
-            </div>
-            <div id="formulario">
-                <h1>Login</h1>
-                <p>Seja bem-vindo! Faça login para... é... na verdade, ainda não funciona, mas olha como tá bonito!</p>
-                <form action="login.php" method="post">
-
-                </form>
-            </div>
-        </section>
+        <div id="imagem">
+            <img src="imagens/halloween.jpg" alt="Abóbora entalhada sobre a grama (tema de halloween)">
+        </div>
+        <div id="formulario">
+            <h1>Login</h1>
+            <p>Seja bem-vindo! Faça login para... é... na verdade, ainda não funciona, mas olha como tá bonito!</p>
+            <form action="login.php" method="post">
+                <fieldset>
+                    <div id="nome">
+                        <label for="id-nome">Nome:</label>
+                        <input type="text" name="nome" id="id-nome">
+                    </div>
+                    <div id="senha">
+                        <label for="id-senha">Senha:</label>
+                        <input type="password" name="senha" id="id-senha">
+                    </div>
+                </fieldset>
+                <div>
+                    <input type="submit" value="Enviar">
+                    <input type="reset" value="Limpar">
+                </div>
+            </form>
+        </div>
     </main>
 </body>
 </html>
