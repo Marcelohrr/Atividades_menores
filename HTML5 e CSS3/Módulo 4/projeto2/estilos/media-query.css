@@ -7,14 +7,14 @@
     --cor-destaque: #F24405;
     --cor-caixas: #BF0404;
     --cor-luz: #ffb980;
-    --cor-luz-fraca: #ffb98040;
+    --cor-luz-fraca: #ffb98020;
 }
 
-/* Dispositivos orientação landscape */
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape),
+       screen and (orientation: portrait) and (min-width: 768px) {
     body {
-        background: var(--cor-fundo-fonte);
         position: relative;
+        background: var(--cor-fundo-fonte);
     }
     
     main {
@@ -32,10 +32,9 @@
     }
 
     main div#imagem {
-        display: inline-block;
-        width: 40%;
-        height: 80vh;
+        vertical-align: top;
         overflow: hidden;
+        float: left;
     }
 
     main img {
@@ -44,17 +43,13 @@
         height: 100%;
         object-fit: cover;
         object-position: center 66%;
-        border-radius: 15px 0 0 15px;
     }
 
     main div#formulario {
-        width: 60%;
-        height: 80vh;
+        vertical-align: top;
         overflow-y: auto;
         float: right;
         border: 0;
-        border-left: 5px solid var(--cor-borda);
-        border-radius: 0 15px 15px 0;
     }
 
     main div#formulario h1, main div#formulario p, fieldset, fieldset div#nome {
@@ -66,7 +61,46 @@
     }
 }
 
+/* Dispositivos orientação landscape */
+@media screen and (orientation: landscape) {
+    main div#imagem {
+        display: inline-block;
+        width: 40%;
+        height: 80vh;
+    }
+
+    main img {
+        border-radius: 15px 0 0 15px;
+    }
+
+    main div#formulario {
+        width: 60%;
+        height: 80vh;
+        border-left: 5px solid var(--cor-borda);
+        border-radius: 0 15px 15px 0;
+    }
+}
+
 /* Telas maiores em orientação portrait */
 @media screen and (orientation: portrait) and (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
     
+    main div#imagem {
+        display: block;
+        width: 100%;
+        height: 40vh;
+    }
+
+    main img {
+        border-radius: 15px 15px 0 0;
+    }
+
+    main div#formulario {
+        width: 100%;
+        height: 40vh;
+        border-top: 5px solid var(--cor-borda);
+        border-radius: 0 0 15px 15px;
+    }
 }

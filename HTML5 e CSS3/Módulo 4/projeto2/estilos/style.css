@@ -7,7 +7,7 @@
     --cor-destaque: #F24405;
     --cor-caixas: #BF0404;
     --cor-luz: #ffb980;
-    --cor-luz-fraca: #ffb98040;
+    --cor-luz-fraca: #ffb98020;
 }
 
 * {
@@ -54,7 +54,7 @@ main div#formulario p {
 
 fieldset {
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border: 5px groove var(--cor-destaque);
     box-shadow: inset 0 0 8px var(--cor-caixas);
     padding: 10px;
@@ -66,7 +66,7 @@ fieldset div#nome {
     margin-bottom: 10px;
 }
 
-input {
+input, button {
     background-color: var(--cor-formulario);
     color: var(--cor-fundo-fonte);
     border: 5px dashed var(--cor-destaque);
@@ -74,13 +74,28 @@ input {
     padding: 5px;
     font-weight: bold;
     transition: box-shadow 1s;
+    cursor: pointer;
 }
 
-input:hover {
+span.material-symbols-outlined {
+    color: var(--cor-fundo-fonte);
+    vertical-align: middle;
+}
+
+input:hover, button:hover {
     border-style: solid;
 }
 
-input:focus {
+input:focus, button:focus {
     border-style: groove;
     box-shadow: inset 0 0 10px var(--cor-luz);
+}
+
+input::placeholder {
+    color: var(--cor-destaque);
+}
+
+button {
+    margin-top: 5px;
+    margin-left: 10px;
 }
