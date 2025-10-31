@@ -29,7 +29,7 @@ main { /* Retângulo de conteúdo dentro da página */
     padding: 10px; /* Preenchimento ou margem interna para o texto */
     margin: auto; /* Margem externa para centralizar o conteúdo, independentemente do tamanho da janela */
     border-radius: 10px; /* Arredonda as bordas */
-    box-shadow: 10px 10px 80px #8c262680; /* Parâmetros de sombreamento: deslocamento horizontal (offset-x), deslocamento vertical (offset-y), raio de desfoque (blur-radius) e cor da sombra */
+    box-shadow: 10px 10px 80px #8c262680; /* Valores de sombreamento: deslocamento horizontal (offset-x), deslocamento vertical (offset-y), raio de desfoque (blur-radius) e cor da sombra */
 }
 
 h1, h2 {
@@ -70,7 +70,7 @@ h2#identificador { /* Seletor personalizado para o título de segundo nível mar
 div {
     display: inline-block; /* define como um elemento é exibido na página (inline, block, inline-block, none) */
     background-color: #BF8563;
-    border: 1px solid black; /* shorthand que aceita os parâmetros: largura estilo (none, solid, dashed, dotted, double, groove, ridge, inset, outset) cor */
+    border: 1px solid black; /* shorthand que aceita os valores: largura estilo (none, solid, dashed, dotted, double, groove, ridge, inset, outset) cor */
     height: 200px;
     width: 250px;
 }
