@@ -12,40 +12,140 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        h1 {
+            background-color: black;
+            color: white;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        p {
+            margin: 0 10px;
+        }
+
         div.container {
-            display: flex;
-            flex-direction: column-reverse; /* Padrão = row; Outros valores: row-reverse, column, column-reverse */
-            /*
-            main-axis = criado automaticamente, vai do main-start ao main-end de acordo com a direção estabelecida
-            cross-axis (eixo transversal) = perpendicular ao main-axis, vai do cross-start ao cross-end
-            */
             background-color: lightseagreen;
-            margin: 10px;
+            margin: 10px 10px 20px 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        div.item {
+            background-color: lightcoral;
             border: 2px solid black;
             border-radius: 10px;
             padding: 10px;
         }
 
-        div.item {
-            flex: auto; /* Redimensiona itens de acordo com o tamanho do container */
-            background-color: lightcoral;
-            margin: 5px;
-            border: 2px solid black;
-            border-radius: 10px;
+        div.container.um {
+            display: flex;
+            height: 300px;
+            flex-direction: column-reverse; /* Padrão = row; Outros valores: row-reverse, column, column-reverse */
+            /*
+            main-axis = criado automaticamente, vai do main-start ao main-end de acordo com a direção estabelecida
+            cross-axis (eixo transversal) = perpendicular ao main-axis, vai do cross-start ao cross-end
+            */
+            flex-wrap: wrap-reverse; /* Padrão = nowrap; Outros valores: wrap (quebra no sentido do cross-axis), wrap-reverse (quebra no sentido oposto ao cross-axis) */
+            /* Shorthand = flex-flow: column-reverse wrap-reverse (flex-direction flex-wrap) */
+
             padding: 10px;
+        }
+
+        div.item.um {
+            flex: auto; /* Redimensiona itens de acordo com o tamanho do container */
+            
+            margin: 5px;
+        }
+
+        div.container.dois {
+            display: flex;
+            width: 200px;
+            height: 250px;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            /*
+            justify-content faz alinhamento em relação ao main-axis
+            Padrão = flex-start;
+            Outros valores:
+            - flex-end
+            - center
+            - space-between (itens do main-start ao main-end com espaçamento uniforme)
+            - space-evenly (espaçamento uniforme entre itens, inclusive antes do main-start e depois do main-end)
+            - space-around (divide o container em sessões para cada item e os centraliza nessas sessões)
+            */
+            align-items: flex-start;
+            /*
+            align-items faz alinhamento em relação ao cross-axis
+            Padrão = stretch;
+            Outros valores:
+            - flex-start
+            - flex-end
+            - center
+            */
+            align-content: flex-end;
+            /*
+            align-content faz alinhamento em relação ao cross-axis quando há empacotamento (sobrepõe align-items)
+            Padrão = stretch (divide o comprimento total da cross-axis em quantas quebras houverem e estica cada linha de itens dentro desses espaços);
+            Outros valores:
+            - flex-start
+            - flex-end
+            - center
+            - space-between
+            - space-evenly
+            - space-around
+            */
+        }
+
+        div.container.tres {
+            display: flex;
+            width: 200px;
+            height: 100px;
+            flex-flow: row nowrap;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="item">A</div>
-        <div class="item">B</div>
-        <div class="item">C</div>
-        <div class="item">D</div>
-        <div class="item">E</div>
-        <div class="item">F</div>
-        <div class="item">G</div>
-        <div class="item">H</div>
+    <h1>Configurando containers</h1>
+    <p>flex-direction e flex-wrap (flex-flow):</p>
+    <div class="container um">
+        <div class="item um">A</div>
+        <div class="item um">B</div>
+        <div class="item um">C</div>
+        <div class="item um">D</div>
+        <div class="item um">E</div>
+        <div class="item um">F</div>
+        <div class="item um">G</div>
+        <div class="item um">H</div>
+    </div>
+
+    <p>justify-content, align-items e align-content:</p>
+    <div class="container dois">
+        <div class="item dois">A</div>
+        <div class="item dois">B</div>
+        <div class="item dois">C</div>
+        <div class="item dois">D</div>
+        <div class="item dois">E</div>
+        <div class="item dois">F</div>
+        <div class="item dois">G</div>
+        <div class="item dois">H</div>
+    </div>
+
+    <h1>Configurando itens</h1>
+    <p>order e align-self:</p>
+    <div class="container tres" style="align-items: flex-start;">
+        <div class="item tres" style="order: 0; align-self: auto;">0</div> <!-- Padrão = order: 0; -->
+        <div class="item tres" style="order: -2; align-self: center;">-2</div>
+        <div class="item tres" style="order: 10; align-self: stretch;">10</div>
+        <!--
+        align-self faz alinhamento do item em relação ao cross-axis
+        Padrão = auto (herda o alinhamento no cross-axis, seja align-items ou align-content, do container pai);
+        Outros valores:
+        - flex-start
+        - flex-end
+        - center
+        - stretch
+        -->
     </div>
 </body>
 </html>
