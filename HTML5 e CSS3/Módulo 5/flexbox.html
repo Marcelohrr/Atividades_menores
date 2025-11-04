@@ -15,6 +15,12 @@
         h1 {
             background-color: black;
             color: white;
+            padding: 20px 10px;
+        }
+
+        h2 {
+            background-color: black;
+            color: white;
             margin: 10px 0;
             padding: 10px;
         }
@@ -96,17 +102,16 @@
             */
         }
 
-        div.container.tres {
+        div.container.tres, div.container.quatro {
             display: flex;
-            width: 200px;
             height: 100px;
             flex-flow: row nowrap;
-            justify-content: center;
         }
     </style>
 </head>
 <body>
-    <h1>Configurando containers</h1>
+    <h1>Flexbox</h1>
+    <h2>Configurando containers</h2>
     <p>flex-direction e flex-wrap (flex-flow):</p>
     <div class="container um">
         <div class="item um">A</div>
@@ -131,7 +136,7 @@
         <div class="item dois">H</div>
     </div>
 
-    <h1>Configurando itens</h1>
+    <h2>Configurando itens</h2>
     <p>order e align-self:</p>
     <div class="container tres" style="align-items: flex-start;">
         <div class="item tres" style="order: 0; align-self: auto;">0</div> <!-- Padrão = order: 0; -->
@@ -145,6 +150,27 @@
         - flex-end
         - center
         - stretch
+        -->
+    </div>
+
+    <p></p>
+    <div class="container quatro">
+        <div class="item quatro" style="flex-basis: 200px; flex-grow: 0; flex-shrink: 1;">Diminui (padrão)</div> <!-- Padrão = order: 0; flex-grow: 0; flex-shrink: = 1; -->
+        <div class="item quatro" style="flex-basis: 200px; flex-grow: 1; flex-shrink: 1;">Diminui e cresce</div>
+        <div class="item quatro" style="flex-basis: 200px; flex-grow: 2; flex-shrink: 0;">Cresce em proporção 2/1</div>
+        <div class="item quatro" style="flex-basis: 200px; flex-grow: 0; flex-shrink: 2;">Diminui em proporção 2/1</div>
+        <div class="item quatro" style="flex-basis: 200px; flex-grow: 0; flex-shrink: 0;">Não muda</div>
+        <!--
+        flex-basis define o tamanho do item no main-axis
+        Padrão = auto (define o tamanho do item de acordo com seu conteúdo); aceita valor fixo (que, se necessário, redimensiona para caber no container pai)
+        -->
+        <!--
+        Shorthand = flex: 0 1 auto (flex-grow flex-shrink flex-basis)
+        Outros valores:
+        - flex: initial = flex: 0 1 auto (padrão)
+        - flex: none = flex: 0 0 auto
+        - flex: auto = flex: 1 1 auto
+        - flex: 2 = flex: 2 1 auto (só configura grow)
         -->
     </div>
 </body>
