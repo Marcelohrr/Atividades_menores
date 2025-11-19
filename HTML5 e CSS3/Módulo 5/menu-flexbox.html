@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <style>
+        /* Mobile first */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+        }
+
+        body {
+            height: 100vh;
+            background-image: linear-gradient(180deg, lightblue, lightcyan);
+        }
+
+        header {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            align-content: space-evenly;
+            background-color: lightcyan;
+            box-shadow: 0 0 20px #00000080;
+            padding: 10px;
+        }
+
+        header > h1 {
+            width: 500px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #menuHamburguer {
+            flex: 1;
+            background-color: lightblue;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #menuHamburguer:hover, menu li:hover, menu li#opcao5:hover {
+            background-color: lightskyblue;
+        }
+
+        #menuHamburguer:active, menu li:active, menu li#opcao5:active {
+            background-color: deepskyblue;
+        }
+
+        menu {
+            display: none;
+            width: 500px;
+            border: 2px solid black;
+            border-radius: 0 0 5px 5px;
+        }
+
+        menu > ul {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: space-evenly;
+        }
+
+        menu li {
+            flex: auto;
+            width: 100%;
+            background-color: lightblue;
+            border-bottom: 2px solid black;
+            padding: 10px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        menu li#opcao5 {
+            border-bottom: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        menu a {
+            text-decoration: none;
+        }
+
+        main {
+            background-color: white;
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 20px #00000080;
+            padding: 10px;
+        }
+
+        main > h2 {
+            margin-bottom: 10px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        main > p {
+            margin-top: 10px;
+            text-align: justify;
+            text-indent: 25px;
+            line-height: 1.5;
+        }
+
+        /* Telas maiores */
+        @media screen and (min-width: 481px) {
+            header > h1 {
+                text-align: left;
+            }
+
+            #menuHamburguer {
+                display: none;
+            }
+
+            menu {
+                display: block;
+                width: 500px;
+                border: none;
+            }
+            
+            menu li, menu li#opcao5 {
+                flex: auto;
+                width: 100%;
+                background-color: lightblue;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            menu > ul {
+                flex-flow: row nowrap;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Menu com flexbox</h1>
+        <span id="menuHamburguer" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
+        <menu id="opcoes">
+            <ul>
+                <li><a href="#">Opção 1</a></li>
+                <li><a href="#">Opção 2</a></li>
+                <li><a href="#">Opção 3</a></li>
+                <li><a href="#">Opção 4</a></li>
+                <li id="opcao5"><a href="#">Opção 5</a></li>
+            </ul>
+        </menu>
+    </header>
+    <main>
+        <h2>Título</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis minus rerum nulla doloremque. Assumenda ab nisi, soluta odio et aspernatur voluptatum iure reprehenderit facilis dolorem maxime repellendus velit harum iusto! Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, cum doloribus, veniam culpa nulla temporibus maxime beatae incidunt voluptatem voluptas ut maiores dolores. Quo qui ratione nobis est praesentium laborum. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem perferendis nisi aut excepturi tenetur natus distinctio enim consequatur ea tempore, a sint optio blanditiis aliquam ipsam, laboriosam corrupti facilis. Numquam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dicta, fuga tenetur aut ipsa velit commodi ipsam aspernatur qui, sed praesentium reprehenderit doloribus. Sequi quo molestiae architecto assumenda asperiores fugit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis minima porro, maxime sunt quibusdam repellendus obcaecati aspernatur fugit. Assumenda repellat consequuntur aperiam tenetur in et dolores voluptatibus nostrum. Explicabo, accusantium! Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sunt laborum totam, nulla consequuntur magni earum dolore sequi, reprehenderit minus nam aspernatur repellat facilis deleniti neque doloribus placeat, atque illo!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est fugit magnam recusandae eum, impedit nostrum optio? Ut quisquam distinctio impedit qui sit facere quibusdam! Corporis architecto ipsa eveniet cumque illum? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos delectus obcaecati, ducimus nam quo voluptatum itaque vel earum fugit ratione modi quas sapiente a minus debitis alias maxime iste optio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellat nobis quia tempore! Inventore laboriosam expedita commodi officia perspiciatis nostrum, ratione cupiditate repellat in libero eligendi fugit reiciendis vitae magni.</p>
+    </main>
+
+
+    <script>
+        function clickMenu() {
+            if (opcoes.style.display == "block") {
+                opcoes.style.display = "none"
+                menuHamburguer.style.borderRadius = "5px"
+            } else {
+                opcoes.style.display = "block"
+                menuHamburguer.style.borderRadius = "5px 5px 0 0"
+            }
+        }
+    </script>
+</body>
+</html>
