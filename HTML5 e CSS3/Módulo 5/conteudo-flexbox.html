@@ -5,7 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font: 16px Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+
+        header, section {
+            padding: 20px;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        section.flexivel {
+            display: flex;
+            flex-flow: column nowrap;
+
+
+            background-color: lightgreen;
+        }
+
+        section.normal {
+            background-color: lightpink;
+        }
+
+        section > article.media-text {
+            display: flex;
+            flex-flow: row wrap-reverse;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        section > article.text-media {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        section > article > div.text {
+            flex: 1 1 320px;
+        }
+
+        section > article > div.media {
+            flex: 1 0 320px;
+            display: flex;
+            justify-content: center;
+        }
+
+        section p, section img {
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            width: 80%;
+        }
     </style>
 </head>
 <body>
