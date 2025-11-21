@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <style>
+        div.container.um {
+            height: 400px;
+            border: 2px solid green;
+            display: grid;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: repeat(3, 200px); /* repeat(n, x) repete um padrão de tamanho x n vezes */
+            /*
+            grid-template-rows e grid-template-columns definem a quantidade e o tamanho das linhas e das colunas
+            Padrão = none (nenhuma trilha explícita é definida; assim, conforme necessário, itens usam as trilhas implícitas, cujo tamanho vem de grid-auto-rows e grid-auto-columns, de padrão = auto);
+            Valores comuns:
+            - fr (mais usado, fração do espaço disponível)
+            - auto (tamanho automático conforme o conteúdo)
+            - px / em / %
+            */
+            /* Shorthand = grid-template: repeat(3, 100px) / repeat(3, 200px); (grid-template-rows / grid-template-columns) */
+
+            gap: 10px;
+            /*
+            gap define o espaçamento entre itens (row-gap + column-gap)
+            Padrão = 0
+            */
+
+            align-content: center;
+            /*
+            align-content alinha toda a grade no eixo vertical (block-axis) — só funciona quando há espaço sobrando no container
+            Padrão = normal;
+            Outros valores:
+            - start
+            - end
+            - center
+            - space-between
+            - space-evenly
+            - space-around
+            */
+            justify-content: space-evenly;
+            /*
+            justify-content alinha toda a grade no eixo horizontal (inline-axis) — só funciona quando há espaço sobrando no container
+            Padrão = normal (não aplica alinhamento);
+            Outros valores:
+            - start
+            - end
+            - center
+            - space-between
+            - space-evenly
+            - space-around
+            */
+            /* Shorthand = place-content: center space-evenly; (align-content justify-content) */
+
+            align-items: start;
+            /*
+            align-items alinha cada item no eixo vertical
+            Padrão = stretch;
+            Outros valores:
+            - start
+            - end
+            - center
+            - baseline (alinha o item pela linha de base do conteúdo)
+            */
+            justify-items: end;
+            /*
+            justify-items alinha cada item no eixo horizontal
+            Padrão = stretch;
+            Outros valores:
+            - start
+            - end
+            - center
+            */
+            /* Shorthand = place-items: start end; (align-items justify-items) */
+
+            grid-auto-rows: 100px;
+            grid-auto-columns: 200px;
+            /*
+            grid-auto-rows e grid-auto-columns definem o tamanho das linhas e colunas implícitas (criadas automaticamente quando há mais itens do que trilhas explícitas definidas)
+            Padrão = auto (tamanho necessário para acomodar o maior item da linha/coluna);
+            */
+        }
+
+        div.item.um {
+            border: 2px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container um">
+        <div class="item um">A</div>
+        <div class="item um">B</div>
+        <div class="item um">C</div>
+        <div class="item um">D</div>
+        <div class="item um">E</div>
+        <div class="item um">F</div>
+        <div class="item um">G</div>
+    </div>
+</body>
+</html>
