@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --fundo-principal: #f5f5f5;
+  --texto: #222222;
+  --texto-inverso: #ffffff;
+  --destaque: #0077ff;
+  --destaque-inverso: #66bbff;
+  --fundo-card: #ffffff;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5rem;
+    background-color: var(--fundo-principal);
+    color: var(--texto);
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--destaque);
+    color: var(--texto);
+    padding: 10px;
+}
+
+nav#menu ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-content: space-evenly;
+    row-gap: 21px;
+    list-style: none;
+}
+
+nav#menu a {
+    text-decoration: none;
+    color: var(--texto-inverso);
+    font-weight: 600;
+    padding: 13px 20px;
+    border-radius: 10px;
+    transition: background-color .2s, color .2s;
+}
+
+nav#menu a:hover {
+    background-color: var(--destaque-inverso);
+    color: var(--destaque);
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 90vw 1fr;
+    /* quando houver duas colunas--> gap: 20px; */
+    padding-top: 10px;
+}
+
+section#ficha {
+    grid-column: 2;
+    background-color: var(--fundo-card);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+section#ficha img.foto {
+    display: block;
+    margin: auto;
+    width: 200px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    overflow: hidden;
+    margin-bottom: 20px;
+    outline: 5px solid var(--destaque);
+    border: 5px solid var(--fundo-card);
+    border-radius: 50%;
+}
+
+section#ficha h1 {
+    color: var(--destaque);
+    margin: 20px 0;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+    text-align: center;
+}
+
+div#redes-sociais {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+div#redes-sociais a {
+    color: var(--destaque);
+    transition: color .2s;
+}
+
+div#redes-sociais a:hover {
+    color: var(--destaque-inverso);
+}
