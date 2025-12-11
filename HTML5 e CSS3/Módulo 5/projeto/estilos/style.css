@@ -167,12 +167,17 @@ article h2 {
     background-color: var(--destaque-inverso);
     height: 100%;
     border-radius: 5px;
+    transition: background-color .2s;
+}
+
+#skills-container .item:hover .progresso {
+    background-color: var(--destaque);
 }
 
 .formacao-container#formal,
 .formacao-container#informal {
     display: flex;
-    flex-flow: column-reverse;
+    flex-direction: column-reverse;
     gap: 10px;
 }
 
@@ -191,6 +196,7 @@ article#formacao h3#ultimo {
     border-radius: 5px;
     padding: 5px 10px;
     transition: border-color .2s, border-width .2s;
+    cursor: default;
 }
 
 .formacao-container .curso:hover {
@@ -216,13 +222,85 @@ article#formacao h3#ultimo {
     color: var(--destaque);
 }
 
+#projetos-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+}
 
+#projetos-container .projeto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--fundo-principal);
+    border-left: 5px solid var(--destaque-inverso);
+    border-radius: 5px;
+    padding: 10px;
+    transition: border-color .2s, border-width .2s;
+    cursor: default;
+}
 
+#projetos-container .projeto:hover {
+    border-color: var(--destaque);
+    border-width: 10px;
+}
 
+#projetos-container .projeto-imagem {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    overflow: hidden;
+    border-radius: 5px;
+}
 
+#projetos-container p {
+    color: var(--texto);
+    text-align: justify;
+}
+
+#projetos-container .periodo {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+#projetos-container h3 {
+    color: var(--destaque-inverso);
+    font-size: 1.1rem;
+    transition: color .2s;
+}
+
+#projetos-container .projeto:hover h3 {
+    color: var(--destaque);
+}
+
+#projetos-container summary {
+    color: var(--destaque-inverso);
+    cursor: pointer;
+    transition: color .2s;
+}
+
+#projetos-container summary:hover {
+    color: var(--destaque);
+    cursor: pointer;
+}
 
 @media screen and (min-width: 768px) {
     #skills-container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    #projetos-container .projeto {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    #projetos-container a {
+        width: 25%;
+    }
+
+    #projetos-container .projeto-info {
+        width: 75%;
     }
 }
