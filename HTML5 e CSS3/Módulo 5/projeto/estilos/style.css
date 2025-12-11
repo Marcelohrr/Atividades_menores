@@ -285,6 +285,25 @@ article#formacao h3#ultimo {
     cursor: pointer;
 }
 
+footer {
+    background-color: var(--destaque);
+    color: var(--texto-inverso);
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    color: var(--texto-inverso);
+    white-space: nowrap;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color .2s;
+}
+
+footer a:hover {
+    color: var(--destaque-inverso);
+}
+
 @media screen and (min-width: 768px) {
     #skills-container {
         grid-template-columns: 1fr 1fr;
