@@ -16,8 +16,11 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
             background-image: linear-gradient(180deg, lightblue, lightcyan);
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow-x: hidden; /* Remove a rolagem horizontal, só pra impedir sobra em telas pequenas */
         }
 
         header {
@@ -32,9 +35,8 @@
         }
 
         header > h1 {
-            flex: 0 0 500px;
+            flex: 0 0 500px; /* Faz sobrar, só para a proposta de exercício do professor funcionar */
             margin-bottom: 10px;
-            text-align: center;
         }
 
         #menuHamburguer {
@@ -113,10 +115,6 @@
 
         /* Telas maiores */
         @media screen and (min-width: 481px) and (max-width: 1019px) {
-            header > h1 {
-                text-align: left;
-            }
-
             #menuHamburguer {
                 display: none;
             }
@@ -146,7 +144,6 @@
         @media screen and (min-width: 1020px) {
             header > h1 {
                 margin-bottom: 0;
-                text-align: left;
             }
 
             #menuHamburguer {

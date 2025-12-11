@@ -245,10 +245,13 @@ article#formacao h3#ultimo {
     border-width: 10px;
 }
 
+#projetos-container a {
+    align-self: center;
+}
+
 #projetos-container .projeto-imagem {
     display: block;
     width: 100%;
-    aspect-ratio: 16/9;
     object-fit: contain;
     overflow: hidden;
     border-radius: 5px;
@@ -285,6 +288,16 @@ article#formacao h3#ultimo {
     cursor: pointer;
 }
 
+#projetos-container details.descricao p,
+#projetos-container details.descricao li {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+}
+
+#projetos-container details.descricao ul {
+    padding-left: 2rem;
+}
+
 footer {
     background-color: var(--destaque);
     color: var(--texto-inverso);
@@ -316,10 +329,10 @@ footer a:hover {
     }
 
     #projetos-container a {
-        width: 25%;
+        width: 50%;
     }
 
     #projetos-container .projeto-info {
-        width: 75%;
+        width: 50%;
     }
 }
