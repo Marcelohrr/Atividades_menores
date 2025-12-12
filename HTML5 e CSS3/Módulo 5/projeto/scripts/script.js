@@ -38,3 +38,17 @@ navLinks.forEach(link => {
     }
   });
 });
+
+// Ajustar link para se adequar à media query
+function ajustarLinks() {
+  const link = document.querySelector('#menu li:first-child a');
+
+  if (window.innerWidth < 992) {
+    link.setAttribute('href', '#ficha');
+  } else {
+    link.setAttribute('href', '#apresentacao');
+  }
+}
+
+ajustarLinks();
+window.addEventListener('resize', ajustarLinks);
