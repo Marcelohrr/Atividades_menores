@@ -359,7 +359,7 @@ footer a:active {
     }
 
     main {
-        grid-template-columns: auto 350px 1fr auto;
+        grid-template-columns: auto 370px 1fr auto;
         gap: 10px;
     }
 
@@ -370,6 +370,13 @@ footer a:active {
         min-height: fit-content;
         height: calc(100vh - 64px);
         margin-bottom: 10px;
+    }
+
+    section#ficha div#scroll-area {
+        overflow-y: auto;
+        height: 100%;
+        padding-top: 5px; /* Interação com o scroll faz cortar a borda superior */
+        padding-right: 20px; /* Espaçamento da barra */
     }
 
     div#redes-sociais a:hover {
