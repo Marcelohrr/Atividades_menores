@@ -24,7 +24,7 @@ body {
 
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -36,8 +36,7 @@ header {
 nav#menu ul {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-end;
-    align-content: space-evenly;
+    justify-content: space-evenly;
     row-gap: 21px;
     list-style: none;
 }
@@ -50,7 +49,7 @@ nav#menu a {
     transition: background-color .2s, color .2s;
 }
 
-nav#menu a:hover {
+nav#menu a:active {
     background-color: var(--destaque-inverso);
     color: var(--destaque);
 }
@@ -107,7 +106,7 @@ div#redes-sociais a {
     transition: color .2s;
 }
 
-div#redes-sociais a:hover {
+div#redes-sociais a:active {
     color: var(--destaque-inverso);
 }
 
@@ -177,7 +176,7 @@ article h2 {
     cursor: default;
 }
 
-#skills-container .item:hover .progresso {
+#skills-container .item:active .progresso {
     background-color: var(--destaque);
 }
 
@@ -206,7 +205,7 @@ article#formacao h3#ultimo {
     cursor: default;
 }
 
-.formacao-container .curso:hover {
+.formacao-container .curso:active {
     border-color: var(--destaque);
     border-width: 10px;
 }
@@ -224,8 +223,8 @@ article#formacao h3#ultimo {
     transition: color .2s;
 }
 
-.formacao-container .curso:hover .instituicao,
-.formacao-container .curso:hover .nome {
+.formacao-container .curso:active .instituicao,
+.formacao-container .curso:active .nome {
     color: var(--destaque);
 }
 
@@ -247,7 +246,7 @@ article#formacao h3#ultimo {
     cursor: default;
 }
 
-#projetos-container .projeto:hover {
+#projetos-container .projeto:active {
     border-color: var(--destaque);
     border-width: 10px;
 }
@@ -280,7 +279,7 @@ article#formacao h3#ultimo {
     transition: color .2s;
 }
 
-#projetos-container .projeto:hover h3 {
+#projetos-container .projeto:active h3 {
     color: var(--destaque);
 }
 
@@ -290,7 +289,7 @@ article#formacao h3#ultimo {
     transition: color .2s;
 }
 
-#projetos-container summary:hover {
+#projetos-container summary:active {
     color: var(--destaque);
     cursor: pointer;
 }
@@ -314,19 +313,53 @@ footer {
 
 footer a {
     color: var(--texto-inverso);
-    white-space: nowrap;
     font-weight: bold;
     text-decoration: none;
     transition: color .2s;
 }
 
-footer a:hover {
+footer a:active {
     color: var(--destaque-inverso);
 }
 
+@media screen and (min-width: 351px) {
+    footer a {
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    header {
+        justify-content: flex-end;
+    }
+}
+
 @media screen and (min-width: 768px) {
+    nav#menu a:hover {
+        background-color: var(--destaque-inverso);
+        color: var(--destaque);
+    }
+
+    div#redes-sociais a:hover {
+        color: var(--destaque-inverso);
+    }
+
     #skills-container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    #skills-container .item:hover .progresso {
+        background-color: var(--destaque);
+    }
+
+    .formacao-container .curso:hover {
+        border-color: var(--destaque);
+        border-width: 10px;
+    }
+
+    .formacao-container .curso:hover .instituicao,
+    .formacao-container .curso:hover .nome {
+        color: var(--destaque);
     }
 
     #projetos-container .projeto {
@@ -335,11 +368,29 @@ footer a:hover {
         gap: 20px;
     }
 
+    #projetos-container .projeto:hover {
+        border-color: var(--destaque);
+        border-width: 10px;
+    }
+
     #projetos-container a {
         width: 50%;
     }
 
     #projetos-container .projeto-info {
         width: 50%;
+    }
+
+    #projetos-container .projeto:hover h3 {
+        color: var(--destaque);
+    }
+
+    #projetos-container summary:hover {
+        color: var(--destaque);
+        cursor: pointer;
+    }
+
+    footer a:hover {
+        color: var(--destaque-inverso);
     }
 }
