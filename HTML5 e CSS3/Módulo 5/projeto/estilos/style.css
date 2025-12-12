@@ -252,8 +252,8 @@ article#formacao h3#ultimo {
 
 #projetos-container a {
     align-self: center;
-    text-decoration: none !important;
-    color: var(--destaque-inverso) !important;
+    text-decoration: none;
+    color: var(--destaque-inverso);
     font-size: 1.1rem;
     transition: color .2s;
 }
