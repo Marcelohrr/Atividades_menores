@@ -57,7 +57,6 @@ nav#menu a:active {
 main {
     display: grid;
     grid-template-columns: 1fr 90vw 1fr;
-    /* TODO: quando houver duas colunas--> gap: 20px; */
 }
 
 section#ficha {
@@ -253,6 +252,15 @@ article#formacao h3#ultimo {
 
 #projetos-container a {
     align-self: center;
+    text-decoration: none;
+    color: var(--destaque-inverso);
+    font-size: 1.1rem;
+    transition: color .2s;
+}
+
+#projetos-container .projeto:active a {
+    color: var(--destaque);
+    text-decoration: underline;
 }
 
 #projetos-container .projeto-imagem {
@@ -271,16 +279,6 @@ article#formacao h3#ultimo {
 #projetos-container .periodo {
     font-size: 0.8rem;
     font-weight: bold;
-}
-
-#projetos-container h3 {
-    color: var(--destaque-inverso);
-    font-size: 1.1rem;
-    transition: color .2s;
-}
-
-#projetos-container .projeto:active h3 {
-    color: var(--destaque);
 }
 
 #projetos-container summary {
@@ -401,8 +399,12 @@ footer a:active {
         border-width: 10px;
     }
 
-    #projetos-container .projeto:hover h3 {
+    #projetos-container .projeto:hover a {
         color: var(--destaque);
+    }
+
+    #projetos-container a:hover {
+        text-decoration: underline;
     }
 
     #projetos-container summary:hover {
