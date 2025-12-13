@@ -7,12 +7,12 @@
 }
 
 :root {
-  --fundo-principal: #f5f5f5;
-  --texto: #222222;
-  --texto-inverso: #ffffff;
-  --destaque: #0077ff;
-  --destaque-inverso: #66bbff;
-  --fundo-card: #ffffff;
+    --fundo-principal: #cfddda;
+    --texto: #03110e;
+    --texto-inverso: #ffffff;
+    --destaque: #115544;
+    --destaque-inverso: #3f9588;
+    --fundo-card: #ffffff;
 }
 
 body {
@@ -20,6 +20,15 @@ body {
     line-height: 1.5rem;
     background-color: var(--fundo-principal);
     color: var(--texto);
+}
+
+body.escuro {
+    --fundo-principal: #03110e;
+    --texto: #e6fff9;
+    --texto-inverso: #115544;
+    --destaque: #4fbaaa;
+    --destaque-inverso: #356A5F;
+    --fundo-card: #293330;
 }
 
 header {
