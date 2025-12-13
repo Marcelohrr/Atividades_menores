@@ -20,6 +20,7 @@ body {
     line-height: 1.5rem;
     background-color: var(--fundo-principal);
     color: var(--texto);
+    transition: background-color .2s, color .2s;
 }
 
 body.escuro {
@@ -40,6 +41,7 @@ header {
     background-color: var(--destaque);
     color: var(--texto);
     padding: 10px;
+    transition: background-color .2s, color .2s;
 }
 
 nav#menu ul {
@@ -74,6 +76,7 @@ section#ficha {
     margin: 10px 0 0 0;
     border-radius: 10px;
     padding: 20px;
+    transition: background-color .2s;
 }
 
 section#ficha img.foto {
@@ -87,6 +90,7 @@ section#ficha img.foto {
     outline: 5px solid var(--destaque);
     border: 5px solid var(--fundo-card);
     border-radius: 50%;
+    transition: outline-color .2s, border-color .2s;
 }
 
 section#ficha h1 {
@@ -95,6 +99,7 @@ section#ficha h1 {
     font-size: 1.8rem;
     line-height: 1.8rem;
     text-align: center;
+    transition: color .2s;
 }
 
 section#ficha p {
@@ -127,11 +132,13 @@ article {
     margin: 10px 0;
     border-radius: 10px;
     padding: 20px;
+    transition: background-color .2s;
 }
 
 article h2 {
     color: var(--destaque);
     margin-bottom: 20px;
+    transition: color .2s;
 }
 
 #video-container {
@@ -164,6 +171,7 @@ article h2 {
 #skills-container .skill {
     color: var(--texto);
     font-weight: bold;
+    transition: color .2s;
 }
 
 #skills-container .barra {
@@ -171,6 +179,7 @@ article h2 {
     width: 100%;
     height: 10px;
     border-radius: 5px;
+    transition: background-color .2s;
 }
 
 #skills-container .progresso {
@@ -186,6 +195,7 @@ article h2 {
 
 #skills-container .item:active .progresso {
     background-color: var(--destaque);
+    transition: background-color .2s;
 }
 
 .formacao-container#formal,
@@ -198,6 +208,7 @@ article h2 {
 article#formacao h3 {
     color: var(--texto);
     margin-bottom: 5px;
+    transition: color .2s;
 }
 
 article#formacao h3#ultimo {
@@ -209,7 +220,7 @@ article#formacao h3#ultimo {
     border-left: 5px solid var(--destaque-inverso);
     border-radius: 5px;
     padding: 5px 10px;
-    transition: border-color .2s, border-width .2s;
+    transition: background-color .2s, border-color .2s, border-width .2s;
     cursor: default;
 }
 
@@ -222,6 +233,7 @@ article#formacao h3#ultimo {
     color: var(--texto);
     font-size: 0.8rem;
     font-weight: bold;
+    transition: color .2s;
 }
 
 .formacao-container .instituicao,
@@ -250,7 +262,7 @@ article#formacao h3#ultimo {
     border-left: 5px solid var(--destaque-inverso);
     border-radius: 5px;
     padding: 10px;
-    transition: border-color .2s, border-width .2s;
+    transition: background-color .2s, border-color .2s, border-width .2s;
     cursor: default;
 }
 
@@ -283,6 +295,7 @@ article#formacao h3#ultimo {
 #projetos-container p {
     color: var(--texto);
     text-align: justify;
+    transition: color .2s;
 }
 
 #projetos-container .periodo {
@@ -316,6 +329,7 @@ footer {
     color: var(--texto-inverso);
     text-align: center;
     padding: 10px;
+    transition: background-color .2s, color .2s;
 }
 
 footer a {
