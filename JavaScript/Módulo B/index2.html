@@ -8,7 +8,52 @@
 <body>
 
     <script>
-        
+        /*
+        Operadores:
+        - Aritméticos (+ - * / % **)
+        - Atribuição (= += -= *= /= %= **=)
+        - Relacionais (> < >= <= == != ===)
+        - Lógicos (! && ||)
+        - Ternário (teste ? true : false)
+        */
+
+        /*
+        Ordem de precedência dos tipos de operadores:
+        1. ()
+        2. Pré-incremento / pré-decremento
+        3. Negação e operadores unários (!, +, -, typeof, void, delete)
+        4. Aritméticos
+        5. Relacionais
+        6. Igualdade / desigualdade
+        7. AND Lógico (&&)
+        8. OR Lógico (||)
+        9. Ternário
+        10. Atribuição
+
+        Ordem de precedência dos operadores aritméticos:
+        1. **
+        2. * / %
+        3. + -
+        */
+
+        // Operadores de incremento e decremento:
+        var n = 1
+        console.log(n++) // mostra 1 → pós-incremento: usa n antes de somar 1
+        console.log(n)   // agora mostra 2
+
+        var n = 1
+        console.log(++n) // já mostra 2 → pré-incremento: soma 1 antes de usar
+
+        var n = 1
+        console.log(--n) // mostra 0 → pré-decremento: subtrai 1 antes de usar
+
+        /*
+        Operadores relacionais de igualdade e desigualdade:
+        == → igualdade com conversão de tipo (loose equality)
+        === → igualdade estrita (strict equality)
+        != → desigualdade com conversão de tipo (loose inequality)
+        !== → diferença estrita (strict inequality)
+        */
     </script>
 </body>
 </html>
