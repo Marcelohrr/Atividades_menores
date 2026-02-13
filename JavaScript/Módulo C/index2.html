@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background-color: black;
+            color: white;
+            font: 500 20px Arial;
+        }
+
+        div#area {
+            display: grid;
+            background-color: brown;
+            width: 250px;
+            height: 250px;
+            place-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="area" onclick="clicar()" onmouseenter="entrar()" onmouseout="sair()"> <!-- Chamadas de funções por eventos configuradas no HTML -->
+        Interaja com o mouse!
+    </div>
+    <script>
+        const a = window.document.getElementById('area')
+
+        /*
+        Para chamar as funções no JavaScript e limpar o HTML:
+        a.addEventListener('click', clicar)
+        a.addEventListener('mouseenter', entrar)
+        a.addEventListener('mouseout', sair)
+        */
+
+        function clicar() {
+            a.innerText = 'Clicou!'
+            a.style.background = 'green'
+        }
+
+        function entrar() {
+            a.innerText = 'Entrou!'
+        }
+
+        function sair() {
+            a.innerText = 'Saiu!'
+            a.style.background = 'brown'
+        }
+    </script>
+</body>
+</html>
