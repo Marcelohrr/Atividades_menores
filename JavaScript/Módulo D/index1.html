@@ -36,57 +36,57 @@
     <script>
         // Exercício 1: Condição simples
         function verificar() {
-            var txtv = window.document.querySelector('input#txtvel')
-            var velocidade = Number(txtv.value)
+            var txtv = window.document.querySelector('input#txtvel');
+            var velocidade = Number(txtv.value);
 
-            var resultado = window.document.querySelector('div#resultado')
-            resultado.innerHTML = `<p>Velocidade = ${velocidade}km/h.</p>`
+            var resultado = window.document.querySelector('div#resultado');
+            resultado.innerHTML = `<p>Velocidade = ${velocidade}km/h.</p>`;
 
             if (velocidade > 100) {
-                resultado.innerHTML += '<p><strong>Multado!</strong></p>'
+                resultado.innerHTML += '<p><strong>Multado!</strong></p>';
             }
 
-            resultado.innerHTML += '<p>Verificação concluída!</p>'
+            resultado.innerHTML += '<p>Verificação concluída!</p>';
         }
 
         // Exercício 2: Condição composta
         function nacionalidade() {
-            var pais = window.document.querySelector('input#txtpais').value
-            var nacionalidade = window.document.querySelector('div#nacionalidade')
+            var pais = window.document.querySelector('input#txtpais').value;
+            var nacionalidade = window.document.querySelector('div#nacionalidade');
             if (pais.toLowerCase() === 'brasil') {
-                nacionalidade.innerHTML += '<p>brasileiro!</p>'
+                nacionalidade.innerHTML += '<p>brasileiro!</p>';
             } else {
-                nacionalidade.innerHTML += '<p>estrangeiro!</p>'
+                nacionalidade.innerHTML += '<p>estrangeiro!</p>';
             }
         }
 
         // Exercício 3.1: Condições aninhadas
         function voto() {
-            var idade = Number(window.document.querySelector('input#txtidade').value)
-            var situacao = window.document.querySelector('div#situacao')
+            var idade = Number(window.document.querySelector('input#txtidade').value);
+            var situacao = window.document.querySelector('div#situacao');
             if (idade < 16) {
-                situacao.innerHTML = `<p>Voto proibido!</p>`
+                situacao.innerHTML = `<p>Voto proibido!</p>`;
             } else if (idade < 18 || idade >= 70) {
-                situacao.innerHTML = `<p>Voto facultativo!</p>`
+                situacao.innerHTML = `<p>Voto facultativo!</p>`;
             } else {
-                situacao.innerHTML = `<p>Voto obrigatório!</p>`
+                situacao.innerHTML = `<p>Voto obrigatório!</p>`;
             }
         }
 
         // Exercício 3.2: Condições aninhadas
         function cumprimentar() {
-            var agora = new Date()
-            var hora = agora.getHours()
-            var cumprimento = window.document.querySelector('div#cumprimento')
-            cumprimento.innerHTML = `<p>São ${hora} horas!</p>`
+            var agora = new Date();
+            var hora = agora.getHours();
+            var cumprimento = window.document.querySelector('div#cumprimento');
+            cumprimento.innerHTML = `<p>São ${hora} horas!</p>`;
             if (hora < 6) {
-                cumprimento.innerHTML += '<p>Boa madrugada! :I</p>'
+                cumprimento.innerHTML += '<p>Boa madrugada! :I</p>';
             } else if (hora < 12) {
-                cumprimento.innerHTML += '<p>Bom dia! :D</p>'
+                cumprimento.innerHTML += '<p>Bom dia! :D</p>';
             } else if (hora < 18) {
-                cumprimento.innerHTML += '<p>Boa tarde! ;)</p>'
+                cumprimento.innerHTML += '<p>Boa tarde! ;)</p>';
             } else {
-                cumprimento.innerHTML += '<p>Boa noite! :O</p>'
+                cumprimento.innerHTML += '<p>Boa noite! :O</p>';
             }
         }
 
@@ -94,7 +94,7 @@
         function verificarDia() {
             var agora = new Date();
             var diaSemana = agora.getDay();
-            var dia = window.document.querySelector('div#dia')
+            var dia = window.document.querySelector('div#dia');
             
             switch (diaSemana) {
                 case 0:
