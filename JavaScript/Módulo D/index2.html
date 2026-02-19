@@ -12,14 +12,13 @@
             font: normal 20px Arial;
         }
 
-        header {
+        header > h1 {
             text-decoration: underline;
         }
 
         section {
             display: grid;
-            justify-content: center;
-            align-items: center;
+            place-items: center;
             gap: 20px;
             background-color: white;
             width: 400px;
@@ -36,11 +35,12 @@
         img#img {
             width: 200px;
             height: 200px;
+            object-fit: cover;
             border: 2px solid black;
             border-radius: 50%;
         }
 
-        footer {
+        footer > p {
             font-style: italic;
         }
     </style>

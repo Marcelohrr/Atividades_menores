@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 90vh;
+            background-color: #80008080;
+            font: normal 20px Arial;
+        }
+
+        header > h1 {
+            text-decoration: underline;
+        }
+
+        section {
+            background-color: white;
+            width: 520px;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #00000080;
+            padding: 0 20px 20px 20px;
+        }
+
+        div#resultado {
+            background: linear-gradient(45deg, lightpink, lightblue);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        img#img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+
+        footer > p {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Idade</h1>
+    </header>
+    <section>
+        <p>Ano de nascimento: <input type="number" name="txtano" id="txtano" min="0"></p>
+        <p>Já fez aniversário esse ano?
+            <input type="radio" name="radani" id="sim" checked>
+            <label for="sim">Sim</label>
+            <input type="radio" name="radani" id="nao">
+            <label for="nao">Não</label>
+        </p>
+        <p>Gênero:
+            <input type="radio" name="radgen" id="fem" checked>
+            <label for="fem">Feminino</label>
+            <input type="radio" name="radgen" id="mas">
+            <label for="mas">Masculino</label>
+            <input type="radio" name="radgen" id="out">
+            <label for="out">Outro</label>
+        </p>
+        <p><input type="button" value="Ok" onclick="verificar()"></p>
+
+        <div id="resultado"><p>Aguardando os dados...</p></div>
+    </section>
+    <footer>
+        <p>Exercício feito por Marcelo Henrique Rosa Reis! :)</p>
+    </footer>
+
+    <script>
+        function verificar() {
+            var data = new Date();
+            var anoAtual = data.getFullYear();
+            var anoNascimento = Number(document.querySelector('input#txtano').value);
+            var resultado = document.querySelector('div#resultado');
+            var aniversario = document.getElementsByName('radani');
+            var img = document.createElement('img');
+            img.setAttribute('id', 'img');
+            img.style.marginTop = '20px';
+
+            if (!anoNascimento || anoNascimento > anoAtual || anoAtual - anoNascimento >= 125) {
+                window.alert('Verifique os dados e tente novamente!');
+            } else {
+                var gen = document.getElementsByName('radgen');
+                var idade = anoAtual - anoNascimento;
+                var g = '';
+
+                if (aniversario[1].checked) {--idade}
+
+                if (gen[0].checked) {
+                    if (idade <= 12) {
+                        g = 'uma menina';
+                        img.setAttribute('src', 'imagens/crianca-menina.jpg');
+                    } else if (idade <= 18) {
+                        g = 'uma menina';
+                        img.setAttribute('src', 'imagens/jovem-menina.jpg');
+                    } else if (idade < 60) {
+                        g = 'uma mulher';
+                        img.setAttribute('src', 'imagens/mulher.jpg');
+                    } else {
+                        g = 'uma senhora';
+                        img.setAttribute('src', 'imagens/idosa.jpg');
+                    }
+                } else if (gen[1].checked) {
+                    if (idade <= 12) {
+                        g = 'um menino';
+                        img.setAttribute('src', 'imagens/crianca-menino.jpg');
+                    } else if (idade <= 18) {
+                        g = 'um menino';
+                        img.setAttribute('src', 'imagens/jovem-menino.jpg');
+                    } else if (idade < 60) {
+                        g = 'um homem';
+                        img.setAttribute('src', 'imagens/homem.jpg');
+                    } else {
+                        g = 'um senhor';
+                        img.setAttribute('src', 'imagens/idoso.jpg');
+                    }
+                } else {
+                    g = 'uma pessoa'
+                    img.setAttribute('src', 'imagens/anonimo.jpg');
+                }
+
+                resultado.innerHTML = '';
+                resultado.innerHTML = `Dados inseridos de ${g} de ${idade} anos de idade.`;
+                resultado.appendChild(img);
+            }
+        }
+    </script>
+</body>
+</html>
