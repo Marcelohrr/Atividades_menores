@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    height: 90vh;
+    background-color: lightseagreen;
+}
+
+header > h1 {
+    text-decoration: underline;
+}
+
+section {
+    background-color: white;
+    width: 500px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #00000080;
+    padding: 20px;
+}
+
+div#resultado {
+    background-color: lightcyan;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+footer > p {
+    font-style: italic;
+}

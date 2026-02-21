@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    height: 90vh;
+    background-color: lightseagreen;
+}
+
+header > h1 {
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+section {
+    background-color: white;
+    width: 500px;
+    margin: 20px 0;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #00000080;
+    padding: 10px 20px 20px 20px;
+}
+
+div#inputs p {
+    margin: 10px 0;
+}
+
+div#resultado {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+}
+
+p.contagem:not(:last-child)::after {
+    content: ' 👉';
+}
+
+p.contagem:last-child::after {
+    content: ' 🏁';
+}
+
+footer > p {
+    font-style: italic;
+    margin-bottom: 20px;
+}
