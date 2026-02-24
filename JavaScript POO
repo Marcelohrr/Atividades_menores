@@ -1,0 +1,76 @@
+/*
+Object-oriented Programming (OOP) is a paradigm, or a style of programming, centered around objects rather than functions.
+
+Examples of languages that support OOP:
+- C#
+- Java
+- Ruby
+- Python
+- JavaScript
+
+Many of the popular frameworks are designed with OOP concepts in mind (Angular,for example)
+*/
+
+/*
+A programação procedural, em contraposição, é um paradigma de programação mais simples baseado na organização do código em procedimentos/funções que executam passos sequenciais sobre dados. É problemática para sistemas maiores, pois possui:
+- Baixa modularidade (dados e funções espalhados, sem módulos/blocos coesos, tornam o código excessivamente complexo);
+- Alto acoplamento (a interdependência do sistema — "spaghetti code" —, por muitas funções dependerem das mesmas variáveis globais, faz com que o código quebre mais facilmente em qualquer alteração);
+- Falta de encapsulamento (qualquer função pode alterar dados globais e provocar efeitos colaterais inesperados e difíceis de rastrear).
+Todos esses pontos representam prejuízo para manutenção, escalabilidade e reutilização.
+
+With POO, we combine a group of related variables (properties/atributos) and functions (methods) into a unit (object).
+*/
+
+// Programação procedural:
+/*
+let baseSalary = 30_000;
+let overtime = 10;
+let rate = 20;
+
+function getWage(baseSalary, overtime, rate) {
+    return baseSalary + (overtime * rate);
+}
+*/
+
+// POO:
+let employee = {
+    baseSalary: 30_000,
+    overtime: 10,
+    rate: 20,
+
+    getWage() { // No parameters, because they're modeled as properties of this object (in a object, properties and methods are part of a unit)
+        return this.baseSalary + (this.overtime * this.rate);
+    }
+};
+
+// 4 pillars of OOP
+/*
+- Encapsulation:
+É o princípio de agrupar dados (atributos) e comportamentos (métodos) em uma unidade e restringir o acesso direto aos detalhes internos — principalmente tornando privados atributos e métodos (#) —, controlando como esses dados podem ser lidos ou modificados.
+
+It reduces complexity and increases reusability.
+
+- Abstraction:
+É o processo de selecionar apenas os detalhes essenciais de um objeto ou sistema e ignorar os detalhes irrelevantes para o usuário.
+
+Hides complexity, simplifies object interfaces, and reduces the impact of internal changes (because inner or private properties or methods aren't used outside of the object, so they can be altered without external consequences).
+
+- Inheritance:
+Mechanism that allows you to eliminate redundant code.
+Example: HTML elements as TextBox, Select and CheckBox have in common properties, like hidden and innerHTML, and methods, like click() and focus(). Instead of redefining all these for every type of HTML element, we can define them once in a generic object (HTMLElement) and have other objecs inherit them.
+
+- Polymorphism:
+Technique that allows you to get rid of long if and else or switch and case statements.
+Example: HTML elements should have the ability to be rendered on a page, but each one is rendered in a different way. With OOP we can implement a render method in each of the objects that behaves differently depending on the type of the object that's referenced.
+*/
+
+/*
+Parei aqui
+(00:09:00)
+...
+*/
+
+/*
+...
+JavaScript is a little bit controversial (will get to that later)
+*/
