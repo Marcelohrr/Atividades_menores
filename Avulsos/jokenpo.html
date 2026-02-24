@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpô</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            height: 90vh;
+            background-color: lightyellow;
+        }
+
+        header > h1 {
+            text-decoration: underline;
+            margin-top: 20px;
+        }
+
+        main {
+            background-color: white;
+            width: 500px;
+            margin: 20px 0;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #00000080;
+            padding: 10px 20px 20px 20px;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        div#resultado {
+            display: grid;
+            place-items: center;
+        }
+
+        footer > p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jokenpô</h1>
+    </header>
+    <main>
+        <form action="" method="get" id="jogo">
+            <label for="jogada">Faça sua jogada:</label>
+
+            <select name="jogada" id="jogada" required>
+                <option value="" selected disabled>-- Escolha --</option>
+                <option value="pedra">Pedra</option>
+                <option value="papel">Papel</option>
+                <option value="tesoura">Tesoura</option>
+                <option value="cola">Cola</option>
+                <option value="bomba nuclear">Bomba nuclear</option>
+            </select>
+
+            <button type="submit">Jogar</button>
+        </form>
+
+        <div id="resultado"></div>
+    </main>
+    <footer>
+        <p>Exercício feito por Marcelo Henrique Rosa Reis! :)</p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('form#jogo');
+        const resultadoDiv = document.querySelector('div#resultado')
+        let boxEstilo = false;
+        
+        const opcoes = ['pedra', 'papel', 'tesoura', 'cola'];
+        const vence = { // Os valores em arrays são o que as chaves vencem
+            pedra: ['tesoura', 'cola'], // Por exemplo, a chave 'pedra' vence os valores 'tesoura' e 'cola'
+            papel: ['pedra'],
+            tesoura: ['papel'],
+            cola: ['papel', 'tesoura'],
+            'bomba nuclear': ['pedra', 'papel', 'tesoura', 'cola']
+        };
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            /*
+            submit automaticamente faz com que o navegador envie os dados para a página action e abra essa página (no caso do action="", vazio, a página seria recarregada).
+            O método .preventDefault() impede esse comportamento. O parâmetro function(event) permite acessar o objeto dentro da função.
+            */
+            
+            const jogadaPlayer = form.jogada.value; // dentro de um form, todo <input> ou <select> com o atributo name pode ser acessado como propriedade do form, usando form.[name]. É mais eficiente do que acessar o seletor novamente com: const jogadaPlayer = document.querySelector('select#jogada').value;
+            let jogadaNPC = opcoes[Math.floor(Math.random() * opcoes.length)]; // Math.random() gera um número entre 0 e 1 e Math.floor arredonda para baixo, gerando um índice válido
+            
+            let resultado = '';
+            if (!boxEstilo) {
+                resultadoDiv.style.backgroundColor = 'lightgoldenrodyellow';
+                resultadoDiv.style.marginTop = '20px';
+                resultadoDiv.style.borderRadius = '10px';
+                resultadoDiv.style.padding = '10px';
+                resultadoDiv.style.textAlign = 'center';
+                boxEstilo = true;
+            }
+
+            if (jogadaPlayer === jogadaNPC) {
+                resultado = 'Empate! 🤝';
+            } else if (vence[jogadaPlayer].includes(jogadaNPC)) { // Se o valor da chave jogadaPlayer incluir a jogadaNPC
+                resultado = 'Venceu! Eba! 🥳';
+            } else {
+                resultado = 'Perdeu! 💀';
+            }
+
+            resultadoDiv.innerHTML = `
+                <p>Sua jogada: <strong>${jogadaPlayer}</strong>.</p>
+                <p>Jogada do NPC: <strong>${jogadaNPC}</strong>.</p>
+                <br>
+                <p>Resultado: <strong>${resultado}</strong></p>
+            `;
+
+            form.jogada.value = '';
+        })
+    </script>
+</body>
+</html>
