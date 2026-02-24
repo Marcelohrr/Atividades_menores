@@ -1,9 +1,0 @@
-@charset "UTF-8";
-
-/* Configurações para portrait */
-
-body {
-    background-color: blue;
-    background-image: url("../imagens/portrait.jpg");
-    background-position: center top;
-}
