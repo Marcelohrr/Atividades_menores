@@ -1,9 +1,0 @@
-@charset "UTF-8";
-
-/* Configurações para landscape */
-
-body {
-    background-color: green;
-    background-image: url("../imagens/landscape.jpg");
-    background-position: center center;
-}
