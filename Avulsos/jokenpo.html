@@ -63,11 +63,7 @@
 
             <select name="jogada" id="jogada" required>
                 <option value="" selected disabled>-- Escolha --</option>
-                <option value="pedra">Pedra</option>
-                <option value="papel">Papel</option>
-                <option value="tesoura">Tesoura</option>
-                <option value="cola">Cola</option>
-                <option value="bomba nuclear">Bomba nuclear</option>
+                <!-- options preenchidas por JS -->
             </select>
 
             <button type="submit">Jogar</button>
@@ -81,17 +77,27 @@
 
     <script>
         const form = document.querySelector('form#jogo');
-        const resultadoDiv = document.querySelector('div#resultado')
+        const select = document.getElementById('jogada');
+        const resultadoDiv = document.querySelector('div#resultado');
+
         let boxEstilo = false;
         
-        const opcoes = ['pedra', 'papel', 'tesoura', 'cola'];
-        const vence = { // Os valores em arrays são o que as chaves vencem
+        const vence = { // Os valores em arrays são o que as chaves vencem. Esse objeto é a única fonte de verdade: basta adicionar a chave (jogada) e o valor (array de jogadas que a jogada chave vence), que as options aparecem prontas no HTML
             pedra: ['tesoura', 'cola'], // Por exemplo, a chave 'pedra' vence os valores 'tesoura' e 'cola'
             papel: ['pedra'],
             tesoura: ['papel'],
             cola: ['papel', 'tesoura'],
             'bomba nuclear': ['pedra', 'papel', 'tesoura', 'cola']
         };
+
+        const opcoes = Object.keys(vence); // Pega todas as chaves do objeto vence e transforma em um array
+
+        opcoes.forEach(opcao => { // .forEach é um método que executa a função passada como argumento (callback) para cada elemento de um array. Arrow function: => substitui a palavra function e opcao é o parâmetro da callback (que recebe como argumento o elemento atual do array pelo método .forEach)
+            const option = document.createElement('option'); // Cria dinamicamente o elemento HTML <option>
+            option.value = opcao; // Preenche o value → <option value="pedra"></option>
+            option.textContent = opcao.charAt(0).toUpperCase() + opcao.slice(1); // Preenche o conteúdo e formata o texto de exibição (.charAt(0) pega o primeiro caractere, .slice(1) pega a string a partir do caractere de índice 1 até o final) → <option value="pedra">Pedra</option>
+            select.appendChild(option); // Adiciona a <option> criada dentro do <select> no HTML
+        });
 
         form.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -104,6 +110,7 @@
             let jogadaNPC = opcoes[Math.floor(Math.random() * opcoes.length)]; // Math.random() gera um número entre 0 e 1 e Math.floor arredonda para baixo, gerando um índice válido
             
             let resultado = '';
+
             if (!boxEstilo) {
                 resultadoDiv.style.backgroundColor = 'lightgoldenrodyellow';
                 resultadoDiv.style.marginTop = '20px';
