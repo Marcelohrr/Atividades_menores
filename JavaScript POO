@@ -296,3 +296,49 @@ const circle6 = new Circle6(1)
 
 Assim, circle6.defaultLocation e circle6.computerOptimumLocation não são acessíveis fora da função construtora, exceto pelos métodos getter e setter, porque não estão dentro de um objeto.
 */
+
+// Exercício:
+class Cronometro {
+    // É boa prática declarar as propriedades privadas fora do constructor:
+    #tempoI;
+    #tempoF;
+    #duracao;
+    
+    constructor() {
+        this.#tempoI = null;
+        this.#tempoF = null;
+        this.#duracao = 0;
+    }
+
+    iniciar() {
+        if (this.#tempoI === null) {
+            this.#tempoI = performance.now();
+        } else {
+            throw new Error('O cronômetro já começou! Para reiniciar, execute reset()!');
+        }
+    }
+
+    parar() {
+        if (this.#tempoI === null) {
+            throw new Error ('O cronômetro não iniciou!');
+        } else {
+            this.#tempoF = performance.now();
+        }
+    }
+
+    reset() {
+        this.#tempoI = null;
+        this.#tempoF = null;
+        this.#duracao = 0;
+    }
+
+    get duracao() {
+        console.log('Calculando duração...');
+        if (this.#tempoI !== null && this.#tempoF !== null) {
+            this.#duracao = (this.#tempoF - this.#tempoI) / 1000;
+        }
+        return 'Duração: ' + this.#duracao.toFixed(2) + ' segundos.';
+    }
+}
+
+const c = new Cronometro();
