@@ -2,20 +2,20 @@
 Object-oriented Programming (OOP) is a paradigm, or a style of programming, centered around objects rather than functions.
 
 Examples of languages that support OOP:
-- C#
-- Java
-- Ruby
-- Python
-- JavaScript
+• C#
+• Java
+• Ruby
+• Python
+• JavaScript
 
 Many of the popular frameworks are designed with OOP concepts in mind (Angular,for example)
 */
 
 /*
 A programação procedural, em contraposição, é um paradigma de programação mais simples baseado na organização do código em procedimentos/funções que executam passos sequenciais sobre dados. É problemática para sistemas maiores, pois possui:
-- Baixa modularidade (dados e funções espalhados, sem módulos/blocos coesos, tornam o código excessivamente complexo);
-- Alto acoplamento (a interdependência do sistema — "spaghetti code" —, por muitas funções dependerem das mesmas variáveis globais, faz com que o código quebre mais facilmente em qualquer alteração);
-- Falta de encapsulamento (qualquer função pode alterar dados globais e provocar efeitos colaterais inesperados e difíceis de rastrear).
+• Baixa modularidade (dados e funções espalhados, sem módulos/blocos coesos, tornam o código excessivamente complexo);
+• Alto acoplamento (a interdependência do sistema — "spaghetti code" —, por muitas funções dependerem das mesmas variáveis globais, faz com que o código quebre mais facilmente em qualquer alteração);
+• Falta de encapsulamento (qualquer função pode alterar dados globais e provocar efeitos colaterais inesperados e difíceis de rastrear).
 Todos esses pontos representam prejuízo para manutenção, escalabilidade e reutilização.
 
 With POO, we combine a group of related variables (properties/atributos) and functions (methods) into a unit (object).
@@ -45,32 +45,254 @@ let employee = {
 
 // 4 pillars of OOP
 /*
-- Encapsulation:
+• Encapsulation:
 É o princípio de agrupar dados (atributos) e comportamentos (métodos) em uma unidade e restringir o acesso direto aos detalhes internos — principalmente tornando privados atributos e métodos (#) —, controlando como esses dados podem ser lidos ou modificados.
 
 It reduces complexity and increases reusability.
 
-- Abstraction:
+• Abstraction:
 É o processo de selecionar apenas os detalhes essenciais de um objeto ou sistema e ignorar os detalhes irrelevantes para o usuário.
 
 Hides complexity, simplifies object interfaces, and reduces the impact of internal changes (because inner or private properties or methods aren't used outside of the object, so they can be altered without external consequences).
 
-- Inheritance:
+• Inheritance:
 Mechanism that allows you to eliminate redundant code.
 Example: HTML elements as TextBox, Select and CheckBox have in common properties, like hidden and innerHTML, and methods, like click() and focus(). Instead of redefining all these for every type of HTML element, we can define them once in a generic object (HTMLElement) and have other objecs inherit them.
 
-- Polymorphism:
+• Polymorphism:
 Technique that allows you to get rid of long if and else or switch and case statements.
 Example: HTML elements should have the ability to be rendered on a page, but each one is rendered in a different way. With OOP we can implement a render method in each of the objects that behaves differently depending on the type of the object that's referenced.
 */
 
+// Fundamental concepts around objects:
 /*
-Parei aqui
-(00:09:00)
-...
+• Creating objects
+An object in JS is essentially a collection of key-value pairs.
+
+    ◦ Object literals: a sintaxe mais simples de criar um objeto em JavaScript, usando {} diretamente:
+*/
+const circle1 = {
+    radius: 1,
+    location: { // The value can be another object
+        x: 1,
+        y: 1
+    },
+    draw() {
+        console.log('draw');
+    }
+};
+// radius e location são atributos (hold values), draw é um método (defines logic)
+circle1.draw();
+/*
+    ◦ Factories and constructors
+Objetos podem ser definidos a partir de funções:
+*/
+function createCircle2(radius) { // Factory function cria e retorna um objeto:
+    return {
+        radius, // Equivale a radius: radius (shorthand para quando o nome do atributo é igual ao nome da variável)
+        location: {
+            x: 1,
+            y: 1
+        },
+        draw() {
+            console.log('draw');
+        }
+    };
+}
+const circle2 = createCircle2(1);
+
+class Circle3 { // Constructor function usa new para criar objetos:
+    constructor(radius) {
+        this.radius = radius;
+        this.location = {
+            x: 1,
+            y: 1
+        };
+    }
+    draw() {
+        console.log('draw');
+    }
+}
+/*
+Internamente equivale a:
+function Circle(radius) {
+    this.radius = radius;
+    this.location = {
+            x: 1,
+            y: 1
+    };
+}
+
+Circle.prototype.draw = function() {
+    console.log('draw');
+};
+
+Na classe, os atributos de instância são definidos com this. dentro da função constructor. Os métodos declarados no corpo da classe, fora do constructor, são adicionados ao prototype da classe e não são recriados a cada instância. Dessa forma, todas as instâncias compartilham os mesmos métodos por meio do prototype.
+E todo código dentro de classes sempre roda automaticamente em modo estrito ("use strict", um modo mais seguro do JavaScript).
+
+Por curiosidade, a forma antiga da função construtora:
+function Circle3(radius) { 
+    this.radius = radius;
+    this.location = {
+        x: 1,
+        y: 1
+    };
+    this.draw = function() {
+        console.log('draw');
+    };
+}
+*/
+const circle = new Circle3(1);
+/*
+O operador new:
+1. Cria um novo objeto vazio;
+2. Define o [[Prototype]] desse objeto como Constructor.prototype (ou seja, o novo objeto herda métodos e propriedades que estiverem em Constructor.prototype);
+3. Chama a função construtora com this. apontando para o novo objeto (o que inicializa os atributos);
+4. Se a função não retornar explicitamente outro objeto, retorna o objeto criado.
 */
 
 /*
-...
-JavaScript is a little bit controversial (will get to that later)
+Observações:
+• Almost every object in JS has the property constructor, that references the function that was used to construct/create that object.
+• Functions are objects.
+*/
+
+/*
+In JS, there're 2 categories of types:
+• Value/primitive types (undefined, null, Boolean, Number, BigInt, String, Symbol) → armazenados diretamente na stack da memória. Cópias são independentes (alterar uma variável não afeta as outras que receberam o mesmo valor).
+• Reference types (objetos no geral, por exemplo array e function) → armazenados na heap da memória. A variável contém uma referência (endereço de memória) para o valor, mas não o valor propriamente.
+*/
+let number = 1;
+function incremento(n) { n++; }
+incremento(number);
+console.log(number); // 1 → Ao chamar incremento(number), o parâmetro n recebe uma cópia do valor de number. n é alterado e number permanece igual.
+
+let object = { value: 1 };
+function incremento(o) { o.value++; }
+incremento(object);
+console.log(object.value); // 2 → Ao chamar incremento(object), o parâmetro o recebe o endereço de object. As duas variáveis apontam para a mesma referência, portanto o incremento afeta ambas.
+
+/*
+• Adding and removing properties/methods
+It's always possible to add properties and methods to an existing object, and to delete properties and methods from an existing object.
+Examples:
+    ◦ Add → An application sends a user object to the server, and on the server a token property is added, generated on the fly. Because there are no classes, these properties don't need to be defined ahead of time — they can be added whenever needed. This makes JS extremely powerful and easy to work with.
+    ◦ Delete → When a user object is retrieved from a database and returned to the client, certain properties that should not be sent, like the password or credit card info, can be removed.
+*/
+
+class Circle4 {
+    constructor(radius, senha) {
+        this.radius = radius; // Dot notation
+        this['informacao sensivel'] = senha; // Bracket notation
+    }
+}
+
+const circle4 = new Circle4(1)
+
+circle4.location = { x: 1, y: 1 }; // Essa instância específica (circle4) recebe a propriedade location, como se tivesse passado por this.location dentro da função construtora. Equivale a circle4['location'] = { x: 1, y: 1 };. A bracket notation é mais interessante do que a dot notation quando o nome da propriedade tem caracteres especiais (como hífen ou espaço), ou quando sua definição é dinâmica.
+
+delete circle4['informacao sensivel'];
+
+// To enumerate and iterate on properties and methods:
+for (let key in circle4) {
+    console.log(key); // radius location
+    console.log(circle4[key]); // 1 { x: 1, y: 1 }
+}
+
+const keys = Object.keys(circle4); // Similar à iteração
+console.log(keys); // ["radius", "location"]
+
+for (let key in circle4) {
+    if (typeof circle[key] !== 'function') { // To get only the properties (=== to get only the methods)
+        console.log(key);
+    }
+}
+
+if ('radius' in circle4) { // To check for the existence of a property or a method in a object
+        console.log('Circle 4 has a radius.');
+}
+
+// Abstraction
+class Circle5 {
+    constructor(radius) {
+        this.radius = radius;
+        this.defaultLocation = { x: 0, y: 0 };
+        this.computerOptimumLocation = function() {  }
+        this.draw = function() {
+            this.computerOptimumLocation();
+            console.log('draw');
+        }
+    }
+}
+
+const circle5 = new Circle5(1)
+
+// Usos indevidos que bagunçam completamente o objeto:
+circle5.defaultLocation = false;
+circle5.computerOptimumLocation();
+
+// Abstração usando private class fields (#) e métodos getter e setter:
+class Circle6 {
+    // Declaração de private class fields vem fora do constructor e convencionalmente antes dele:
+    #defaultLocation = { x: 0, y: 0 }; // Campo privado da instância
+    #computerOptimumLocation = function() { }; // Método privado da instância
+
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    draw() {
+        this.#computerOptimumLocation(); // Funciona porque draw acessa o método privado
+        console.log('draw');
+    }
+
+    // Getter e setter para defaultLocation, se for necessário acessar e modificar externamente:
+    get defaultLocation() {
+        console.log('Acessando defaultLocation'); // Exemplo de lógica adicional antes de entregar o valor
+        return this.#defaultLocation;
+    }
+
+    set defaultLocation(value) {
+        if (!value.x || !value.y) { // Example of validation before setting the variable defaultLocation
+            throw new Error('Invalid location!');
+        }
+
+        this.#defaultLocation = value;
+    }
+}
+
+const circle6 = new Circle6(1)
+
+console.log(circle6.defaultLocation); // { x: 0, y: 0 }
+circle6.defaultLocation = { x: 1, y: 1 };
+
+/*
+Abordagem antiga de abstração declarando variáveis locais (let), ao invés de propriedades (this.), e de declaração de métodos getter e setter:
+class Circle6 {
+    constructor(radius) {
+        this.radius = radius;
+        let defaultLocation = { x: 0, y: 0 }; → Variável local que existe apenas no escopo da função construtora
+        let computerOptimumLocation = function() {  } → Método local que existe apenas no escopo da função construtora
+        this.draw = function() {
+            computerOptimumLocation(); → Funciona porque em JS existe closure (uma função aninhada tem acesso às variáveis da função externa)
+            console.log('draw');
+        }
+        Object.defineProperty(this, 'defaultLocation', {
+            get: function() {
+                return defaultLocation;
+            },
+            set: function(value) {
+                if (!value.x || !value.y) {
+                    throw new Error('Invalid location!');
+                }
+
+                defaultLocation = value;
+            }
+        })
+    }
+}
+
+const circle6 = new Circle6(1)
+
+Assim, circle6.defaultLocation e circle6.computerOptimumLocation não são acessíveis fora da função construtora, exceto pelos métodos getter e setter, porque não estão dentro de um objeto.
 */
