@@ -1,0 +1,170 @@
+# Principais formas de iteração em Python
+
+'''
+Legenda:
+• for...in percorre elementos de iteráveis (ranges, strings, tuplas, listas, dicionários, etc.).
+• enumerate(iteravel) retorna o índice e o valor de cada elemento.
+• .keys(), .values() e .items() retornam views iteráveis de todas as chaves, valores e pares (chave, valor) de um dicionário, respectivamente.
+• unpacking (desempacotamento) → atribuição automática dos elementos de um iterável a múltiplas variáveis. Lança ValueError se a quantidade de variáveis não corresponder à quantidade de valores.
+• _ → nome de variável descartável. Pode ser repetido no unpacking.
+• * → operador de desempacotamento, captura múltiplos valores em uma atribuição ou iteração. Pode ser usado uma vez em qualquer posição do unpacking.
+'''
+
+# 1. Iteração de sequências ordenadas
+iteravel = (10, 20, 30)
+
+# 1.1 Simples
+for valor in iteravel:
+    print(valor) # 10 / 20 / 30
+
+# 1.2 Indexada
+for indice in range(len(iteravel)):
+    print(indice, iteravel[indice]) # 0 10 / 1 20 / 2 30
+
+for indice, valor in enumerate(iteravel):
+    print(indice, valor) # 0 10 / 1 20 / 2 30
+
+# 2. Iteração de mapeamentos chave-valor (principalmente dict)
+dicionario = { 'a': 10, 'b': 20, 'c': 30 }
+
+# 2.1 Simples
+for chave in dicionario: # Iteração por chave é a padrão
+    print(chave) # a / b / c
+
+for chave in dicionario.keys(): # Explícito
+    print(chave) # a / b / c
+
+for valor in dicionario.values():
+    print(valor) # 10 / 20 / 30
+
+for chave, valor in dicionario.items():
+    print(chave, valor) # a 10 / b 20 / c 30
+
+# 2.2 Indexada
+for indice, (chave, valor) in enumerate(dicionario.items()):
+    print(indice, chave, valor) # 0 a 10 / 1 b 20 / 2 c 30
+
+# 3. Iteração de iteráveis
+iteraveis = [['a', 10, True, (False, 1)], ['b', 20, False, (True, 2)], ['c', 30, True, (False, 3)]]
+
+# 3.1 Simples
+for iteravel in iteraveis:
+    print(iteravel) # ['a', 10, True, (False, 1)] / ['b', 20, False, (True, 2)] / ['c', 30, True, (False, 3)]
+
+for iteravel in iteraveis:
+    print(iteravel[0], iteravel[2]) # a True / b False / c True
+
+# 3.2 Com unpacking
+for valor1, valor2, valor3, valor4 in iteraveis:
+    print(valor1, valor2, valor3, valor4) # a 10 True (False, 1) / b 20 False (True, 2) / c 30 True (False, 3)
+
+for _, valor1, valor2, _ in iteraveis: # _ para ignorar valores
+    print(valor1, valor2) # 10 True / 20 False / 30 True
+
+for valor1, *resto in iteraveis:
+    print(valor1, resto) # a [10, True, (False, 1)] / b [20, False, (True, 2)] / c [30, True, (False, 3)]
+
+for valorI, *_, valorF in iteraveis: # Para pegar só o primeiro e o último
+    print(valorI, valorF) # a (False, 1) / b (True, 2) / c (False, 3)
+
+# 3.3 Indexada
+for indice, x in enumerate(iteraveis):
+    print(indice, x) # 0 ['a', 10, True, (False, 1)] / 1 ['b', 20, False, (True, 2)] / 2 ['c', 30, True, (False, 3)]]
+
+for indice, (w, x, y, z) in enumerate(iteraveis):
+    print(indice, w, x, y, z) # 0 a 10 True (False, 1) / 1 b 20 False (True, 2) / 2 c 30 True (False, 3)
+
+// Principais formas de iteração em JavaScript
+
+/*
+Legenda:
+• for tradicional itera com um índice numérico definido no próprio laço.
+• for...of itera sobre valores de iteráveis (strings, arrays, sets, maps, etc.). Nota: Object não é iterável (não possui a propriedade Symbol.iterator).
+• for...in itera sobre as propriedades enumeráveis (chaves) de objetos.
+• .entries() é um método de instância que retorna um iterador contendo pares [índice, caractere] em strings, [índice, valor] em arrays, [valor, valor] em sets, [chave, valor] em maps, etc.
+• .forEach((valor, chave[, colecao]) => { ... }) é um método de instância que executa uma função (callback) sequencialmente para cada elemento da coleção, recebendo como parâmetros o valor atual e o índice ou chave. Não retorna valor e não permite interrupção com break ou continue.
+• Object.keys(objeto), Object.values(objeto) e Object.entries(objeto) são funções estáticas de Object que retornam arrays de todas as chaves, valores e pares [chave, valor] próprios e enumeráveis de um objeto, respectivamente.
+• destructuring (desestruturação) → atribuição automática de valores de um iterável (por posição) ou de um objeto (por chave) a múltiplas variáveis. Lança TypeError quando se tenta desestruturar null ou undefined; resulta em undefined quando não há valores suficientes e não existe valor padrão.
+• _ → nome de variável descartável. Não pode ser repetido no destructuring.
+• ... → operador de resto, captura múltiplos valores em uma desestruturação. Pode ser usado uma vez e deve estar na última posição do destructuring.
+*/
+
+// 1. Iteração de sequências ordenadas
+const iteravel = [10, 20, 30];
+
+// 1.1 Simples
+for (const valor of iteravel) {
+    console.log(valor); // 10 / 20 / 30
+}
+
+// 1.2 Indexada
+for (indice = 0; indice < iteravel.length; indice++) { // for tradicional
+    console.log(indice, iteravel[indice]); // 0 10 / 1 20 / 2 30
+}
+
+for (const [indice, valor] of iteravel.entries()) {
+    console.log(indice, valor); // 0 10 / 1 20 / 2 30
+}
+
+iteravel.forEach((valor, indice) => {
+    console.log(indice, valor); // 0 10 / 1 20 / 2 30
+});
+
+// 2. Iteração de mapeamentos chave-valor (principalmente Object)
+const objeto = { 'a': 10, 'b': 20, 'c': 30 };
+
+// 2.1 Simples
+for (const chave in objeto) { // for...in
+    console.log(chave); // a / b / c
+}
+
+for (const chave of Object.keys(objeto)) { // Explícito, com for...of
+    console.log(chave); // a / b / c
+}
+
+for (const valor of Object.values(objeto)) {
+    console.log(valor); // 10 / 20 / 30
+}
+
+for (const [chave, valor] of Object.entries(objeto)) {
+    console.log(chave, valor); // a 10 / b 20 / c 30
+}
+
+// 2.2 Indexada
+for (const [indice, [chave, valor]] of Object.entries(objeto).entries()) {
+    console.log(indice, chave, valor); // 0 a 10 / 1 b 20 / 2 c 30
+}
+
+// 3. Iteração de iteráveis
+const iteraveis = [['a', 10, true, [false, 1]], ['b', 20, false, [true, 2]], ['c', 30, true, [false, 3]]]
+
+// 3.1 Simples
+for (const iteravel of iteraveis) {
+    console.log(iteravel); // ['a', 10, true, [false, 1]] / ['b', 20, false, [true, 2]] / ['c', 30, true, [false, 3]]
+}
+
+for (const iteravel of iteraveis) {
+    console.log(iteravel[0], iteravel[2]); // a true / b false / c true
+}
+
+// 3.2 Com destructuring
+for (const [valor1, valor2, valor3, valor4] of iteraveis) {
+    console.log(valor1, valor2, valor3, valor4); // a 10 true [false, 1] / b 20 false [true, 2] / c 30 true [false, 3]
+}
+
+for (const [, valor1, valor2] of iteraveis) { // Posição 0 ignorada — equivale a [_, valor1, y, __]
+    console.log(valor1, valor2); // 10 true / 20 false / 30 true
+}
+
+for (const [valor1, ...resto] of iteraveis) {
+    console.log(valor1, resto); // a [10, true, [false, 1]] / b [20, false, [true, 2]] / c [30, true, [false, 3]]
+}
+
+// 3.3 Indexada
+for (const [indice, x] of iteraveis.entries()) {
+    console.log(indice, x); // 0 ['a', 10, true, [false, 1]] / 1 ['b', 20, false, [true, 2]] / 2 ['c', 30, true, [false, 3]]
+}
+
+for (const [indice, [w, x, y, z]] of iteraveis.entries()) {
+    console.log(indice, w, x, y, z); // 0 a 10 true [false, 1] / 1 b 20 false [true, 2] / 2 c 30 true [false, 3]
+}
