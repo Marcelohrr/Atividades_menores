@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajuste salarial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            height: 90vh;
+            background-color: lightblue;
+        }
+
+        header > h1 {
+            text-decoration: underline;
+            margin-top: 20px;
+        }
+
+        main {
+            background-color: white;
+            width: 500px;
+            margin: 20px 0;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #00000080;
+            padding: 10px 20px 20px 20px;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        form > fieldset {
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        div#resultado {
+            display: grid;
+            place-items: center;
+        }
+
+        footer > p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reajuste salarial</h1>
+    </header>
+    <main>
+        <form action="" method="get" id="formulario">
+            <fieldset>
+                <legend>Insira o seu salário atual</legend>
+
+                <div>
+                    <input type="number" name="salario-atual" id="id-salario-atual" min="1621" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Insira o seu gênero</legend>
+
+                <div>
+                    <input type="radio" name="genero" id="id-feminino" value="F">
+                    <label for="id-feminino">Feminino</label>
+                </div>
+                <div>
+                    <input type="radio" name="genero" id="id-masculino" value="M">
+                    <label for="id-masculino">Masculino</label>
+                </div>
+                <div>
+                    <input type="radio" name="genero" id="id-naobinario" value="N">
+                    <label for="id-naobinario">Não-binário</label>
+                </div>
+                <div>
+                    <input type="radio" name="genero" id="id-outro" value="O">
+                    <label for="id-outro">Outro ou não quero informar</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Insira há quantos anos você trabalha na empresa</legend>
+
+                <div>
+                    <input type="number" name="tempo-trabalho" id="id-tempo-trabalho" min="0" required>
+                </div>
+            </fieldset>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="resultado"></div>
+    </main>
+    <footer>
+        <p>Exercício feito por Marcelo Henrique Rosa Reis! :)</p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('form#formulario');
+
+        const inputSalarioAtual = form.querySelector('input#id-salario-atual');
+        const inputTempoTrabalho = form.querySelector('input#id-tempo-trabalho');
+
+        const resultadoDiv = document.querySelector('div#resultado');
+
+        let boxEstilo = false;
+
+        objetoReajuste = [
+            ['F', 6, 0.04], ['F', 15, 0.09], ['F', 28, 0.06], ['F', 47, 0.14], ['F', Infinity, .22],
+            ['M', 11, 0.03], ['M', 23, 0.08], ['M', 36, 0.12], ['M', 58, 0.18], ['M', Infinity, .25],
+            ['N', 9, 0.05], ['N', 19, 0.10], ['N', 34, 0.07], ['N', 51, 0.16], ['N', Infinity, .24],
+            ['O', 8, 0.04], ['O', 21, 0.11], ['O', 39, 0.09], ['O', 62, 0.17], ['O', Infinity, .27]
+        ];
+
+        function calcularReajuste(s, g, t) {
+            let maiorTempo = null;
+            let indiceMaiorTempo = null;
+
+            for (const [indice, [genero, tempo, _]] of objetoReajuste.entries()) {
+                if (genero === g) {
+                    if (t < tempo && t > maiorTempo) {
+                        maiorTempo = t;
+                        indiceMaiorTempo = indice;
+                    }
+                }
+            }
+
+            return s + s * objetoReajuste[indiceMaiorTempo][2]
+        }
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            if (!inputSalarioAtual || !inputTempoTrabalho) {
+                throw new Error('Campo(s) não preenchido(s)!');
+            }
+
+            const inputGenero = form.querySelector('input[name="genero"]:checked'); // Seleciona o input com atributo name igual a gênero marcado (deve ficar dentro do submit, para consultar o DOM no momento do envio)
+
+            const salarioAtual = Number(inputSalarioAtual.value);
+            const genero = inputGenero ? inputGenero.value : 'O';
+            const tempoTrabalho = Number(inputTempoTrabalho.value);
+
+            const reajuste = calcularReajuste(salarioAtual, genero, tempoTrabalho);
+
+            if (!boxEstilo) {
+                resultadoDiv.style.backgroundColor = 'lightcyan';
+                resultadoDiv.style.marginTop = '20px';
+                resultadoDiv.style.borderRadius = '10px';
+                resultadoDiv.style.padding = '10px';
+                resultadoDiv.style.textAlign = 'center';
+                boxEstilo = true;
+            }
+
+            resultadoDiv.textContent = `O salário foi reajustado de ${salarioAtual} para ${reajuste}! 📈`;
+        })
+    </script>
+</body>
+</html>
