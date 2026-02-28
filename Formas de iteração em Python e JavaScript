@@ -98,7 +98,7 @@ for (const valor of iteravel) {
 }
 
 // 1.2 Indexada
-for (indice = 0; indice < iteravel.length; indice++) { // for tradicional
+for (let indice = 0; indice < iteravel.length; indice++) { // for tradicional
     console.log(indice, iteravel[indice]); // 0 10 / 1 20 / 2 30
 }
 
@@ -136,7 +136,7 @@ for (const [indice, [chave, valor]] of Object.entries(objeto).entries()) {
 }
 
 // 3. Iteração de iteráveis
-const iteraveis = [['a', 10, true, [false, 1]], ['b', 20, false, [true, 2]], ['c', 30, true, [false, 3]]]
+const iteraveis = [['a', 10, true, [false, 1]], ['b', 20, false, [true, 2]], ['c', 30, true, [false, 3]]];
 
 // 3.1 Simples
 for (const iteravel of iteraveis) {
