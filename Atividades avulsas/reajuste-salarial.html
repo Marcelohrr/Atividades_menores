@@ -120,7 +120,7 @@
 
         let boxEstilo = false;
 
-        objetoReajuste = [
+        const tabelaReajuste = [
             ['F', 6, 0.04], ['F', 15, 0.09], ['F', 28, 0.06], ['F', 47, 0.14], ['F', Infinity, .22],
             ['M', 11, 0.03], ['M', 23, 0.08], ['M', 36, 0.12], ['M', 58, 0.18], ['M', Infinity, .25],
             ['N', 9, 0.05], ['N', 19, 0.10], ['N', 34, 0.07], ['N', 51, 0.16], ['N', Infinity, .24],
@@ -128,25 +128,17 @@
         ];
 
         function calcularReajuste(s, g, t) {
-            let maiorTempo = null;
-            let indiceMaiorTempo = null;
-
-            for (const [indice, [genero, tempo, _]] of objetoReajuste.entries()) {
-                if (genero === g) {
-                    if (t < tempo && t > maiorTempo) {
-                        maiorTempo = t;
-                        indiceMaiorTempo = indice;
-                    }
+            for (const [genero, tempo, percentual] of tabelaReajuste) {
+                if (genero === g && t < tempo) {
+                    return s + s * percentual;
                 }
             }
-
-            return s + s * objetoReajuste[indiceMaiorTempo][2]
         }
 
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            if (!inputSalarioAtual || !inputTempoTrabalho) {
+            if (!inputSalarioAtual.value || !inputTempoTrabalho.value) {
                 throw new Error('Campo(s) não preenchido(s)!');
             }
 
