@@ -108,8 +108,6 @@
             
             const jogadaPlayer = select.value; // dentro de um form, todo <input> ou <select> com o atributo name pode ser acessado como propriedade do form, usando form.[name]. É mais eficiente do que acessar o seletor novamente com: const jogadaPlayer = document.querySelector('select#jogada').value;
             const jogadaNPC = opcoes[Math.floor(Math.random() * opcoes.length)]; // Math.random() gera um número entre 0 e 1 e Math.floor arredonda para baixo, gerando um índice válido
-            
-            let resultado = '';
 
             if (!boxEstilo) {
                 resultadoDiv.style.backgroundColor = 'lightgoldenrodyellow';
@@ -120,6 +118,8 @@
                 boxEstilo = true;
             }
 
+            let resultado = '';
+            
             if (jogadaPlayer === jogadaNPC) {
                 resultado = 'Empate! 🤝';
             } else if (vence[jogadaPlayer].includes(jogadaNPC)) { // Se o valor da chave jogadaPlayer incluir a jogadaNPC
