@@ -106,8 +106,8 @@
             O método .preventDefault() impede esse comportamento. O parâmetro function(event) permite acessar o objeto dentro da função.
             */
             
-            const jogadaPlayer = form.jogada.value; // dentro de um form, todo <input> ou <select> com o atributo name pode ser acessado como propriedade do form, usando form.[name]. É mais eficiente do que acessar o seletor novamente com: const jogadaPlayer = document.querySelector('select#jogada').value;
-            let jogadaNPC = opcoes[Math.floor(Math.random() * opcoes.length)]; // Math.random() gera um número entre 0 e 1 e Math.floor arredonda para baixo, gerando um índice válido
+            const jogadaPlayer = select.value; // dentro de um form, todo <input> ou <select> com o atributo name pode ser acessado como propriedade do form, usando form.[name]. É mais eficiente do que acessar o seletor novamente com: const jogadaPlayer = document.querySelector('select#jogada').value;
+            const jogadaNPC = opcoes[Math.floor(Math.random() * opcoes.length)]; // Math.random() gera um número entre 0 e 1 e Math.floor arredonda para baixo, gerando um índice válido
             
             let resultado = '';
 
@@ -135,7 +135,7 @@
                 <p>Resultado: <strong>${resultado}</strong></p>
             `;
 
-            form.jogada.value = '';
+            select.value = '';
         })
     </script>
 </body>
