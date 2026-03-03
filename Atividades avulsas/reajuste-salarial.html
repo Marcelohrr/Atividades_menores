@@ -121,18 +121,26 @@
         let boxEstilo = false;
 
         const tabelaReajuste = [
-            ['F', 6, 0.04], ['F', 15, 0.09], ['F', 28, 0.06], ['F', 47, 0.14], ['F', Infinity, .22],
-            ['M', 11, 0.03], ['M', 23, 0.08], ['M', 36, 0.12], ['M', 58, 0.18], ['M', Infinity, .25],
-            ['N', 9, 0.05], ['N', 19, 0.10], ['N', 34, 0.07], ['N', 51, 0.16], ['N', Infinity, .24],
-            ['O', 8, 0.04], ['O', 21, 0.11], ['O', 39, 0.09], ['O', 62, 0.17], ['O', Infinity, .27]
+            {tG: 'F', tT: 6, tP: 0.04}, {tG: 'F', tT: 15, tP: 0.09}, {tG: 'F', tT: 28, tP: 0.06}, {tG: 'F', tT: 47, tP: 0.14}, {tG: 'F', tT: Infinity, tP: 0.22},
+            {tG: 'M', tT: 11, tP: 0.03}, {tG: 'M', tT: 23, tP: 0.08}, {tG: 'M', tT: 36, tP: 0.12}, {tG: 'M', tT: 58, tP: 0.18}, {tG: 'M', tT: Infinity, tP: 0.25},
+            {tG: 'N', tT: 9, tP: 0.05}, {tG: 'N', tT: 19, tP: 0.10}, {tG: 'N', tT: 34, tP: 0.07}, {tG: 'N', tT: 51, tP: 0.16}, {tG: 'N', tT: Infinity, tP: 0.24},
+            {tG: 'O', tT: 8, tP: 0.04}, {tG: 'O', tT: 21, tP: 0.11}, {tG: 'O', tT: 39, tP: 0.09}, {tG: 'O', tT: 62, tP: 0.17}, {tG: 'O', tT: Infinity, tP: 0.27}
         ];
 
         function calcularReajuste(s, g, t) {
-            for (const [genero, tempo, percentual] of tabelaReajuste) {
-                if (genero === g && t < tempo) {
-                    return s + s * percentual;
+            for (const parametros of tabelaReajuste) {
+                if (parametros.tG === g && parametros.tT > t) {
+                        return s + s * parametros.tP;
                 }
             }
+            /*
+            Equivale a:
+            for (const { tG, tT, tP } of tabelaReajuste) { (desestruturação)
+                if (tG === g && tT > t) {
+                    return s + s * tP;
+                }
+            }
+            */
         }
 
         form.addEventListener('submit', function(event) {
