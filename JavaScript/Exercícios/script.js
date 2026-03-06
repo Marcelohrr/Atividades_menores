@@ -81,8 +81,44 @@ form4.addEventListener('submit', function(event) {
         const minusculo4 = texto4 === texto4.toLowerCase();
         const capitalizado4 = texto4[0] === texto4[0].toUpperCase() && texto4.slice(1) === texto4.slice(1).toLowerCase();
 
-        resultadoDiv4.textContent = `O tipo primitivo desse input é ${typeof texto4}. Só tem espaços? ${espacos4}. É um número? ${numero4}. É alfabético? ${alfabetico4.test(texto4)}. É alfanumérico? ${alfanumerico4.test(texto4)}. Está em maiúsculas? ${maiusculo4}. Está em minúsculas? ${minusculo4}. Está capitalizado? ${capitalizado4}.`
+        const linhas4 = [
+            `O tipo primitivo do input é ${typeof texto4}.`,
+            `Só tem espaços? ${espacos4}.`,
+            `É um número? ${numero4}.`,
+            `É alfabético? ${alfabetico4.test(texto4)}.`,
+            `É alfanumérico? ${alfanumerico4.test(texto4)}.`,
+            `Está em maiúsculas? ${maiusculo4}.`,
+            `Está em minúsculas? ${minusculo4}.`,
+            `Está capitalizado? ${capitalizado4}.`
+        ];
+
+        resultadoDiv4.textContent = linhas4.join('\n');
     }
 
     inputTexto4.value = '';
+})
+
+//Exercício 5
+const form5 = document.querySelector('form#ex5-form');
+const inputNumero5 = form5.elements['ex5-numero'];
+const resultadoDiv5 = document.querySelector('div#resultado5');
+
+form5.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const numero5 = Number(inputNumero5.value);
+
+    if (isNaN(numero5)) {
+        resultadoDiv5.textContent = 'Insira um número válido!';
+    } else {
+        const linhas5 = [
+            `O número inteiro inserido é: ${numero5}.`,
+            `O seu sucessor é: ${numero5 + 1}.`,
+            `O seu antecessor é: ${numero5 - 1}.`
+        ];
+
+        resultadoDiv5.textContent = linhas5.join('\n');
+    }
+
+    inputNumero5.value = '';
 })
