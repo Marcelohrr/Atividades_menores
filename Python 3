@@ -588,28 +588,31 @@ parênteses()
 # 84) Faça um programa que leia nome e peso de várias pessoas, guardando tudo em uma lista. No final, mostre quantas pessoas foram cadastradas, uma listagem com as pessoas mais pesadas uma listagem com as pessoas mais leves
 # A) Mais pesadas/leves pela média
 pessoas = []
-dados = []
 soma = 0
 while True:
-    dados.append(input('Nome: '))
-    dados.append(float(input('Peso: ')))
-    pessoas.append(dados[:])
-    dados.clear()
-    soma += p
-    c = input('Continuar?').strip().lower()
+    nome = input('Nome: ')
+    peso = float(input('Peso: '))
+    pessoas.append([nome, peso])
+    soma += peso
+
+    c = input('Continuar? ').strip().lower()
     if c in ('não', 'nao', 'n'):
         break
-print(f'{len(pessoas)} pessoas foram cadastradas.')
-média = soma / len(pessoas)
+
+print(f'\n{len(pessoas)} pessoas foram cadastradas.')
+media = soma / len(pessoas)
+
 pesados = []
 leves = []
-for dado in pessoas:
-    if dado[1] > média:
-        pesados.append(dado[0])
-        print(f'As pessoas mais pesadas são: {pesados}.')
+
+for pessoa in pessoas:
+    if pessoa[1] > media:
+        pesados.append(pessoa[0])
     else:
-        leves.append(dado[0])
-        print(f'As pessoas mais leves são: {leves}.')
+        leves.append(pessoa[0])
+
+print(f'As pessoas mais pesadas são: {pesados}.')
+print(f'As pessoas mais leves são: {leves}.')
 
 # B) Mais pesadas/leves em absoluto
 pessoas = []
