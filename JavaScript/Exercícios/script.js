@@ -59,3 +59,30 @@ form3.addEventListener('submit', function(event) {
     inputNumero3_1.value = '';
     inputNumero3_2.value = '';
 })
+
+//Exercício 4
+const form4 = document.querySelector('form#ex4-form');
+const inputTexto4 = document.querySelector('input#ex4-id-texto');
+const resultadoDiv4 = document.querySelector('div#resultado4')
+
+form4.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const texto4 = inputTexto4.value;
+
+    if (!texto4) {
+        resultadoDiv4.textContent = `Você não escreveu nada!`;
+    } else {
+        const espacos4 = texto4.trim() === '';
+        const numero4 = !isNaN(texto4) && texto4.trim() !== '';
+        const alfabetico4 = /^[a-zA-Z]+$/;
+        const alfanumerico4 = /^[a-zA-Z0-9]+$/;
+        const maiusculo4 = texto4 === texto4.toUpperCase();
+        const minusculo4 = texto4 === texto4.toLowerCase();
+        const capitalizado4 = texto4[0] === texto4[0].toUpperCase() && texto4.slice(1) === texto4.slice(1).toLowerCase();
+
+        resultadoDiv4.textContent = `O tipo primitivo desse input é ${typeof texto4}. Só tem espaços? ${espacos4}. É um número? ${numero4}. É alfabético? ${alfabetico4.test(texto4)}. É alfanumérico? ${alfanumerico4.test(texto4)}. Está em maiúsculas? ${maiusculo4}. Está em minúsculas? ${minusculo4}. Está capitalizado? ${capitalizado4}.`
+    }
+
+    inputTexto4.value = '';
+})
