@@ -263,17 +263,50 @@ form9.addEventListener('submit', function(event) {
 
     if (select9.value === '') {
         resultadoDiv9.textContent = 'Escolha um valor!';
-    } else {
-        const numero9 = Number(select9.value);
-        const linhas9 = [`Tabuada de ${numero9}:`];
-
-        for (let i9 = 1; i9 <= 10; i9++) {
-            const conta9 = numero9 * i9;
-            linhas9.push(`${select9.value} x ${i9} = ${conta9}`);
-        }
-
-        resultadoDiv9.textContent = linhas9.join('\n');
+        return;
     }
+
+    const tabela9 = document.createElement('table');
+    const titulo9 = document.createElement('caption');
+    const cabecalho9 = document.createElement('thead');
+    const linhaCabecalho9 = document.createElement('tr');
+    const celulaCabecalhoO9 = document.createElement('th');
+    const celulaCabecalhoR9 = document.createElement('th');
+    const corpo9 = document.createElement('tbody');
+
+    const numero9 = Number(select9.value);
+
+    titulo9.textContent = `Tabuada de ${numero9}`;
+    tabela9.appendChild(titulo9);
+
+    celulaCabecalhoO9.textContent = 'Operação';
+    linhaCabecalho9.appendChild(celulaCabecalhoO9);
+
+    celulaCabecalhoR9.textContent = 'Resultado';
+    linhaCabecalho9.appendChild(celulaCabecalhoR9);
+
+    cabecalho9.appendChild(linhaCabecalho9);
+    tabela9.appendChild(cabecalho9);
+
+    for (let i9 = 1; i9 <= 10; i9++) {
+        const linhaCorpo9 = document.createElement('tr');
+
+        const celulaCorpoO9 = document.createElement('td');
+        celulaCorpoO9.textContent = `${select9.value} x ${i9}`;
+        linhaCorpo9.appendChild(celulaCorpoO9);
+
+        const conta9 = numero9 * i9;
+        const celulaCorpoR9 = document.createElement('td');
+        celulaCorpoR9.textContent = conta9;
+        linhaCorpo9.appendChild(celulaCorpoR9);
+
+        corpo9.appendChild(linhaCorpo9);
+    }
+
+    tabela9.appendChild(corpo9);
+
+    resultadoDiv9.innerHTML = '';
+    resultadoDiv9.appendChild(tabela9);
 })
 
 // Exercício 10

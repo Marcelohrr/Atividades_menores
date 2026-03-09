@@ -56,6 +56,32 @@ main div.resultados {
     white-space: pre-line;
 }
 
+div.resultados table {
+    border-collapse: collapse;
+}
+
+div.resultados table > caption {
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+div.resultados table > thead {
+    background-color: lightblue;
+}
+
+div.resultados table > tbody > tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+div.resultados table th,
+div.resultados table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
 nav {
     display: flex;
     flex-flow: row nowrap;
