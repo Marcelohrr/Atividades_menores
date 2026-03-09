@@ -60,7 +60,7 @@ form3.addEventListener('submit', function(event) {
     inputNumero3_2.value = '';
 })
 
-//Exercício 4
+// Exercício 4
 const form4 = document.querySelector('form#ex4-form');
 const inputTexto4 = document.querySelector('input#ex4-id-texto');
 const resultadoDiv4 = document.querySelector('div#resultado4')
@@ -98,7 +98,7 @@ form4.addEventListener('submit', function(event) {
     inputTexto4.value = '';
 })
 
-//Exercício 5
+// Exercício 5
 const form5 = document.querySelector('form#ex5-form');
 const inputNumero5 = form5.elements['ex5-numero'];
 const resultadoDiv5 = document.querySelector('div#resultado5');
@@ -121,4 +121,197 @@ form5.addEventListener('submit', function(event) {
     }
 
     inputNumero5.value = '';
+})
+
+// Exercício 6
+const form6 = document.querySelector('form#ex6-form');
+const resultadoDiv6 = document.querySelector('div#resultado6');
+
+if (!form6 || !resultadoDiv6) {
+    throw new Error('Elementos do exercício 6 não encontrados no DOM.');
+}
+
+const inputNumero6 = form6.elements['ex6-numero'];
+
+form6.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (inputNumero6.value === '') { // Verifica input vazio
+        resultadoDiv6.textContent = 'Insira um valor!';
+        return;
+    }
+
+    const numero6 = Number(inputNumero6.value);
+
+    if (Number.isNaN(numero6)) { // Verifica se o valor convertido resultou em NaN — didaticamente, equivale a: typeof numero6 === 'number' && numero6 !== numero6 (porque NaN !== NaN)
+        resultadoDiv6.textContent = 'Insira um número válido!';
+        return;
+    }
+
+    const linhas6 = [
+        `O número inserido é: ${numero6}.`,
+        `O seu dobro é: ${numero6 * 2}.`,
+        `O seu triplo é: ${numero6 * 3}.`,
+        `A sua raiz quadrada é: ${numero6 >= 0 ? Math.sqrt(numero6) : 'não existe no conjunto dos reais'}.`
+    ]
+
+    resultadoDiv6.textContent = linhas6.join('\n');
+
+    inputNumero6.value = '';
+})
+
+// Exercício 7
+const form7 = document.querySelector('form#ex7-form');
+const resultadoDiv7 = document.querySelector('div#resultado7');
+
+if (!form7 || !resultadoDiv7) {
+    throw new Error('Elementos do exercício 7 não encontrados no DOM.');
+}
+
+const inputNota7_1 = form7.elements['ex7-nota1'];
+const inputNota7_2 = form7.elements['ex7-nota2'];
+
+form7.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (inputNota7_1.value === '' || inputNota7_2.value === '') {
+        resultadoDiv7.textContent = 'Insira as notas!';
+        return;
+    }
+
+    const nota7_1 = Number(inputNota7_1.value);
+    const nota7_2 = Number(inputNota7_2.value);
+
+    if (Number.isNaN(nota7_1) || Number.isNaN(nota7_2)) {
+        resultadoDiv7.textContent = 'Insira valores válidos!';
+        return;
+    }
+
+    const linhas7 = [
+        `1ª nota = ${nota7_1}`,
+        `2ª nota = ${nota7_2}`,
+        `Média = ${((nota7_1 + nota7_2) / 2).toFixed(2)}`
+    ];
+
+    resultadoDiv7.textContent = linhas7.join('\n');
+
+    inputNota7_1.value = '';
+    inputNota7_2.value = '';
+})
+
+// Exercício 8
+const form8 = document.querySelector('form#ex8-form');
+const resultadoDiv8 = document.querySelector('div#resultado8');
+
+if (!form8 || !resultadoDiv8) {
+    throw new Error('Elementos do exercício 8 não encontrados no DOM.');
+}
+
+const inputValor8 = form8.elements['ex8-valor'];
+
+form8.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (inputValor8.value === '') {
+        resultadoDiv8.textContent = 'Insira um valor!';
+        return;
+    }
+
+    const valor8 = Number(inputValor8.value);
+
+    if (Number.isNaN(valor8)) {
+        resultadoDiv8.textContent = 'Insira um valor válido!';
+        return;
+    }
+
+    const linhas8 = [
+        `Valor inserido (${valor8.toLocaleString('pt-BR')} metros) corresponde a:`,
+        `${(valor8 / 1000).toLocaleString('pt-BR')} quilômetros.`,
+        `${(valor8 / 100).toLocaleString('pt-BR')} hectômetros.`,
+        `${(valor8 / 10).toLocaleString('pt-BR')} decâmetros.`,
+        `${(valor8 * 10).toLocaleString('pt-BR')} decímetros.`,
+        `${(valor8 * 100).toLocaleString('pt-BR')} centímetros.`,
+        `${(valor8 * 1000).toLocaleString('pt-BR')} milímetros.`
+    ];
+
+    resultadoDiv8.textContent = linhas8.join('\n');
+
+    inputValor8.value = '';
+})
+
+// Exercício 9
+const form9 = document.querySelector('form#ex9-form');
+const resultadoDiv9 = document.querySelector('div#resultado9');
+
+if (!form9 || !resultadoDiv9) {
+    throw new Error('Elementos do exercício 9 não encontrados no DOM.');
+}
+
+const select9 = form9.elements['ex9-tabuada'];
+
+const total9 = 10; // Define o total de opções no select
+
+for (let contador9 = 1; contador9 <= total9; contador9++) { // Cria os options no select
+    const opcao9 = document.createElement('option');
+    opcao9.value = contador9;
+    opcao9.textContent = contador9;
+    select9.appendChild(opcao9);
+}
+
+form9.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (select9.value === '') {
+        resultadoDiv9.textContent = 'Escolha um valor!';
+    } else {
+        const numero9 = Number(select9.value);
+        const linhas9 = [`Tabuada de ${numero9}:`];
+
+        for (let i9 = 1; i9 <= 10; i9++) {
+            const conta9 = numero9 * i9;
+            linhas9.push(`${select9.value} x ${i9} = ${conta9}`);
+        }
+
+        resultadoDiv9.textContent = linhas9.join('\n');
+    }
+})
+
+// Exercício 10
+const form10 = document.querySelector('form#ex10-form');
+const resultadoDiv10 = document.querySelector('div#resultado10');
+
+if (!form10 || !resultadoDiv10) {
+    throw new Error('Elementos do exercício 10 não encontrados no DOM.');
+}
+
+const inputValor10 = form10.elements['ex10-valor'];
+
+form10.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (inputValor10.value === '') {
+        resultadoDiv10.textContent = 'Insira um valor!';
+        return;
+    }
+
+    const valor10 = Number(inputValor10.value.replace(',', '.'));
+
+    if (Number.isNaN(valor10)) {
+        resultadoDiv10.textContent = 'Insira um valor válido!';
+        return;
+    }
+
+    const real10 = valor10.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    const dolar10 = (valor10 / 5.26).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
+    resultadoDiv10.textContent = `${real10} = ${dolar10}.`;
+
+    inputValor10.value = '';
 })

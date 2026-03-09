@@ -11,7 +11,7 @@
         <h1>Exercícios JavaScript</h1>
     </header>
     <main>
-        <h2>1. Crie um programa que escreva um input na tela.</h2>
+        <h2>1. Faça um programa que escreva um input na tela.</h2>
         <div>
             <form action="" method="get" id="ex1-form" autocomplete="off">
                 <label for="ex1-id-texto">Texto:</label>
@@ -20,7 +20,7 @@
                 <button type="submit" id="ex1-botao">Enviar</button>
             </form>
             
-            <div class="resultado" id="resultado1"></div>
+            <div class="resultados" id="resultado1"></div>
         </div>
 
         <h2>2. Faça um programa que leia o nome de uma pessoa e mostre uma mensagem de boas-vindas.</h2>
@@ -32,10 +32,10 @@
                 <button type="submit" id="ex2-botao">Enviar</button>
             </form>
             
-            <div class="resultado" id="resultado2"></div>
+            <div class="resultados" id="resultado2"></div>
         </div>
 
-        <h2>3. Crie um programa que leia dois números e mostre a soma entre eles.</h2>
+        <h2>3. Faça um programa que leia dois números e mostre a soma entre eles.</h2>
         <div>
             <form action="" method="get" id="ex3-form" autocomplete="off">
                 <label for="ex3-id-numero1">Número 1:</label>
@@ -47,7 +47,7 @@
                 <button type="submit" id="ex3-botao">Enviar</button>
             </form>
             
-            <div class="resultado" id="resultado3"></div>
+            <div class="resultados" id="resultado3"></div>
         </div>
 
         <h2>4. Faça um programa que leia algo pelo teclado e mostre na tela o seu tipo primitivo e todas as informações possíveis sobre ele.</h2>
@@ -59,7 +59,7 @@
                 <button type="submit" id="ex4-botao">Enviar</button>
             </form>
             
-            <div class="resultado" id="resultado4"></div>
+            <div class="resultados" id="resultado4"></div>
         </div>
 
         <h2>5. Faça um programa que leia um número inteiro e mostre na tela o seu sucessor e seu antecessor.</h2>
@@ -71,7 +71,72 @@
                 <button type="submit" id="ex5-botao">Enviar</button>
             </form>
             
-            <div class="resultado" id="resultado5"></div>
+            <div class="resultados" id="resultado5"></div>
+        </div>
+
+        <h2>6. Faça um programa que leia um número e mostre o seu dobro, triplo e raiz quadrada.</h2>
+        <div>
+            <form action="" method="get" id="ex6-form">
+                <label for="ex6-id-numero">Número real:</label>
+                <input type="number" name="ex6-numero" id="ex6-id-numero" required>
+
+                <button type="submit" id="ex6-botao">Enviar</button>
+            </form>
+            
+            <div class="resultados" id="resultado6"></div>
+        </div>
+
+        <h2>7. Faça um programa que leia as duas notas de um aluno, calcule e mostre a sua média.</h2>
+        <div>
+            <form action="" method="get" id="ex7-form">
+                <label for="ex7-id-nota1">Nota 1:</label>
+                <input type="number" name="ex7-nota1" id="ex7-id-nota1" required min="0" max="10" step="0.1">
+
+                <label for="ex7-id-nota2">Nota 2:</label>
+                <input type="number" name="ex7-nota2" id="ex7-id-nota2" required min="0" max="10" step="0.1">
+
+                <button type="submit" id="ex7-botao">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado7"></div>
+        </div>
+
+        <h2>8.Faça um programa que leia um valor em metros e o exiba convertido em quilômetros, hectômetros, decâmetros, decímetros, centímetros e milímetros.</h2>
+        <div>
+            <form action="" method="get" id="ex8-form">
+                <label for="ex8-id-valor">Valor:</label>
+                <input type="number" name="ex8-valor" id="ex8-id-valor" required step="any">
+
+                <button type="submit" id="ex8-botao">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado8"></div>
+        </div>
+
+        <h2>9. Faça um programa que leia um número inteiro de 1 a 10 e mostre na tela a sua tabuada.</h2>
+        <div>
+            <form action="" method="get" id="ex9-form">
+                <label for="ex9-id-tabuada">Número:</label>
+                <select name="ex9-tabuada" id="ex9-id-tabuada">
+                    <option value="" disabled selected>Escolha um valor!</option>
+                </select>
+
+                <button type="submit" id="ex9-botao">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado9"></div>
+        </div>
+
+        <h2>10. Faça um programa que leia quanto dinheiro uma pessoa tem na carteira e mostre quantos dólares ela pode comprar. Considere US$1,00 = R$5,26.</h2>
+        <div>
+            <form action="" method="get" id="ex10-form">
+                <label for="ex10-id-valor">Dinheiro: R$</label>
+                <input type="number" name="ex10-valor" id="ex10-id-valor" required min="0" step="0.01">
+
+                <button type="submit" id="ex10-botao">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado10"></div>
         </div>
 
         <nav>
