@@ -9,6 +9,7 @@
 body {
     background-color: brown;
     font-family: 'Arial', sans-serif;
+    text-align: justify;
 }
 
 header {
@@ -29,6 +30,10 @@ main {
     padding: 20px 20px 0 20px;
     overflow: hidden; /* Impede que margin do último elemento escape (fique cortada) */
     box-shadow: inset 0 0 5px black;
+}
+
+main h2 {
+    margin: 0 10px;
 }
 
 main div {

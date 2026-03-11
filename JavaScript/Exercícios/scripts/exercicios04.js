@@ -1,0 +1,10 @@
+// Exercício 31
+// Exercício 32
+// Exercício 33
+// Exercício 34
+// Exercício 35
+// Exercício 36
+// Exercício 37
+// Exercício 38
+// Exercício 39
+// Exercício 40

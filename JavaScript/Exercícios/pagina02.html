@@ -11,16 +11,154 @@
         <h1>Exercícios JavaScript</h1>
     </header>
     <main>
-        <h2>11. Faça um programa que .</h2>
+        <h2>11. Faça um programa que leia a largura e a altura de uma parede em metros, calcule a sua área e a quantidade de tinta necessária para pintá-la, sabendo que cada litro de tinta pinta uma área de 2m².</h2>
         <div>
-            <form action="" method="get" id="ex1-form" autocomplete="off">
-                <label for="ex1-id-texto">Texto:</label>
-                <input type="text" name="ex1-texto" id="ex1-id-texto">
+            <form action="" method="get" id="ex11-form" autocomplete="off">
+                <label for="ex11-id-largura">Largura:</label>
+                <input type="number" name="ex11-largura" id="ex11-id-largura" required min="0.01" step="0.01">
 
-                <button type="submit" id="ex1-botao">Enviar</button>
+                <label for="ex11-id-altura">Altura:</label>
+                <input type="number" name="ex11-altura" id="ex11-id-altura" required min="0.01" step="0.01">
+
+                <button type="submit">Enviar</button>
             </form>
             
-            <div class="resultado" id="resultado1"></div>
+            <div class="resultado" id="resultado11"></div>
+        </div>
+
+        <h2>12. Faça um programa que leia o preço de um produto e mostre seu novo preço, com 5% de desconto.</h2>
+        <div>
+            <form action="" method="get" id="ex12-form" autocomplete="off">
+                <label for="ex12-id-preco">Preço: R$</label>
+                <input type="number" name="ex12-preco" id="ex12-id-preco" required min="0" step="0.01">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado12"></div>
+        </div>
+
+        <h2>13. Faça um programa que leia o salário de um funcionário e mostre seu novo salário, com 15% de aumento.</h2>
+        <div>
+            <form action="" method="get" id="ex13-form" autocomplete="off">
+                <label for="ex13-id-salario">Salário: R$</label>
+                <input type="number" name="ex13-salario" id="ex13-id-salario" required min="0" step="0.01">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado13"></div>
+        </div>
+
+        <h2>14. Faça um programa que converta uma temperatura digitada em °C para °F.</h2>
+        <div>
+            <form action="" method="get" id="ex14-form" autocomplete="off">
+                <label for="ex14-id-graus">Graus Celsius:</label>
+                <input type="number" name="ex14-graus" id="ex14-id-graus" required step="0.1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado14"></div>
+        </div>
+
+        <h2>15. Faça um programa que leia a quantidade de quilômetros percorridos por um carro alugado e a quantidade de dias que ele foi alugado, e calcule o preço a pagar, sabendo que o carro custa R$60 por dia e R$0,15 por quilômetro rodado.</h2>
+        <div>
+            <form action="" method="get" id="ex15-form" autocomplete="off">
+                <label for="ex15-id-km">Quilômetros percorridos:</label>
+                <input type="number" name="ex15-km" id="ex15-id-km" required min="0" step="0.001">
+
+                <label for="ex15-id-dia-aluguel">Dia de aluguel:</label>
+                <input type="date" name="ex15-dia-aluguel" id="ex15-id-dia-aluguel">
+
+                <label for="ex15-id-dia-devolucao">Dia de devolução:</label>
+                <input type="date" name="ex15-dia-devolucao" id="ex15-id-dia-devolucao">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado15"></div>
+        </div>
+
+        <h2>16. Faça um programa que leia um número real qualquer e mostre na tela a sua porção inteira.</h2>
+        <div>
+            <form action="" method="get" id="ex16-form" autocomplete="off">
+                <label for="ex16-id-numero">Número:</label>
+                <input type="number" name="ex16-numero" id="ex16-id-numero" required step="any">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado16"></div>
+        </div>
+
+        <h2>17. Faça um programa que leia o comprimento do cateto oposto e do cateto adjacente de um triângulo retângulo, calcule e mostre o comprimento da hipotenusa.</h2>
+        <div>
+            <form action="" method="get" id="ex17-form" autocomplete="off">
+                <label for="ex17-id-oposto">Cateto oposto:</label>
+                <input type="number" name="ex17-oposto" id="ex17-id-oposto" required min="0" step="any">
+
+                <label for="ex17-id-adjacente">Cateto adjacente:</label>
+                <input type="number" name="ex17-adjacente" id="ex17-id-adjacente" required min="0" step="any">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado17"></div>
+        </div>
+
+        <h2>18. Faça um programa que leia um ângulo qualquer e mostre na tela o valor do seno, cosseno e tangente desse ângulo.</h2>
+        <div>
+            <form action="" method="get" id="ex18-form" autocomplete="off">
+                <label for="ex18-id-angulo">Ângulo em graus:</label>
+                <input type="number" name="ex18-angulo" id="ex18-id-angulo" required min="0" max="360" step="any">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado18"></div>
+        </div>
+
+        <h2>19. Um professor quer sortear um dos seus quatro alunos para apagar o quadro. Faça um programa que leia o nome dos alunos e escreva o nome do escolhido.</h2>
+        <div>
+            <form action="" method="get" id="ex19-form" autocomplete="off">
+                <label for="ex19-id-aluno1">Aluno 1:</label>
+                <input type="text" name="ex19-aluno1" id="ex19-id-aluno1" required placeholder="Aluno 1">
+
+                <label for="ex19-id-aluno2">Aluno 2:</label>
+                <input type="text" name="ex19-aluno2" id="ex19-id-aluno2" required placeholder="Aluno 2">
+
+                <label for="ex19-id-aluno3">Aluno 3:</label>
+                <input type="text" name="ex19-aluno3" id="ex19-id-aluno3" required placeholder="Aluno 3">
+
+                <label for="ex19-id-aluno4">Aluno 4:</label>
+                <input type="text" name="ex19-aluno4" id="ex19-id-aluno4" required placeholder="Aluno 4">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado19"></div>
+        </div>
+
+        <h2>20. Um professor quer sortear a ordem de apresentação de trabalhos de quatro alunos. Faça um programa que leia o nome dos alunos e mostre a ordem sorteada.</h2>
+        <div>
+            <form action="" method="get" id="ex20-form" autocomplete="off">
+                <label for="ex20-id-aluno1">Aluno 1:</label>
+                <input type="text" name="ex20-aluno1" id="ex20-id-aluno1" required placeholder="Aluno 1">
+
+                <label for="ex20-id-aluno2">Aluno 2:</label>
+                <input type="text" name="ex20-aluno2" id="ex20-id-aluno2" required placeholder="Aluno 2">
+
+                <label for="ex20-id-aluno3">Aluno 3:</label>
+                <input type="text" name="ex20-aluno3" id="ex20-id-aluno3" required placeholder="Aluno 3">
+
+                <label for="ex20-id-aluno4">Aluno 4:</label>
+                <input type="text" name="ex20-aluno4" id="ex20-id-aluno4" required placeholder="Aluno 4">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado20"></div>
         </div>
 
         <nav>
@@ -42,6 +180,6 @@
         <p>Exercícios feitos por <a href="https://github.com/Marcelohrr" target="_blank">Marcelo Henrique Rosa Reis</a>.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="scripts/exercicios02.js"></script>
 </body>
 </html>
