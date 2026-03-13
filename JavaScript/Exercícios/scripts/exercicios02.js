@@ -5,7 +5,7 @@ const real = {
 
 function verificarDOM(form, div, exercicio) {
     if (!form || !div) {
-        throw new Error(`Elementos do exercício ${exercicio} não encontrados no DOM.`);
+        throw new Error(`Elementos do exercício ${exercicio} não encontrados no DOM.`); // Sem try...catch, resulta em "Uncaught Error: Elementos do exercício ${exercicio} não encontrados no DOM."
     }
 }
 

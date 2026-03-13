@@ -13,19 +13,21 @@
     <main>
         <h2>21. Faça um programa que abra e reproduza o áudio de um arquivo MP3.</h2>
         <div>
-            <form action="" method="get" id="ex1-form" autocomplete="off">
-                <label for="ex1-id-texto">Texto:</label>
-                <input type="text" name="ex1-texto" id="ex1-id-texto">
-
-                <button type="submit" id="ex1-botao">Enviar</button>
-            </form>
-            
-            <div class="resultado" id="resultado1"></div>
+            <audio id="ex21-audio" src="assets/audio.mp3"></audio>
+            <button id="ex21-botao">▶</button>
+            <input type="range" name="ex21-barra" id="ex21-id-barra" value="0" min="0" step="0.1">
         </div>
 
         <h2>22. Faça um programa que leia o nome completo de uma pessoa e mostre o nome com todas as letras maiúsculas, com todas minúsculas, o total de letras (sem considerar espaços) e quantas letras tem o primeiro nome.</h2>
         <div>
+            <form action="" method="get" id="ex22-form" autocomplete="off">
+                <label for="ex22-id-nome">Nome:</label>
+                <input type="text" name="ex22-nome" id="ex22-id-nome">
+
+                <button type="submit">Enviar</button>
+            </form>
             
+            <div class="resultados" id="resultado22"></div>
         </div>
 
         <h2>23. Faça um programa que leia um número de 0 a 9999 e mostre na tela cada um dos dígitos separados.</h2>
