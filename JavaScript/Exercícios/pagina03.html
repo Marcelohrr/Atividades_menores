@@ -92,17 +92,40 @@
 
         <h2>28. Faça um programa que sorteie um número inteiro entre 0 e 5 e peça para o usuário tentar descobrir qual foi o número escolhido pelo computador. O programa deverá escrever na tela se o usuário venceu ou perdeu.</h2>
         <div>
+            <button id="ex28-botao" style="margin-bottom: 10px;">Sortear número</button>
             
+            <form action="" method="get" id="ex28-form" autocomplete="off">
+                <label for="ex28-id-numero">Número:</label>
+                <input type="number" name="ex28-numero" id="ex28-id-numero" required min="0" max="5" step="1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado28"></div>
         </div>
 
         <h2>29. Faça um programa que leia a velocidade de um carro. Se ele ultrapassar 80Km/h, mostre uma mensagem dizendo que ele foi multado. A multa custa R$7,00 por cada quilômetro acima do limite.</h2>
         <div>
-            
+            <form action="" method="get" id="ex29-form" autocomplete="off">
+                <label for="ex29-id-velocidade">Velocidade:</label>
+                <input type="number" name="ex29-velocidade" id="ex29-id-velocidade" required min="1" step="1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado29"></div>
         </div>
 
         <h2>30. Faça um programa que leia um número inteiro e mostre na tela se ele é par ou ímpar.</h2>
         <div>
-            
+            <form action="" method="get" id="ex30-form" autocomplete="off">
+                <label for="ex30-id-numero">Número:</label>
+                <input type="number" name="ex30-numero" id="ex30-id-numero" required step="1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado30"></div>
         </div>
 
         <nav>

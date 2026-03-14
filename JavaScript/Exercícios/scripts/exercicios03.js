@@ -271,7 +271,7 @@ try {
         if (nomeArray27.length === 1) {
             resultadoDiv27.textContent = `Apenas um nome foi inserido: "${nome27}"!`;
         } else {
-            resultadoDiv27.textContent = `O primeiro e o último nome de "${nome27}" são, respectivamente: ${nomeArray27[0]} e ${nomeArray27.at(-1)}!`;
+            resultadoDiv27.textContent = `O primeiro e o último nome de "${nome27}" são, respectivamente: "${nomeArray27[0]}" e "${nomeArray27.at(-1)}"!`;
         }
 
         form27.reset();
@@ -281,10 +281,126 @@ try {
 }
 
 // Exercício 28
+try {
+    const botao28 = document.querySelector('button#ex28-botao');
+    const form28 = document.querySelector('form#ex28-form');
+    const resultadoDiv28 = document.querySelector('div#resultado28');
 
+    verificarDOM([botao28, form28, resultadoDiv28], 28);
+
+    const inputNumero28 = form28.elements['ex28-numero'];
+    let resultado28 = false;
+    let numeroSorteado28; // Antes da atribuição, vale undefined
+
+    botao28.addEventListener('click', () => {
+        resultado28 = false;
+        numeroSorteado28 = Math.floor(Math.random() * 6);
+        resultadoDiv28.textContent = 'O número foi sorteado. Tente descobrir qual!';
+    })
+
+    form28.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputNumero28], resultadoDiv28)) return;
+
+        const numero28 = Number(inputNumero28.value);
+
+        if (verificarNumero([numero28], resultadoDiv28)) return;
+
+        if (numeroSorteado28 === undefined) {
+            resultadoDiv28.textContent = 'Sorteie um número!';
+        } else if (!resultado28) {
+            const linhas28 = [
+                `Número inserido: ${numero28}`,
+                `Número sorteado: ${numeroSorteado28}`,
+                numero28 === numeroSorteado28 ? 'Você acertou!' : 'Você errou!'
+            ];
+
+            resultadoDiv28.textContent = linhas28.join('\n');
+
+            resultado28 = true;
+        } else {
+            resultadoDiv28.textContent = 'Sorteie um novo número para tentar novamente!';
+        }
+
+        form28.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 29
+try {
+    const form29 = document.querySelector('form#ex29-form');
+    const resultadoDiv29 = document.querySelector('div#resultado29');
 
+    verificarDOM([form29, resultadoDiv29], 29);
+
+    const inputVelocidade29 = form29.elements['ex29-velocidade'];
+
+    form29.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputVelocidade29], resultadoDiv29)) return;
+
+        const velocidade29 = Number(inputVelocidade29.value);
+
+        if (verificarNumero([velocidade29], resultadoDiv29)) return;
+
+        const limiteVelocidade29 = 80;
+        const real29 = {
+            style: 'currency',
+            currency: 'BRL'
+        };
+        const valorMulta29 = 7;
+
+        const linhas29 = [
+            `Velocidade inserida: ${velocidade29} km/h.`,
+            `Limite de velocidade: ${limiteVelocidade29} km/h.`
+        ];
+
+        if (velocidade29 <= limiteVelocidade29) {
+            linhas29.push(`A velocidade está dentro do limite!`);
+        } else {
+            linhas29.push(`A velocidade está fora do limite!`);
+            linhas29.push(`A multa é de ${((velocidade29 - limiteVelocidade29) * valorMulta29).toLocaleString('pt-BR', real29)}!`);
+        }
+
+        resultadoDiv29.textContent = linhas29.join('\n');
+
+        form29.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 30
+try {
+    const form30 = document.querySelector('form#ex30-form');
+    const resultadoDiv30 = document.querySelector('div#resultado30');
 
+    verificarDOM([form30, resultadoDiv30], 30);
+
+    const inputNumero30 = form30.elements['ex30-numero'];
+
+    form30.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputNumero30], resultadoDiv30)) return;
+
+        const numero30 = Number(inputNumero30.value);
+
+        if (verificarNumero([numero30], resultadoDiv30)) return;
+
+        const linhas30 = [
+            `Número inserido: ${numero30}.`,
+            `O número inserido é ${numero30 % 2 === 0 ? 'par' : 'ímpar'}.`
+        ];
+
+        resultadoDiv30.textContent = linhas30.join('\n');
+
+        form30.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
