@@ -71,9 +71,7 @@ try {
     form22.addEventListener('submit', function(evento) {
         evento.preventDefault();
 
-        if (verificarInput([inputNome22]) === true) {
-            return;
-        }
+        if (verificarInput([inputNome22], resultadoDiv22)) return;
 
         const nome22 = inputNome22.value.trim();
         
@@ -91,19 +89,196 @@ try {
 }
 
 // Exercício 23
+try {
+    const form23 = document.querySelector('form#ex23-form');
+    const resultadoDiv23 = document.querySelector('div#resultado23');
 
+    verificarDOM([form23, resultadoDiv23], 23);
+
+    const inputNumero23 = form23.elements['ex23-numero'];
+
+    form23.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputNumero23], resultadoDiv23)) return;
+
+        const numero23 = Number(inputNumero23.value);
+
+        if (verificarNumero([numero23], resultadoDiv23)) return;
+
+        /*
+        Primeira solução:
+        const digitos23 = numero23.split('');
+
+        digitos23.unshift(0, 0, 0);
+
+        const linhas23 = [
+            `Número inserido: ${numero23}`,
+            `Unidade: ${digitos23.at(-1)}`,
+            `Dezena: ${digitos23.at(-2)}`,
+            `Centena: ${digitos23.at(-3)}`,
+            `Milhar: ${digitos23.at(-4)}`
+        ];
+        */
+
+        // Solução matemática:
+        const linhas23 = [
+            `Número inserido: ${numero23}`,
+            `Unidade: ${numero23 % 10}`,
+            `Dezena: ${Math.floor(numero23 / 10) % 10}`,
+            `Centena: ${Math.floor(numero23 / 100) % 10}`,
+            `Milhar: ${Math.floor(numero23 / 1000) % 10}`
+        ];
+
+        resultadoDiv23.textContent = linhas23.join('\n');
+
+        form23.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 24
+try {
+    const form24 = document.querySelector('form#ex24-form');
+    const resultadoDiv24 = document.querySelector('div#resultado24');
 
+    verificarDOM([form24, resultadoDiv24], 24);
+
+    const inputNome24 = form24.elements['ex24-nome'];
+
+    form24.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputNome24], resultadoDiv24)) return;
+
+        const nome24 = inputNome24.value.trim();
+
+        if (nome24.split(' ')[0].toLowerCase() === 'santo') {
+            resultadoDiv24.textContent = `A cidade "${nome24}" começa com "Santo"!`;
+        } else {
+            resultadoDiv24.textContent = `A cidade "${nome24}" não começa com "Santo"!`;
+        }
+
+        form24.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 25
+try {
+    const form25 = document.querySelector('form#ex25-form');
+    const resultadoDiv25 = document.querySelector('div#resultado25');
 
+    verificarDOM([form25, resultadoDiv25], 25);
+
+    const inputNome25 = form25.elements['ex25-nome'];
+
+    form25.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputNome25], resultadoDiv25)) return;
+
+        const nome25 = inputNome25.value.trim();
+        const nomeArray25 = nome25.split(' ');
+
+        let silva25 = false;
+
+        for (const palavra25 of nomeArray25) {
+            if (palavra25.toLowerCase() === 'silva') {
+                silva25 = true;
+                break;
+            }
+        }
+
+        if (silva25 === true) {
+            resultadoDiv25.textContent = `O nome "${nome25}" possui "Silva"!`;
+        } else {
+            resultadoDiv25.textContent = `O nome "${nome25}" não possui "Silva"!`;
+        }
+
+        form25.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 26
+try {
+    const form26 = document.querySelector('form#ex26-form');
+    const resultadoDiv26 = document.querySelector('div#resultado26');
 
+    verificarDOM([form26, resultadoDiv26], 26);
+
+    const inputFrase26 = form26.elements['ex26-frase'];
+
+    form26.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputFrase26], resultadoDiv26)) return;
+
+        const fraseOriginal26 = inputFrase26.value.trim();
+        const frase26 = fraseOriginal26.toLowerCase();
+
+        const primeiroA26 = frase26.indexOf('a');
+
+        if (primeiroA26 === -1) {
+            resultadoDiv26.textContent = `A frase "${fraseOriginal26}" não possui a letra "a"!`;
+        } else {
+            let as26 = 0;
+            let ultimoA26 = primeiroA26;
+
+            for (let indice26 = 0; indice26 < frase26.length; indice26++) {
+                if (frase26[indice26] === 'a') {
+                    as26++;
+                    ultimoA26 = indice26;
+                }
+            }
+
+            const linhas26 = [
+                `A letra "a" aparece ${as26} vezes na frase "${fraseOriginal26}".`,
+                `Primeira posição: ${primeiroA26}.`,
+                `Última posição: ${ultimoA26}.`
+            ];
+
+            resultadoDiv26.textContent = linhas26.join('\n');
+        }
+
+        form26.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 27
+try {
+    const form27 = document.querySelector('form#ex27-form');
+    const resultadoDiv27 = document.querySelector('div#resultado27');
 
+    verificarDOM([form27, resultadoDiv27], 27);
+
+    const inputNome27 = form27.elements['ex27-nome'];
+
+    form27.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        if (verificarInput([inputNome27], resultadoDiv27)) return;
+
+        const nome27 = inputNome27.value.trim();
+        const nomeArray27 = nome27.split(/\s+/); // Significado da expressão regular (regex): \s é um metacaractere que representa qualquer espaço em branco e + é um quantificador que significa uma ou mais ocorrências
+
+        if (nomeArray27.length === 1) {
+            resultadoDiv27.textContent = `Apenas um nome foi inserido: "${nome27}"!`;
+        } else {
+            resultadoDiv27.textContent = `O primeiro e o último nome de "${nome27}" são, respectivamente: ${nomeArray27[0]} e ${nomeArray27.at(-1)}!`;
+        }
+
+        form27.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 28
 

@@ -59,6 +59,7 @@ button {
 main div.resultados {
     margin: 20px 0 0 0;
     white-space: pre-line;
+    line-height: 1.5;
 }
 
 div.resultados table {
