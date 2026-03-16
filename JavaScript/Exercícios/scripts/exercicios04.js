@@ -365,11 +365,122 @@ try {
 }
 
 // Exercício 38
+try {
+    const form38 = document.querySelector('form#ex38-form');
+    const resultadoDiv38 = document.querySelector('div#resultado38');
 
+    verificarDOM([form38, resultadoDiv38], 38);
+
+    const inputNumero38_1 = form38.elements['ex38-n1'];
+    const inputNumero38_2 = form38.elements['ex38-n2'];
+
+    form38.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (verificarInput([inputNumero38_1, inputNumero38_2], resultadoDiv38)) return;
+
+        const numero38_1 = Number(inputNumero38_1.value);
+        const numero38_2 = Number(inputNumero38_2.value);
+
+        if (verificarNumero([numero38_1, numero38_2], resultadoDiv38)) return;
+
+        const linhas38 = [
+            `Valores inseridos: ${numero38_1} e ${numero38_2}.`
+        ];
+
+        if (numero38_1 > numero38_2) {
+            linhas38.push('O primeiro valor é maior que o segundo!');
+        } else if (numero38_2 > numero38_1) {
+            linhas38.push('O segundo valor é maior que o primeiro!');
+        } else {
+            linhas38.push('Os dois valores são iguais!')
+        }
+
+        resultadoDiv38.textContent = linhas38.join('\n');
+
+        form38.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 39
+try {
+    const form39 = document.querySelector('form#ex39-form');
+    const resultadoDiv39 = document.querySelector('div#resultado39');
 
+    verificarDOM([form39, resultadoDiv39], 39);
+
+    const inputNascimento39 = form39.elements['ex39-nascimento'];
+
+    const anoAtual = new Date().getFullYear();
+    inputNascimento39.max = anoAtual;
+
+    form39.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (verificarInput([inputNascimento39], resultadoDiv39)) return;
+
+        const nascimento39 = Number(inputNascimento39.value);
+
+        if (verificarNumero([nascimento39], resultadoDiv39)) return;
+
+        const idade39 = anoAtual - nascimento39;
+        const alistamento39 = 18;
+
+        if (idade39 < alistamento39) {
+            resultadoDiv39.textContent = `Falta(m) ${alistamento39 - idade39} ano(s) para o alistamento militar!`;
+        } else if (idade39 === alistamento39) {
+            resultadoDiv39.textContent = `É ano do alistamento militar! Se aliste entre 01/janeiro e 30/junho!`;
+        } else {
+            resultadoDiv39.textContent = `Passou/passaram ${idade39 - alistamento39} ano(s) do alistamento militar!`;
+        }
+
+        form39.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 40
+try {
+    const form40 = document.querySelector('form#ex40-form');
+    const resultadoDiv40 = document.querySelector('div#resultado40');
 
+    verificarDOM([form40, resultadoDiv40], 40);
 
+    const inputNota40_1 = form40.elements['ex40-n1'];
+    const inputNota40_2 = form40.elements['ex40-n2'];
+
+    form40.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (verificarInput([inputNota40_1, inputNota40_2], resultadoDiv40)) return;
+
+        const nota40_1 = Number(inputNota40_1.value);
+        const nota40_2 = Number(inputNota40_2.value);
+
+        if (verificarNumero([nota40_1, nota40_2], resultadoDiv40)) return;
+
+        const media40 = (nota40_1 + nota40_2) / 2;
+
+        const linhas40 = [
+            `Notas inseridas: ${nota40_1} e ${nota40_2}.`,
+            `Média: ${media40.toFixed(1)}.`
+        ];
+
+        if (media40 < 5) {
+            linhas40.push('Situação: reprovada(o)!');
+        } else if (media40 < 7) {
+            linhas40.push('Situação: recuperação!');
+        } else {
+            linhas40.push('Situação: aprovada(o)!');
+        }
+
+        resultadoDiv40.textContent = linhas40.join('\n');
+
+        form40.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
