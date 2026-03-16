@@ -51,6 +51,10 @@ main div form {
     gap: 10px;
 }
 
+form fieldset {
+    padding: 10px;
+}
+
 form input,
 button {
     padding: 5px;

@@ -414,6 +414,7 @@ try {
     const inputNascimento39 = form39.elements['ex39-nascimento'];
 
     const anoAtual = new Date().getFullYear();
+    inputNascimento39.min = anoAtual - 150;
     inputNascimento39.max = anoAtual;
 
     form39.addEventListener('submit', function(e) {

@@ -11,59 +11,94 @@
         <h1>Exercícios JavaScript</h1>
     </header>
     <main>
-        <h2>41. Faça um programa que .</h2>
+        <h2>41. Faça um programa que leia o ano de nascimento de um atleta e mostre sua categoria, de acordo com a idade: até 9 anos = MIRIM; até 14 = INFANTIL; até 19 = JÚNIOR; até 25 = SÊNIOR; acima = MASTER.</h2>
         <div>
-            <form action="" method="get" id="ex1-form" autocomplete="off">
-                <label for="ex1-id-texto">Texto:</label>
-                <input type="text" name="ex1-texto" id="ex1-id-texto" required>
+            <form action="" method="get" id="ex41-form">
+                <label for="ex41-id-nascimento">Ano de nascimento:</label>
+                <input type="number" name="ex41-nascimento" id="ex41-id-nascimento" required step="1">
+
+                <fieldset>
+                    <legend>Já fez aniversário esse ano?</legend>
+
+                    <input type="radio" name="ex41-aniversario" id="ex41-id-aniversario-sim" value="s" checked>
+                    <label for="ex41-id-aniversario-sim">Sim</label>
+
+                    <input type="radio" name="ex41-aniversario" id="ex41-id-aniversario-nao" value="n">
+                    <label for="ex41-id-aniversario-nao">Não</label>
+                </fieldset>
 
                 <button type="submit">Enviar</button>
             </form>
-            
-            <div class="resultados" id="resultado1"></div>
+
+            <div class="resultados" id="resultado41"></div>
         </div>
 
-        <h2>42. Faça um programa que.</h2>
+        <h2>42. Refaça o programa do exercício 35, acrescentando o recurso de mostrar que tipo de triângulo será formado (equilátero, isósceles ou escaleno).</h2>
+        <div>
+            <form action="" method="get" id="ex42-form" autocomplete="off">
+                <label for="ex42-id-comprimento">Comprimento:</label>
+                <input type="number" name="ex42-comprimento" id="ex42-id-comprimento" min="0.0000001" step="any">
+
+                <button type="button" name="ex42-botao-registrar">Registrar comprimento</button>
+                <button type="submit">Enviar</button>
+            </form>
+            
+            <div class="resultados" id="resultado42"></div>
+        </div>
+
+        <h2>43. Faça um programa que leia o peso e a altura de uma pessoa, calcule seu IMC e mostre seu status.</h2>
+        <div>
+            <form action="" method="get" id="ex43-form">
+                <label for="ex43-id-peso">Peso:</label>
+                <input type="number" name="ex43-peso" id="ex43-id-peso" required min="0.01" step="0.01">
+
+                <label for="ex43-id-altura">Altura:</label>
+                <input type="number" name="ex43-altura" id="ex43-id-altura" required min="0.01" step="0.01">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado43"></div>
+        </div>
+
+        <h2>44. Faça um programa que calcule o valor a ser pago por um produto, considerando o seu preço normal e condição de pagamento, para os descontos de 10% à vista com dinheiro/cheque, 5% à vista no cartão, preço normal em até 2x no cartão e juros de 20% para 3x ou mais no cartão.</h2>
         <div>
             
         </div>
 
-        <h2>43. Faça um programa que.</h2>
+        <h2>45. Faça um jogo de jokenpô.</h2>
         <div>
             
         </div>
 
-        <h2>44. Faça um programa que.</h2>
+        <h2>46. Faça um programa que mostre na tela uma contagem regressiva para o estouro de fogos de artifício, indo de 10 até 0, com uma pausa de 1 segundo entre eles.</h2>
         <div>
             
         </div>
 
-        <h2>45. Faça um programa que.</h2>
+        <h2>47. Faça um programa que leia dois valores e mostre na tela todos os números pares entre o intervalo.</h2>
         <div>
             
         </div>
 
-        <h2>46. Faça um programa que.</h2>
+        <h2>48. Faça um programa que calcule a soma entre todos os números ímpares que são múltiplos de três e que se encontram no intervalo de 1 até 500.</h2>
         <div>
             
         </div>
 
-        <h2>47. Faça um programa que.</h2>
+        <h2>49. Refaça o programa do exercício 9, mostrando a tabuada de um número que o usuário escolher.</h2>
         <div>
-            
+            <form action="" method="get" id="ex49-form" autocomplete="off">
+                <label for="ex49-id-numero">Número:</label>
+                <input type="number" name="ex49-numero" id="ex49-id-numero" required step="any">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado49"></div>
         </div>
 
-        <h2>48. Faça um programa que.</h2>
-        <div>
-            
-        </div>
-
-        <h2>49. Faça um programa que.</h2>
-        <div>
-            
-        </div>
-
-        <h2>50. Faça um programa que.</h2>
+        <h2>50. Faça um programa que leia números inteiros e mostre a soma apenas daqueles que forem pares. Se o valor digitado for ímpar, desconsidere-o.</h2>
         <div>
             
         </div>
