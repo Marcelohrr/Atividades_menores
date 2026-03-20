@@ -169,14 +169,14 @@ try {
     const inputPeso43 = form43.elements['ex43-peso'];
     const inputAltura43 = form43.elements['ex43-altura'];
 
-    const categorias43 = {
-        18.5: 'Abaixo do peso',
-        25: 'Peso normal',
-        30: 'Sobrepeso',
-        35: 'Obesidade grau I',
-        40: 'Obesidade grau II',
-        Infinity: 'Obesidade grau III (mórbida)'
-    };
+    const categorias43 = [
+        { limite: 18.5, status: 'Abaixo do peso' },
+        { limite: 25, status: 'Peso normal' },
+        { limite: 30, status: 'Sobrepeso' },
+        { limite: 35, status: 'Obesidade grau I' },
+        { limite: 40, status: 'Obesidade grau II' },
+        { limite: Infinity, status: 'Obesidade grau III (mórbida)' }
+    ];
 
     form43.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -196,9 +196,9 @@ try {
         const imc43 = peso43 / altura43 ** 2;
         linhas43.push(`IMC: ${imc43.toFixed(1)}.`);
 
-        for (const [chave, status] of Object.entries(categorias43)) {
-            if (imc43 <= Number(chave)) {
-                linhas43.push(`Status: ${status}.`);
+        for (const categoria43 of categorias43) {
+            if (imc43 <= categoria43.limite) {
+                linhas43.push(`Status: ${categoria43.status}.`);
                 break;
             }
         }
@@ -212,7 +212,91 @@ try {
 }
 
 // Exercício 44
+try {
+    const form44 = document.querySelector('form#ex44-form');
+    const resultadoDiv44 = document.querySelector('div#resultado44');
 
+    verificarDOM([form44, resultadoDiv44], 44);
+
+    const inputValor44 = form44.elements['ex44-valor'];
+
+    const ajusteDinheiroCheque44 = 0.9;
+    const ajusteCartao44_1 = 0.95;
+    const ajusteCartao44_2 = 1;
+    const ajusteCartao44_3 = 1.2;
+
+    form44.addEventListener('submit', function(e) {
+        console.log('Submit capturado');
+        e.preventDefault();
+
+        if (verificarInput([inputValor44], resultadoDiv44)) return;
+
+        const valor44 = Number(inputValor44.value);
+
+        if (verificarNumero([valor44], resultadoDiv44)) return;
+
+        // Criação do form com select para as opções de pagamento
+        const formPagamento44 = document.createElement('form');
+        formPagamento44.method = 'get';
+
+        const labelPagamento44 = document.createElement('label');
+        labelPagamento44.htmlFor = 'ex44-id-pagamento';
+        labelPagamento44.textContent = 'Defina a forma de pagamento:';
+
+        const selectPagamento44 = document.createElement('select');
+        selectPagamento44.name = 'ex44-pagamento';
+        selectPagamento44.id = 'ex44-id-pagamento';
+
+        const optionPagamento44 = document.createElement('option');
+        optionPagamento44.value = '';
+        optionPagamento44.disabled = true;
+        optionPagamento44.selected = true;
+        optionPagamento44.textContent = 'Selecione uma opção!';
+        selectPagamento44.appendChild(optionPagamento44);
+
+        const groupPagamentoDC44 = document.createElement('optgroup');
+        groupPagamentoDC44.label = 'Dinheiro ou Cheque';
+        const groupPagamentoCartao44 = document.createElement('optgroup');
+        groupPagamentoCartao44.label = 'Cartão';
+
+        const optionDinheiroCheque44 = document.createElement('option');
+        optionDinheiroCheque44.value = 'DC';
+        optionDinheiroCheque44.textContent = `${(valor44 * ajusteDinheiroCheque44).toLocaleString('pt-BR', real)} — à vista (10% de desconto!)`;
+        groupPagamentoDC44.appendChild(optionDinheiroCheque44);
+
+        const optionCartao44_1 = document.createElement('option');
+        optionCartao44_1.value = 'C1';
+        optionCartao44_1.textContent = `${(valor44 * ajusteCartao44_1).toLocaleString('pt-BR', real)} — à vista (5% de desconto!)`;
+        groupPagamentoCartao44.appendChild(optionCartao44_1);
+
+        const optionCartao44_2 = document.createElement('option');
+        optionCartao44_2.value = 'C2';
+        optionCartao44_2.textContent = `${(valor44 * ajusteCartao44_2).toLocaleString('pt-BR', real)} — 2x`;
+        groupPagamentoCartao44.appendChild(optionCartao44_2);
+
+        const optionCartao44_3 = document.createElement('option');
+        optionCartao44_3.value = 'C3';
+        optionCartao44_3.textContent = `${(valor44 * ajusteCartao44_3).toLocaleString('pt-BR', real)} — 3x ou mais (20% de juros!)`;
+        groupPagamentoCartao44.appendChild(optionCartao44_3);
+
+        selectPagamento44.appendChild(groupPagamentoDC44);
+        selectPagamento44.appendChild(groupPagamentoCartao44);
+
+        const botaoPagamento44 = document.createElement('button');
+        botaoPagamento44.type = 'submit';
+        botaoPagamento44.textContent = 'Esse botão não faz nada!';
+        botaoPagamento44.disabled = true;
+
+        formPagamento44.appendChild(labelPagamento44);
+        formPagamento44.appendChild(selectPagamento44);
+        formPagamento44.appendChild(botaoPagamento44);
+
+        resultadoDiv44.innerHTML = '';
+        resultadoDiv44.appendChild(formPagamento44);
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 45
 

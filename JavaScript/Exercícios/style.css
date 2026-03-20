@@ -56,7 +56,8 @@ form fieldset {
 }
 
 form input,
-button {
+button,
+select {
     padding: 5px;
 }
 
