@@ -13,7 +13,7 @@
     <main>
         <h2>41. Faça um programa que leia o ano de nascimento de um atleta e mostre sua categoria, de acordo com a idade: até 9 anos = MIRIM; até 14 = INFANTIL; até 19 = JÚNIOR; até 25 = SÊNIOR; acima = MASTER.</h2>
         <div>
-            <form action="" method="get" id="ex41-form">
+            <form action="" method="get" id="ex41-form" autocomplete="off">
                 <label for="ex41-id-nascimento">Ano de nascimento:</label>
                 <input type="number" name="ex41-nascimento" id="ex41-id-nascimento" required step="1">
 
@@ -48,7 +48,7 @@
 
         <h2>43. Faça um programa que leia o peso e a altura de uma pessoa, calcule seu IMC e mostre seu status.</h2>
         <div>
-            <form action="" method="get" id="ex43-form">
+            <form action="" method="get" id="ex43-form" autocomplete="off">
                 <label for="ex43-id-peso">Peso:</label>
                 <input type="number" name="ex43-peso" id="ex43-id-peso" required min="0.01" step="0.01">
 
@@ -63,7 +63,7 @@
 
         <h2>44. Faça um programa que calcule o valor a ser pago por um produto, considerando o seu preço normal e condição de pagamento, para os descontos de 10% à vista com dinheiro/cheque, 5% à vista no cartão, preço normal em até 2x no cartão e juros de 20% para 3x ou mais no cartão.</h2>
         <div>
-            <form action="" method="get" id="ex44-form">
+            <form action="" method="get" id="ex44-form" autocomplete="off">
                 <label for="ex44-id-valor">Valor:</label>
                 <input type="number" name="ex44-valor" id="ex44-id-valor" required min="0">
 
@@ -75,22 +75,45 @@
 
         <h2>45. Faça um jogo de jokenpô.</h2>
         <div>
-            
+            <form action="" method="get" id="ex45-form" autocomplete="off">
+                <label for="ex45-id-jogada">Jogada:</label>
+                <select name="ex45-jogada" id="ex45-id-jogada" required>
+                    <option value="" disabled selected>Escolha sua jogada!</option>
+                </select>
+
+                <button type="submit">Jogar</button>
+            </form>
+
+            <div class="resultados" id="resultado45"></div>
         </div>
 
         <h2>46. Faça um programa que mostre na tela uma contagem regressiva para o estouro de fogos de artifício, indo de 10 até 0, com uma pausa de 1 segundo entre eles.</h2>
         <div>
-            
+            <button id="ex46-contagem">Iniciar contagem regressiva!</button>
+
+            <div class="resultados" id="resultado46"></div>
         </div>
 
         <h2>47. Faça um programa que leia dois valores e mostre na tela todos os números pares entre o intervalo.</h2>
         <div>
-            
+            <form action="" method="get" id="ex47-form" autocomplete="off">
+                <label for="ex47-id-valor1">Valor 1:</label>
+                <input type="number" name="ex47-valor1" id="ex47-id-valor1" required step="any">
+
+                <label for="ex47-id-valor2">Valor 2:</label>
+                <input type="number" name="ex47-valor2" id="ex47-id-valor2" required step="any">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado47"></div>
         </div>
 
         <h2>48. Faça um programa que calcule a soma entre todos os números ímpares que são múltiplos de três e que se encontram no intervalo de 1 até 500.</h2>
         <div>
-            
+            <button id="ex48-calcular">Calcular!</button>
+
+            <div class="resultados" id="resultado48"></div>
         </div>
 
         <h2>49. Refaça o programa do exercício 9, mostrando a tabuada de um número que o usuário escolher.</h2>
@@ -107,7 +130,15 @@
 
         <h2>50. Faça um programa que leia números inteiros e mostre a soma apenas daqueles que forem pares. Se o valor digitado for ímpar, desconsidere-o.</h2>
         <div>
-            
+            <form action="" method="get" id="ex50-form" autocomplete="off">
+                <label for="ex50-id-numero">Número:</label>
+                <input type="number" name="ex50-numero" id="ex50-id-numero" step="1">
+
+                <button type="button" name="ex50-botao-registrar">Registrar número</button>
+                <button type="submit">Calcular</button>
+            </form>
+
+            <div class="resultados" id="resultado50"></div>
         </div>
 
         <nav>

@@ -299,16 +299,153 @@ try {
 }
 
 // Exercício 45
+try {
+    const form45 = document.querySelector('form#ex45-form');
+    const resultadoDiv45 = document.querySelector('div#resultado45');
 
+    verificarDOM([form45, resultadoDiv45], 45);
+
+    const select45 = form45.elements['ex45-jogada'];
+
+    const vence45 = {
+        pedra: ['tesoura'],
+        papel: ['pedra'],
+        tesoura: ['papel'],
+        'bomba nuclear': ['pedra', 'papel', 'tesoura', 'cola']
+    };
+
+    const opcoes45 = Object.keys(vence45);
+
+    opcoes45.forEach(o => {
+        const opcao45 = document.createElement('option');
+        opcao45.value = o;
+        opcao45.textContent = o.charAt(0).toUpperCase() + o.slice(1);
+        select45.appendChild(opcao45);
+    })
+
+    form45.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const jogadaPlayer45 = select45.value;
+
+        const jogadaComputador45 = opcoes45[Math.floor(Math.random() * opcoes45.length)];
+
+        const linhas45 = [
+            `Você jogou: ${jogadaPlayer45}.`,
+            `O computador jogou: ${jogadaComputador45}.`
+        ]
+
+        if (jogadaPlayer45 === jogadaComputador45) {
+            linhas45.push(`Empate!`);
+        } else if (vence45[jogadaPlayer45].includes(jogadaComputador45)) {
+            linhas45.push(`Vitória!`);
+        } else {
+            linhas45.push(`Derrota!`);
+        }
+
+        resultadoDiv45.textContent = linhas45.join('\n');
+
+        form45.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 46
+try {
+    const botao46 = document.querySelector('button#ex46-contagem');
+    const resultadoDiv46 = document.querySelector('div#resultado46');
 
+    verificarDOM([botao46, resultadoDiv46], 46);
+
+    botao46.addEventListener('click', () => {
+        let contagem46 = 10;
+
+        resultadoDiv46.textContent = contagem46;
+        
+        const intervalo = setInterval(() => { // setInterval() = função para executar repetidamente um bloco de código em intervalos fixos de tempo
+            contagem46--;
+
+            resultadoDiv46.textContent = contagem46;
+
+            if (contagem46 === 0) {
+                clearInterval(intervalo); // Interrompe loop de contagem
+
+                resultadoDiv46.textContent = '🎆🎇💥✨🎉🎊 Bum! 🎊🎉✨💥🎇🎆';
+            }
+        }, 1000) // 1000 ms = 1 s
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 47
+try {
+    const form47 = document.querySelector('form#ex47-form');
+    const resultadoDiv47 = document.querySelector('div#resultado47');
 
+    verificarDOM([form47, resultadoDiv47], 47);
+
+    const inputValor1 = form47.elements['ex47-valor1'];
+    const inputValor2 = form47.elements['ex47-valor2'];
+
+    form47.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (verificarInput([inputValor1, inputValor2], resultadoDiv47)) return;
+
+        const valor1 = Number(inputValor1.value);
+        const valor2 = Number(inputValor2.value);
+
+        if (verificarNumero([valor1, valor2], resultadoDiv47)) return;
+
+        const pares47 = [];
+
+        const menor47 = Math.min(valor1, valor2);
+        const maior47 = Math.max(valor1, valor2);
+
+        for (let contagem = menor47 + 1; contagem < maior47; contagem++) {
+            if (contagem % 2 === 0) {
+                pares47.push(contagem);
+            }
+        }
+
+        if (pares47.length === 0) {
+            resultadoDiv47.textContent = `Entre os números ${valor1} e ${valor2}, não há números pares!`;
+        } else {
+            console.log('oi')
+            resultadoDiv47.textContent = `Entre os números ${valor1} e ${valor2}, os números pares são: ${pares47.join(', ')}.`;
+        }
+
+        form47.reset();
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 48
+try {
+    const botao48 = document.querySelector('button#ex48-calcular');
+    const resultadoDiv48 = document.querySelector('div#resultado48');
 
+    verificarDOM([botao48, resultadoDiv48], 48);
+
+    const inicio48 = 1;
+    const fim48 = 500;
+    let soma48 = 0;
+
+    botao48.addEventListener('click', () => {
+        for (let contador = inicio48; contador <= fim48; contador++) {
+            if (contador % 2 !== 0 && contador % 3 === 0) {
+                soma48 += contador;
+            }
+        }
+
+        resultadoDiv48.textContent = `A soma entre todos os números ímpares múltiplos de 3 no intervalo de ${inicio48} até ${fim48} é: ${soma48}.`;
+    })
+} catch (erro) {
+    console.error(erro);
+}
 
 // Exercício 49
 try {
@@ -376,3 +513,56 @@ try {
 }
 
 // Exercício 50
+try {
+    const form50 = document.querySelector('form#ex50-form');
+    const resultadoDiv50 = document.querySelector('div#resultado50');
+
+    verificarDOM([form50, resultadoDiv50], 50);
+
+    const inputNumero50 = form50.elements['ex50-numero'];
+    const botaoRegistrar50 = form50.elements['ex50-botao-registrar'];
+
+    const paresArray50 = [];
+
+    function registrarNumero50() {
+        if (verificarInput([inputNumero50], resultadoDiv50)) return;
+
+        const numero50 = Number(inputNumero50.value);
+
+        if (verificarNumero([numero50], resultadoDiv50)) return;
+
+        if (numero50 % 2 === 0) {
+            paresArray50.push(numero50);
+            resultadoDiv50.textContent = `Número ${numero50} registrado!`;
+        } else {
+            resultadoDiv50.textContent = `Número ${numero50} NÃO registrado!`;
+        }
+
+        inputNumero50.value = '';
+        inputNumero50.focus();
+    }
+
+    botaoRegistrar50.addEventListener('click', registrarNumero50);
+
+    form50.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (inputNumero50.value !== '') {
+            registrarNumero50();
+            return;
+        }
+
+        if (paresArray50.length === 0) {
+            resultadoDiv50.textContent = `Nenhum número par foi inserido!`;
+            return;
+        }
+
+        const soma50 = paresArray50.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0); // array.reduce(callback, valorInicialDoAcumulador) reduz um array a um único valor, aplicando uma função a cada elemento do array
+
+        resultadoDiv50.textContent = `A soma dos números ${paresArray50.join(', ')} é igual a ${soma50}!`
+
+        form50.reset();
+    })
+} catch (erro) {
+    console.error(erro)
+}
