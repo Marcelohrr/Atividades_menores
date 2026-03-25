@@ -311,7 +311,7 @@ try {
         pedra: ['tesoura'],
         papel: ['pedra'],
         tesoura: ['papel'],
-        'bomba nuclear': ['pedra', 'papel', 'tesoura', 'cola']
+        'bomba nuclear': ['pedra', 'papel', 'tesoura']
     };
 
     const opcoes45 = Object.keys(vence45);
