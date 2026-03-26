@@ -1,0 +1,125 @@
+// Arrow functions
+
+/*
+Arrow functions are a concise way to write function expressions, good for simple functions that you use only once.
+Formula:
+
+(parameters) => code
+*/
+
+// 1. Diferença entre Function expression e Arrow function:
+
+darOi();
+
+function darOi() { // Declaração da função com nome próprio oi. O identificador oi é hoisted (elevado) com inicialização completa durante a fase de criação (que antecede a execução), permitindo uso antes da declaração
+    console.log('Oi!');
+}
+
+const darOla = () => console.log('Olá!'); // Declaração da variável ola, que recebe uma função anônima. A variável é hoisted na fase de criação, mas permanece em estado de Temporal Dead Zone (TDZ) até ser inicializada durante a execução; portanto a atribuição deve anteceder seu uso
+
+// Regra: com apenas uma expressão e sem chaves, o resultado da expressão é retornado implicitamente; com bloco de código, entre chaves, é necessário explicitar o return
+
+darOla();
+
+// 2. Parâmetros
+
+const saudar = (nome, idade) => { // No caso de apenas um parâmetro, parêntesis não são necessários
+    console.log(`Bem-vindo, ${nome}!`);
+    console.log(`Você tem ${idade} anos!`);
+}
+
+saudar('Marcelo', 25);
+
+// 3. Callbacks
+// a) Exemplo com setTimeout(callback, milissegundos) → executa uma função callback depois de um tempo determinado
+
+setTimeout(() => console.log('Ei!'), 3000);
+
+/*
+Equivale a:
+
+setTimeout(function() {
+    console.log('Ei!');
+}, 3000);
+
+*/
+
+// b) Exemplo com array.map(callback(elemento, indice, array) [, thisArg]) → cria um novo array com os resultados da função callback
+
+const numeros = [1, 2, 3, 4, 5];
+
+const quadrados = numeros.map(numero => numero ** 2);
+
+/*
+Equivale a:
+
+numeros.map(numero => {
+    return numero ** 2;
+})
+
+ou
+
+numeros.map(function(numero) {
+    return numero ** 2;
+})
+
+*/
+
+console.log(quadrados);
+
+// c) Exemplo com array.filter(callback(elemento, indice, array) [, thisArg]) → cria um novo array com os elementos que retornam true na função callback
+
+const pares = numeros.filter(numero => numero % 2 === 0);
+
+/*
+Equivale a:
+
+numeros.filter(function(numero) {
+    return numero % 2 === 0;
+})
+
+*/
+
+console.log(pares);
+
+// d) Exemplo com array.reduce(callback(acumulador, elemento, indice, array) [, valorInicial]) → reduz um array em um único valor
+
+const soma = numeros.reduce((acumulador, numero) => acumulador + numero);
+
+/*
+Equivale a:
+
+numeros.reduce(function(acumulador, numero) {
+    return acumulador + numero;
+})
+
+*/
+
+console.log(soma);
+
+// e) Exemplo com .reduce() mais interessante
+
+const cores = ['vermelho', 'verde', 'azul', 'vermelho', 'verde'];
+
+const contagemCores = cores.reduce((acumulador, cor) => {
+    if (!acumulador[cor]) acumulador[cor] = 0;
+
+    acumulador[cor] += 1;
+
+    return acumulador;
+}, {}); // Necessário definir valorInicial como um objeto vazio
+
+/*
+Equivale a:
+
+numeros.reduce(function(acumulador, cor) {
+    if (!acumulador[cor]) acumulador[cor] = 0;
+
+    acumulador[cor] += 1;
+
+    return acumulador;
+}, {});
+
+*/
+
+console.log(contagemCores);
