@@ -2,9 +2,8 @@
 
 /*
 Arrow functions are a concise way to write function expressions, good for simple functions that you use only once.
-Formula:
 
-(parameters) => code
+Formula: (parameters) => code
 */
 
 // 1. Diferença entre Function expression e Arrow function:
@@ -123,3 +122,144 @@ numeros.reduce(function(acumulador, cor) {
 */
 
 console.log(contagemCores);
+
+// --------------------------------------------------
+
+// RegEx (Regular Expression)
+
+/*
+RegEx é uma linguagem declarativa para descrever padrões em strings. Funciona como um autômato que percorre a string tentando casar o padrão.
+
+Modelo: /padrao/flags
+*/
+
+/*
+O padrão é composto por:
+
+1. Literais: caracteres que representam a si mesmos no padrão, ou seja, que não possuem função sintática especial naquele contexto.
+Exemplos: /a/, /B/, /1/, / /, /,/, /@/, /_/, etc.
+
+2. Metacaracteres: caracteres que possuem função sintática especial no padrão, ou seja, não representam a si mesmos, mas instruem o mecanismo de regex sobre como realizar a correspondência.
+Categorias:
+- Coringa (wildcard): .
+- Grupos de captura: ( ), (?: ), (?<nome> )
+- Operador de alternância: |
+- Classes de caracteres: [abc], [a-z], \d, \w, \s
+- Âncoras: ^, $, \b, \B
+- Quantificadores: *, +, ?, {n}, {n,m} → definem repetição do elemento anterior
+- Escapes: \, \n, \t, \d, \w, \s, etc. → alteram interpretação ou representam caracteres especiais
+
+Principais exemplos:
+. → coringa; retorna qualquer caractere (exceto \n por padrão)
+
+() → grupo de captura; agrupa parte do padrão para formar subpadrões, possibilitando aplicação de quatificadores a subpadrões
+
+| → operador de alternância; como um ou lógico, tenta casar os padrões separados pelo operador |
+
+[] → classe de caracteres; conjunto de caracteres possíveis, retorna qualquer caractere que esteja listado explicitamente ([abc]) ou contido em um intervalo ([a-z]) — ^ logo após o [ cria-se uma classe negada ([^a-z]), que casa qualquer caractere que não esteja no conjunto
+
+^a → âncora que define a posição de início da string, retorna o primeiro caractere
+a$ → âncora que define a posição de fim da string, retorna o último caractere
+
+a* → quantificador de zero ou mais ocorrências que indica zero ou mais ocorrências do elemento anterior; com comportamento guloso por padrão, podendo corresponder a uma sequência vazia se nenhuma ocorrência for encontrada
+a+ → quantificador de uma ou mais ocorrências
+a? → quantificador de zero ou uma ocorrência
+
+\. → escape; transforma caracteres especiais em literais
+\n → representa o caractere newline
+\t → representa tabulação
+\d → representa dígito; corresponde a [0-9]
+\w → representa letras maiúsculas, letras minúsculas, dígitos e underline; corresponde a [A-Za-z0-9_]
+\s → representa whitespace; corresponde a [ \t\n\r\f\v]
+*/
+
+/*
+Flags são letras adicionadas após a RegEx que mudam a forma como a regex casa a string.
+
+Principais flags:
+- g (global) → busca todas as ocorrências, não só a primeira
+- i (case-insensitive) → ignora maiúsculas/minúsculas
+- m (multiline) → faz ^ e $ funcionarem por linha, não só no texto inteiro
+- s (dotAll) → permite que . também capture quebras de linha (\n)
+- u (unicode) → trata a string como Unicode completo (importante para emojis, acentos, etc.)
+- y (sticky) → força a busca a começar exatamente na posição atual (mais avançado)
+*/
+
+/*
+Exemplos de usos com
+    regex.test(string) (retorna true assim que encontra a primeira ocorrência do padrão na string e false se não encontrar nenhuma),
+    string.match(regex) (retorna um array com a(s) ocorrência(s) ou null se não encontrar nenhuma),
+    regex.exec(string) (retorna um array com o match completo + grupos capturados, ou null se não houver match):
+
+1. Literal simples
+
+const regex = /a/;
+console.log(regex.test('abc')); → true
+
+2. Curinga
+
+const regex = /a.b/;
+console.log(regex.test('a b')); → true
+console.log(regex.test('a1b')); → true
+
+3. Classe de caracteres simples
+
+const regex = /[aeiou]/;
+console.log(regex.test('abc')); → true
+
+4. Intervalo e negação em classes
+
+const regex = /[^0-9]/;
+console.log(regex.test('a')); → true
+console.log(regex.test('1')); → false
+
+5. Quantificadores
+
+const regex = /a+/;
+console.log('aab'.match(regex)); → ['aa']
+
+6. Grupos de captura
+
+const regex = /(\d{3})-(\d{3})/;
+const resultado = regex.exec('123-456');
+console.log(resultado[1], resultado[2]); → 123 456
+
+7. Operador de alternância
+
+const regex = /gato|cão/;
+console.log(regex.test('Eu tenho um cão.')); → true
+
+8. Âncoras
+
+const regex = /^Olá/;
+console.log(regex.test('Olá, pessoal!')); → true
+console.log(regex.test('Diga: "Olá"!')); → false
+
+9. Flags combinadas
+
+const regex = /abc/gi;
+console.log('ABC abc'.match(regex)); → ['ABC', 'abc']
+
+10. Múltiplos matches com quantificador complexo
+
+const regex = /\d{2}-\d{3}/g;
+const texto = 'Telefones: 12-345, 23-456, 34-567';
+const matches = texto.match(regex);
+console.log(matches); → ['12-345', '23-456', '34-567']
+
+- Validação de CPF
+
+const regexCPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+const cpfs = [
+  '123.456.789-00', → válido
+  '987.654.321-99', → válido
+  '12345678900', → inválido (sem pontos e hífen)
+  '12.3456.789-00', → inválido (formato errado)
+];
+
+- Substituição de data em formato: ano-mês-dia para dia/mês/ano
+
+const data = '2026-03-26';
+const novaData = data.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3/$2/$1');
+console.log(novaData); → '26/03/2026'
+*/
