@@ -190,76 +190,132 @@ Exemplos de usos com
     regex.test(string) (retorna true assim que encontra a primeira ocorrência do padrão na string e false se não encontrar nenhuma),
     string.match(regex) (retorna um array com a(s) ocorrência(s) ou null se não encontrar nenhuma),
     regex.exec(string) (retorna um array com o match completo + grupos capturados, ou null se não houver match):
+*/
 
-1. Literal simples
+// 1. Literal simples
 
-const regex = /a/;
-console.log(regex.test('abc')); → true
+const regex1 = /a/;
+console.log(regex1.test('abc')); // true
 
-2. Curinga
+// 2. Curinga
 
-const regex = /a.b/;
-console.log(regex.test('a b')); → true
-console.log(regex.test('a1b')); → true
+const regex2 = /a.b/;
+console.log(regex2.test('a b')); // true
+console.log(regex2.test('a1b')); // true
 
-3. Classe de caracteres simples
+// 3. Classe de caracteres simples
 
-const regex = /[aeiou]/;
-console.log(regex.test('abc')); → true
+const regex3 = /[aeiou]/;
+console.log(regex3.test('abc')); // true
 
-4. Intervalo e negação em classes
+// 4. Intervalo e negação em classes
 
-const regex = /[^0-9]/;
-console.log(regex.test('a')); → true
-console.log(regex.test('1')); → false
+const regex4 = /[^0-9]/;
+console.log(regex4.test('a')); // true
+console.log(regex4.test('1')); // false
 
-5. Quantificadores
+// 5. Quantificadores
 
-const regex = /a+/;
-console.log('aab'.match(regex)); → ['aa']
+const regex5 = /a+/;
+console.log('aab'.match(regex5)); // ['aa']
 
-6. Grupos de captura
+// 6. Grupos de captura
 
-const regex = /(\d{3})-(\d{3})/;
-const resultado = regex.exec('123-456');
-console.log(resultado[1], resultado[2]); → 123 456
+const regex6 = /(\d{3})-(\d{3})/;
+const resultado = regex6.exec('123-456');
+console.log(resultado[1], resultado[2]); // 123 456
 
-7. Operador de alternância
+// 7. Operador de alternância
 
-const regex = /gato|cão/;
-console.log(regex.test('Eu tenho um cão.')); → true
+const regex7 = /gato|cão/;
+console.log(regex7.test('Eu tenho um cão.')); // true
 
-8. Âncoras
+// 8. Âncoras
 
-const regex = /^Olá/;
-console.log(regex.test('Olá, pessoal!')); → true
-console.log(regex.test('Diga: "Olá"!')); → false
+const regex8 = /^Olá/;
+console.log(regex8.test('Olá, pessoal!')); // true
+console.log(regex8.test('Diga: "Olá"!')); // false
 
-9. Flags combinadas
+// 9. Flags combinadas
 
-const regex = /abc/gi;
-console.log('ABC abc'.match(regex)); → ['ABC', 'abc']
+const regex9 = /abc/gi;
+console.log('ABC abc'.match(regex9)); // ['ABC', 'abc']
 
-10. Múltiplos matches com quantificador complexo
+// 10. Múltiplos matches com quantificador complexo
 
-const regex = /\d{2}-\d{3}/g;
+const regex10 = /\d{2}-\d{3}/g;
 const texto = 'Telefones: 12-345, 23-456, 34-567';
-const matches = texto.match(regex);
-console.log(matches); → ['12-345', '23-456', '34-567']
+const matches = texto.match(regex10);
+console.log(matches); // ['12-345', '23-456', '34-567']
 
-- Validação de CPF
+// 11. Validação de CPF
 
-const regexCPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+const regex11 = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
 const cpfs = [
-  '123.456.789-00', → válido
-  '987.654.321-99', → válido
-  '12345678900', → inválido (sem pontos e hífen)
-  '12.3456.789-00', → inválido (formato errado)
+  '123.456.789-00', // válido
+  '987.654.321-99', // válido
+  '12345678900', // inválido
+  '12.3456.789-00', // inválido
 ];
 
-- Substituição de data em formato: ano-mês-dia para dia/mês/ano
+cpfs.forEach(cpf => {
+    console.log(cpf.match(regex11));
+});
+
+// 12. Substituição de data em formato: ano-mês-dia para dia/mês/ano
 
 const data = '2026-03-26';
 const novaData = data.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3/$2/$1');
-console.log(novaData); → '26/03/2026'
+console.log(novaData); // '26/03/2026'
+
+// --------------------------------------------------
+
+// JSON (JavaScript Object Notation)
+
+/*
+- JSON is extremely important in web development, especially if you're working with RESTful APIs and sending data back and forth. It's pretty much replaced XML in that area.
+- It's essentially a lightweight data interchange format, used to send data between client and server as text; inspired by JavaScript object literals.
+- It's often used with AJAX (Asynchronous JavaScript and XML) — used to send data between client and server without having to refresh the page in the browser.
+- Can be parsed (used) with most modern languages, either natively or through libraries. So even if you're not a JS developer, learning JSON is extremely relevant.
+
+- Um formato de representação de dados; leve para ser enviado por requisições. Muito utilizado por API e arquivos de configuração.
+
+Different data types that can be embedded in JSON:
+- Numbers
+- Strings (only with double quotes)
+- Booleans
+- Arrays
+- Objects
+- Null
+- Não aceita funções, undefined nem comentários
+
+JSON Syntax rules:
+- Uses key/value pairs with double quotes around the key — {"nome": "Ana"}
+- File type is ".json"
+- MIME type is "application/json"
+
+Example:
+
+{
+    "nome": "Marcelo Henrique",
+    "idade": 25,
+    "endereco": {
+        "rua": "Oficinas 406",
+        "cidade": "Belo Horizonte"
+    },
+    "nomePais": ["Maria", "Gaspar"]
+}
 */
+
+// Object in JavaScript:
+
+const pessoa = {
+    nome: "Marcelo",
+    idade: 25
+}
+
+const pessoaJSON = JSON.stringify(pessoa); // To convert the object to a JSON string (serialização) — usado ao enviar dados para um servidor (ex: requisições HTTP como POST ou PUT) ou ao armazenar dados
+console.log(pessoaJSON); // '{"nome":"Marcelo","idade":25}'
+
+const pessoaObjeto = JSON.parse(pessoaJSON); // // To convert a JSON string into a JavaScript object (deserialização) — usado ao receber dados (APIs, arquivos, etc.)
+console.log(pessoaObjeto); // { nome: 'Marcelo', idade: 25 }
