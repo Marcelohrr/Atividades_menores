@@ -25,7 +25,7 @@ darOla();
 const saudar = (nome, idade) => { // No caso de apenas um parâmetro, parêntesis não são necessários
     console.log(`Bem-vindo, ${nome}!`);
     console.log(`Você tem ${idade} anos!`);
-}
+};
 
 saudar('Marcelo', 25);
 
@@ -54,13 +54,13 @@ Equivale a:
 
 numeros.map(numero => {
     return numero ** 2;
-})
+});
 
 ou
 
 numeros.map(function(numero) {
     return numero ** 2;
-})
+});
 
 */
 
@@ -75,7 +75,7 @@ Equivale a:
 
 numeros.filter(function(numero) {
     return numero % 2 === 0;
-})
+});
 
 */
 
@@ -90,7 +90,7 @@ Equivale a:
 
 numeros.reduce(function(acumulador, numero) {
     return acumulador + numero;
-})
+});
 
 */
 
@@ -312,10 +312,377 @@ Example:
 const pessoa = {
     nome: "Marcelo",
     idade: 25
-}
+};
 
 const pessoaJSON = JSON.stringify(pessoa); // To convert the object to a JSON string (serialização) — usado ao enviar dados para um servidor (ex: requisições HTTP como POST ou PUT) ou ao armazenar dados
 console.log(pessoaJSON); // '{"nome":"Marcelo","idade":25}'
 
 const pessoaObjeto = JSON.parse(pessoaJSON); // // To convert a JSON string into a JavaScript object (deserialização) — usado ao receber dados (APIs, arquivos, etc.)
 console.log(pessoaObjeto); // { nome: 'Marcelo', idade: 25 }
+
+// --------------------------------------------------
+
+// API, WebAPI, HTTP, REST, RESTful
+
+/*
+API (Application Programming Interface) é um conjunto de funções ou operações que um sistema oferece para que outro sistema ou programa possa utilizá-las com abstração da sua implementação interna. O cliente solicita dados ao servidor através da API, utilizando um método/verbo HTTP e uma URL que contém o endpoint — o ponto específico da API que representa uma operação sobre um recurso —, e o servidor responde entregando os dados (normalmente nos formatos JSON ou XML).
+
+Exemplos:
+- JSON:
+
+{
+    Servers: [
+        {
+            "name": "Server1",
+            "owner": "John",
+            "created": 123456,
+            "status": "active"
+        }
+    ]
+}
+
+- XML:
+
+<Servers>
+    <Server>
+        <name>Server1</name>
+        <owner>John</owner>
+        <created>123456</created>
+        <status>active</status>
+    </Server>
+</Servers>
+
+Importância das APIs: simplificam o desenvolvimento, eliminando a necessidade de telas; são facilmente integráveis com sistemas (só precisa saber como fazer as requisições); se seguirem um padrão, permitem a troca de APIs facilmente; aumentam a performance, pois o servidor não tem que renderizar o HTML completo para enviar a página pronta, mas apenas enviar os dados para que o cliente renderize.
+
+WebAPI é a API acessada por meio da web, geralmente utilizando o protocolo HTTP.
+
+Tipos de API:
+- Pública → disponibilizada publicamente, não requer autenticação.
+- Privada → criada para utilização entre sistemas de uma empresa, requer autenticação.
+- De terceiros → um produto, podendo ser integrada em um sistema, requer autenticação.
+
+HTTP (Hypertext Transfer Protocol) é um protocolo (conjunto de regras) que define como requisições e respostas são realizadas, permitindo a comunicação de dados entre cliente e servidor na web.
+
+Métodos/Verbos HTTP são instruções que definem uma operação solicitada em uma requisição pelo cliente ao servidor. Os principais são:
+- GET → obter dados (Read)
+- POST → enviar dados (Create)
+- PUT → atualizar todos os dados (Update, substituir objeto completamente)
+- PATCH → atualizar parte dos dados (Update, substituir objeto parcialmente)
+- DELETE → excluir um registro no servidor
+- OPTIONS → permitir acesso de domínios diferentes
+
+Status code (código de status HTTP) é um código padronizado que o servidor retorna para indicar o resultado de uma requisição. Principais categorias:
+- 2xx → sucesso
+- 201 OK → cadastro feito com sucesso
+- 204 Created → sucesso, mas sem conteúdo de retorno
+- 4xx → erro do cliente
+- 400 Bad Request → requisição inválida
+- 401 Unauthorized
+- 404 Not Found
+- 5xx → Erro do servidor
+
+REST (Representational State Transfer) é um estilo arquitetural (conjunto de princípios) para construir APIs (especialmente WebAPIs) com HTTP.
+
+RESTful é um adjetivo que descreve uma API que está implementada em conformidade com os 6 princípios do REST:
+1. Client-Server (desacoplação) → separação entre cliente e servidor
+2. Stateless → cada requisição é independente
+3. Cacheable → respostas podem ser armazenadas em cache
+4. Uniform Interface → interface padronizada (URLs, métodos HTTP, representação de dados em formatos estruturados, etc.)
+5. Layered System → hierarquia de camadas intermediárias (proxy, gateway)
+6. Code on Demand (opcional) → servidor pode enviar código executável (ex.: JS)
+
+Existem programas para testar a API, para simular um cliente (como um frontend) e verificar se a API está funcionando corretamente. Os principais são Postman e Insomnia. Durante o desenvolvimento de sistemas com API, é comum utilizá-la para validar o backend de forma independente, antes da integração com o frontend, evitando a necessidade de implementar a interface completa apenas para testes.
+*/
+
+// --------------------------------------------------
+
+// Programação assíncrona
+
+/*
+When dealing with simple types in JavaScript, our code executes sequentially — everything is nice and simple. However, when writing a real world code, we often make calls to databases, open files and speak to remote APIs over the internet. Now running tasks like this will usually not return the results straight away, they will rather return a Promise (object that represents the eventual completion or failure of an asynchronous operation and its resulting value).
+*/
+
+promessa.then((resultado) => { }); // Handle fulfilled (resolved) promises. .then() is called when the task completes; receives the result of the task as a parameter
+promessa.catch((erro) => { }); // Handle failed (rejected) promises. .catch() is called if anything goes wrong while processing our request; receives the error that occurred as a parameter
+
+const axiosRequest = require('axios'); // require() carrega um módulo. Axios é uma biblioteca para fazer requisições HTTP
+
+axiosRequest
+    .get('https://www.boredapi.com/api/activity') // To simulate an error: 'https://httpstat.us/500'
+    .then(resposta => {
+        console.log(`You could ${resposta.data.activity}`);
+    })
+    .catch(erro => {
+        console.error(`ERROR! ${erro}`);
+    });
+
+/*
+This works fine, however the code isn't particularly nice to look at, and if you have a lot of complicated code inside your methods, things will soon start to get quite unwieldy. So what we need really is a way of receiving the results of our promises sequentially. And this is where the await operator comes in. It allows us to wait until the promise has completed before moving on to the next line. Can only be used inside an async function.
+*/
+
+const axiosRequest = require('axios'); // require() carrega um módulo. Axios é uma biblioteca para fazer requisições HTTP
+
+async function sugerirAtividade() {
+    try {
+        let resposta = await axiosRequest.get('https://www.boredapi.com/api/activity');
+        console.log(`You could ${resposta.data.activity}`);
+    } catch (erro) {
+        console.error(`ERROR! ${erro}`);
+    }
+}
+
+// --------------------------------------------------
+
+// Promise is a object with one of three states: pending, fulfilled, rejected. Most commonly useful to network requests.
+
+const promessa1 = new Promise((resolver, rejeitar) => {}); // Promise constructor takes an executor function with the functions resolve and reject as parameters
+
+console.log(promessa1); // Promise { <pending> }
+
+const promessa2 = new Promise((resolver, rejeitar) => {
+    resolver(10);
+});
+
+console.log(promessa2); // Promise { 10 }
+
+// But we don't know always when exactly our promises are going to settle (change states from pending to either fulfilled or rejected)
+
+const promessa3 = new Promise((resolver, rejeitar) => {
+    setTimeout(() => {
+        resolver('Aa');
+    }, 1000);
+});
+
+promessa3.then(valor => { // What this is saying is: take this promise and when it resolves, then, run this function. .then() pode receber dois callbacks como parâmetros: onFulfilled, onRejected.
+    console.log(valor); // Aa
+}); // Simplificação: promessa3.then(console.log);
+
+const promessa4 = new Promise((resolver, rejeitar) => {
+    setTimeout(() => {
+        rejeitar(new Error('Something went wrong.'));
+    }, 1000);
+});
+
+promessa4.then(valor => {
+    console.log(valor); // onFulfilled
+}, erro => {
+    console.log('Oh no! ' + erro); // onRejected
+}); // Simplificação: promessa4.then(console.log, erro => console.log('Oh no! ' + erro)); ou promessa4.then(console.log, erro => console.log('Oh no! ' + erro.message));
+
+// What most people prefer:
+promessa4.then(console.log).catch(erro => console.log('Oh no! ' + erro.message));
+
+const promessa5 = new Promise((resolver, rejeitar) => {
+    setTimeout(() => {
+        resolver(10);
+    }, 1000);
+});
+
+// .catch() is a function of whatever .then() returned. And .then() returns a Promise. So it's possible to do "then chains" (it's the original way to handle promises):
+promessa5
+    .then(valor => valor * 2) // 10 * 2
+    .then(console.log) // 20
+    .catch(erro => { // A promessa5 resolve, portanto não executa .catch()
+        console.log('Erro: ' + erro.message);
+        return 100;
+    })
+    .then(console.log) // undefined (que o console.log retornou, já que o .catch() não foi executado)
+    .finally(() => {
+        console.log('Feito!'); // Happens regardless of if this promise was resolved or rejected
+    });
+// New way (with async and await), ao invés de promessa5.then(console.log):
+async function logPromessa5() {
+    const resultado = await promessa5;
+    console.log(resultado);
+}
+logPromessa5();
+/*
+If the function rejects, ao invés de:
+async function logPromessa4() {
+    const resultado = await promessa4;
+    console.log(resultado);
+}
+logPromessa4().catch(erro => console.log('Oh no! ' + erro.message));
+
+We can use try/catch:
+*/
+async function logPromessa4() {
+    try {
+        const resultado = await promessa4;
+        console.log(resultado);
+    } catch (erro) {
+        console.log('Oh no! ' + erro.message);
+    }
+}
+
+// Promise object functions
+
+const promessa6 = Promise.resolve(123); // Non pending promise. Also: Promise.reject()
+console.log(promessa6); // 123
+
+const all1 = Promise.all([ // Promise.all([]) waits for all promises to fulfill and rejects immediately if one rejects
+    new Promise((resolver, rejeitar) => setTimeout(() => resolver(1), 1000)),
+    Promise.resolve(2)
+]);
+
+console.log(all1) // Promise { <pending> }
+all1.then(console.log) // [ 1, 2 ] — if one of the promises rejects, Promise.all rejects immediately (fail-fast) and skips this .then(), going to .catch() instead
+
+const all2 = Promise.allSettled([ // Promise.allSettled([]) waits for all of the promises to settle, regardless of if they reject
+    new Promise((resolver, rejeitar) => setTimeout(() => resolver(1), 1000)),
+    Promise.reject(2)
+]);
+
+all2.then(console.log) // [ { status: 'fulfilled', value: 1 }, { status: 'rejected', reason: 2 } ]
+
+const all3 = Promise.race([ // Promise.race([]) resolve ou rejeita com o resultado da primeira promise que se estabelecer
+    new Promise((resolver, rejeitar) => setTimeout(() => resolver(1), 1000)),
+    Promise.resolve(2)
+]);
+
+all3.then(console.log) // 2
+
+const all4 = Promise.any([ // Promise.any([]) ignora rejeições e retorna a primeira promise que resolver
+    new Promise((resolver, rejeitar) => setTimeout(() => resolver(1), 1000)),
+    Promise.reject(2)
+]);
+
+all4.then(console.log) // 1
+
+// Common pattern ("deferred pattern") with promises — para expor as funções de resolução da promise (resolve e reject) para fora do escopo do executor da Promise:
+let resolveExterno, rejectExterno;
+const promise1 = new Promise((resolve, reject) => {
+    resolveExterno = resolve;
+    rejectExterno = reject;
+});
+//New way to do this (doesn't have amazing support across browsers):
+const { promise: promise2, resolve, reject } = Promise.withResolvers();
+console.log(promise2); // Promise { <pending> }
+resolve(1);
+promise2.then(console.log); // 1
+
+// --------------------------------------------------
+
+console.log(1);
+setTimeout(() => console.log('a'), 3000); // Operação assíncrona: não é processada imediatamente
+console.log(2);
+
+// --------------------------------------------------
+
+async function escreverInformacoesPais(paisDesejado) {
+    const info = await fetch('https://restcountries.com/v3.1/name/' + paisDesejado); // fetch() é uma função que realiza requisições HTTP para uma URL (como uma API) e retorna uma Promise (um objeto que representa o resultado futuro de uma operação assíncrona) que resolve para um objeto Response em caso de sucesso da requisição. Não é uma operação imediata; portanto, para lidar com a Promise retornada por fetch(), é necessário tratar o resultado assíncrono — isso pode ser feito com .then() ou com async + await
+    console.log(await info.json()); // .json() também é uma função assíncrona
+}
+
+escreverInformacoesPais('brazil');
+
+/*
+How to fetch data from a JSON file (sending an HTTP GET request) and display the response in the browser:
+
+{
+    "pessoas": [
+        {
+            "nome": "Efigênia",
+            "idade": 1
+        },
+        {
+            "nome": "Beto",
+            "idade": 2
+        },
+        {
+            "nome": "João",
+            "idade": 3
+        }
+    ]
+}
+*/
+async function carregarPessoas() { // Função assíncrona para buscar e exibir os dados
+    try {
+        const resposta = await fetch('people.json'); // Faz a requisição HTTP para o arquivo JSON; fetch retorna uma Promise com a resposta da requisição
+
+        if (!resposta.ok) {
+            throw new Error('Erro na requisição: ' + resposta.status); // Verifica se a resposta foi bem-sucedida (status 200–299)
+        }
+
+        const dadosJSON = await resposta.json(); // Converte a resposta de string JSON para objeto JavaScript (faz o parse internamente)
+
+        const pessoas = dadosJSON.pessoas; // Acessa o array de pessoas dentro do objeto JSON
+
+        let output = '';
+
+        for (let i = 0; i < pessoas.length; i++) {
+            output += `<li>${pessoas[i].nome}</li>`;
+        }
+
+        document.getElementById('pessoas').innerHTML = output;
+
+    } catch (error) {
+        console.error('Erro ao carregar os dados:', error);
+    }
+}
+
+carregarPessoas();
+
+// Fetch API
+
+/*
+fetch() é uma API do JavaScript para realizar requisições HTTP.
+
+Uma requisição HTTP é a comunicação entre cliente (como o navegador ou Node.js) e um servidor, usada para buscar ou enviar dados.
+
+fetch() é a abordagem moderna baseada em Promises para esse tipo de operação.
+Antes dela, era comum usar XMLHttpRequest (frequentemente chamado de "AJAX").
+
+Exemplo com Promise:
+*/
+const minhaPromessa = new Promise((resolver, rejeitar) => {
+    const sucesso = Math.random() > 0.5;
+    setTimeout(() => {
+        if (sucesso) {
+            resolver('Deu tudo certo!');
+        } else {
+            rejeitar(new Error('Algo deu errado!'));
+        }
+    }, 1000);
+});
+minhaPromessa
+    .then(mensagemSucesso => {
+        console.log(mensagemSucesso);
+    })
+    .catch(erro => {
+        console.log('Erro: ' + erro.message);
+    });
+
+/*
+Estrutura básica fetch(): fetch(url, options) // que retorna uma Promise
+fetch(url) // options padrão: GET
+    .then(resposta => resposta.json())
+    .then(dados => console.log(dados)) 
+    .catch(erro => console.error(erro));
+
+Exemplo:
+*/
+fetch(`https://viacep.com.br/ws/30280070/json/`)
+    .then(mensagemSucesso => {
+        if (!mensagemSucesso.ok) { // A propriedade .ok verifica se uma requisição foi feita com sucesso (usada para tratar o erro de status de servidor)
+            throw new Error('erro na requisição (' + mensagemSucesso.status + ')'); // Se executado, pula direto para o .catch()
+        }
+        return mensagemSucesso.json(); // .json() lê o corpo da resposta (que ainda é um objeto HTTP), converte JSON → objeto JS e retorna outra Promise. Usa-se .json() para fetch (HTTP) — converte resposta da API em objeto JS — e JSON.parse() para strings JSON "puras" fora do fetch — localStorage, arquivos, texto, etc.
+    })
+    .then(dado => {
+        console.log(dado);
+    })
+    .catch(erro => { // Erro de requisição com servidor, tratado com o método .catch()
+        console.log('Erro: ' + erro.message);
+    });
+
+/*
+Estrutura com POST:
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dados) // body é o conteúdo enviado ao servidor (usado principalmente em POST e PUT)
+})
+*/
