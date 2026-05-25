@@ -1,0 +1,1078 @@
+// 1. Why to learn TypeScript
+/*
+There is a lot of hurry in the market to jump into TypeScript and don't even learn JavaScript. But that is not how it should be started.
+It should be started with JS.
+
+Everybody knows one thing about TypeScript: TS is a superset of JavaScript — everything you can do in JS is available in TS and a lot more. But it's not adding more features, it just allows you to write JS in a much precise manner, so that your code faces a lot less error in the runtime. If there is any error, it is already being displayed to you while writing the code. In fact, all the code that you write in TS is finally compiled into JS.
+
+TypeScript is not about reinventing the entire JavaScript language; it's just asking that you write JS with a little but more accurate behavior, in a more precise manner, so that are less errors. If you're using TS, you need to use the super power of TS to make your code much more powerful and much more error prone. TS is all about Type Safety, nothing more.
+
+JavaScript allows us to do some odd behavior. Examples:
+2 + '2' = '22'
+null + 2 = 2
+undefined + 2 = NaN
+Shouldn't be allowed to do (Type Safety was missing). All not the quirky behavior of JS, but rather you haven't been concerned about types.
+
+The ideia is: I shouldn't be reading that much [the language specification given by ECMAScript] on the first place; I should be focused on building my application with Type Safety. And that is where the TypeScript comes into the picture.
+*/
+
+// 2. TypeScript is not what you think
+/*
+The simple idea behind TypeScript is static checking. That's the only job of TS. Static checking is present in many languages, such as Java or Golang. A lot of languages are built in with the static checking and it means that whenever you're writing the code, the parser of the language or the entire syntax of the language is constantly being analyzed by the IDE's. It's not the case of JavaScript — only when the code is executed the errors appear. It would be really a great help if there is a static checker which checks my code as I try to write it. TypeScript is just for static checking. It just analyze your code and help you to understand that you might be running into a potential error without even running the code and getting the errors at the runtime itself. That's all it does. The whole job of TS is simply to analyze the code.
+
+It is still possible that your code might be giving you squiggly lines or errors and still you may export this entire code into JavaScript and that might run absolutely well.
+
+In TypeScript, you write a lot more code compared to JavaScript. But it is worth it.
+
+How the development process works: you write your code in .ts format — when you're building components like React or something, I have seen people use a simple extension of .tsx, which is also totally fine (it is just a mixture of TypeScript plus the gsx syntax) — and that code is transpiled into JavaScript. And there are a lot of fancy words here: it is compiled, transpiled... We'll work through with that. You can just simply say at this point of time that TS code is being converted into JS.
+
+And one thing, the most important thing to learn and to know: TypeScript is a development tool. Your project still runs in JavaScript. The code that you produce or you send to the production is still a pure 100% JavaScript code. So TS is just a layer on top of JS (superset). It helps you to write better code — code with less problems (chance of errors), more scalable and maintainable, and easily understandable. TS is a development tool, a wrapper around JS to make your life easier and safer.
+
+https://www.typescriptlang.org/play/
+*/
+
+// 3. How to install TypeScript
+// [...]
+
+// 4. Your first intro to TypeScript docs
+/*
+Types: number, string, boolean, null, undefined, void, object, Array, tuple, etc.
+- any: tipo especial que basicamente desliga a checagem de tipos daquela variável — significa "isso pode ser qualquer coisa". If you're using "any" as a keyword, that means you are intentionally making your code more like JS, so that we don't have to worry about the types. If you're using any, that means you are probably not much sure that you should be either using it or not
+- Special types given by TS: never (representa algo que nunca acontece, como funções que sempre lançam erro ou loops infinitos), unknown (representa um valor cujo tipo ainda não é conhecido, mas que, diferentemente do any, exige verificação antes do uso), etc.
+
+https://www.typescriptlang.org/docs/
+
+At what situations TS serves best?
+a) A function accepts 2 numbers. → In the regular JS code, once a function accepts the number, then you check the type of these values to make sure that these are actual numbers. In TS you don't have to explicitly check that. So extra lines of code that you don't have to write.
+b) A function returns a string. → Using TS you are absolutely sure that a function will always return the correct data type. When you're working with a team, TS makes life a lot easier.
+
+Syntax:
+let variableName: type = value;
+*/
+
+let greetings: string = 'Hello Marcelo';
+console.log(greetings);
+
+// 5. Number, boolean, and type inference
+/*
+Type inference: dedução automática de tipos baseada no contexto.
+A lot of people, when they get started with TS, are very excited about putting up annotations with every single thing, but it's not [always] a good practice. It is redundant to write a type [already] infered.
+*/
+
+// 6. Don't use ANY
+/*
+"any" — keyword that people use to get away from the syntax of TS.
+So, let's just say you're trying to declare a variable and you don't know what to place inside it. Example:
+*/
+
+let hero;
+
+function getHero() {
+    return "Thor";
+}
+
+hero = getHero();
+
+/*
+In this case, hero: any. In such scenario, the automatic inference of the values is not good[, so it's important to annotate the type].
+
+Now, notice this very carefully: any is not a special type that you are assigning, it's simply a marker in TS that says "I don't want to do the type checking for it", basically turn off the type checking for that particular value — you don't want that. Otherwise why are you using TS?
+
+Documentation: "You usually want to avoid this [...], because any isn't type-checked. Use the compiler flag noImplicitAny to flag any implicit any as an error." — Setting in the tsconfig file that disallow us to fall into any.
+*/
+
+// 7. Do you really know functions
+
+function addOne(n: number) { // In this case, the type annotation is really strong
+    return n + 1;
+}
+
+console.log(addOne(2));
+
+/*
+In variable declaration, type annotation is optional; in the case of functions, it's really compulsory.
+
+Outros exemplos:
+*/
+
+function signUpUser(name: string, id: number = 0) {/*...*/} // Parâmetro id com valor default
+
+signUpUser('a', 2);
+
+let loginUser = (name: string, id: number = 0) => {/*...*/};
+
+// 8. A better way to write functions
+
+function addTwo(n: number): number { // Nos dois casos (tipo do parâmetro e tipo do retorno da função), the type annotation is really strong
+    return 'Retorno errado!'; // Inserir outro tipo de retorno sinaliza erro
+}
+
+let myValue = addTwo('a'); // Inserir outro tipo de parâmetro sinaliza erro
+
+/*
+Imagine that it's not just you who is writing the code, but a team of 20 or 30 developers. You have defined some function and maybe somebody wants to add his own functionality to it — [there's a risk that someone] will break your entire application, because there are probably a thousand use cases of this simple method, which are dependent of returning a [specific type].
+*/
+
+const getHello = (s: string): string => { return '' };
+
+const heroes = ['spiderman', 'batman'];
+
+heroes.map(hero => { // heroes é inferido como um array de strings — string[] — e hero como uma string
+    return `${hero} is a hero!`;
+});
+
+heroes.map((hero): string => { // Tipagem do retorno em arrow function
+    return 1; // A tipagem causa a sinalização de erro
+});
+
+function consoleError(errorMessage: string): void { // Implicitamente, TS já infere void como retorno (that means it's not returning anything), but the good practice is to explicit it
+    console.log(errorMessage);
+}
+
+function handleError(errorMessage: string): never { // Documentation: "The never type represents values which are never observed. In a return type, this means that the function throws an exception or terminates execution of the program"
+    throw new Error(errorMessage);
+}
+
+// 9. Bad behavior of objects
+/*
+[...walk through with the most important part, enough that you can get started with that]
+
+Example: entry in the database; you collect all the values in the object format and pass on this object to maybe a backend controller, that modifies it and adds an entry in the database — that is the most common use case scenario.
+*/
+
+const User = {
+    name: 'Marcelo',
+    email: 'mhrr_m@yahoo.com',
+    isActive: true
+};
+
+/*
+This is not the use case of the object. Desingning an object like this doesn't really make sense and you won't be using it too much. The use case of the object is through the functions. You have to actually pass on these objects into a function or you have to return some objects through the function. That is the most common use case that we use while developing any application. For example:
+*/
+
+function createUser1( { name, isPaid }: { name: string; isPaid: boolean } ) {}
+
+let newUser1 = {name: 'Marcelo', isPaid: false, email: 'mhrr_m@yahoo.com'}; // email não consta na definição da função createUser como uma propriedade, portanto deveria dar erro — we'll learn about that when we walk through with the interface...
+
+createUser1(newUser1);
+
+function createCourse(): {name: string, price: number} {
+    return {name: 'reactjs', price: 0};
+}
+
+// 10. Type Aliases
+
+type User2 = { // What we are doing internally is creating the data types here
+    name: string;
+    email: string;
+    isActive: boolean;
+};
+
+/*
+What I want is if anybody passes me an user, it should adhere to the type of User2:
+*/
+
+function createUser2(user: User2): User2 { return {name: '', email: '', isActive: true} } // Just like we write a type, like a number
+
+createUser2({name: '', email: '', isActive: true});
+
+/*
+Documentation: "It's common to want to use the same type more than once and refer to it by a single name. [...] The syntax for a type alias is:"
+*/
+
+type Point = {
+    x: number;
+    y: number;
+};
+
+function princtCoord(pt: Point) {
+    console.log("The coordinate's x value is " + pt.x);
+    console.log("The coordinate's y value is " + pt.y);
+}
+
+princtCoord({ x: 100, y: 100 });
+
+// 11. READONLY and optional
+
+type User3 = {
+    readonly _id: number; // Let's say you are using MongoDB to save this user into database and nobody should be able to manipulate this _id (which is a common thing in MongoDB), so you can mark this as readonly (keyword)
+    name: string;
+    email: string;
+    isActive: boolean;
+    credcardDetails?: number; // Optional property
+};
+
+let myUser3: User3 = {
+    _id: 123,
+    name: 'Marcelo',
+    email: 'mhrr_m@yahoo.com',
+    isActive: false
+};
+
+myUser3.email = 'marcelohrr0@gmail.com'; // Allowed
+myUser3._id = 0; // Erro: "Não é possível atribuir a '_id' porque é uma propriedade de somente leitura."
+
+// Mix and match of types / extending a type via intersections:
+
+type CardNumber = {
+    cardnumber: number;
+}
+
+type CardName = {
+    cardName: string;
+}
+
+type CardDetails = CardNumber & CardName & {
+    cvv: number;
+}
+
+// 12. Array
+/*
+Documentation: "To specify the type of an array like [1, 2, 3], you can use the syntax number[]; this syntax works for any type (e.g. string[] is an array of srtings, and so on). You may also see this written as Array<number>, thich means the same thing."
+*/
+
+// a) Sintaxes
+const superHeroes: string[] = [];
+const heroesPower: Array<number> = [];
+
+superHeroes.push('spiderman', 'goku');
+heroesPower.push(100, 10000);
+
+// b) Array de tipo personalizado
+type Herois = {
+    nome: string;
+    poder: number;
+};
+
+const todosHerois: Herois[] = [];
+todosHerois.push({ nome: '', poder: 0 });
+
+// c) Array de arrays
+const arrayDeArraysNumericos: number[][] = [
+    [0, 1, 2],
+    [3, 4, 5]
+];
+
+// 13. Union Types in TS
+/*
+Documentation: "...way to combine types [...]. A union type is a type formed from two or more other types, representing values that may be any one of those types."
+*/
+
+// a) Sintaxe
+let score: number | string; // It is recommended that you try to keep it as much strict as possible, because there is nothing stopping you to list down all the possible data types that is available in TS
+score = 0;
+score = '';
+
+// b) União de tipos personalizados
+type Usuario = {
+    nome: string;
+    id: number;
+};
+
+type Administrador = {
+    nomeUsuario: string;
+    oCaraEBom: boolean;
+};
+
+let marcelo: Usuario | Administrador = { // Aqui marcelo é do tipo Usuario
+    nome: 'Marcelo',
+    id: 0
+};
+
+marcelo = { // Aqui marcelo é do tipo Administrador
+    nomeUsuario: 'mhrr',
+    oCaraEBom: true
+};
+
+// c) function: tipos de parâmetros
+function getDbId(id: number | string) {
+    console.log(`DB id is: ${id}.`);
+}
+
+getDbId(1);
+getDbId('a');
+
+function getNumeroOuString(valor: number | string) { // The problem here comes up when you try to do some manipulation
+    valor.toFixed(2); // Erro: "A propriedade 'toFixed' não existe no tipo 'string'"
+
+    if (typeof valor === 'number') { // Verify first
+        valor.toFixed(2);
+    }
+
+    console.log(`Número ou string: ${valor}.`);
+}
+
+// d) function: tipos de retorno
+function getValue(myValue: number): boolean | string {
+    if (myValue > 5) {
+        return true;
+    }
+
+    return '200 OK';
+}
+
+// e) Array
+const data: (number | string)[] = [1, 'a'];
+
+// f) Strict
+let pi: 3.14 = 3.14; // Literal type of assingnment that pi should only have this value
+pi = 3.145;
+
+let seatAllotment: 'aisle' | 'middle' | 'window'; // Designing an application for an aeroplane
+seatAllotment = 'aisle';
+seatAllotment = 'crew'; // Erro: "O tipo '"crew"' não pode ser atribuído ao tipo '"aisle" | "middle" | "window"'"
+
+// 14. Tuples
+/*
+Documentation: "A tuple type is another sort of Array type that knows exactly how many elements it contains, and exactly which types it contains at specific positions.
+
+type StringNumberPair = [string, number];
+
+Here, StringNumberPair is a tuple type of string and number. Like ReadonlyArray, it has no representation at runtime, but is significant to TypeScript. To the type system, StringNumberPair describes arrays whose 0 index contains a string and whose 1 index contains a number."
+*/
+
+const array: (string | number)[] = [1, 'a'];
+
+let tuple: [string, number] = ['a', 1]; // O padrão de tipos estabelecido deve ser seguido — use case: where you want a specific thing into your array
+tuple[0] = 'b'; // Dependendo da versão do TS, dá para sobrescrever os valores da tupla (é possível também restringir essa possibilidade)
+tuple.push(true); // Erro: "O argumento do tipo 'boolean' não é atribuível ao parâmetro do tipo 'string | number'"
+
+// 15. Enums
+/*
+There are certain times then you want to restrict somebody's choice with the offered values.
+*/
+
+// a) Default values
+enum SeatChoice1 {
+    Aisle, // default = 0 — Por padrão, enums são numéricos
+    Middle, // default = 1 — Documentation: "All of the following members are auto-incremented from that point on."
+    Window, // default = 2
+}
+
+const seat = SeatChoice1.Aisle;
+
+// b) Assigning values
+enum SeatChoice2 {
+    Aisle = 10,
+    Middle = 22,
+    Window, // default = 23 (incrementado do anterior)
+}
+
+// c) String enums
+enum Direction {
+    Up = 'UP',
+    Down, // Erro: "O membro de enumeração deve ter um inicializador."
+    Left = 0,
+    Right, // default = 1 (incrementado do anterior)
+}
+
+// 16. Interface
+/*
+Scenario: you're creating a new user and this user has some properties and you're trying to start a trial for this user for the services you are selling and give him some discount code as well.
+*/
+
+interface User {
+    readonly dbId: number;
+    email: string;
+    userId: number;
+    googleId?: string;
+    // What makes interfaces really interesting is the definition of the functions (assinaturas de método, sem implementação):
+    startTrial(): string; // Outra sintaxe possível: startTrial: () => string;
+    getCoupon(couponName: string, value: number): number;
+}
+
+const usuario1: User = {
+    dbId: 0,
+    email: '',
+    userId: 0,
+    startTrial: () => { return 'Texto de retorno' },
+    getCoupon: (name: 'marcelo10', value: 10) => { return 10 },
+    githubToken: 'github'
+};
+
+// 17. Interface vs Type
+/*
+Documentation: "Differences Between Type Aliases and Interfaces
+Type aliases and interfaces are very similar, and in many cases you can choose between them freely. Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable."
+*/
+
+interface User { // "Reopening" the interface / adding more values to the already created interface
+    githubToken: string;
+}
+
+/*
+Extending an interface:
+*/
+interface Admin extends User {
+    role: 'admin' | 'ta' | 'learner';
+}
+
+/*
+Similar a:
+type CardDetails = CardNumber & CardName & {
+    cvv: number;
+}
+
+Depois usa como herança da primeira interface:
+*/
+
+const usuario2: Admin = {
+    role: 'admin',
+    dbId: 0,
+    email: '',
+    userId: 0,
+    startTrial: () => { return 'Texto de retorno' },
+    getCoupon: (name: 'marcelo10', value: 10) => { return 10 },
+    githubToken: 'github'
+};
+
+// 18. How to setup TypeScript for real projects
+/*
+Criando arquivos e pastas para produção no terminal:
+
+tsc --init → generates a default tsconfig.json (TypeScript configuration)
+
+npm init -y → generates a default package.json for a Node.js project (-y para aceitar tudo no padrão, sem perguntas)
+
+mkdir src, dist → mkdir = "make directory" cria duas pastas; src = "source" code (código-fonte), onde ficam os arquivos .ts, .js, componentes e lógica — where you write your code; dist = "distribution", onde fica o código gerado/buildado, com os arquivos de JS compilado e arquivos finais para execução — which gets on to the production and is served to the end user
+
+Estrutura:
+projeto/
+├── src/
+    └── index.ts
+├── dist/
+    └── index.js
+├── index.html
+├── package.json
+└── tsconfig.json
+
+You never ever write anything inside this index.js (it's supposed to be generated). To compile the TS file into index.js inside the distribution folder, é só mudar o root directory e o output directory do tsconfig.json para: "rootDir": "./src" e "outDir": "./dist".
+
+Comandos no terminal para transpilar:
+tsc
+tsc -w → -w ou --watch faz o TS recompilar automaticamente quando houver mudanças
+*/
+
+// 19. Classes
+
+class User4 {
+    email: string;
+    name: string;
+
+    constructor(email: string, name: string) {
+        this.email = email;
+        this.name = name;
+    }
+}
+
+const mhrr = new User4('mhrr_m@yahoo.com', 'Marcelo');
+
+// Sintaxe reduzida (melhor):
+class User5 {
+    constructor(
+        public email: string,
+        public name: string
+    ) {}
+}
+
+// 20. Private Public
+
+class User6 {
+    public email: string; // Propriedades/atributos e métodos já são públicos por padrão
+    private name: string; // Only accessible within the class. Serve ao compilador, impedindo acesso durante a escrita do código. Diferente de # (private class fields, recurso nativo do JS moderno), que impede o acesso (por exemplo, de user.#name) fora da classe no runtime
+
+    constructor(email: string, name: string) {
+        this.email = email;
+        this.name = name;
+    }
+}
+
+// Sintaxe reduzida (melhor):
+class User7 {
+    constructor(
+        public email: string,
+        private name: string
+    ) {}
+}
+
+// 21. Getters and Setters
+
+class User8 {
+    private _courseCount = 1; // _ é uma convenção antiga para indicar campo interno, tecnicamente redundante com a keyword private, porém é útil para diferenciar o nome da propriedade do nome dos métodos getter e setter
+
+    constructor(
+        public email: string,
+        private _name: string
+    ) {}
+
+    private deleteToken() {
+        console.log('Token deleted');
+    }
+
+    get name(): string {
+        return this.name;
+    }
+
+    get courseCount(): number {
+        return this._courseCount;
+    }
+
+    set courseCount(courseNumber: number) { // setters implicitamente retornam void, porém não podem ter tipo de retorno explícito
+        if (courseNumber < 1) {
+            throw new Error('Course count should be more than 1');
+        }
+
+        this._courseCount = courseNumber;
+    }
+}
+
+// 22. Protected
+/*
+Protected, public and private are access modifiers.
+*/
+
+class User9 {
+    private _courseCount = 1; // Pode ser acessado apenas dentro da própria classe User9
+
+    protected courseCount = 1; // Pode ser acessado na classe User9 e nas subclasses, como SubUser9
+}
+
+class SubUser9 extends User9 { // A subclasse herda de User9, mas os membros marcados com private são inacessíveis fora da classe onde são declarados
+    isFamily: boolean = true;
+
+    changeCourseCount() {
+        this._courseCount = 2; // Erro: "A propriedade '_courseCount' é particular e somente é acessível na classe 'User9'."
+        this.courseCount = 2;
+    }
+}
+
+// 23. Why Interface is important
+/*
+Especially for web developers, it can be a little tricky to understand interfaces. In iOS app development, there are many protocols (called interfaces in TypeScript) — que não contém implementações; apenas definem "contratos", que devem ser seguidos. Contrato significa: conjunto de regras/obrigações que uma classe precisa cumprir. Uma interface define quais métodos/propriedades devem existir e quais tipos eles usam, mas não como serão implementados.
+
+Example: mobile app which uses the camera.
+*/
+
+interface TakePhoto { // Whoever is designing a class that you can take a photo from your application or create a feature of taking photos should always implement these, as the bare minimum, and follow this interface
+    cameraMode: string;
+    filter: string;
+    burst: number;
+}
+
+interface Story {
+    createStory(): void;
+}
+
+// Let's just say an application comes up and it's an open source project that you're building up:
+class InstagramErro implements TakePhoto {} // Erros: "A classe 'InstagramErro' implementa incorretamente a interface 'TakePhoto'." e "O tipo 'InstagramErro' não tem as propriedades a seguir do tipo 'TakePhoto': cameraMode, filter, burst"
+
+class Instagram implements TakePhoto {
+    constructor(
+        public cameraMode: string,
+        public filter: string,
+        public burst: number
+    ) {}
+}
+
+/*
+Incorrectly implementing the interface means: if you want to take a photo, there are a certain number of things that should always be there to take photos.
+
+What you do with those photos or how you take the photos is not defined in the interface. The interface never involves the definition.
+
+Interfaces bring consistency to the code.
+*/
+
+class Youtube implements TakePhoto, Story {
+    constructor(
+        public cameraMode: string,
+        public filter: string,
+        public burst: number,
+        // In Youtube, I'm not happy with this and I want to have more information, for example:
+        public short: string // It's not going to complain if you are doing more than what is necessary, but you cannot do less
+    ) {}
+
+    public createStory(): void {
+        console.log('Story created');
+    }
+}
+
+// 24. Abstract class
+
+abstract class TakePhoto {
+    constructor(
+        cameraMode: string,
+        filter: string
+    ) {}
+
+    abstract getSepia(): void; // abstract means I'm not going to provide definition and this is just a method, I don't know how anybody is going to implement it, but they need to implement it, otherwise they're not following this abstract class
+    
+    getStatus(): string {
+        return 'Ok';
+    };
+}
+
+const marcelohrreis = new TakePhoto('string', 'test'); // Erro: "Não é possível criar uma instância de uma classe abstrata."
+
+/*
+Abstract classes are like blueprints: you cannot create an object from it; it's the responsibility of the class who is extending it to create an object from this class
+*/
+
+class Whatsapp extends TakePhoto {
+    constructor(
+        public cameraMode: string,
+        public filter: string,
+        public outraPropriedade: boolean
+    ) {
+        super(cameraMode, filter) // Construtores para classes derivadas devem conter uma chamada 'super'
+    }
+
+    getSepia(): void {
+        console.log('Sepia');
+    }
+}
+
+const mhrosareis = new Whatsapp('string', 'test', true);
+
+mhrosareis.getStatus(); // Totally allowed
+
+/*
+Classes abstratas não podem ser instanciadas diretamente, mas ajudam a definir uma estrutura comum para as classes que as estendem. Você pode declarar métodos abstratos que as subclasses são obrigadas a implementar, ao mesmo tempo em que fornece comportamentos padrão por meio de métodos normais.
+
+Abstract class serve quando várias classes compartilham lógica real. Pode ter:
+- métodos abstratos (sem implementação)
+- métodos normais (com implementação)
+- propriedades
+- construtor
+- estado interno
+
+Exemplo GPT:
+*/
+
+abstract class Animal {
+    dormir() {
+        console.log("Zzz"); // Todos os animais dormem igual...
+    }
+
+    abstract fazerSom(): void; // ...mas cada um implementa seu próprio som
+}
+
+/*
+Interfaces não possuem "implementação real" (código executável e armazenamento real dentro do objeto) e não geram nada em runtime; abstract classes possuem propriedades armazenadas, métodos executáveis, construtor e lógica reais (geram código JS).
+
+Use interface quando:
+- quer apenas definir contratos, sem fornecer implementação
+- diferentes classes não compartilham lógica, mas precisam seguir a mesma estrutura
+- quer flexibilidade para trocar implementações facilmente, desacoplando o código das implementações concretas
+- quer múltiplos implements — uma classe pode implementar várias interfaces (ao passo que só pode extender uma abstract class, porque JavaScript tem herança simples)
+
+Use abstract class quando:
+- quer fornecer implementação base (além de obrigações abstratas)
+- subclasses compartilham comportamento e/ou estado (lógica repetida), permitindo reaproveitamento e centralização de código
+*/
+
+// 25. Generics
+/*
+Generics são especialmente úteis em código de produção porque tornam componentes reutilizáveis. A principal vantagem é criar código flexível sem perder tipagem.
+
+Documentation: "Without generics, we would either have to give the identity function a specific type:
+
+function identity(arg: number): number {
+  return arg;
+}
+
+Or, we could describe the identity function using the any type:
+
+function identity(arg: any): any {
+  return arg;
+}
+
+While using any is certainly generic in that it will cause the function to accept any and all types for the type of arg, we actually are losing the information about what that type was when the function returns. If we passed in a number, the only information we have is that any type could be returned.
+
+Instead, we need a way of capturing the type of the argument in such a way that we can also use it to denote what is being returned. Here, we will use a type variable, a special kind of variable that works on types rather than values.
+
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+
+[...]
+
+Once we’ve written the generic identity function, we can call it in one of two ways. The first way is to pass all of the arguments, including the type argument, to the function:
+
+let output = identity<string>("myString");
+
+Here we explicitly set Type to be string as one of the arguments to the function call, denoted using the <> around the arguments rather than ().
+
+The second way is also perhaps the most common. Here we use type argument inference — that is, we want the compiler to set the value of Type for us automatically based on the type of the argument we pass in:
+
+let output = identity("myString");
+
+Notice that we didn’t have to explicitly pass the type in the angle brackets (<>); the compiler just looked at the value "myString", and set Type to its type. While type argument inference can be a helpful tool to keep code shorter and more readable, you may need to explicitly pass in the type arguments as we did in the previous example when the compiler fails to infer the type, as may happen in more complex examples."
+*/
+
+function identity<Type>(value: Type): Type {
+    return value;
+}
+
+identity('a'); // function identity<"a">(value: "a"): "a"
+identity<string>('a'); // function identity<string>(value: string): string
+
+interface Bottle {
+    brand: string,
+    type: number
+}
+
+identity<Bottle>({brand: '', type: 0}); // function identity<Bottle>(value: Bottle): Bottle
+
+// 26. Generics in Array and Arrow functions
+function loggingIdentity<Type>(arg: Type[]): Type[] { // Type[] equivale a Array<Type>
+  console.log(arg.length); // Como Array tem .length, não dá erro
+  return arg;
+}
+
+const arrowFunctionExample = (products: string[]): string[] => { return [] };
+const genericsArrowFunctionExample = <Type>(products: Type[]): Type => { return products[0] };
+
+/*
+You're going to see a lot of code [with <T,>]. This comma is there to mention that this is not an ordinary tag like <h1> or <p>, not a JSX syntax, but a generic. This is a common syntax, especially with React.
+*/
+const virgula = <T,>(argumento: T[]): T[] => { return [] };
+
+// 27. Generic Classes
+
+function funcao1<T, U extends string>(valueOne: T, valueTwo: U): object { // com "U extends string", U vira um subtipo de string
+    return {
+        valueOne,
+        valueTwo
+    }
+}
+
+funcao1(1, 2); // O tipo genérico U espera uma string
+funcao1(1, '2');
+
+interface Database {
+    connection: string;
+    username: string;
+    password: string;
+}
+
+function funcao2<T, U extends Database>(valueOne: T, valueTwo: U): object {
+    return {
+        valueOne,
+        valueTwo
+    }
+}
+
+/*
+Example of selling courses and quizzes. You want to create a class in which there could be a quiz or a course, and you want to create some methods which work for both of them, because both of them are sellable.
+*/
+interface Quiz {
+    name: string;
+    type: string;
+}
+
+interface Course {
+    name: string;
+    author: string;
+    subject: string;
+}
+
+class Sellable<T> {
+    public cart: T[] = [];
+
+    addToCart(products: T) {
+        this.cart.push(products);
+    }
+}
+/*
+This is not a silver bullet which will handle all the cases, but maybe you can define certain classes which handle quizzes nicely, certain classes which handle courses nicely, but there could be one generic class which might handle the common use cases in both of them.
+*/
+
+// 28. Type Narrowing
+
+function detectType(value: number | string) {
+    if (typeof value === 'string') {
+        return value.toLowerCase();
+    }
+    return value + 3; // Só chega aqui se typeof value === number
+}
+
+function provideId(id: string | null) {
+    if (!id) {
+        console.log('Please provide ID');
+        return;
+    }
+    id.toLocaleLowerCase();
+}
+
+/*
+Documentation: "While it might not look like much, there’s actually a lot going on under the covers here. Much like how TypeScript analyzes runtime values using static types, it overlays type analysis on JavaScript’s runtime control flow constructs like if/else, conditional ternaries, loops, truthiness checks, etc., which can all affect those types.
+
+Within our if check, TypeScript sees typeof padding === "number" and understands that as a special form of code called a type guard. TypeScript follows possible paths of execution that our programs can take to analyze the most specific possible type of a value at a given position. It looks at these special checks (called type guards) and assignments, and the process of refining types to more specific types than declared is called narrowing.
+
+[...]
+
+typeof type guards
+As we’ve seen, JavaScript supports a typeof operator which can give very basic information about the type of values we have at runtime. TypeScript expects this to return a certain set of strings:
+- "string"
+- "number"
+- "bigint"
+- "boolean"
+- "symbol"
+- "undefined"
+- "object"
+- "function"
+
+[...]
+
+...in JavaScript, typeof null is actually "object"! This is one of those unfortunate accidents of history.
+
+[...]
+
+Truthiness narrowing
+[...]
+
+In JavaScript, we can use any expression in conditionals, &&s, ||s, if statements, Boolean negations (!), and more. As an example, if statements don’t expect their condition to always have the type boolean.
+
+[...]
+
+In JavaScript, constructs like if first “coerce” their conditions to booleans to make sense of them, and then choose their branches depending on whether the result is true or false. Values like
+- 0
+- NaN
+- "" (the empty string)
+- 0n (the bigint version of zero)
+- null
+- undefined
+
+all coerce to false, and other values get coerced to true.
+
+[...]
+
+function printAll(strs: string | string[] | null) {
+  // !!!!!!!!!!!!!!!!
+  //  DON'T DO THIS!
+  //   KEEP READING
+  // !!!!!!!!!!!!!!!!
+  if (strs) {
+    if (typeof strs === "object") {
+      for (const s of strs) {
+        console.log(s);
+      }
+    } else if (typeof strs === "string") {
+      console.log(strs);
+    }
+  }
+}
+
+We wrapped the entire body of the function in a truthy check, but this has a subtle downside: we may no longer be handling the empty string case correctly.
+
+[...]
+
+One last word on narrowing by truthiness is that Boolean negations with ! filter out from negated branches.
+
+Equality narrowing
+TypeScript also uses switch statements and equality checks like ===, !==, ==, and != to narrow types.
+
+[...]
+
+If you’re unfamiliar, checking whether something == null actually not only checks whether it is specifically the value null - it also checks whether it’s potentially undefined. The same applies to == undefined: it checks whether a value is either null or undefined."
+*/
+
+// 29. The in operator narrowing
+/*
+Documentation: "The in operator narrowing
+[...]
+
+...optional properties will exist in both sides for narrowing. For example, a human could both swim and fly (with the right equipment) and thus should show up in both sides of the in check:
+
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+type Human = { swim?: () => void; fly?: () => void };
+ 
+function move(animal: Fish | Bird | Human) {
+  if ("swim" in animal) {
+    animal;
+      
+(parameter) animal: Fish | Human
+  } else {
+    animal;
+      
+(parameter) animal: Bird | Human
+  }
+}"
+*/
+
+interface Int1 {
+    nome: string;
+    email: string;
+}
+
+interface Int2 {
+    nome: string;
+    email: string;
+    nice: boolean;
+}
+
+function isNice(something: Int1 | Int2) {
+    if ('nice' in something) {
+        return something.nice;
+    }
+    return 'not nice';
+}
+
+// 30. Instanceof and Type Predicates
+
+function logValue(x: Date | string) {
+    if (x instanceof Date) {
+        console.log(x.toUTCString());
+    } else {
+        console.log(x.toUpperCase());
+    }
+}
+
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+
+function isFish(pet: Fish | Bird): pet is Fish { // ": pet is Fish" → type casting, since here I'm 100% sure that if this returns as true, the return type is Fish
+    return (pet as Fish).swim !== undefined; // Se pet for Fish, retorna true. Type cast ou type assertion ("pet as Fish") enfraquece a checagem de tipos — basicamente, diz ao TS "confia em mim — trate isso como Fish".
+}
+
+function getFood(pet: Fish | Bird) {
+    if (isFish(pet)) {
+        pet // (parameter) pet: Fish. Sem o cast na função isFish ": pet is Fish": (parameter) pet: Fish | Bird
+        return 'fish food';
+    } else {
+        pet // (parameter) pet: Bird. Sem o cast na função isFish ": pet is Fish": (parameter) pet: Fish | Bird
+        return 'bird food';
+    }
+}
+
+/*
+The keyword instanceof is almost like (not literally) typeof: typeof verifica o tipo primitivo de um valor, enquanto instanceof verifica se um objeto foi criado a partir de uma determinada classe/construtor (ou herda dela pela cadeia de protótipos).
+*/
+
+// 31. Discriminated Union and Exhaustiveness Checking with never
+/*
+Documentation: "Discriminated unions
+[...]
+
+interface Shape {
+  kind: "circle" | "square";
+  radius?: number;
+  sideLength?: number;
+}
+
+[...]
+
+The problem with this encoding of Shape is that the type-checker doesn’t have any way to know whether or not radius or sideLength are present based on the kind property. We need to communicate what we know to the type checker. With that in mind, let’s take another swing at defining Shape.
+
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+ 
+interface Square {
+  kind: "square";
+  sideLength: number;
+}
+ 
+type Shape = Circle | Square;
+
+Here, we’ve properly separated Shape out into two types with different values for the kind property, but radius and sideLength are declared as required properties in their respective types.
+
+[...]
+
+function getArea(shape: Shape) {
+  if (shape.kind === "circle") {
+    return Math.PI * shape.radius ** 2;
+                      
+(parameter) shape: Circle
+  }
+}
+
+That got rid of the error! When every type in a union contains a common property with literal types, TypeScript considers that to be a discriminated union, and can narrow out the members of the union.
+
+[...]
+
+The never type
+When narrowing, you can reduce the options of a union to a point where you have removed all possibilities and have nothing left. In those cases, TypeScript will use a never type to represent a state which shouldn’t exist.
+
+Exhaustiveness checking
+The never type is assignable to every type; however, no type is assignable to never (except never itself). This means you can use narrowing and rely on never turning up to do exhaustive checking in a switch statement.
+
+For example, adding a default to our getArea function which tries to assign the shape to never will not raise an error when every possible case has been handled.
+
+type Shape = Circle | Square;
+ 
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "square":
+      return shape.sideLength ** 2;
+    default:
+      const _exhaustiveCheck: never = shape;
+      return _exhaustiveCheck;
+  }
+}
+
+Adding a new member to the Shape union, will cause a TypeScript error:
+
+interface Triangle {
+  kind: "triangle";
+  sideLength: number;
+}
+ 
+type Shape = Circle | Square | Triangle;
+ 
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "square":
+      return shape.sideLength ** 2;
+    default:
+      const _exhaustiveCheck: never = shape;
+Type 'Triangle' is not assignable to type 'never'.
+      return _exhaustiveCheck;
+  }
+}"
+*/
+
+interface Circle {
+    kind: 'circle';
+    radius: number;
+}
+
+interface Square {
+    kind: 'square';
+    side: number;
+}
+
+interface Rectangle {
+    kind: 'rectangle';
+    width: number;
+    length: number;
+}
+
+type Shape = Circle | Square;
+
+function getArea1(shape: Shape) {
+  if (shape.kind === "circle") {
+    return Math.PI * shape.radius ** 2;
+  }
+  return shape.side ** 2;
+}
+
+function getArea2(shape: Shape) {
+    switch (shape.kind) {
+        case 'circle':
+            return Math.PI * shape.radius ** 2;
+
+        case 'square':
+            return shape.side ** 2;
+
+        default:
+            const _defaultForShape: never = shape; // Se Rectangle for incluído em type Shape, dá o erro: "O tipo 'Rectangle' não pode ser atribuído ao tipo 'never'."
+            return _defaultForShape;
+    }
+}
