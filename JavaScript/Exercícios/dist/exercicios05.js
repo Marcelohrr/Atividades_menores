@@ -226,7 +226,6 @@ try {
     const ajusteCartao44_3 = 1.2;
 
     form44.addEventListener('submit', function(e) {
-        console.log('Submit capturado');
         e.preventDefault();
 
         if (verificarInput([inputValor44], resultadoDiv44)) return;
@@ -413,7 +412,6 @@ try {
         if (pares47.length === 0) {
             resultadoDiv47.textContent = `Entre os números ${valor1} e ${valor2}, não há números pares!`;
         } else {
-            console.log('oi')
             resultadoDiv47.textContent = `Entre os números ${valor1} e ${valor2}, os números pares são: ${pares47.join(', ')}.`;
         }
 

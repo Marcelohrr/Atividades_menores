@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./scripts",
+    "outDir": "./dist",
+
+    // Environment Settings
+    "module": "esnext",
+    "target": "es2020",
+
+    // GPT: Garante tipos como document, HTMLElement, HTMLInputElement. Normalmente o TS já infere, mas explicitar é mais seguro.
+    "lib": ["DOM", "ES2020"],
+
+    // Recommended Options
+    "strict": true,
+    "skipLibCheck": true,
+  }
+}
