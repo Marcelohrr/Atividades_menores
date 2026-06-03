@@ -55,7 +55,7 @@ form fieldset {
     padding: 10px;
 }
 
-form input,
+input,
 button,
 select {
     padding: 5px;
@@ -91,6 +91,13 @@ div.resultados table td {
     padding: 10px;
     text-align: center;
     vertical-align: middle;
+}
+
+div.resultados div {
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: start;
+    gap: 10px;
 }
 
 nav {
