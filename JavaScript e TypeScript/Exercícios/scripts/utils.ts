@@ -1,3 +1,12 @@
+export type Genero = 'f' | 'm' | 'o';
+
+export const anoAtual = new Date().getFullYear();
+
+export const real: Intl.NumberFormatOptions = { // Tipo para objetos de configuração usados em toLocaleString() e Intl.NumberFormat()
+    style: 'currency',
+    currency: 'BRL'
+};
+
 export function verificarInputVazio(
     inputArray: (HTMLInputElement | HTMLSelectElement)[],
     div: HTMLDivElement
@@ -21,4 +30,8 @@ export function verificarNumeroInvalido(
         return true;
     }
     return false;
+}
+
+export function gerarNumeroAleatorio(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }

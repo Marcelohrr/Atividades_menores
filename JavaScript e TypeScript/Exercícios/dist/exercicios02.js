@@ -1,7 +1,7 @@
 const real = {
     style: 'currency',
     currency: 'BRL'
-}
+};
 
 function verificarDOM(form, div, exercicio) {
     if (!form || !div) {

@@ -1,3 +1,8 @@
+export const anoAtual = new Date().getFullYear();
+export const real = {
+    style: 'currency',
+    currency: 'BRL'
+};
 export function verificarInputVazio(inputArray, div) {
     if (inputArray.some(input => input.value.trim() === '')) {
         div.textContent = inputArray.length === 1 ? 'Insira um valor!' : 'Insira os valores!';
@@ -12,4 +17,7 @@ export function verificarNumeroInvalido(numeroArray, div) {
         return true;
     }
     return false;
+}
+export function gerarNumeroAleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }

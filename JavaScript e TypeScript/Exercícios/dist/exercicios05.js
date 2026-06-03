@@ -1,7 +1,7 @@
 const real = {
     style: 'currency',
     currency: 'BRL'
-}
+};
 
 function verificarDOM(elementoArray, exercicio) {
     elementoArray.forEach(e => {

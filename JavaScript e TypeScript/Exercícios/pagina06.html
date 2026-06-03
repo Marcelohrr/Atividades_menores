@@ -15,10 +15,10 @@
         <div>
             <form action="" method="get" id="ex51-form" autocomplete="off">
                 <label for="ex51-id-inicio">Primeiro termo:</label>
-                <input type="number" name="ex51-inicio" id="ex51-id-inicio" step="0.01" required>
+                <input type="number" name="ex51-inicio" id="ex51-id-inicio" required step="0.01">
 
                 <label for="ex51-id-razao">Razão:</label>
-                <input type="number" name="ex51-razao" id="ex51-id-razao" step="0.01" required>
+                <input type="number" name="ex51-razao" id="ex51-id-razao" required step="0.01">
 
                 <button type="submit">Enviar</button>
             </form>
@@ -28,54 +28,153 @@
 
         <h2>52. Faça um programa que leia um número inteiro e diga se ele é ou não um número primo.</h2>
         <div>
-            
+            <form action="" method="get" id="ex52-form" autocomplete="off">
+                <label for="ex52-id-numero">Número:</label>
+                <input type="number" name="ex52-numero" id="ex52-id-numero" required step="1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado52"></div>
         </div>
 
         <h2>53. Faça um programa que leia uma frase qualquer e diga se ela é um palíndromo, desconsiderando os espaços.</h2>
         <div>
-            
+            <form action="" method="get" id="ex53-form" autocomplete="off">
+                <label for="ex53-id-frase">Frase:</label>
+                <input type="text" name="ex53-frase" id="ex53-id-frase" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado53"></div>
         </div>
 
         <h2>54. Faça um programa que leia o ano de nascimento de sete pessoas. No final, mostre quantas pessoas ainda não atingiram a maioridade e quantas já são maiores.</h2>
         <div>
-            
+            <form action="" method="get" id="ex54-form" autocomplete="off">
+                <label for="ex54-id-ano">Ano de nascimento:</label>
+                <input type="number" name="ex54-ano" id="ex54-id-ano" step="1">
+
+                <fieldset>
+                    <legend>Já fez aniversário esse ano?</legend>
+
+                    <input type="radio" name="ex54-aniversario" id="ex54-id-aniversario-sim" value="s" checked>
+                    <label for="ex54-id-aniversario-sim">Sim</label>
+
+                    <input type="radio" name="ex54-aniversario" id="ex54-id-aniversario-nao" value="n">
+                    <label for="ex54-id-aniversario-nao">Não</label>
+                </fieldset>
+
+                <button type="button" name="ex54-botao-registrar">Registrar ano</button>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado54"></div>
         </div>
 
         <h2>55. Faça um programa que leia o peso de cinco pessoas. No final, mostre qual foi o maior e o menor peso lidos.</h2>
         <div>
-            
+            <form action="" method="get" id="ex55-form" autocomplete="off">
+                <label for="ex55-id-peso">Peso (quilogramas):</label>
+                <input type="number" name="ex55-peso" id="ex55-id-peso" min="0.01" max="1000" step="0.01">
+
+                <button type="button" name="ex55-botao-registrar">Registrar peso</button>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado55"></div>
         </div>
 
-        <h2>56. Faça um programa que leia o nome, idade e sexo de 4 pessoas. No final, mostre: a média de idade do grupo; qual é o nome do homem mais velho; quantas mulheres têm menos de 20 anos.</h2>
+        <h2>56. Faça um programa que leia o nome, idade e gênero de 4 pessoas. No final, mostre: a média de idade do grupo; qual é o nome do homem mais velho; quantas mulheres têm menos de 20 anos.</h2>
         <div>
-        <form action="" method="get" id="ex1-form" autocomplete="off">
-                <label for="ex1-id-texto">Texto:</label>
-                <input type="text" name="ex1-texto" id="ex1-id-texto" required>
+            <form action="" method="get" id="ex56-form" autocomplete="off">
+                <label for="ex56-id-nome">Nome:</label>
+                <input type="text" name="ex56-nome" id="ex56-id-nome">
+
+                <label for="ex56-id-idade">Idade:</label>
+                <input type="number" name="ex56-idade" id="ex56-id-idade" min="0" max="150" step="1">
+
+                <label for="ex56-id-genero">Gênero:</label>
+                <select name="ex56-genero" id="ex56-id-genero">
+                    <option value="" selected disabled>Selecione uma opção</option>
+                    <option value="f">Feminino</option>
+                    <option value="m">Masculino</option>
+                    <option value="o">Outro/Prefiro não informar</option>
+                </select>
+
+                <button type="button" name="ex56-botao-registrar">Registrar pessoa</button>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado56"></div>
+        </div>
+
+        <h2>57. Faça um programa que leia o gênero de uma pessoa, mas só aceite os valores 'M', 'F' ou 'O'. Caso esteja errado, peça a digitação novamente até ter um valor correto.</h2>
+        <div>
+            <form action="" method="get" id="ex57-form" autocomplete="off">
+                <fieldset>
+                    <legend>Gênero:</legend>
+
+                    <input type="radio" name="ex57-genero" id="ex57-id-genero-f" value="f">
+                    <label for="ex57-id-genero-f">Feminino</label>
+
+                    <input type="radio" name="ex57-genero" id="ex57-id-genero-m" value="m">
+                    <label for="ex57-id-genero-m">Masculino</label>
+
+                    <input type="radio" name="ex57-genero" id="ex57-id-genero-o" value="o">
+                    <label for="ex57-id-genero-o">Outro/Prefiro não informar</label>
+                </fieldset>
 
                 <button type="submit">Enviar</button>
             </form>
-            
-            <div class="resultados" id="resultado1"></div>
+
+            <div class="resultados" id="resultado57"></div>
         </div>
 
-        <h2>57. Faça um programa que leia o sexo de uma pessoa, mas só aceite os valores 'M', 'F' ou 'O'. Caso esteja errado, peça a digitação novamente até ter um valor correto.</h2>
+        <h2>58. Melhore o jogo do desafio 28, em que o computador vai 'pensar' em um número entre 0 e 10. Só que agora o jogador vai tentar adivinhar até acertar, mostrando no final quantos palpites foram necessários para vencer.</h2>
         <div>
-            
-        </div>
+            <button type="button" id="ex58-botao" style="margin-bottom: 10px;">Sortear número</button>
 
-        <h2>58. Melhore o jogo do DESAFIO 028, em que o computador vai 'pensar' em um número entre 0 e 10. Só que agora o jogador vai tentar adivinhar até acertar, mostrando no final quantos palpites foram necessários para vencer.</h2>
-        <div>
-            
+            <form action="" method="get" id="ex58-form" autocomplete="off">
+                <label for="ex58-id-numero">Número:</label>
+                <input type="number" name="ex58-numero" id="ex58-id-numero" required min="1" max="9" step="1">
+
+                <button type="submit">Adivinhar!</button>
+            </form>
+
+            <div class="resultados" id="resultado58"></div>
         </div>
 
         <h2>59. Faça um programa que leia dois valores e mostre um menu executável com [1]somar / [2]multiplicar / [3]maior / [4]novos números / [5]sair do programa.</h2>
         <div>
-            
+            <form action="" method="get" id="ex59-form" autocomplete="off">
+                <label for="ex59-id-numero1">Número 1:</label>
+                <input type="number" name="ex59-numero1" id="ex59-id-numero1" required step="0.01">
+
+                <label for="ex59-id-numero2">Número 2:</label>
+                <input type="number" name="ex59-numero2" id="ex59-id-numero2" required step="0.01">
+
+                <button type="button" name="ex59-somar">Somar</button>
+                <button type="button" name="ex59-multiplicar">Multiplicar</button>
+                <button type="button" name="ex59-maior">Indicar qual é maior</button>
+                <button type="button" name="ex59-novos">Escolher novos números</button>
+                <button type="button" name="ex59-sair">Sair</button>
+            </form>
+
+            <div class="resultados" id="resultado59"></div>
         </div>
 
         <h2>60. Faça um programa que leia um número qualquer e mostre o seu fatorial.</h2>
         <div>
-            
+            <form action="" method="get" id="ex60-form" autocomplete="off">
+                <label for="ex60-id-numero">Número:</label>
+                <input type="number" name="ex60-numero" id="ex60-id-numero" required min="0" step="1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado60"></div>
         </div>
 
         <nav>
