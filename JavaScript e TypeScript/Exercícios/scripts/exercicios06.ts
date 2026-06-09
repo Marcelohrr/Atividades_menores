@@ -48,7 +48,7 @@ try {
         resultadoDiv51.textContent = `Os 10 primeiros termos da Progressão Aritmética cujo início é ${primeiroTermo51} e razão é ${razao51} são: ${pa51.join(', ')}.`;
 
         form51.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -100,7 +100,7 @@ try {
             : `O número ${numero52} não é primo!`;
 
         form52.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -155,7 +155,7 @@ try {
             : `A frase ${frase53} não é um palíndromo!`;
 
         form53.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -266,7 +266,7 @@ try {
         pessoas54.length = 0;
 
         form54.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -350,7 +350,7 @@ try {
         pesos55.length = 0;
 
         form55.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -492,7 +492,7 @@ try {
         pessoas56.length = 0;
 
         form56.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -543,7 +543,7 @@ try {
         resultadoDiv57.textContent = `Gênero marcado: ${generoMarcado57}!`;
 
         form57.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -578,7 +578,7 @@ try {
 
         numeroSorteado58 = gerarNumeroAleatorio(1, 9);
         resultadoDiv58.textContent = 'O número foi sorteado. Tente descobrir qual!';
-    })
+    });
 
     form58.addEventListener('submit', e => {
         e.preventDefault();
@@ -621,7 +621,7 @@ try {
         }
 
         form58.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -685,7 +685,7 @@ try {
         if (!numeros59) return;
 
         resultadoDiv59.textContent = `${numeros59[0]} + ${numeros59[1]} = ${numeros59[0] + numeros59[1]}`;
-    })
+    });
 
     botaoMultiplicar59.addEventListener('click', () => {
         const numeros59 = registrarNumeros59(inputNumero59_1, inputNumero59_2, resultadoDiv59);
@@ -693,7 +693,7 @@ try {
         if (!numeros59) return;
 
         resultadoDiv59.textContent = `${numeros59[0]} x ${numeros59[1]} = ${numeros59[0] * numeros59[1]}`;
-    })
+    });
 
     botaoMaior59.addEventListener('click', () => {
         const numeros59 = registrarNumeros59(inputNumero59_1, inputNumero59_2, resultadoDiv59);
@@ -701,20 +701,20 @@ try {
         if (!numeros59) return;
 
         resultadoDiv59.textContent = `O maior valor entre ${numeros59[0]} e ${numeros59[1]} é ${Math.max(...numeros59)}.`;
-    })
+    });
 
     botaoNovos59.addEventListener('click', () => {
         inputNumero59_1.value = String(gerarNumeroAleatorio(-999, 999));
         inputNumero59_2.value = String(gerarNumeroAleatorio(-999, 999));
 
         resultadoDiv59.textContent = 'Novos números sorteados!';
-    })
+    });
 
     botaoSair59.addEventListener('click', () => {
         form59.reset();
 
         resultadoDiv59.textContent = 'Tchau! :)';
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }
@@ -755,7 +755,7 @@ try {
         resultadoDiv60.textContent = `O fatorial de ${numero60} é igual a ${fatorial60}!`;
 
         form60.reset();
-    })
+    });
 } catch (erro) {
     console.error(erro);
 }

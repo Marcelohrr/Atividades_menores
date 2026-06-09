@@ -41,44 +41,112 @@
             <div class="resultados" id="resultado62"></div>
         </div>
 
-        <h2>63. Faça um programa que leia um número n inteiro qualquer e mostre na tela os n primeiros elementos de uma Sequência de Fibonacci.</h2>
+        <h2>63. Faça um programa que leia um número para determinar a quantidade de elementos de uma Sequência de Fibonacci a ser exibida.</h2>
         <div>
-            
+            <form action="" method="get" id="ex63-form" autocomplete="off">
+                <label for="ex63-id-elementos">Elementos:</label>
+                <input type="number" name="ex63-elementos" id="ex63-id-elementos" required step="1" min="1">
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultados" id="resultado63"></div>
         </div>
 
-        <h2>64. Faça um programa que leia vários números inteiros pelo teclado. O programa só vai parar quando o usuário digitar o valor 999, que é a condição de parada. No final, mostre quantos números foram digitados e qual foi a soma entre eles (desconsiderando o flag).</h2>
+        <h2>64. Faça um programa que leia vários números inteiros pelo teclado e um botão para parar. No final, mostre quantos números foram digitados e qual é a soma entre eles.</h2>
         <div>
-            
+            <form action="" method="get" id="ex64-form" autocomplete="off">
+                <label for="ex64-id-numero">Número:</label>
+                <input type="number" name="ex64-numero" id="ex64-id-numero" step="1">
+
+                <button type="button" name="ex64-botao-registrar">Registrar número</button>
+                <button type="submit">Parar</button>
+            </form>
+
+            <div class="resultados" id="resultado64"></div>
         </div>
 
         <h2>65. Faça um programa que leia vários números inteiros pelo teclado. No final da execução, mostre a média entre todos os valores e qual foi o maior e o menor valores lidos. O programa deve perguntar ao usuário se ele quer ou não continuar a digitar valores.</h2>
         <div>
-            
+            <form action="" method="get" id="ex65-form" autocomplete="off">
+                <label for="ex65-id-numero">Número:</label>
+                <input type="number" name="ex65-numero" id="ex65-id-numero" step="1">
+
+                <button type="button" name="ex65-botao-registrar">Registrar número</button>
+                <button type="submit">Parar</button>
+            </form>
+
+            <div class="resultados" id="resultado65"></div>
         </div>
 
-        <h2>66. Faça um programa que leia vários números inteiros pelo teclado. A condição de parada é o usuário digitar 999. No final, mostre quantos números foram digitados e qual é a soma entre eles.</h2>
-        <div>
-            
+        <h2 style="color: darkred;">66. Igual ao desafio 64!</h2>
+        <div style="background-color: darkred">
+            <p style="color: white;">—</p>
         </div>
 
-        <h2>67. Faça um programa que mostre a tabuada de vários números, um de cada vez, para cada valor digitado pelo usuário. O programa será interrompido quando o número solicitado for negativo.</h2>
+        <h2>67. Faça um programa que mostre a tabuada de vários números, um de cada vez, para cada valor digitado pelo usuário.</h2>
         <div>
-            
+            <form action="" method="get" id="ex67-form" autocomplete="off">
+                <label for="ex67-id-numero">Número:</label>
+                <input type="number" name="ex67-numero" id="ex67-id-numero" step="1">
+
+                <button type="submit">Mostrar tabuada</button>
+            </form>
+
+            <div class="resultados" id="resultado67"></div>
         </div>
 
         <h2>68. Faça um programa que jogue par ou ímpar com o computador. O jogo é interrompido quando o jogador perder, mostrando o total de vitórias consecutivas que ele conquistou no final.</h2>
         <div>
-            
+            <button type="button" id="ex68-botao-sortear" style="margin-bottom: 20px;">Sortear número!</button>
+
+            <p style="margin-bottom: 10px;">Escolha:</p>
+            <button type="button" id="ex68-botao-par">Par</button>
+            <button type="button" id="ex68-botao-impar">Ímpar</button>
+
+            <div class="resultados" id="resultado68"></div>
         </div>
 
         <h2>69. Faça um programa que leia a idade e o gênero de várias pessoas. A cada pessoa cadastrada, o programa deverá perguntar se o usuário quer ou não continuar. No final, mostre quantas pessoas têm mais de 18 anos, quantos homens foram cadastrados, quantas mulheres têm menos de 20 anos.</h2>
         <div>
-            
+            <form action="" method="get" id="ex69-form" autocomplete="off">
+                <label for="ex69-id-idade">Idade:</label>
+                <input type="number" name="ex69-idade" id="ex69-id-idade" required step="1" min="0" max="150">
+
+                <fieldset>
+                    <legend>Gênero:</legend>
+                    
+                    <input type="radio" name="ex69-genero" id="ex69-id-genero-f" value="f">
+                    <label for="ex69-id-genero-f">Feminino</label>
+
+                    <input type="radio" name="ex69-genero" id="ex69-id-genero-m" value="m">
+                    <label for="ex69-id-genero-m">Masculino</label>
+
+                    <input type="radio" name="ex69-genero" id="ex69-id-genero-o" value="o">
+                    <label for="ex69-id-genero-o">Outro/Prefiro não informar</label>
+                </fieldset>
+
+                <button type="button" name="ex69-botao-registrar">Registrar pessoa</button>
+                <button type="submit">Parar</button>
+            </form>
+
+            <div class="resultados" id="resultado69"></div>
         </div>
 
         <h2>70. Faça um programa que leia o nome e o preço de vários produtos. O programa deverá perguntar se o usuário vai continuar. No final, mostre qual é o total gasto na compra, quantos produtos custam mais de R$1000, qual é o nome do produto mais barato.</h2>
         <div>
-            
+            <form action="" method="get" id="ex70-form" autocomplete="off">
+                <label for="ex70-id-produto">Nome do produto:</label>
+                <input type="text" name="ex70-produto" id="ex70-id-produto">
+
+                <label for="ex70-id-preco">Preço (em reais):</label>
+                <input type="number" name="ex70-preco" id="ex70-id-preco" step="0.01" min="0">
+
+                <button type="button" name="ex70-botao-registrar">Registrar produto</button>
+                <button type="submit">Parar</button>
+            </form>
+
+            <div class="resultados" id="resultado70"></div>
         </div>
 
         <nav>
