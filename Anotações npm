@@ -1,0 +1,141 @@
+// "npm for absolute beginners" (Kevin Powell, 2024)
+/*
+No terminal:
+
+cd          → "change directory" (diretório = pasta)
+cd desktop  → altera o diretório atual para o diretório interno "Desktop"
+cd ..       → altera o diretório atual para seu diretório pai
+\           → separador de diretórios padrão do Windows
+cd \        → altera o diretório para a raíz da unidade atual
+
+O terminal do Windows não é case sensitive. Se houver espaços, é necessário usar aspas. Por exemplo, para acessar a pasta "Pasta na área de trabalho" a partir de "C:\Users\Marcelo Henrique>", pode-se escrever o comando:
+cd "desktop\pasta na área de trabalho"
+
+npm init    → cria um projeto Node.js, pergunta várias informações e gera um arquivo package.json
+npm init -y → -y ("yes") aceita todas as opções padrão e gera o arquivo package.json automaticamente
+
+Most of the time that you're going to be using npm, you're going to be using something, whether it's react, whether it might just be something with vite, it might be an astro project felt kit... but you usually going to have something. So I'm going to do just a simple one with vite, but the steps we're going through and everything we're going to look at here are going to work with whatever it is that you're installing.
+
+npm create vite@latest project-name
+Select a framework: Svelte
+Select a variant: JavaScript
+cd project-name
+npm install
+npm run dev
+*/
+
+// "What is NPM, and why do we need it? | Tutorial for beginners" (Coder Coder, 2021)
+/*
+"Why do we need npm for this course specifically?
+The main reason is because we're writing our styles in a CSS preprocessor called Sass.
+Sass is widely used because you can write your styles more quickly and efficiently than pure CSS.
+The only problem is that Sass files themselves are not readable by the browser, so we need to compile or convert them into CSS.
+In a real-world development environment, you would normally use some type of build tool to do the conversion for you.
+In our case, we will be using Gulp, and we need to use npm to install and run Gulp for our workflow.
+npm is a huge part of the JavaScript ecosystem these days, so it's definitely a good skill set to have."
+
+"What is npm?
+npm is a main package manager for node.js. Is a huge repository of mostly open source software and it can be used by anyone for free.
+[...]
+npm makes writing code easier, because you can rely on pre-built code that other people have written.
+[...]
+Authors will write the code for their package and publish it on the npm registry. Then if you want to use that package, you can install it onto your own computer with the npm CLI (Command Line Interface).
+There are all kinds of packages, from small single purpose ones to large libraries. For example: chalk, a small package that weighs in at just 26 KB, lets you set different colors in your console.log messages; then you have frameworks like Tailwind CSS that you can use to build websites which is much larger, at over 30 MB."
+
+"Which packages should you install? There are over a million packages on npm, but how do you know which ones you actually need?
+A lot of it will depend on what tech stack you are using in your project. For example, if you're starting a new Vue.js project, you'll need a build tool like webpack or snowpack [atualmente: Vite]. And for our purposes, we're using Gulp to compile our Sass files, so we'll need to install a bunch of Gulp and Sass related packages.
+It is a little bit like the wild west, in that there's no 100% right combination of packages for every single person. It'll depend on what tools and frameworks you're using and your own preferences.
+If you're not sure which packages you need, you can always follow a good tutorial on the framework that you're using."
+
+Fluxo moderno:
+1. npm para instalar Vue.js, Vite e Sass
+    Exemplo:
+    npm create vite@latest meu-projeto → forma automática de criar pasta, package.json, etc., ao invés do método manual com npm init
+    npm install                        → instala as dependências do projeto, incluindo Vue e Vite
+    npm install -D sass                → instala Sass (-D equivale a --save-dev, ou seja, instala o pacote no package.json como uma dependência de desenvolvimento)
+2. Escrevo Vue.js e Sass
+3. Vite executa e processa tudo
+
+"...how do you go about actually installing npm packages?
+First, there are two ways of installing packages: locally and globally.
+Generally, you'll want to install packages locally in the project folder that you want to use the package for.
+This ensures that when you deploy your project, it'll include all the necessary packages.
+Installing a package locally means that it will only be accessible from that specific project folder.
+If you have other projects, each one will have it's own set of local packages.
+To install a local package, you'll use the npm CLI in your terminal. In your terminal, type in 'npm instal' and the name of the package you want.
+[...]
+While most packages should be installed locally like this, some packages can and should be installed globally on your computer.
+This means that the package functions will be accessible from any directory.
+Usually, you will only globally install packages that are meant to be run on your command line, in any directory.
+The Gulp CLI is one example of this, as it will run Gulp when you type 'gulp' into your command line from any location.
+To install a package globally, type in 'npm install -g' and the package name."
+
+"Now that we've covered the basics of installing packages, let's look at the package.json file.
+If you're using multiple packages in your project, one way to keep track of which ones you have installed is the package.json file.
+It can also store information about your projects, like the name, version, author and github repo.
+The package.json file is super useful. Especially if other people want to clone your project and need all the specific packages that you used. They can use the package.json file to install all of them at once if they run 'npm install' in a folder that has a package.json file.
+npm will read the file and automatically install all the packages listed.
+This comes in handy with deployments too, as the server can install the packages right when you deploy.
+When you're developing a project, one of the first things you should do is create your package.json file.
+You can do this through npm by running 'npm init' on your command line in your project folder.
+npm will ask you some questions about your project, like the name and description, and then create the json file.
+And if you don't want to answer the questions manually on install, you can also run 'npm init -y'. This will make npm immediately create the file and set all the fields to a default value. And you can always change the information in the future."
+
+"Dealing with dependencies.
+Once you've created your package.json file, you can now start installing packages.
+But what does installing a package actually do on your computer?
+Let's say you have a brand spanking new project and you need the chalk package. You type in 'npm install chalk' and npm starts installing it.
+When it's done, you can see in your package.json file that chalk is now listed as a dependency.
+What this means is that you're going to be using functions from a chalk package in your code. And if you didn't have it, something would probably break.
+Now, if you look in your files, you will notice that a new folder called node_modules has been created.
+This is where npm stores all the package files that get installed in this folder.
+You can see one folder for chalk, which makes sense, but there's also a bunch of oher folders with different names. Why did npm install all those other packages in addition to chalk?
+Well, this is because of the dependency nature of npm: you're installing npm packages in your project to use other people's code, making your project dependent on those packages. And each of those packages is also using code from even other packages.
+In our node_modules folder, those other folders are for packages that chalk is dependent on. You can actually see this in the chalk package.json file, as it has the 'ansi-styles' and 'supports-color' packages listed as dependencies.
+Then, if you look at the package.json file for 'ansi-styles', you'll see 'color-convert' listed as a dependency for that.
+[...]
+You can also run 'npm list' in your project folder to quickly display a list of all installed packages and what version they are."
+
+"One other really important aspect of npm is package versioning.
+Like most software, npm packages will get updated over time [...] these updates are actually one of the biggest sources of geadaches when working with npm packages.
+This is because every package has its own author and so will get bug fixes and updates independent from other packages.
+But, because packages are so dependent on one another, this can sometimes cause conflicts and errors for you.
+It's important to understand how versioning works and how to update safely, so that you don't break stuff when you do update packages that you're using.
+So how does versioning and updating work in npm?
+If we type 'npm view chalk versions' into the terminal, it'll return a list of all the versions of chalk from the beginning.
+For more details on each version, you can also check out the release page of the packages github repository.
+The numbers in the package versions [...]
+The first public release is generally version 1.0.0 and each release after that will continue going up in number.
+[...] npm packages follow semantic versioning.
+semantic versioning is a system of numbering software versions, with each number containing three digits separated by a dot.
+The first digit is the major version; second digit is a minor version; and the last digit is the patch version.
+Major version updates occur when changes are big and not backwars compatible. This means that updating to this new version from an older version will most likely break any code that depends on the old version. [...]
+Minor version changes, on the other hand, are for new features taht are backwards compatible and won't break anuthing when you change it (ideally).
+And patch updates are for small bug fixes that also won't break anything.
+[...]
+So with all these different versions of packages, how do you update a package that you've already installed?
+When you first install an npm package locally, npm will install the newest public release.
+Over time, you may want to update those packages to get the newest bug fixes and features.
+However, you need to be careful that you don't accidentally update to a new major version, that could break your code.
+Fortunately, npm has some safeguards in place that will help you have more control over what versions you update to by default.
+In your package.json file, when you install a package, npm will save the specific version number that you have installed. Now, what's that caret symbol [^] in front of the version number?
+Whis and a few other sumbols are what npm uses to limit what versions it'll automatically update to.
+The caret symbol will update the package to the latest minor and patch version for the currently installed major version. This is a default sumbol that npm will prefix the version number with when it installs packages.
+[...]
+You can manually update to the newest version in the command line by running 'npm install chalk@latest'.
+You can also specify a version number with 'npm install chalk@5' to install version 5.
+This also works if you need to install an older version of the package. If you run 'npm install chalk@2', it'll install the latest version of two.
+This is sometimes necessary if the latest version of a dependent package isn't compatible with other dependencies.
+Aside from the caret symbol, you can also use the tilde symbol to limit updates to patches within the current minor version."
+
+"Now, when you're installing packages, you may have noticed that npm creates a package-lock.json file.
+This file records the actual specific versions of each package and dependency that you have installed on your local computer.
+The reason this file exists is because of compatibility issues that can arise when using a package.json file from a different environment.
+Let's say you've cloned a github repo that has a package.json file and you run 'npm install' to install all the packages to your own computer.
+However, remember the caret symbol that npm prefixes each package version in? If a dependent package has been updated between the time the package.json file was created by the original author and when you run it on your own computer, you could actually be installing a different minor and patch version than what was used in the original repository. And if the newer version has compatibility issues with other dependent packages that you're using, it could potentially break your project.
+This is the problem that the package-lock.json file solves. If you run npm install and there is a package-lock.json file in addition to the package.json file, npm will install the exact version recorded in the package-lock.json file.
+This ensures that the packages in your local environment will exactly match the original authors."
+
+Ou seja, package-lock.json não trava apenas as dependências do seu projeto, mas também todas as dependências transitivas (as dependências das suas dependências), em todos os níveis.
+E há outro benefício do package-lock.json: ele já informa diretamente quais são as versões exatas de todos os pacotes que devem ser instaladas, evitando o processo de resolução de dependências (o npm analisa todos os intervalos de versões, conflitos e dependências transitivas até chegar numa combinação válida).
+*/
