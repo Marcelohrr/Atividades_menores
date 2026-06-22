@@ -52,7 +52,7 @@ Fluxo moderno:
     Exemplo:
     npm create vite@latest meu-projeto → forma automática de criar pasta, package.json, etc., ao invés do método manual com npm init
     npm install                        → instala as dependências do projeto, incluindo Vue e Vite
-    npm install -D sass                → instala Sass (-D equivale a --save-dev, ou seja, instala o pacote no package.json como uma dependência de desenvolvimento)
+    npm install -D sass                → instala Sass (-D equivale a --save-dev, que instala o pacote no package.json como uma dependência de desenvolvimento. devDependencies são ferramentas que só o dev precisa, como bundler, linter, TypeScript, etc. e não vão para o usuário final)
 2. Escrevo Vue.js e Sass
 3. Vite executa e processa tudo
 
