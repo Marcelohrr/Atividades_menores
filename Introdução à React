@@ -1,0 +1,44 @@
+// React: tendências e cenário atual
+/*
+Se você está procurando trabalhar como frontend, [...] não existe uma outra tecnologia que você deva estudar, na minha opinião, que não seja React.
+Sim, você poder sim utilizar View, pode aprender Angular, só que para mim, ainda React continua sendo a melhor solução para você estudar, para entrar no mercado para trabalhar com frontend.
+A melhor solução também para desenvolvimento de aplicações, pensando a longo prazo. [Se você desenvolve aplicações com React, é mais fácil para:]
+- contratar pessoas e pedir ajuda para uma IA;
+- na maioria das vezes você vai integrar uma aplicação terceira desenvolvida primariamente para React;
+- na era da IA, os apps estão sendo desenvolvidos majoritariamente com React — se você for desenvolver ou vibe-codar uma aplicação em Replit, Lovable ou v0, na maioria das vezes as aplicações serão criadas com React. Isso quer dizer que essas aplicações nem sempre são incríveis e que no futuro a gente vai ter muita demanda, primeiro, talvez, para refazer essas aplicações, mas também porque como tem muita aplicação surgindo, inclusive aplicações muito boas, sempre vai existir demanda de suporte, demanda pra gente continuar aprimorando esses sistemas que estão sendo desenvolvidos agora (na era da IA utilizando React).
+*/
+
+// Vite, Next.js, Remix ou TanStack Start
+/*
+A minha opinião é que na maioria das vezes o Vite vai ser a melhor opção para você iniciar um projeto sem depender de framework (um projeto mais puro), que você vai unir com algumas outras bibliotecas (veja "Bibliotecas" abaixo).
+Importante falar que o Vite não resolve todos os problemas. Frameworks surgiram pro React justamente por causa de algumas limitações, como por exemplo [a falta] do Server-Side Rendering (SSR), que o Next.js veio a resolver. Quando a página depende de SEO, de cache, ou um website com grande parte de suas páginas públicas, que não precisam de autenticação, nesse caso você provavelmente vai precisar de um framework.
+*/
+
+// Frameworks
+/*
+Entre as opções de frameworks que a gente tem, na minha opinião, o Next.js continua sendo a melhor solução.
+E isso vai no mesmo ponto que eu trouxe sobre React continuar sendo a escolha para 2026: se você procura trabalhar com React, usar de maneira profissional, Next.js ainda é a melhor opção para você utilizar.
+O TanStack Start, apesar de muito promissor, ainda possui pouquíssimo mercado e muitas das coisas do TanStack Start só existem ali, muito diferentes de outros frameworks que a gente já tá acostumado.
+Apesar disso, o TanStack Router, esse sim, na minha visão, unir ele junto com o Vite é uma solução incrível pro seu projeto, porque ele te permite ter o melhor dos dois mundos, que é o roteamento baseado em arquivos, que a gente tem no Next.js, por exemplo (que eu particularmente gosto muito, fica muito fácil de visualizar as páginas, as rotas da tua aplicação), e ao mesmo tempo a praticidade do Vite.
+*/
+
+// Bibliotecas
+/*
+Bibliotecas que eu acho que você deve utilizar na grande maioria das vezes nos seus projetos em 2026 que envolvem React ou que você vai ver sendo utilizadas no mercado (se você não for utilizar um framework para criar suas aplicações em 2026 com React):
+- TanStack Router (ao invés do React Router DOM) → Cumpre vários dos requisitos atuais pra construção de uma aplicação sem framework.
+- Tailwind CSS para estilização → Ferramenta que desagrada muita gente, mas não tem como não recomendar, porque, se você for trabalhar com React, provavelmente você vai dar manutenção em um projeto que usa ela. Os modelos de IA são muito bons com Tailwind CSS. O Tailwind CSS permite pular etapas de decisão dentro do nosso CSS (como organizar os arquivos, o nome de classes, IDs) e a gente vai direto pro código. E o Tailwind CSS integra muito bem com o ecossistema do React, porque React é uma ferramenta que a gente trabalha com componentização (dividir a nossa aplicação em pequenos pedacinhos).
+- TanStack Query + Suspense API → Melhor opção para comunicação HTTP do seu frontend pro seu backend + API do React, pra gente dizer quais partes da nossa aplicação estão em carregamento (suspensas, dependendo de alguma informação externa).
+- Zustand → Melhor ferramenta para gerenciamento de estado em aplicações React — extremamente simples e muito alinhada e aplicada ao que o mercado tá utilizando.
+- Radix UI ou Base UI → Oferecem componentes primitivos (que não têm estilização, são apenas funcionais e interativos, como por exemplo, modal, tabs, dropdown e select).
+- React Hook Form + Zod → A melhor dupla de criação de formulários e validação para as nossas aplicações frontend. Não existe nem concorrência.
+- Playwright → Biblioteca especializada em desenvolvimento de testes E2E (end-to-end, testes que simulam o comportamento de um usuário dentro da nossa aplicação, clicando em botões, preenchendo inputs...). E o próprio Playwright tem um NCP que você pode instalar na sua IA de preferência, em que você consegue fazer com que os prompts façam operações no seu navegador através do próprio Playwright.
+*/
+
+// 2 tendências
+/*
+1. Local first ou Offline first → Aplicações que funcionem primariamente na máquina do usuário e que qualquer alteração que o usuário faça nos dados sejam apenas sincronizadas com o nosso backend depois. Se ele não tiver internet, inclusive, essas aplicações podem continuar funcionando. Isso é muito utilizado em aplicações desenvolvidas, por exemplo, com Electron, Notion, Linear. Ferramentas para isso:
+    - ElectricSQL → Basicamente um motor de sincronização. Ele pega as alterações que o usuário fez no frontend dele e sincroniza isso com o banco de dados, lidando com conflitos.
+    - Xero.ms → Ferramenta mais completa, que engloba desde front até back, mas ainda tá em alfa.
+    - TanStack DB → Ferramenta mais focada no frontend. Integra com ferramentas do backend, como o Eletric SQL, mas é focada em como a gente lida com aplicações Local first ou Offline first do lado do frontend especificamente.
+2. Cada vez mais, a gente tem UI design mais próximo de desenvolvimento frontend.
+*/
