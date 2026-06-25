@@ -1,0 +1,56 @@
+# The course
+> "...focus on projects and challenges"
+
+## Section 1: Static pages
+*Project: ReactFacts site*
+- Intro to React
+- Why React?: Composable & Declarative
+- React Elements
+- JSX
+- Creating custom components
+- Fragments
+- Styling with Classes
+
+## Section 2: Data-Driven React
+*Project: Travel Journal*
+- Reusable components
+- Props
+- Evaluating JS inside JSX
+- Handling static assets
+- Mapping data to components
+
+## Section 3: React State
+*Project: Chef Claude*
+- Event listeners
+- Props vs. State
+- Creating & changing state
+- Complex state
+- Forms & form actions
+- Conditional rendering
+- Setting state from children
+- Dynamic styles
+
+## Section 4: Side effects
+*Project: Meme Generator*
+- Controlled components/forms
+- Functional programming in React
+- Fetching data
+- Handling side effects
+- Side effect dependencies
+- Cleaning up side effects
+- Refs
+
+## Capstone project 1
+*Tenzies game*
+- Series of challenges to build the capstone project
+- Lazy state initialization
+- Accessibility improvements
+
+## Capstone project 2
+*Assembly: Endgame*
+- Series of challenges to build the capstone project
+
+# How to avoid tutorial hell
+> "...do the work. Every challenge, every quiz, every project..."
+
+> "The easiest way to learn somehting new is the hard way."
