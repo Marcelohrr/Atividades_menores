@@ -1,0 +1,240 @@
+# The course
+> "...focus on projects and challenges"
+
+## Section 1: Static pages
+*Project: ReactFacts site*
+- Intro to React
+- Why React?: Composable & Declarative
+- React Elements
+- JSX
+- Creating custom components
+- Fragments
+- Styling with Classes
+
+## Section 2: Data-Driven React
+*Project: Travel Journal*
+- Reusable components
+- Props
+- Evaluating JS inside JSX
+- Handling static assets
+- Mapping data to components
+
+## Section 3: React State
+*Project: Chef Claude*
+- Event listeners
+- Props vs. State
+- Creating & changing state
+- Complex state
+- Forms & form actions
+- Conditional rendering
+- Setting state from children
+- Dynamic styles
+
+## Section 4: Side effects
+*Project: Meme Generator*
+- Controlled components/forms
+- Functional programming in React
+- Fetching data
+- Handling side effects
+- Side effect dependencies
+- Cleaning up side effects
+- Refs
+
+## Capstone project 1
+*Tenzies game*
+- Series of challenges to build the capstone project
+- Lazy state initialization
+- Accessibility improvements
+
+## Capstone project 2
+*Assembly: Endgame*
+- Series of challenges to build the capstone project
+
+# How to avoid tutorial hell
+> "...do the work. Every challenge, every quiz, every project..."
+
+> "The easiest way to learn somehting new is the hard way."
+
+# Lessons 2–3
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactFacts</title>
+</head>
+<body>
+    <!-- instead of "<h1>ReactFacts</h1>": -->
+    <div id="root"></div> <!-- Since in React we render all markup using React inside of JavaScript files, we need one central location where React can insert all of that content -->
+
+    <script src="index.jsx" type="module"></script> <!-- Instead of adding anything manually to our markup, React will be in charge of taking our JavaScript and adding the associated markup to our HTML document -->
+</body>
+</html>
+```
+
+```jsx
+import { createRoot } from 'react-dom/client'; // "You might sometimes see this importing the entire ReactDOM library and calling ReactDOM.createRoot"
+
+// 1. Create a root:
+const root = createRoot(document.getElementById('root'));
+// 2. Render some markup to the root:
+root.render(<h1>ReactFacts</h1>);
+```
+
+**Challenge:** Re-write the first lines of React code we just had.
+
+```jsx
+import { createRoot } from 'react-dom/client';
+
+createRoot(document.getElementById('root')).render(<h1>ReactFacts</h1>);
+```
+
+**Challenge:** Set up a React app from scratch again. This time, try rendering an unordered list with 2-3 list items inside with why you're excited to be learning React.
+
+```jsx
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'));
+
+root.render( <!-- O React substitui o conteúdo renderizado anteriormente (<h1>) pelo novo (<ul>) -->
+    <ul>
+        <li>Estou animado para aprender React porque já ouvi falar bem dessa ferramenta,</li>
+        <li>será importante profissionalmente e</li>
+        <li>este é o último passo dos fundamentos de frontend do meu roadmap!</li>
+    </ul>
+);
+```
+
+# Lesson 4: Local setup with Vite
+No terminal:
+1. nvm install lts → instala a versão LTS (Long Term Support) do Node.js, com o npm embutido
+2. npm create vite@latest → cria um novo projeto usando o Vite (build tool) — estrutura inicial de pastas e arquivos (src, index.html, package.json, etc.)
+3. npm install → instala todas as dependências listadas no package.json dentro da pasta do projeto (geralmente React, ReactDOM, Vite plugins)
+4. npm run dev → inicia o servidor de desenvolvimento local usando Vite, com hot reload ativo (atualização automática ao salvar arquivos)
+
+# Lesson 5: Libraries/Frameworks
+
+**Libraries:**
+- Collection of reusable code
+- Reduces need to write repetitive/complex things from scratch
+- You control how/when it's used. No/few boundaries
+
+**Frameworks:**
+- Predetermined architecture — you follow a specified pattern of development
+- You work within the boundaries set by the framework
+
+> "...React homepage, it specifically calls itself a library. [...] React has been built out as a whole ecosystem these days to a point where one of the most common ways to use React is to [use] a framework like Next.js."
+
+## Why choose React?
+- Highest job demand
+- Largest ecosystem/community
+- Less "magic"
+- Composable/Declarative (*vide* "Lesson 8: Why React? It's Composable!" e "Lesson 9: Why React? It's Declarative!")
+- Active development
+
+## When you might NOT want a framework
+- Small projects
+- Network load concerns
+- Learning curve
+- Maintenance concerns
+- Incompatibility with existing codebase
+
+# Lesson 7: JSX
+> "Using createElement is not the greatest developer experience. [...] So pretty shortly after React was initially released, the same team that created React also created the syntax for JSX, which allows developers to write what they're already very familiar with in writing HTML."
+
+Exemplo de createElement aninhado:
+```js
+const reactElement = createElement('h1', null, createElement('span', null, 'Hello!'));
+```
+
+> "...under the hood, React is going to take this set of JSX elements [...] and it's going to turn them into those createElement calls that we saw before."
+
+O mesmo efeito, mas com JSX:
+```jsx
+const reactElement = <h1><span>Hello!</span></h1>;
+```
+
+> "...JSX is simply what we call 'syntactic sugar' on top of the createElement call."
+
+# Lesson 8: Why React? It's Composable!
+Can create easily reusable and interchangeable "pieces of the web" that can be combined in various ways to create complex systems.
+
+**LEGO:**
+> "...in web development, it's a very powerful tool for us to be able to take little pieces and combine them together in complex ways"
+
+> "...what we get with React, which is custom components."
+Exemplo:
+```html
+<body>
+    <MyAwesomeNavbar />
+    <MainContent />
+    <MyAwesomeFooter />
+</body>
+```
+
+**Challenge:** Create your very first custom React component! Call it "MainContent", and have it return a simple h1 element that says "React is great!".
+
+```jsx
+import { createRoot } from 'react-dom/client';
+
+function MainContent() { // "...to create a new component we just have to create a new function [that returns] JSX."
+    return <h1>React is great!</h1>
+}
+
+const root = createRoot(document.getElementById('root'));
+
+const reactElement = (
+    <div>
+        <MainContent />
+    </div>
+);
+
+root.render(reactElement);
+```
+
+# Lesson 9: Why React? It's Declarative!
+Can lean on the library to handle the manual, tedious tasks that we otherwise would have to worry about ourselves.
+
+> "With something declarative, we can tell the program what should be done [...]. Whereas with the opposite, imperative, we need to describe how things should be done."
+
+**Challenge:** Recreate the line of code below in vanilla JS by creating and appending an <h1> to our div#root (without using innerHTML). Create a new <h1> element (createElement); give it some textContent; give it a class name of "header"; append it as a child (appendChild) of the div#root.
+
+```jsx
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'));
+
+const jsxElement = <h1 class="header">This is declarative coding!</h1>;
+
+root.render(jsxElement);
+```
+
+```js
+const jsElement = document.createElement('h1');
+jsElement.textContent = 'This is imperative coding!';
+jsElement.className = 'header';
+document.getElementById('root').appendChild(jsElement);
+```
+
+**Challenge:** Set up a new React app from scratch! For now, just render an <h1> element that says anything you want.
+
+```jsx
+import { createRoot } from 'react-dom/client';
+
+const root = createRoot(document.getElementById('root'));
+
+root.render(<h1>ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς ἀνθρώπῳ</h1>);
+```
+
+# Lesson 10: Housekeeping
+## 1.
+> In the HTML, "...we're using this .jsx extension instead of a regular .js."
+
+```html
+<script src="index.jsx" type="module"></script>
+```
+
+> "[It'd still] work if I were to rename this to index.js. However, under the hood we're using Vite [...] and in the documentation of Vite, they recommend that if you ever have a JavaScript file in React that is using JSX in any capacity, then you should use a .jsx extension instead of a regular .js extension. We won't go into why Vite expects you to do that, just know that it really helps Vite in it's ability to bundle your code performantly"
+
+## 2.
