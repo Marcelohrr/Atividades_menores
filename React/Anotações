@@ -59,17 +59,17 @@
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReactFacts</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- instead of "<h1>ReactFacts</h1>": -->
     <div id="root"></div> <!-- Since in React we render all markup using React inside of JavaScript files, we need one central location where React can insert all of that content -->
 
     <script src="index.jsx" type="module"></script> <!-- Instead of adding anything manually to our markup, React will be in charge of taking our JavaScript and adding the associated markup to our HTML document -->
-</body>
+  </body>
 </html>
 ```
 
@@ -97,7 +97,7 @@ import { createRoot } from 'react-dom/client';
 
 const root = createRoot(document.getElementById('root'));
 
-root.render( <!-- O React substitui o conteúdo renderizado anteriormente (<h1>) pelo novo (<ul>) -->
+root.render( // O React substitui o conteúdo renderizado anteriormente (<h1>) pelo novo (<ul>)
     <ul>
         <li>Estou animado para aprender React porque já ouvi falar bem dessa ferramenta,</li>
         <li>será importante profissionalmente e</li>
@@ -238,3 +238,193 @@ root.render(<h1>ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς �
 > "[It'd still] work if I were to rename this to index.js. However, under the hood we're using Vite [...] and in the documentation of Vite, they recommend that if you ever have a JavaScript file in React that is using JSX in any capacity, then you should use a .jsx extension instead of a regular .js extension. We won't go into why Vite expects you to do that, just know that it really helps Vite in it's ability to bundle your code performantly"
 
 ## 2.
+> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" (*vide* "Lesson ") TO-DO TODO!!!!!!!!!!!!!!!!!
+
+```jsx
+createRoot(document.getElementById('root')).render(
+    <img src="./assets/react.svg" /> // Relative path
+);
+```
+
+```jsx
+createRoot(document.getElementById('root')).render(
+    <img src="src/assets/react.svg" /> // Absolute path
+);
+```
+
+## 3.
+> "...what you do when you want to render multiple elements inside of your render?"
+
+```jsx
+createRoot(document.getElementById('root')).render(
+    <h1></h1> // Erro: "As expressões JSX devem ter um elemento pai."
+    <p></p>
+);
+```
+
+> "...JSX compiles down to that call to createElement. [...] And of course I'm not limited to only ever rendering one thing at a time; I just need to make sure that it's wrapped together in a [single parent element]."
+
+```jsx
+createRoot(document.getElementById('root')).render(
+    <div>
+        <h1></h1>
+        <p></p>
+    </div> // "For accessibility reasons, <div> should probably be the last resort of what you reach to. There are a lot of other semantically correct HTML elements that we could use in its place. For example, maybe a <main> element would make a little bit more sense here. [Or a section, or an article...] it can be really helpful to go over to MDN and learn about these semantically correct containers"
+);
+```
+
+# Lesson 11: ReactFacts Project - Markup
+
+**Challenge:** Starting from scratch, build and render the HTML for our section project.
+
+```jsx
+import { createRoot } from 'react-dom/client';
+
+createRoot(document.getElementById('root')).render(
+    <main>
+        <img scr="src/assets/react.svg" alt="React logo" />
+        <h1>Fun facts about React</h1>
+        <ul>
+            <li>Was first released in 2013</li>
+            <li>Was originally created by Jordan Walke</li>
+            <li>Has well over 100K stars on GitHub</li>
+            <li>Is maintained by Meta</li>
+            <li>Powers thousands of enterprise apps, including mobile apps</li>
+        </ul>
+    </main>
+);
+```
+
+# Lesson 12: Pop Quiz
+
+1. Where does React put all of the elements I create in JSX when I call `root.render()`?
+> "All the elements I render get put inside the div with the id of 'root' (or whatever other element I might select when calling createRoot)."
+
+2. What yould show up in my console if I were to run this line of code: `console.log(<h1>Hello world!</h1>)`?
+> "An object! Unlike craeting an HTML element in vanilla DOM JS, what gets created from the JSX we have in our React code is a plain JS object that React will use to fill in the view."
+
+3. What's wrong with this code:
+```jsx
+root.render(
+    <h1>Hi there</h1>
+    <p>This is my website!</p>
+)
+```
+> "You can only render 1 parent element at a time. That parent element can have as many children elements as you want."
+
+4. What does it mean for something to be "declarative" instead of "imperative"?
+> "Imperative means we need to give specific step-to-step instructions on how to accomplish a task. Declarative means we can write our code to simply 'describe' what should show up on the page and allow the tool (React, e.g.) to handle the details on how to put those things on the page."
+
+5. What does it mean for something to be "composable"?
+> "We have small pieces that we can put together to make something larger or greater than the individual pieces themselves."
+
+# Lessons 13–14: Custom components
+
+> "...with custom components in React, we have to use PascalCase [and], instead of calling it like a regular function with the parentheses, we surround it in angle brackets"
+
+```jsx
+function TemporaryName() {
+    return (
+        <main>
+            <img src="src/assets/react.svg" alt="React logo" />
+            <h1>Fun facts about React</h1>
+            <ul>
+                <li>Was first released in 2013</li>
+                <li>Was originally created by Jordan Walke</li>
+                <li>Has well over 100K stars on GitHub</li>
+                <li>Is maintained by Meta</li>
+                <li>Powers thousands of enterprise apps, including mobile apps</li>
+            </ul>
+        </main>
+    );
+}
+
+createRoot(document.getElementById('root')).render(
+    <TemporaryName /> // Instead of "temporaryName()"
+);
+```
+
+**Challenge (part 1):** Create a custom "Page" component. It should return an ordered list with the reasons why you're excited to be learning React. Render the Page component.
+
+```jsx
+function Page() {
+  return (
+    <ol>
+        <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+        <li>I am more likely to get a job as a front end developer if I know React.</li>
+    </ol>
+  );
+}
+
+const root = createRoot(document.getElementById('root'));
+
+root.render(
+  <Page />
+);
+```
+
+**Challenge (part 2):** Add a <header> element with an <img /> element with the image of the React logo inside. Also, as always, you should include some alt text on the image. Add an <h1> with some text describing the page (e.g. "Reasons I'm excited to learn React"); place it above the ordered list, then wrap the <h1> and <ol> inside a <main> element to keep our semantic structure flowing well. Add a <footer> after the list that says "© 2026 Marcelo Henrique Rosa Reis development. All rights reserved."
+
+```jsx
+function Page() {
+  return (
+    <div>
+      <header>
+        <img src="src/assets/react.svg" alt="React logo" />
+      </header>
+
+      <main>
+        <h1>Reasons I'm excited to learn React</h1>
+
+        <ol>
+          <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+          <li>I am more likely to get a job as a front end developer if I know React.</li>
+        </ol>
+      </main>
+
+      <footer>
+        <small>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</small>
+      </footer>
+    </div>
+  );
+}
+
+const root = createRoot(document.getElementById('root'));
+
+root.render(
+  <Page />
+);
+```
+
+# Lesson 15: Custom components Quiz
+
+1. What is a React component?
+> A function that returns React elements.
+
+2. What's wrong with this code?
+```jsx
+function myComponent() {
+    return (
+        <small>I'm tyny text!</small>
+    )
+}
+```
+> `myComponent()` está em camelCase; deveria estar em PascalCase: `MyComponent()`.
+
+3. What's wrong with this code?
+```jsx
+function Header() {
+    return (
+        <header>
+            <img src="./react-logo.png" width="40px" alt="React logo" />
+        </header>
+    )
+}
+
+root.render(Header());
+```
+> `root.render(Header())` deveria ser `root.render(<Header />)`.
+
+# Lesson 16: Fragments
+
+...
