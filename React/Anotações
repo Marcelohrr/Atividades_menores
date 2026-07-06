@@ -4,12 +4,12 @@
 ## Section 1: Static pages
 *Project: ReactFacts site*
 - Intro to React
-- Why React?: Composable & Declarative
-- React Elements
+- Why React?: composable & declarative
+- React elements
 - JSX
 - Creating custom components
 - Fragments
-- Styling with Classes
+- Styling with classes
 
 ## Section 2: Data-Driven React
 *Project: Travel Journal*
@@ -157,7 +157,7 @@ const reactElement = <h1><span>Hello!</span></h1>;
 
 > "...JSX is simply what we call 'syntactic sugar' on top of the createElement call."
 
-# Lesson 8: Why React? It's Composable!
+# Lesson 8: Why React? It's composable!
 Can create easily reusable and interchangeable "pieces of the web" that can be combined in various ways to create complex systems.
 
 **LEGO:**
@@ -193,7 +193,7 @@ const reactElement = (
 root.render(reactElement);
 ```
 
-# Lesson 9: Why React? It's Declarative!
+# Lesson 9: Why React? It's declarative!
 Can lean on the library to handle the manual, tedious tasks that we otherwise would have to worry about ourselves.
 
 > "With something declarative, we can tell the program what should be done [...]. Whereas with the opposite, imperative, we need to describe how things should be done."
@@ -273,7 +273,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-# Lesson 11: ReactFacts Project - Markup
+# Lesson 11: ReactFacts project - Markup
 
 **Challenge:** Starting from scratch, build and render the HTML for our section project.
 
@@ -427,4 +427,177 @@ root.render(Header());
 
 # Lesson 16: Fragments
 
-...
+> "...alternative to surrounding everything [...] in a <div> like I did here to avoid that issue with multiple different JSX elements trying to be rendered all at once."
+
+```jsx
+import { Fragment } from "react"; // "...so-called built-in component from React"
+
+function Page() {
+    return (
+        <Fragment>
+            {/* Tags HTML */}
+        </Fragment>
+    );
+}
+```
+
+Alternativamente, mais simples:
+
+```jsx
+function Page() {
+    return (
+        <> {/* Shorthand de <Fragment></Fragment>; dispensa import { Fragment } from "react" */}
+            {/* Tags HTML */}
+        </>
+    );
+}
+```
+
+> "When I use a <Fragment>, React will not insert another nested level of an element here. It's a workaround that allows us to combine multiple different elements together but without creating another DOM node"
+
+# Lesson 17: Parent/Child custom components
+
+> "...it's really not ideal that we have a single 'Page' component and we're stuffing all of our markup into that [...] ...we're trying to learn more about composing our components together"
+
+**Challenge:** Move the <header> element from the Page component into its own component called "Header". Then render an instance of the Header component inside the Page component where the <header> used to be.
+
+```jsx
+function Header() {
+    return (
+        <header>
+            <img src="src/assets/react.svg" alt="React logo" />
+        </header>
+    );
+}
+
+function Page() {
+    return (
+        <>
+            <Header />
+
+            <main>
+                <h1>Reasons I'm excited to learn React</h1>
+
+                <ol>
+                <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+                <li>I am more likely to get a job as a front end developer if I know React.</li>
+                </ol>
+            </main>
+
+            <footer>
+                <p>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</p>
+            </footer>
+        </>
+    );
+}
+
+createRoot(document.getElementById('root')).render(
+    <Page />
+);
+```
+
+> "When you're working on a larger application, your header is very unlikely to be three lines of code. It might include a lot more, dealing with user interaction, pulling in data frmo a database and all sorts of more complex things like that. In those cases, I think it becomes much more apparent that it's really really helpful to move that kind of logic into its own separate component, thus compartmentalizing it and making it, not only reusable, but a lot easier to deal with as a developer."
+
+**Challenge:** Move the <main> element into its own component called "MainContent"and render that component inside the Page component. Do the same with the <footer> element, moving it into a new component called "Footer".
+
+```jsx
+function Header() {
+    return (
+        <header>
+            <img src="src/assets/react.svg" alt="React logo" />
+        </header>
+    );
+}
+
+function MainContent() {
+    return (
+        <main>
+            <h1>Reasons I'm excited to learn React</h1>
+
+            <ol>
+                <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+                <li>I am more likely to get a job as a front end developer if I know React.</li>
+            </ol>
+        </main>
+    )
+}
+
+function Footer() {
+    return (
+        <footer>
+            <p>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</p>
+        </footer>
+    )
+}
+
+function Page() {
+    return (
+        <>
+            <Header />
+
+            <MainContent />
+
+            <Footer />
+        </>
+    );
+}
+
+createRoot(document.getElementById('root')).render(
+    <Page />
+);
+```
+
+# Lesson 18: Styling with classes
+
+**Challenge:** [Inside the Header component] add a `nav` > `ul` > `li` (x3). The 3 items should say: "Pricing", "About", and "Contact".
+
+```jsx
+function Header() {
+    return (
+        <header>
+            <img src="src/assets/react.svg" alt="React logo" />
+
+            <nav>
+                <ul>
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
+```
+
+**Challenge:** Using flexbox, line up the `li`s horizontally and put them inline with the React logo. Note: for practice's sake, don't select any elements, but use classes for all styling.
+
+```jsx
+function Header() {
+    return (
+        <header className="header-maneiro">
+            <img src="src/assets/react.svg" alt="React logo" />
+
+            <nav>
+                <ul className="nav-list">
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
+```
+
+```css
+.header-maneiro {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+```
