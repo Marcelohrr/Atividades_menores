@@ -179,7 +179,7 @@ Exemplo:
 import { createRoot } from 'react-dom/client';
 
 function MainContent() { // "...to create a new component we just have to create a new function [that returns] JSX."
-    return <h1>React is great!</h1>
+    return <h1>React is great!</h1>;
 }
 
 const root = createRoot(document.getElementById('root'));
@@ -348,12 +348,12 @@ createRoot(document.getElementById('root')).render(
 
 ```jsx
 function Page() {
-  return (
-    <ol>
-        <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
-        <li>I am more likely to get a job as a front end developer if I know React.</li>
-    </ol>
-  );
+    return (
+        <ol>
+            <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+            <li>I am more likely to get a job as a front end developer if I know React.</li>
+        </ol>
+    );
 }
 
 const root = createRoot(document.getElementById('root'));
@@ -367,26 +367,26 @@ root.render(
 
 ```jsx
 function Page() {
-  return (
-    <div>
-      <header>
-        <img src="src/assets/react.svg" alt="React logo" />
-      </header>
+    return (
+        <div>
+            <header>
+                <img src="src/assets/react.svg" alt="React logo" />
+            </header>
 
-      <main>
-        <h1>Reasons I'm excited to learn React</h1>
+            <main>
+                <h1>Reasons I'm excited to learn React</h1>
 
-        <ol>
-          <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
-          <li>I am more likely to get a job as a front end developer if I know React.</li>
-        </ol>
-      </main>
+                <ol>
+                    <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+                    <li>I am more likely to get a job as a front end developer if I know React.</li>
+                </ol>
+            </main>
 
-      <footer>
-        <small>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</small>
-      </footer>
-    </div>
-  );
+            <footer>
+                <small>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</small>
+            </footer>
+        </div>
+    );
 }
 
 const root = createRoot(document.getElementById('root'));
@@ -406,7 +406,7 @@ root.render(
 function myComponent() {
     return (
         <small>I'm tyny text!</small>
-    )
+    );
 }
 ```
 > `myComponent()` está em camelCase; deveria estar em PascalCase: `MyComponent()`.
@@ -418,7 +418,7 @@ function Header() {
         <header>
             <img src="./react-logo.png" width="40px" alt="React logo" />
         </header>
-    )
+    );
 }
 
 root.render(Header());
@@ -519,7 +519,7 @@ function MainContent() {
                 <li>I am more likely to get a job as a front end developer if I know React.</li>
             </ol>
         </main>
-    )
+    );
 }
 
 function Footer() {
@@ -527,7 +527,7 @@ function Footer() {
         <footer>
             <p>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</p>
         </footer>
-    )
+    );
 }
 
 function Page() {
@@ -549,7 +549,7 @@ createRoot(document.getElementById('root')).render(
 
 # Lesson 18: Styling with classes
 
-**Challenge:** [Inside the Header component] add a `nav` > `ul` > `li` (x3). The 3 items should say: "Pricing", "About", and "Contact".
+**Challenge:** [Inside the Header component] add a <nav> > <ul> > <li> (x3). The 3 items should say: "Pricing", "About", and "Contact".
 
 ```jsx
 function Header() {
@@ -569,7 +569,7 @@ function Header() {
 }
 ```
 
-**Challenge:** Using flexbox, line up the `li`s horizontally and put them inline with the React logo. Note: for practice's sake, don't select any elements, but use classes for all styling.
+**Challenge:** Using flexbox, line up the <li>s horizontally and put them inline with the React logo. Note: for practice's sake, don't select any elements, but use classes for all styling.
 
 ```jsx
 function Header() {
@@ -601,3 +601,194 @@ function Header() {
     list-style: none;
 }
 ```
+
+**Challenge:** Estilo personalizado.
+
+```jsx
+function Header() {
+    return (
+        <header className="header-maneiro">
+            <img src="src/assets/react.svg" alt="React logo" />
+
+            <nav>
+                <ul className="nav-list">
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
+
+function MainContent() {
+    return (
+        <main className="main-show-de-bola">
+            <h1 className="titulo-chique">Reasons I'm excited to learn React</h1>
+
+            <ol className="ol-brilhante">
+                <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+                <li>I am more likely to get a job as a front end developer if I know React.</li>
+            </ol>
+        </main>
+    );
+}
+
+function Footer() {
+    return (
+        <footer className="footer-irado">
+            <p>© 2026 Marcelo Henrique Rosa Reis development. All rights reserved.</p>
+        </footer>
+    );
+}
+```
+
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: pink;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+.header-maneiro {
+    display: flex;
+    justify-content: space-between;
+    background-color: #27292c;
+    padding: 20px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-list > li {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.nav-list > li:hover {
+    transition: background-color .5s;
+    background-color: black;
+    cursor: pointer;
+}
+
+.main-show-de-bola {
+    flex: 1;
+    background-color: antiquewhite;
+    color: black;
+    margin: 0 2vw;
+
+    padding: 10px 50px;
+}
+
+.titulo-chique {
+    margin-bottom: 20px;
+}
+
+.ol-brilhante {
+    padding-left: 40px;
+}
+
+.footer-irado {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+}
+```
+
+# Lesson 19: Organizing components
+
+**Challenge:** Move Header, MainContent and Footer components to their own separate files.
+
+Header.jsx:
+```jsx
+export default function Header() {
+    return (
+        <header className="header-maneiro">
+            <img src="src/assets/react.svg" alt="React logo" />
+
+            <nav>
+                <ul className="nav-list">
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
+```
+
+MainContent.jsx:
+```jsx
+export default function MainContent() {
+    return (
+        <main className="main-show-de-bola">
+            <h1 className="titulo-chique">Reasons I'm excited to learn React</h1>
+
+            <ol className="ol-brilhante">
+                <li>React is a popular library, so I will be able to fit in with all the coolest devs out there! 😎</li>
+                <li>I am more likely to get a job as a front end developer if I know React.</li>
+            </ol>
+        </main>
+    );
+}
+```
+
+main.jsx:
+```jsx
+import Header from './Header';
+import MainContent from './MainContent';
+import Footer from './Footer';
+```
+
+# Lesson 20: Make a mental outline of the project
+
+```html
+<div.container>
+    <header>
+        <nav>
+            <img />
+            <span></span>
+        </nav>
+    </header>
+    <main>
+        <h1></h1>
+        <ul>
+            <li></li> (x 5)
+        </ul>
+    </main>
+</div.container>
+```
+
+# Lessons 21–25: ReactFacts project
+
+**Challenge:** Create an App component in a separate App.jsx file which is a sibling to this main.jsx file; create a `components` folder; create the Navbar and Main components in separate files inside the components folder and in each one, just render an <h1> with the name of the component; have App component import and render the Navbar and Main components; import and render the App component inside of index.jsx using ReactDOM; go to Google fonts and get the "Inter" font with weights 400, 600, and 700, put the <link /> to those fonts ABOVE the style.css link in index.html
+
+**Challenge:** Complete the Navbar to match the Figma design.
+
+**Challenge:** Build out the main content section.
+
+**Challenge:** Place the gray React logo in the background. Don't use an <img> element, but rather set it as the `background-image` of the <main> element.
+
+**Resolução dos desafios acima na pasta ReactFacts**
+
+2026/06/25-2026/07/06 - React
+Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
