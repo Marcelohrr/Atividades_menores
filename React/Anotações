@@ -1,7 +1,7 @@
 # The course
 > "...focus on projects and challenges"
 
-## Section 1: Static pages
+**Section 1: Static pages**
 *Project: ReactFacts site*
 - Intro to React
 - Why React?: composable & declarative
@@ -11,7 +11,7 @@
 - Fragments
 - Styling with classes
 
-## Section 2: Data-Driven React
+**Section 2: Data-driven React**
 *Project: Travel Journal*
 - Reusable components
 - Props
@@ -19,7 +19,7 @@
 - Handling static assets
 - Mapping data to components
 
-## Section 3: React State
+**Section 3: React state**
 *Project: Chef Claude*
 - Event listeners
 - Props vs. State
@@ -30,7 +30,7 @@
 - Setting state from children
 - Dynamic styles
 
-## Section 4: Side effects
+**Section 4: Side effects**
 *Project: Meme Generator*
 - Controlled components/forms
 - Functional programming in React
@@ -40,22 +40,24 @@
 - Cleaning up side effects
 - Refs
 
-## Capstone project 1
+**Capstone project 1**
 *Tenzies game*
 - Series of challenges to build the capstone project
 - Lazy state initialization
 - Accessibility improvements
 
-## Capstone project 2
+**Capstone project 2**
 *Assembly: Endgame*
 - Series of challenges to build the capstone project
 
-# How to avoid tutorial hell
-> "...do the work. Every challenge, every quiz, every project..."
+**How to avoid tutorial hell**
+> "...do the work. Every challenge, every quiz, every project... The easiest way to learn somehting new is the hard way."
 
-> "The easiest way to learn somehting new is the hard way."
+---
 
-# Lessons 2–3
+# Section 1: Static pages
+
+## Lessons 2–3
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -106,14 +108,14 @@ root.render( // O React substitui o conteúdo renderizado anteriormente (<h1>) p
 );
 ```
 
-# Lesson 4: Local setup with Vite
+## Lesson 4: Local setup with Vite
 No terminal:
 1. nvm install lts → instala a versão LTS (Long Term Support) do Node.js, com o npm embutido
 2. npm create vite@latest → cria um novo projeto usando o Vite (build tool) — estrutura inicial de pastas e arquivos (src, index.html, package.json, etc.)
 3. npm install → instala todas as dependências listadas no package.json dentro da pasta do projeto (geralmente React, ReactDOM, Vite plugins)
 4. npm run dev → inicia o servidor de desenvolvimento local usando Vite, com hot reload ativo (atualização automática ao salvar arquivos)
 
-# Lesson 5: Libraries/Frameworks
+## Lesson 5: Libraries/Frameworks
 
 **Libraries:**
 - Collection of reusable code
@@ -126,21 +128,21 @@ No terminal:
 
 > "...React homepage, it specifically calls itself a library. [...] React has been built out as a whole ecosystem these days to a point where one of the most common ways to use React is to [use] a framework like Next.js."
 
-## Why choose React?
+### Why choose React?
 - Highest job demand
 - Largest ecosystem/community
 - Less "magic"
-- Composable/Declarative (*vide* "Lesson 8: Why React? It's Composable!" e "Lesson 9: Why React? It's Declarative!")
+- Composable/Declarative (*vide* #"Lesson 8: Why React? It's Composable!" e #"Lesson 9: Why React? It's Declarative!")
 - Active development
 
-## When you might NOT want a framework
+### When you might NOT want a framework
 - Small projects
 - Network load concerns
 - Learning curve
 - Maintenance concerns
 - Incompatibility with existing codebase
 
-# Lesson 7: JSX
+## Lesson 7: JSX
 > "Using createElement is not the greatest developer experience. [...] So pretty shortly after React was initially released, the same team that created React also created the syntax for JSX, which allows developers to write what they're already very familiar with in writing HTML."
 
 Exemplo de createElement aninhado:
@@ -157,7 +159,7 @@ const reactElement = <h1><span>Hello!</span></h1>;
 
 > "...JSX is simply what we call 'syntactic sugar' on top of the createElement call."
 
-# Lesson 8: Why React? It's composable!
+## Lesson 8: Why React? It's composable!
 Can create easily reusable and interchangeable "pieces of the web" that can be combined in various ways to create complex systems.
 
 **LEGO:**
@@ -193,7 +195,7 @@ const reactElement = (
 root.render(reactElement);
 ```
 
-# Lesson 9: Why React? It's declarative!
+## Lesson 9: Why React? It's declarative!
 Can lean on the library to handle the manual, tedious tasks that we otherwise would have to worry about ourselves.
 
 > "With something declarative, we can tell the program what should be done [...]. Whereas with the opposite, imperative, we need to describe how things should be done."
@@ -227,8 +229,8 @@ const root = createRoot(document.getElementById('root'));
 root.render(<h1>ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς ἀνθρώπῳ</h1>);
 ```
 
-# Lesson 10: Housekeeping
-## 1.
+## Lesson 10: Housekeeping
+### 1.
 > In the HTML, "...we're using this .jsx extension instead of a regular .js."
 
 ```html
@@ -237,8 +239,8 @@ root.render(<h1>ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς �
 
 > "[It'd still] work if I were to rename this to index.js. However, under the hood we're using Vite [...] and in the documentation of Vite, they recommend that if you ever have a JavaScript file in React that is using JSX in any capacity, then you should use a .jsx extension instead of a regular .js extension. We won't go into why Vite expects you to do that, just know that it really helps Vite in it's ability to bundle your code performantly"
 
-## 2.
-> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" (*vide* "Lesson ") TO-DO TODO!!!!!!!!!!!!!!!!!
+### 2.
+> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" (*vide* #"Lesson ") TO-DO TODO!!!!!!!!!!!!!!!!!
 
 ```jsx
 createRoot(document.getElementById('root')).render(
@@ -252,7 +254,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-## 3.
+### 3.
 > "...what you do when you want to render multiple elements inside of your render?"
 
 ```jsx
@@ -273,7 +275,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-# Lesson 11: ReactFacts project - Markup
+## Lesson 11: ReactFacts project - Markup
 
 **Challenge:** Starting from scratch, build and render the HTML for our section project.
 
@@ -295,7 +297,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-# Lesson 12: Pop Quiz
+## Lesson 12: Pop Quiz
 
 1. Where does React put all of the elements I create in JSX when I call `root.render()`?
 > "All the elements I render get put inside the div with the id of 'root' (or whatever other element I might select when calling createRoot)."
@@ -318,7 +320,7 @@ root.render(
 5. What does it mean for something to be "composable"?
 > "We have small pieces that we can put together to make something larger or greater than the individual pieces themselves."
 
-# Lessons 13–14: Custom components
+## Lessons 13–14: Custom components
 
 > "...with custom components in React, we have to use PascalCase [and], instead of calling it like a regular function with the parentheses, we surround it in angle brackets"
 
@@ -396,7 +398,7 @@ root.render(
 );
 ```
 
-# Lesson 15: Custom components Quiz
+## Lesson 15: Custom components Quiz
 
 1. What is a React component?
 > A function that returns React elements.
@@ -425,7 +427,7 @@ root.render(Header());
 ```
 > `root.render(Header())` deveria ser `root.render(<Header />)`.
 
-# Lesson 16: Fragments
+## Lesson 16: Fragments
 
 > "...alternative to surrounding everything [...] in a <div> like I did here to avoid that issue with multiple different JSX elements trying to be rendered all at once."
 
@@ -455,7 +457,7 @@ function Page() {
 
 > "When I use a <Fragment>, React will not insert another nested level of an element here. It's a workaround that allows us to combine multiple different elements together but without creating another DOM node"
 
-# Lesson 17: Parent/Child custom components
+## Lesson 17: Parent/Child custom components
 
 > "...it's really not ideal that we have a single 'Page' component and we're stuffing all of our markup into that [...] ...we're trying to learn more about composing our components together"
 
@@ -547,7 +549,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-# Lesson 18: Styling with classes
+## Lesson 18: Styling with classes
 
 **Challenge:** [Inside the Header component] add a <nav> > <ul> > <li> (x3). The 3 items should say: "Pricing", "About", and "Contact".
 
@@ -713,7 +715,7 @@ h1 {
 }
 ```
 
-# Lesson 19: Organizing components
+## Lesson 19: Organizing components
 
 **Challenge:** Move Header, MainContent and Footer components to their own separate files.
 
@@ -759,7 +761,7 @@ import MainContent from './MainContent';
 import Footer from './Footer';
 ```
 
-# Lesson 20: Make a mental outline of the project
+## Lesson 20: Make a mental outline of the project
 
 ```html
 <div.container>
@@ -778,7 +780,7 @@ import Footer from './Footer';
 </div.container>
 ```
 
-# Lessons 21–25: ReactFacts project
+## Lessons 21–25: ReactFacts project
 
 **Challenge:** Create an App component in a separate App.jsx file which is a sibling to this main.jsx file; create a `components` folder; create the Navbar and Main components in separate files inside the components folder and in each one, just render an <h1> with the name of the component; have App component import and render the Navbar and Main components; import and render the App component inside of index.jsx using ReactDOM; go to Google fonts and get the "Inter" font with weights 400, 600, and 700, put the <link /> to those fonts ABOVE the style.css link in index.html
 
@@ -790,5 +792,10 @@ import Footer from './Footer';
 
 **Resolução dos desafios acima na pasta ReactFacts**
 
-2026/06/25-2026/07/06 - React
-Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
+---
+
+# Section 2: Data-driven React
+
+## Lesson 1: Section 2 intro
+
+> "In our previous project, everything that was displaying on the page, we had hardcoded directly into our markup. And there certainly is still a place for hardcoded text on a page — anything that is considered static or unchanging is going to be written directly into the code. However, we are soon going to learn about how the power of React comes not only from its composability and declarative nature, but from its ability to receive information in the form of data and use that to produce reusable components on the page"
