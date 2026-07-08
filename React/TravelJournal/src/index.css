@@ -5,27 +5,33 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 header {
-    background-color: salmon;
-    color: white;
+    background-color: #F55A5A;
     padding-top: 10px;
     padding-bottom: 12px;
     text-align: center;
 }
 
+header > h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
 main {
+    padding: 50px;
+    background-color: antiquewhite;
+}
+
+#cartoes {
     display: grid;
     gap: 25px;
-    padding: 25px;
-    background-color: antiquewhite;
 }
 
 .cartao {
     display: flex;
-    gap: 20px;
     background-color: white;
     border-radius: 10px;
 }
@@ -40,5 +46,25 @@ main {
 .conteudo-cartao {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.conteudo-cartao > .local > span {
+    margin-right: 20px;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.conteudo-cartao > .local > a {
+    color: grey;
+}
+
+.conteudo-cartao > h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.conteudo-cartao > .date {
+    font-weight: 700;
 }

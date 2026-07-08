@@ -240,7 +240,7 @@ root.render(<h1>ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς �
 > "[It'd still] work if I were to rename this to index.js. However, under the hood we're using Vite [...] and in the documentation of Vite, they recommend that if you ever have a JavaScript file in React that is using JSX in any capacity, then you should use a .jsx extension instead of a regular .js extension. We won't go into why Vite expects you to do that, just know that it really helps Vite in it's ability to bundle your code performantly"
 
 ### 2.
-> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" (*vide* #"Lesson ") TO-DO TODO!!!!!!!!!!!!!!!!!
+> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" — usando `import imagem from ./assets/imagem.jpg;` e `<img src={imagem} />`
 
 ```jsx
 createRoot(document.getElementById('root')).render(
@@ -799,3 +799,277 @@ import Footer from './Footer';
 ## Lesson 1: Section 2 intro
 
 > "In our previous project, everything that was displaying on the page, we had hardcoded directly into our markup. And there certainly is still a place for hardcoded text on a page — anything that is considered static or unchanging is going to be written directly into the code. However, we are soon going to learn about how the power of React comes not only from its composability and declarative nature, but from its ability to receive information in the form of data and use that to produce reusable components on the page"
+
+## Lessons 2–3: Travel journal project
+
+**Resolução dos desafios das seções 2–3:**
+
+index.html:
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="/globe-icon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Travel journal</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
+```
+
+main.jsx:
+```jsx
+import { createRoot } from 'react-dom/client';
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+    <App />
+);
+```
+
+App.jsx:
+```jsx
+import Header from './components/Header.jsx';
+import Entry from './components/Entry.jsx'
+
+export default function App() {
+    return (
+        <>
+            <Header />
+            <Entry />
+        </>
+    );
+}
+```
+
+Entry.jsx:
+```jsx
+import mountFuji from '../assets/mount-fuji.jpeg';
+import sydneyOperaHouse from '../assets/sydney-opera-house.jpg';
+import geirangerfjord from '../assets/geirangerfjord.jpg';
+
+export default function Entry() {
+    return (
+        <main>
+            <section className="cartao">
+                <img className="imagem-cartao" src={mountFuji} alt="Mount Fuji" />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 JAPAN</span>
+                        <a href="https://www.google.com/maps/place/Mount+Fuji/" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>Mount Fuji</h2>
+                    <p className="date">12 Jan, 2021 - 24 Jan, 2021</p>
+                    <p>Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists.</p>
+                </div>
+            </section>
+
+            <section className="cartao">
+                <img className="imagem-cartao" src={sydneyOperaHouse} alt="Sydney Opera House" />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 AUSTRALIA</span>
+                        <a href="https://www.google.com/maps/place/Sydney+Opera+House/" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>Sydney Opera House</h2>
+                    <p className="date">27 May, 2021 - 8 Jun, 2021</p>
+                    <p>The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings.</p>
+                </div>
+            </section>
+
+            <section className="cartao">
+                <img className="imagem-cartao" src={geirangerfjord} alt="Geirangerfjord" />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 NORWAY</span>
+                        <a href="https://www.google.com/maps/place/Geirangerfjord/" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>Geirangerfjord</h2>
+                    <p className="date">1 Oct, 2021 - 18 Nov, 2021</p>
+                    <p>The Geiranger Fjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality.</p>
+                </div>
+            </section>
+        </main>
+    );
+}
+```
+
+index.css:
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    background-color: #F55A5A;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    text-align: center;
+}
+
+header > h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+main {
+    display: grid;
+    gap: 25px;
+    padding: 50px;
+    background-color: antiquewhite;
+}
+
+.cartao {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.imagem-cartao {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+.conteudo-cartao {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.conteudo-cartao > .local > span {
+    margin-right: 20px;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.conteudo-cartao > .local > a {
+    color: grey;
+}
+
+.conteudo-cartao > h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.conteudo-cartao > .date {
+    font-weight: 700;
+}
+```
+
+## Lesson 4: Problem - Not reusable
+
+> "The way we have our entry components setup is not reusable at all. [...] and that's because the way that we set it up is by hardcoding all of the information directly here into the component. [...] we're going to talk about the data-driven aspect of React a little bit later, but for now we can see that our componenent is so hardcoded that there's no meaningful way for us to have it represent different kinds of data. And in React this is where the concept of props comes into play."
+
+## Lessons 5–8: Props
+
+## Lesson 9: Props part 4 - Passing data into a component
+
+> "Just like in HTML, when I have a reusable element like a <link>, I can pass in different attributes in HTML to alter the behavior of that <link> element. I also can pass information into that <link> like an `href`, so that the link can act a little differently from other links that have different values for their `href`. Now, in HTML, I can't simply come to my link and add `whateverIWant="Something"`, because this attribute is not defined in the HTML spec for the <link> element. That said, the way that we pass data into a React component is going to look very very similar to how we do it in HTML. However, [in a custom component] I can in fact pass in `whateverIWant` as what looks like an attribute in HTML, but in React is called a property — or, more commonly, a prop."
+
+No exemplo de cartões de Contato:
+> "...more of a data focus [in App.jsx], where the data is most important and we've been able to have more of a layout and design focus in the individual Contact card. And if we want to make a change to how the Contact card is laid out [...], we can do it from one place, in the Contact component. And in the App component, it doesn't really care about that. We're able to just pass in data and have the Contact card handle everything else"
+
+## Lesson 10: Props part 5 - Receiving props in a component
+
+Entry.jsx define a estrutura:
+```jsx
+export default function Entry(props) {
+    return (
+        <>
+            <section className="cartao">
+                <img className="imagem-cartao" src={props.imgSrc} alt={props.imgAlt} />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 {props.country}</span>
+                        <a href={props.mapLink} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>{props.title}</h2>
+                    <p className="date">{props.date}</p>
+                    <p>{props.description}</p>
+                </div>
+            </section>
+        </>
+    );
+}
+```
+
+App.jsx possui o conteúdo — cada <Entry /> faz com que o React chame a função Entry(), passando um objeto (props) com os dados a serem exibidos:
+```jsx
+import Header from './components/Header.jsx';
+import Entry from './components/Entry.jsx';
+
+import mountFuji from './assets/mount-fuji.jpeg';
+import sydneyOperaHouse from './assets/sydney-opera-house.jpg';
+import geirangerfjord from './assets/geirangerfjord.jpg';
+
+export default function App() {
+    return (
+        <>
+            <Header />
+
+            <main>
+                <div id="cartoes">
+                    <Entry
+                        imgSrc={mountFuji}
+                        imgAlt="Mount Fuji"
+                        country="JAPAN"
+                        mapLink="https://www.google.com/maps/place/Mount+Fuji/"
+                        title="Mount Fuji"
+                        date="12 Jan, 2021 - 24 Jan, 2021"
+                        description="Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
+                    />
+
+                    <Entry
+                        imgSrc={sydneyOperaHouse}
+                        imgAlt="Sydney Opera House"
+                        country="AUSTRALIA"
+                        mapLink="https://www.google.com/maps/place/Sydney+Opera+House/"
+                        title="Sydney Opera House"
+                        date="27 May, 2021 - 8 Jun, 2021"
+                        description="The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings."
+                    />
+
+                    <Entry
+                        imgSrc={geirangerfjord}
+                        imgAlt="Geirangerfjord"
+                        country="NORWAY"
+                        mapLink="https://www.google.com/maps/place/Geirangerfjord/"
+                        title="Geirangerfjord"
+                        date="1 Oct, 2021 - 18 Nov, 2021"
+                        description="The Geirangerfjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality."
+                    />
+                </div>
+            </main>
+        </>
+    );
+}
+```
