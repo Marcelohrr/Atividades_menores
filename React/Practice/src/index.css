@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.joke-card {
+    background-color: white;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border-left: 5px solid gold;
+    box-shadow: 0 2px 8px #3d3d3d;
+}
+
+.setup {
+    margin: 0 0 12px;
+    font-size: 1rem;
+}

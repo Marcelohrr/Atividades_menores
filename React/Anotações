@@ -1073,3 +1073,235 @@ export default function App() {
     );
 }
 ```
+
+## Lesson 11: Prop quiz! xD
+
+1. What do props help us accomplish?
+> Props ajudam a reutilizar a estrutura de um componente para itens similares, alterando apenas o conteúdo e sem ter que repetir toda a sintaxe.
+
+2. How do you pass a prop into a component?
+> Em App.jsx fica o conteúdo, com elementos customizados (ex.: <Entrada propriedadeExemplo="valor" />) e, uma pasta chamada Entrada.jsx possui uma função que recebe o conteúdo como argumento e formata com `Entrada(props)`.
+
+3. Can I pass a custom prop (e.g. `blahblahblah={true}`) to a native DOM element? (e.g. <div blahblahblah={true}>) Why or why not?
+> Não, porque existe um conjunto de propriedades utilizáveis nos elementos nativos — props só funcionam com elementos customizados.
+
+4. How do I receive props in a component?
+
+```jsx
+function Navbar(props) {
+    return (
+        <header>
+            <h1>{props.titulo}</h1>
+        </header>
+    );
+}
+```
+
+5. What data type is `props` when the component receives it?
+> Um objeto!
+
+## Lesson 12: Destructuring props
+
+```js
+const person = {
+    img: "./images/mr-whiskerson.png",
+    name: "Mr. Whiskerson",
+    phone: "(800) 555-1234",
+    email: "mr.whiskaz@catnap.meow"
+};
+
+const {img, name} = person;
+console.log(name); // Mr. Whiskerson
+```
+
+```jsx
+export default function Entry({imgSrc, imgAlt, country, mapLink, title, date, description}) { // "...because it's an object, I can choose to just destructure it right here, inline."
+    return (
+        <>
+            <section className="cartao">
+                <img className="imagem-cartao" src={imgSrc} alt={imgAlt} />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 {country}</span>
+                        <a href={mapLink} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>{title}</h2>
+                    <p className="date">{date}</p>
+                    <p>{description}</p>
+                </div>
+            </section>
+        </>
+    );
+}
+```
+
+## Lesson 13: Props practice
+
+**Challenge:** Create a page that displays your favorite jokes. Create a Joke component in its own file; import and render 4-5 <Joke /> components; each Joke should receive a "setup" prop and a "punchline" prop and render those however you'd like. Extra credit: some jokes are only a punchline with no setup.
+
+index.html:
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Jokes</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
+```
+
+main.jsx:
+```jsx
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+
+createRoot(document.getElementById('root')).render(
+    <App />
+);
+```
+
+App.jsx:
+```jsx
+import Joke from './components/Joke.jsx';
+
+export default function App() {
+    return (
+        <main className="container">
+            <h1>Piadas 😂</h1>
+
+            <Joke
+                setup="Por que o JavaScript foi ao psicólogo?"
+                punchline="Porque ele tinha muitos problemas de escopo."
+            />
+
+            <Joke
+                setup="Por que o computador foi ao médico?"
+                punchline="Porque ele estava com um vírus."
+            />
+
+            <Joke
+                setup="O que o zero disse para o oito?"
+                punchline="Belo cinto!"
+            />
+
+            <Joke
+                setup="Por que o livro de matemática estava triste?"
+                punchline="Porque tinha muitos problemas."
+            />
+
+            <Joke
+                punchline="A vida é igual ao CSS: quando você acha que centralizou, descobre que era só sorte."
+            />
+        </main>
+    )
+}
+```
+
+Joke.jsx:
+```jsx
+export default function Joke(props) {
+    return (
+        <article className="joke-card">
+            {props.setup && ( // "Conditional rendering"
+                <p className="setup">
+                    <strong>Pergunta:</strong> {props.setup}
+                </p>
+            )}
+
+            {
+                props.setup
+                    ? (
+                    <p className="punchline">
+                        <strong>Resposta:</strong> {props.punchline}
+                    </p>
+                    )
+                    : (
+                    <p className="punchline">
+                        <strong>Piada:</strong> {props.punchline}
+                    </p>
+                    )
+            }
+        </article>
+    )
+}
+```
+
+index.css:
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.joke-card {
+    background-color: white;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border-left: 5px solid gold;
+    box-shadow: 0 2px 8px #3d3d3d;
+}
+
+.setup {
+    margin: 0 0 12px;
+    font-size: 1rem;
+}
+```
+
+## Lesson 14: Non-string props
+
+**Challenge:** Think critically — how would you pass in a prop that isn't a string datatype? E.g. Say you want each Joke component to receive an "upvotes" and "downvotes" prop that is a number, as well as a prop with an array of comments, and a boolean of whether the joke is a pun (`isPun`).
+
+App.jsx:
+```jsx
+import Joke from './components/Joke.jsx';
+
+export default function App() {
+    return (
+        <main className="container">
+            <h1>Piadas 😂</h1>
+
+            <Joke
+                setup="Por que o JavaScript foi ao psicólogo?"
+                punchline="Porque ele tinha muitos problemas de escopo."
+                upvotes={10}
+                downvotes={0}
+                comments={[
+                    {author: "", text: ""},
+                    {author: "", text: ""}
+                ]}
+                isPun={true}
+            />
+        </main>
+    )
+}
+```
