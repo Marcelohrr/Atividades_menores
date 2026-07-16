@@ -2,7 +2,7 @@ export default function Entry(props) {
     return (
         <>
             <section className="cartao">
-                <img className="imagem-cartao" src={props.imgSrc} alt={props.imgAlt} />
+                <img className="imagem-cartao" src={props.img.src} alt={props.img.alt} />
 
                 <div className="conteudo-cartao">
                     <div className="local">

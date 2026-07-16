@@ -132,7 +132,7 @@ No terminal:
 - Highest job demand
 - Largest ecosystem/community
 - Less "magic"
-- Composable/Declarative (*vide* #"Lesson 8: Why React? It's Composable!" e #"Lesson 9: Why React? It's Declarative!")
+- Composable/Declarative (*vide* "Lesson 8: Why React? It's Composable!" e "Lesson 9: Why React? It's Declarative!")
 - Active development
 
 ### When you might NOT want a framework
@@ -240,7 +240,7 @@ root.render(<h1>ὁ δὲ ἀνεξέταστος βίος οὐ βιωτὸς �
 > "[It'd still] work if I were to rename this to index.js. However, under the hood we're using Vite [...] and in the documentation of Vite, they recommend that if you ever have a JavaScript file in React that is using JSX in any capacity, then you should use a .jsx extension instead of a regular .js extension. We won't go into why Vite expects you to do that, just know that it really helps Vite in it's ability to bundle your code performantly"
 
 ### 2.
-> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" — usando `import imagem from ./assets/imagem.jpg;` e `<img src={imagem} />`
+> "...putting a relative path in your source wouldn't work correctly. [...] The quickest solution for now is to just make it an absolute path from your project route. For example, if all of your code is in an src folder, you might put /src... [...]. Now, my point of housekeeping here is to let you know: there is a better way to deal with static images in React" — usando `import imagem from ./assets/imagem.jpg;` e `<img src={imagem} />` (*vide* "Lesson 15: Importing static assets")
 
 ```jsx
 createRoot(document.getElementById('root')).render(
@@ -1074,7 +1074,7 @@ export default function App() {
 }
 ```
 
-## Lesson 11: Prop quiz! xD
+## Lesson 11: Prop Quiz! xD
 
 1. What do props help us accomplish?
 > Props ajudam a reutilizar a estrutura de um componente para itens similares, alterando apenas o conteúdo e sem ter que repetir toda a sintaxe.
@@ -1304,4 +1304,40 @@ export default function App() {
         </main>
     )
 }
+```
+
+## Lesson 15: Importing static assets
+
+> "Using a build tool like Vite is going to essentially rearrange where these images are being held, so referencing them with a relative path may lead to broken links. [...] To solve this problem, what you can do is import your images from their relative path, so that JavaScript is aware of where they were before all of this restructuring happened and the build tool, in the process of building itself, can fix the relative paths that you used when you were importing those assets."
+
+Exemplo:
+```js
+import imgUrl from './img.png';
+document.getElementById('hero-img').src = imgUrl;
+```
+
+## Lesson 17: Review - array .map()
+
+**Challenge 1:** Given an array of numbers, return an array of each number, squared.
+
+```js
+const nums = [1, 2, 3, 4, 5];
+
+console.log(nums.map(number => number ** 2));
+```
+
+**Challenge 2:** Given an array of strings, return an array where the first letter of each string is capitalized.
+
+```js
+const names = ["alice", "bob", "charlie", "danielle"];
+
+console.log(names.map(name => name.charAt(0).toUpperCase() + name.slice(1)));
+```
+
+**Challenge 3:** Given an array of strings, return an array of strings that wraps each of the original strings in an HTML-like <p></p> tag.
+
+```js
+const pokemon = ["Bulbassaur", "Charmander", "Squirtle"];
+
+console.log(pokemon.map(poke => `<p>${poke}</p>`));
 ```

@@ -13,8 +13,7 @@ export default function App() {
             <main>
                 <div id="cartoes">
                     <Entry
-                        imgSrc={mountFuji}
-                        imgAlt="Mount Fuji"
+                        img={{ src: mountFuji, alt: "Mount Fuji" }}
                         country="JAPAN"
                         mapLink="https://www.google.com/maps/place/Mount+Fuji/"
                         title="Mount Fuji"
@@ -23,8 +22,7 @@ export default function App() {
                     />
 
                     <Entry
-                        imgSrc={sydneyOperaHouse}
-                        imgAlt="Sydney Opera House"
+                        img={{ src: sydneyOperaHouse, alt: "Sydney Opera House" }}
                         country="AUSTRALIA"
                         mapLink="https://www.google.com/maps/place/Sydney+Opera+House/"
                         title="Sydney Opera House"
@@ -33,8 +31,7 @@ export default function App() {
                     />
 
                     <Entry
-                        imgSrc={geirangerfjord}
-                        imgAlt="Geirangerfjord"
+                        img={{ src: geirangerfjord, alt: "Geirangerfjord" }}
                         country="NORWAY"
                         mapLink="https://www.google.com/maps/place/Geirangerfjord/"
                         title="Geirangerfjord"
