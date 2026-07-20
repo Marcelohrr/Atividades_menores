@@ -1,43 +1,30 @@
 import Header from './components/Header.jsx';
 import Entry from './components/Entry.jsx';
-
-import mountFuji from './assets/mount-fuji.jpeg';
-import sydneyOperaHouse from './assets/sydney-opera-house.jpg';
-import geirangerfjord from './assets/geirangerfjord.jpg';
+import entryData from './components/data.js';
 
 export default function App() {
+    const entryElements = entryData.map(entry => {
+        return (
+            <Entry
+                key={entry.id}
+                entry={entry}
+                // img={entry.img}
+                // country={entry.country}
+                // mapLink={entry.mapLink}
+                // title={entry.title}
+                // date={entry.date}
+                // description={entry.description}
+            />
+        );
+    });
+
     return (
         <>
             <Header />
 
             <main>
                 <div id="cartoes">
-                    <Entry
-                        img={{ src: mountFuji, alt: "Mount Fuji" }}
-                        country="JAPAN"
-                        mapLink="https://www.google.com/maps/place/Mount+Fuji/"
-                        title="Mount Fuji"
-                        date="12 Jan, 2021 - 24 Jan, 2021"
-                        description="Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
-                    />
-
-                    <Entry
-                        img={{ src: sydneyOperaHouse, alt: "Sydney Opera House" }}
-                        country="AUSTRALIA"
-                        mapLink="https://www.google.com/maps/place/Sydney+Opera+House/"
-                        title="Sydney Opera House"
-                        date="27 May, 2021 - 8 Jun, 2021"
-                        description="The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings."
-                    />
-
-                    <Entry
-                        img={{ src: geirangerfjord, alt: "Geirangerfjord" }}
-                        country="NORWAY"
-                        mapLink="https://www.google.com/maps/place/Geirangerfjord/"
-                        title="Geirangerfjord"
-                        date="1 Oct, 2021 - 18 Nov, 2021"
-                        description="The Geirangerfjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality."
-                    />
+                    {entryElements}
                 </div>
             </main>
         </>

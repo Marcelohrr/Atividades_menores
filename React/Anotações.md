@@ -297,7 +297,7 @@ createRoot(document.getElementById('root')).render(
 );
 ```
 
-## Lesson 12: Pop Quiz
+## Lesson 12: Pop quiz
 
 1. Where does React put all of the elements I create in JSX when I call `root.render()`?
 > "All the elements I render get put inside the div with the id of 'root' (or whatever other element I might select when calling createRoot)."
@@ -398,7 +398,7 @@ root.render(
 );
 ```
 
-## Lesson 15: Custom components Quiz
+## Lesson 15: Custom components quiz
 
 1. What is a React component?
 > A function that returns React elements.
@@ -1074,7 +1074,7 @@ export default function App() {
 }
 ```
 
-## Lesson 11: Prop Quiz! xD
+## Lesson 11: Prop quiz! xD
 
 1. What do props help us accomplish?
 > Props ajudam a reutilizar a estrutura de um componente para itens similares, alterando apenas o conteúdo e sem ter que repetir toda a sintaxe.
@@ -1341,3 +1341,215 @@ const pokemon = ["Bulbassaur", "Charmander", "Squirtle"];
 
 console.log(pokemon.map(poke => `<p>${poke}</p>`));
 ```
+
+## Lesson 19: Mapping components
+
+**Challenge:** See if you can correctly pass the necessary props to the Joke component in the .map() (and render the jokeElements array) so the jokes show up on the page again.
+
+jokesData.js:
+```js
+export default [
+    {
+        setup: "Por que o JavaScript foi ao psicólogo?",
+        punchline: "Porque ele tinha muitos problemas de escopo."
+    },
+    {
+        setup: "Por que o computador foi ao médico?",
+        punchline: "Porque ele estava com um vírus."
+    },
+    {
+        setup: "O que o zero disse para o oito?",
+        punchline: "Belo cinto!"
+    },
+    {
+        setup: "Por que o livro de matemática estava triste?",
+        punchline: "Porque tinha muitos problemas."
+    },
+    {
+        punchline: "A vida é igual ao CSS: quando você acha que centralizou, descobre que era só sorte."
+    }
+];
+```
+
+App.jsx:
+```jsx
+import Joke from './components/Joke.jsx';
+import jokesData from './jokesData.js';
+
+export default function App() {
+    const jokeElements = jokesData.map((joke) => {
+        return (
+            <Joke
+                setup={joke.setup}
+                punchline={joke.punchline}
+            />
+        );
+    });
+
+    return (
+        <main className="container">
+            <h1>Piadas 😂</h1>
+
+            {jokeElements}
+        </main>
+    );
+}
+```
+
+## Lesson 20: Map quiz!
+
+1. What does the `.map()` array method do?
+> Retorna um novo array aplicando uma callback a cada elemento do array original.
+
+2. What do we usually use `.map()` for in React?
+> Para renderizar listas de componentes automaticamente, sem precisar escrever cada um dentro de um elemento.
+
+3. Critical thinking: why is using `.map()` better than just creating the components manually by typing them out?
+> Porque é muito mais prático acessar automaticamente todo o conteúdo de um array de dados, sem a necessidade de escrevê-lo manualmente. Evita repetição de código e facilita a manutenção.
+> "1. We often don't have the data ahead of time when we're building the app, so we simply can't manually type them out."
+> "2. It makes our code more 'self-sustaining' — not requiring additional changes to the code whenever the data changes."
+
+## Lesson 21: Travel journal — Map Entry components
+
+**Challenge:** Import the array of data from data.js; map over the array to create an <Entry /> component for every item in the data array; display the array of Entry components in place of the current hard-coded <Entry /> instance.
+
+data.js:
+```js
+import mountFuji from '../assets/mount-fuji.jpeg';
+import sydneyOperaHouse from '../assets/sydney-opera-house.jpg';
+import geirangerfjord from '../assets/geirangerfjord.jpg';
+
+export default [
+    {
+        img: { src: mountFuji, alt: "Mount Fuji" },
+        country: "JAPAN",
+        mapLink: "https://www.google.com/maps/place/Mount+Fuji/",
+        title: "Mount Fuji",
+        date: "12 Jan, 2021 - 24 Jan, 2021",
+        description: "Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists."
+    },
+    {
+        img: { src: sydneyOperaHouse, alt: "Sydney Opera House" },
+        country: "AUSTRALIA",
+        mapLink: "https://www.google.com/maps/place/Sydney+Opera+House/",
+        title: "Sydney Opera House",
+        date: "27 May, 2021 - 8 Jun, 2021",
+        description: "The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings."
+    },
+    {
+        img: { src: geirangerfjord, alt: "Geirangerfjord" },
+        country: "NORWAY",
+        mapLink: "https://www.google.com/maps/place/Geirangerfjord/",
+        title: "Geirangerfjord",
+        date: "1 Oct, 2021 - 18 Nov, 2021",
+        description: "The Geirangerfjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality."
+    }
+];
+```
+
+App.jsx:
+```jsx
+import Header from './components/Header.jsx';
+import Entry from './components/Entry.jsx';
+import entryData from './components/data.js';
+
+export default function App() {
+    const entryElements = entryData.map(entry => {
+        return (
+            <Entry
+                img={entry.img}
+                country={entry.country}
+                mapLink={entry.mapLink}
+                title={entry.title}
+                date={entry.date}
+                description={entry.description}
+            />
+        );
+    });
+
+    return (
+        <>
+            <Header />
+
+            <main>
+                <div id="cartoes">
+                    {entryElements}
+                </div>
+            </main>
+        </>
+    );
+}
+```
+
+## Lesson 22: Travel journal — key prop
+
+> "...we're getting this warning in the console [that] says that ['react-dom_client.js?v=2f425562:12935 Each child in a list should have a unique "key" prop.']. [...] React has an interesting system under the hood that it used to keep track of what order everything is in when you give it an array of React elements. [...] from a really high level overview, if you were to ever include functionality where the user could add new items to this list or maybe remove one of the items from the list, React needs this unique key prop that it talks about in order to keep track of which one you're actually removing or where you're adding new elements. [...] it's really easy to implement, because all we need to do is pass a unique prop called 'key' [...] and the value that we pass to it has to be unique. [...] a really common thing for us to do, especially when we're getting data from a database is: that data or that array of data will usually have an ID attribute associated with it. And this is actually managed by the database. It ensures that these IDs will be unique across the [entire table of that database]."
+
+data.js: `[{id: 1}, {id: 2}, {id: 3}]`
+App.jsx: `key={entry.id}`
+
+## Lesson 23: Travel journal — Pass object as props
+
+**Challenge:** Fix our component!
+
+App.jsx:
+```jsx
+import Header from './components/Header.jsx';
+import Entry from './components/Entry.jsx';
+import entryData from './components/data.js';
+
+export default function App() {
+    const entryElements = entryData.map(entry => {
+        return (
+            <Entry
+                key={entry.id}
+                entry={entry}
+            />
+        );
+    });
+
+    return (
+        <>
+            <Header />
+
+            <main>
+                <div id="cartoes">
+                    {entryElements}
+                </div>
+            </main>
+        </>
+    );
+}
+```
+
+Entry.jsx:
+```jsx
+export default function Entry(props) {
+    return (
+        <>
+            <section className="cartao">
+                <img className="imagem-cartao" src={props.entry.img.src} alt={props.entry.img.alt} />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 {props.entry.country}</span>
+                        <a href={props.entry.mapLink} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>{props.entry.title}</h2>
+                    <p className="date">{props.entry.date}</p>
+                    <p>{props.entry.description}</p>
+                </div>
+            </section>
+        </>
+    );
+}
+```
+
+
+Parei: 4:22:56
+
+2026/06/25-2026/07/19 - React
+Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
+
+git mv Anotações Anotações.md
