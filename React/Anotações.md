@@ -782,7 +782,7 @@ import Footer from './Footer';
 
 ## Lessons 21–25: ReactFacts project
 
-**Challenge:** Create an App component in a separate App.jsx file which is a sibling to this main.jsx file; create a `components` folder; create the Navbar and Main components in separate files inside the components folder and in each one, just render an <h1> with the name of the component; have App component import and render the Navbar and Main components; import and render the App component inside of index.jsx using ReactDOM; go to Google fonts and get the "Inter" font with weights 400, 600, and 700, put the <link /> to those fonts ABOVE the style.css link in index.html
+**Challenge:** Create an App component in a separate App.jsx file which is a sibling to this main.jsx file; create a `components` folder; create the Navbar and Main components in separate files inside the components folder and in each one, just render an <h1> with the name of the component; have App component import and render the Navbar and Main components; import and render the App component inside of index.jsx using ReactDOM; go to Google fonts and get the "Inter" font with weights 400, 600, and 700, put the <link /> to those fonts ABOVE the style.css link in index.html.
 
 **Challenge:** Complete the Navbar to match the Figma design.
 
@@ -1546,10 +1546,95 @@ export default function Entry(props) {
 }
 ```
 
+## Lesson 24: Travel journal — Spread object as props
 
-Parei: 4:22:56
+`entry={entry}` vs. `{...entry}`
 
-2026/06/25-2026/07/19 - React
+App.jsx:
+```jsx
+import Header from './components/Header.jsx';
+import Entry from './components/Entry.jsx';
+import entryData from './components/data.js';
+
+export default function App() {
+    const entryElements = entryData.map(entry => {
+        return (
+            <Entry
+                key={entry.id}
+                {...entry}
+            />
+        );
+    });
+
+    return (
+        <>
+            <Header />
+
+            <main>
+                <div id="cartoes">
+                    {entryElements}
+                </div>
+            </main>
+        </>
+    );
+}
+```
+
+Entry.jsx:
+```jsx
+export default function Entry(props) {
+    return (
+        <>
+            <section className="cartao">
+                <img className="imagem-cartao" src={props.img.src} alt={props.img.alt} />
+
+                <div className="conteudo-cartao">
+                    <div className="local">
+                        <span>📌 {props.country}</span>
+                        <a href={props.mapLink} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+                    </div>
+
+                    <h2>{props.title}</h2>
+                    <p className="date">{props.date}</p>
+                    <p>{props.description}</p>
+                </div>
+            </section>
+        </>
+    );
+}
+```
+
+# Section 3: Interactive web apps in React
+
+## Lesson 1: Section 3 intro
+
+Static web pages vs. dynamic web apps
+
+**Static web pages:**
+- Read-only, no user-driven changes to data
+
+**Dynamic web apps:**
+- Read-write: user has ability to change data
+- Highly interactive
+- Display user data
+
+## Lesson 2: Chef Claude: Header
+
+**Challenge:** Build the Header component in a separate file and render it here in the App component.
+
+
+
+
+
+
+
+
+
+
+
+Parei: 4:38:20
+
+2026/06/25-2026/07/20 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
 
 git mv Anotações Anotações.md
