@@ -57,21 +57,21 @@
 
 # Section 1: Static pages
 
-## Lessons 2–3
+## Lessons 2–3: First React code
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReactFacts</title>
-  </head>
-  <body>
-    <!-- instead of "<h1>ReactFacts</h1>": -->
-    <div id="root"></div> <!-- Since in React we render all markup using React inside of JavaScript files, we need one central location where React can insert all of that content -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ReactFacts</title>
+    </head>
+    <body>
+        <!-- instead of "<h1>ReactFacts</h1>": -->
+        <div id="root"></div> <!-- Since in React we render all markup using React inside of JavaScript files, we need one central location where React can insert all of that content -->
 
-    <script src="index.jsx" type="module"></script> <!-- Instead of adding anything manually to our markup, React will be in charge of taking our JavaScript and adding the associated markup to our HTML document -->
-  </body>
+        <script src="index.jsx" type="module"></script> <!-- Instead of adding anything manually to our markup, React will be in charge of taking our JavaScript and adding the associated markup to our HTML document -->
+    </body>
 </html>
 ```
 
@@ -808,23 +808,23 @@ index.html:
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 
-    <link rel="icon" href="/globe-icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/globe-icon.svg" type="image/svg+xml" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Travel journal</title>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-</body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Travel journal</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
 </html>
 ```
 
@@ -1145,19 +1145,19 @@ index.html:
 ```html
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Jokes</title>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-</body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Jokes</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
 </html>
 ```
 
@@ -1618,23 +1618,96 @@ Static web pages vs. dynamic web apps
 - Highly interactive
 - Display user data
 
-## Lesson 2: Chef Claude: Header
+## Lessons 2–3: Chef Claude project
 
-**Challenge:** Build the Header component in a separate file and render it here in the App component.
+**Resolução dos desafios das seções (Header, Form e CSS) na pasta ChefClaude**
 
+## Lesson 5: Event listeners
 
+Mouse events:
 
+```jsx
+<div
+    onClick={onClickFunction}
+    onMouseEnter={onMouseEnterFunction}
+    onMouseOver={onMouseOverFunction}
+    onMouseDown={onMouseDownFunction}
+    onMouseUp={onMouseUpFunction}
+    onMouseLeave={onMouseLeaveFunction}
+/>
+```
 
+Form submit event:
 
+```jsx
+<form
+    onSubmit={e => {
+        e.preventDefault();
+        console.log('Enviado!');
+    }}
+/>
+```
 
+## Lesson 6: Chef Claude - Map ingredients list
 
+**Review challenge:** Map over the list of ingredients and render them as list items.
 
+**Challenge:** Add an `onSubmit` event listener on the form. Have the function simply console.log("Form submitted!") for now.
 
+**Challenge:** Add the new ingredient to the array of ingredients. Also, add console.log(ingredients) after adding the ingredient, because you aren't going to see the page update! Hint: this is a one-liner solution, so don't overthink it.
 
+Main.jsx:
+```jsx
+export default function Main() {
+    const ingredients = ['Chicken', 'Oregano', 'Tomatoes'];
+    const ingredientsListItems = ingredients.map(i => <li key={i}>{i}</li>);
 
-Parei: 4:38:20
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("Form submitted!");
+        const formData = new FormData(e.currentTarget);
+        const newIngredient = formData.get('ingredient');
+        ingredients.push(newIngredient);
+        console.log(ingredients);
+        e.currentTarget.reset();
+    }
 
-2026/06/25-2026/07/20 - React
+    return (
+        <main>
+            <form action="" className="add-ingredient-form" onSubmit={handleSubmit}>
+                <label htmlFor="ingredient">Add ingredient:</label>
+                <input type="text" name="ingredient" id="ingredient" required placeholder="e.g. oregano" />
+                <button type="submit">Add ingredient</button>
+            </form>
+
+            <ul>
+                {ingredientsListItems}
+            </ul>
+        </main>
+    );
+}
+```
+
+> "...with the declarative nature of React, [...] we want to be able to just update our data [...] and have React recognize that change and reflect it on the page for us."
+
+## Lessons 7–8: Props vs. State
+
+**Props:**
+> "Props refers to the properties being passed into a component in order for it to work correctly, similar to how a function receives parameters: 'from above'. A component receiving props is not allowed to modify those props (l.e. they are 'immutable')."
+
+**State:**
+> "State refers to values that are managed by the component, similar to variables declared inside a function. Any time you have changing values that should be saved/displayed, you'll likely be using state."
+
+> "There's a phrase that you might come across when it comes to understanding state in React: that the view (the user interface, the actual page that you get to see as a user) is a function of the state of your component. And there are three main points to consider here:
+> 1. Render — React runs your function and displays whatever gets returned. The function will only be run again if (1) [a prop value change] from above, or (2) its internal state values change.
+> 2. setState — Changing a local, non-state variable doesn't cause React to re-render the component. Changing state with a built-in `setState` function does.
+> 3. view = function(state) — Thus, when state changes and React re-runs (re-renders) your component, something new gets returned and replaces what used to be on the page."
+
+> "...this is a really awesome thing as a web developer, because it means that we don't need to imperatively update the view ourself; all we need to do is make sure that the state of our application [...] is as up to date as we want it to be and as long as we do that, then React will handle the rest — it will update the view for us, it will change whatever parts of the DOM need to change, as a reaction to the change in state, and we don't have to do any of that manual DOM manipulation (at least for the most part)."
+
+## Lesson 9: useState
+
+Parei: 5:23:52
+
+2026/06/25-2026/07/29 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
-
-git mv Anotações Anotações.md
