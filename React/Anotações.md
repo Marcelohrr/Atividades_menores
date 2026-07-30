@@ -1707,7 +1707,143 @@ export default function Main() {
 
 ## Lesson 9: useState
 
-Parei: 5:23:52
+> "Simply changing a local variable is not going to make React rerun our component. Or, in other words, it's not going to make React react to the change of state and display the updated value that it has. Instead, we have to use a function that's provided by React to save these variables in an actual state as far as React is concerned."
 
-2026/06/25-2026/07/29 - React
+```jsx
+import React from 'react'; // Alternativamente: import { useState } from 'react';
+
+export default function App() {
+    React.useState(); // Alternativamente: useState();
+
+    return (
+        <main>
+            <h1 className="title">Is state important to know?</h1>
+            <button className="value">Yes</button>
+        </main>
+    );
+}
+```
+
+**Challenge:** Replace our hard-coded "Yes" on the page with some state initiated with React.useState().
+
+```jsx
+import { useState } from 'react';
+
+export default function App() {
+    const value = useState('yes');
+
+    return (
+        <main>
+            <h1 className="title">Is state important to know?</h1>
+            <button onclick='' className='value'>{value[0]}</button>
+        </main>
+    );
+}
+```
+
+> "There's a couple of problems we have [...]. So, as I mentioned, we're going to learn a better way to reference our state and give power to the user, so that when they interact with the page, they can update the state, and therefore change what's in the view."
+
+## Lesson 10: useState array destructuring
+
+```jsx
+import { useState } from 'react';
+
+export default function App() {
+    const [value, func] = useState('yes');
+
+    return (
+        <main>
+            <h1 className="title">Is state important to know?</h1>
+            <button onclick='' className='value'>{value}</button>
+        </main>
+    );
+}
+```
+
+## Lesson 11: Changing state
+
+> "...[if we call] the function that we get passed from `React.useState()` [and provide a new value], it will re-render the page, it will successfully update state and trigger React to re-render the page with the new state displayed."
+
+> "Let's talk about the conventions for this function name [...] there's a really strong convention where we start the function name with the word 'set', as in we're setting a new value; and then you continue the name from the state variable itself. [...] And in order to use this function, I can simply call [it] and provide the new value that I want."
+
+**Challenge:** 1. Create a function called `handleClick` that runs setValue('definitely'); 2. Add a click event listener to the button that runs `handleClick` when the button is clicked.
+
+```jsx
+import { useState } from 'react';
+
+export default function App() {
+    const [value, setValue] = useState('yes');
+
+    function handleClick() {
+        if (value === 'yes') {
+            setValue('definitely');
+        } else {
+            setValue('yes');
+        }
+    }
+
+    return (
+        <main>
+            <h1 className="title">Is state important to know?</h1>
+            <button onClick={handleClick} className='value'>{value}</button>
+        </main>
+    );
+}
+```
+
+## Lesson 12: State practice
+
+```jsx
+export default function App() {
+    return (
+        <main>
+            <h1>How many times will Bob say "state" in this section?</h1>
+            <div className='counter'>
+                <button className='minus' aria-label='Decrease count'>-</button>
+                <h2 className='count'>0</h2>
+                <button className='plus' aria-label='Increase count'>+</button>
+            </div>
+        </main>
+    );
+}
+```
+
+**Challenges:** 1. Create state to track our count value (initial value is 0). Don't forget to replace the hard-coded "0" with your new state. 2. Create a function that runs when the + button is clicked. 3. See if you can think of a way to add 1 to the count every time the + button is clicked. 4. Add functionality to the minus button.
+
+```jsx
+import { useState } from 'react';
+
+export default function App() {
+    const [count, setCount] = useState(0);
+
+    function handleMinus() {
+        setCount(count - 1);
+    }
+
+    function handlePlus() {
+        setCount(count + 1);
+    }
+
+    return (
+        <main>
+            <h1>How many times will Bob say "state" in this section?</h1>
+            <div className='counter'>
+                <button onClick={handleMinus} className='minus' aria-label='Decrease count'>-</button>
+                <h2 className='count'>{count}</h2>
+                <button onClick={handlePlus} className='plus' aria-label='Increase count'>+</button>
+            </div>
+        </main>
+    );
+}
+```
+
+> `let [count, setCount] = useState(0);`, `setCount(--count)` e `setCount(++count)`: "...technically this is working, but [...] this is a big no-no in React. Remember, doing `count++` is the same as doing `count = count + 1`, and in React whenever you want to change state, you will never, ever, ever change it directly"
+
+## Lesson 13: Updating state with a callback function
+
+
+
+
+
+2026/06/25-2026/07/30 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
