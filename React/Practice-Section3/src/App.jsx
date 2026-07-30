@@ -1,24 +1,20 @@
 import { useState } from 'react';
 
 export default function App() {
-    const [count, setCount] = useState(0);
+    const [isGoingOut, setIsGoingOut] = useState(false);
 
-    function handleMinus() {
-        setCount(count - 1);
-    }
-
-    function handlePlus() {
-        setCount(count + 1);
+    function handleClick() {
+        setIsGoingOut(prevIsGoingOut => !prevIsGoingOut)
     }
 
     return (
         <main>
-            <h1>How many times will Bob say "state" in this section?</h1>
-            <div className='counter'>
-                <button onClick={handleMinus} className='minus' aria-label='Decrease count'>-</button>
-                <h2 className='count'>{count}</h2>
-                <button onClick={handlePlus} className='plus' aria-label='Increase count'>+</button>
-            </div>
+            <h1 className='title'>Do I feel like going out tonight?</h1>
+            <button
+                onClick={handleClick}
+                className='value'
+                aria-label={`Current answer is: ${isGoingOut ? 'Yes' : 'No'}. Click to change it.`}
+            >{isGoingOut ? 'Yes' : 'No'}</button>
         </main>
     );
 }

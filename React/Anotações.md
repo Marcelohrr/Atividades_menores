@@ -1841,6 +1841,112 @@ export default function App() {
 
 ## Lesson 13: Updating state with a callback function
 
+> "The way we have our code structured right now it's technically working just fine. [...] And the way we're doing this is by calling our state setter function, which we're calling `setCount()`, and providing a new value for the state that we want it to have. Once we call `setCount()`, it will change the state to the new version that we provide and it will re-render with count now being that new version that we provided. However, there is another way we can use our state setter function, [...] where, instead of providing the new value, we provide a callback function. [...] the difference comes in the fact that this callback function is going to be past the old value of the state before your `setCount()` ran. And so, what I can do is take this old value and instead of using `count`, which is my state variable, I can use the temporary version [...] in place of what used to be `count`. [...] I like to use 'prev' and then the name of my state variable, so `prevCount` in this case. This is a fairly common convention that I have seen quite a bit in the code and it's one that I try to adhere to. I think it's a little bit more clear what state value we're dealing with."
+
+```jsx
+function handleMinus() {
+    setCount(prevCount => prevCount - 1);
+}
+
+function handlePlus() {
+    setCount(prevCount => prevCount + 1);
+}
+```
+
+> "...why exactly are we doing this? [...] If you ever need the old value of state to help you determine the new value of state, you should pass a callback function to your state setter function instead of using state directly. This callback function will receive the old value of state as its parameter, which you can then use to determine your new value of state."
+
+```jsx
+function handleMinus() {
+    setCount(prevCount => prevCount - 1);
+    setCount(prevCount => prevCount - 1);
+    setCount(prevCount => prevCount - 1);
+} // Increment 3 times
+
+function handlePlus() {
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount(count + 1);
+} // Only go down 1 time
+```
+
+> "The reason and specifics as to why are a bit outside the scope of this course. But this is an admittedly overly simplistic example of how using a callback function, if you need access to the old value of state to determine the new value of state helps behave kind of the way that you might expect, whereas using the state value directly doesn't. [...] I simply wanted to show that there is a slight difference in the way that React handles the two. [...] for a majority of the time, you won't notice the difference, but this is a good rule of thumb to stick by [...] a better practice anytime we're setting state that relies on the old value of state."
+
+## Lesson 14: Changing state quiz
+
+1. You have 2 options for what you can pass in to a state setter function (e.g. `setCount`). What are they?
+
+> O novo valor de estado diretamente, "...as the replacement for the old version of state. This works great for any kind of state where we don't care what the old version of state used to be; we simply want to set it to some new value that has nothing to do with the old value. Later in this section, we'll be talking a bit about forms and we're going to see where we make use of that. There's also lots of other applications for this first way of updating state." (exemplo: `setValue('definitely')`) ou uma função de callback "[that returns] what we want the new value of state to be [and receives] the old version of state as a parameter so we can use it to help determine what we want the new value of state to be." (exemplo: `setCount(prevCount => prevCount + 1)`).
+
+2. When would you want to pass the first option (from answer above) to the state setter function?
+
+> "Whenever we don't really care about (or need) the old value, we simply want to set a new value."
+
+3. When would you want to pass the second option (from answer above) to the state setter function?
+
+> "Whenever we do care about the previous value in state and need it to help us determine what the new value should be."
+
+## Lesson 15: Ternary practice
+
+```jsx
+export default function App() {
+    const isGoingOut = true;
+    
+    let answer; // Use ternary here
+
+    // Remove the code below once your ternary is done
+    if (isGoingOut === true) {
+        answer = 'Yes';
+    } else {
+        answer = 'No';
+    }
+
+    return (
+        <main>
+            <h1 className='title'>Do I feel like going out tonight?</h1>
+            <button className='value'>{answer}</button>
+        </main>
+    );
+}
+```
+
+**Challenge:** Replace the if/else below with a ternary to determine the text that should display on the page.
+
+```jsx
+export default function App() {
+    const isGoingOut = true;
+
+    let answer = isGoingOut ? 'Yes' : 'No';
+
+    return (
+        <main>
+            <h1 className='title'>Do I feel like going out tonight?</h1>
+            <button className='value'>{answer}</button>
+        </main>
+    );
+}
+```
+
+**Challenge:** Move our ternary directly inside of the JSX so the 'Yes' and 'No' are determined inside the <h1>. Hint: you will no longer need the `answer` variable.
+
+```jsx
+export default function App() {
+    const isGoingOut = true;
+
+    return (
+        <main>
+            <h1 className='title'>Do I feel like going out tonight?</h1>
+            <button className='value'>{isGoingOut ? 'Yes' : 'No'}</button>
+        </main>
+    );
+}
+```
+
+## Lesson 16: Toggling state
+
+**Challenge:** Initialize state for `isGoingOut` as a boolean; Make it so clicking the button flips that boolean value; Display 'Yes' if `isGoingOut` is `true`, 'No' otherwise.
+
+## Lesson 17: Complex state - Arrays
+
 
 
 
