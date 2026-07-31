@@ -1947,7 +1947,92 @@ export default function App() {
 
 ## Lesson 17: Complex state - Arrays
 
+```jsx
+export default function App() {
+    const myFavoriteThings = [];
 
+    const allFavoriteThings = ['🎸', '🎮', '🐉', '🌻', '🍕'];
+    const thingsElements = myFavoriteThings.map(thing => <p key={thing}>{thing}</p>);
+
+    function addFavoriteThing() {
+        // We'll work on this next, nothing to do here yet
+    }
+
+    return (
+        <main>
+            <button onClick={addFavoriteThing}>Add item</button>
+            <section aria-live='polite'>
+                {thingsElements}
+            </section>
+        </main>
+    );
+}
+```
+
+**Challenge:** Convert the code above to use an array held in state instead of a local variable. Initialize the state array as an empty array.
+
+```jsx
+import { useState } from 'react';
+
+export default function App() {
+    const [myFavoriteThings, setMyFavoriteThings] = useState([]);
+
+    const allFavoriteThings = ['🎸', '🎮', '🐉', '🌻', '🍕'];
+    const thingsElements = myFavoriteThings.map(thing => <p key={thing}>{thing}</p>);
+
+    function addFavoriteThing() {
+        setMyFavoriteThings(prevFavThings => [...prevFavThings, allFavoriteThings[prevFavThings.length]]); // "...it accesses the previous version of myFavoriteThings array and it returns a brand new array, so it's not going to be modifying the existing myFavoriteThings array; it's returning a brand new array that includes all of the items that were previously there plus the new item that I want to add."
+    }
+
+    return (
+        <main>
+            <button onClick={addFavoriteThing}>Add item</button>
+            <section aria-live='polite'>
+                {thingsElements}
+            </section>
+        </main>
+    );
+}
+```
+
+## Lesson 18: Chef Claude - Refactor array state
+
+**Challenge:** Update our app so that when the user enters a new ingredient and submits the form, it adds that new ingredient to our list!
+
+Main.jsx:
+```jsx
+import { useState } from 'react';
+
+export default function Main() {
+    const [ingredients, setIngredients] = useState([]);
+
+    const ingredientsListItems = ingredients.map(i => <li key={i}>{i}</li>);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const newIngredient = formData.get('ingredient');
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
+        e.currentTarget.reset();
+    }
+
+    return (
+        <main>
+            <form action="" className="add-ingredient-form" onSubmit={handleSubmit}>
+                <label htmlFor="ingredient">Add ingredient:</label>
+                <input type="text" name="ingredient" id="ingredient" required placeholder="e.g. oregano" />
+                <button type="submit">Add ingredient</button>
+            </form>
+
+            <ul>
+                {ingredientsListItems}
+            </ul>
+        </main>
+    );
+}
+```
+
+## Lesson 19: Complex state - Objects
 
 
 
