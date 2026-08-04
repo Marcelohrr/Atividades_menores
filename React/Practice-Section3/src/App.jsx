@@ -1,21 +1,57 @@
 import { useState } from 'react';
 
+import avatar from './images/user.png';
+import starFilled from './images/star-filled.png';
+import starEmpty from './images/star-empty.png';
+
 export default function App() {
-    const [myFavoriteThings, setMyFavoriteThings] = useState([]);
+    const [contact, setContact] = useState({
+        firstName: 'John',
+        lastName: 'Doe',
+        phone: '+1 (212) 555-1212',
+        email: 'itsmyrealname@example.com',
+        isFavorite: false
+    });
 
-    const allFavoriteThings = ['🎸', '🎮', '🐉', '🌻', '🍕'];
-    const thingsElements = myFavoriteThings.map(thing => <p key={thing}>{thing}</p>);
+    let starIcon = contact.isFavorite ? starFilled : starEmpty;
 
-    function addFavoriteThing() {
-        setMyFavoriteThings(prevFavThings => [...prevFavThings, allFavoriteThings[prevFavThings.length]]); // "...it accesses the previous version of myFavoriteThings array and it returns a brand new array, so it's not going to be modifying the existing myFavoriteThings array; it's returning a brand new array that includes all of the items that were previously there plus the new item that I want to add."
+    function toggleFavorite() {
+        setContact(prevContact => {
+            return {
+                ...prevContact,
+                isFavorite: !prevContact.isFavorite
+            }
+        });
     }
 
     return (
         <main>
-            <button onClick={addFavoriteThing}>Add item</button>
-            <section aria-live='polite'>
-                {thingsElements}
-            </section>
+            <article className='card'>
+                <img
+                    src={avatar}
+                    className='avatar'
+                    alt='User profile picture of John Doe'
+                />
+                <div className='info'>
+                    <button
+                        onClick={toggleFavorite}
+                        aria-pressed={contact.isFavorite}
+                        aria-label={contact.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                        className='favorite-button'
+                    >
+                        <img
+                            src={starIcon}
+                            alt={contact.isFavorite ? 'filled star icon' : 'empty star icon'}
+                            className='favorite'
+                        />
+                    </button>
+                    <h2 className='name'>
+                        {contact.firstName} {contact.lastName}
+                    </h2>
+                    <p className='contact'>{contact.phone}</p>
+                    <p className='email'>{contact.email}</p>
+                </div>
+            </article>
         </main>
     );
 }

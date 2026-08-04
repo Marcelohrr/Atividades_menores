@@ -284,7 +284,7 @@ import { createRoot } from 'react-dom/client';
 
 createRoot(document.getElementById('root')).render(
     <main>
-        <img scr="src/assets/react.svg" alt="React logo" />
+        <img src="src/assets/react.svg" alt="React logo" />
         <h1>Fun facts about React</h1>
         <ul>
             <li>Was first released in 2013</li>
@@ -2034,7 +2034,145 @@ export default function Main() {
 
 ## Lesson 19: Complex state - Objects
 
+App.jsx:
+```jsx
+import { useState } from 'react';
+
+import avatar from './images/user.png';
+import starFilled from './images/star-filled.png';
+import starEmpty from './images/star-empty.png';
+
+export default function App() {
+    const [contact, setContact] = useState({
+        firstName: 'John',
+        lastName: 'Doe',
+        phone: '+1 (212) 555-1212',
+        email: 'itsmyrealname@example.com',
+        isFavorite: false
+    });
+
+    function toggleFavorite() {
+        console.log('Toggle Favorite');
+    }
+
+    return (
+        <main>
+            <article className='card'>
+                <img
+                    src={avatar}
+                    className='avatar'
+                    alt='User profile picture of John Doe'
+                />
+                <div className='info'>
+                    <button
+                        onClick={toggleFavorite}
+                        aria-pressed={false}
+                        aria-label='Add to favorites'
+                        className='favorite-button'
+                    >
+                        <img
+                            src={starEmpty}
+                            alt='empty star icon'
+                            className='favorite'
+                        />
+                    </button>
+                    <h2 className='name'>
+                        John Doe
+                    </h2>
+                    <p className='contact'>+1 (212) 555-1212</p>
+                    <p className='email'>itsmyrealname@example.com</p>
+                </div>
+            </article>
+        </main>
+    );
+}
+```
+
+**Challenge:** Fill in the values in the markup using the properties of our state object above (ignore `isFavorite` for now).
+
+**Challenge:** Use a ternary to determine which star image variable should be used based on the `contact.isFavorite` property.
+
+**Challenge:** Update the following: aria-pressed should reflect the same value as contact.isFavorite; aria-label should switch to say 'Remove from favorites' if contact.isFavorite is `true`; img alt should say 'filled star icon' when it is filled.
+
+App.jsx:
+```jsx
+import { useState } from 'react';
+
+import avatar from './images/user.png';
+import starFilled from './images/star-filled.png';
+import starEmpty from './images/star-empty.png';
+
+export default function App() {
+    const [contact, setContact] = useState({
+        firstName: 'John',
+        lastName: 'Doe',
+        phone: '+1 (212) 555-1212',
+        email: 'itsmyrealname@example.com',
+        isFavorite: false
+    });
+
+    let starIcon = contact.isFavorite ? starFilled : starEmpty;
+
+    function toggleFavorite() {
+        setContact(prevContact => !prevContact);
+    }
+
+    return (
+        <main>
+            <article className='card'>
+                <img
+                    src={avatar}
+                    className='avatar'
+                    alt='User profile picture of John Doe'
+                />
+                <div className='info'>
+                    <button
+                        onClick={toggleFavorite}
+                        aria-pressed={contact.isFavorite}
+                        aria-label={contact.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                        className='favorite-button'
+                    >
+                        <img
+                            src={starIcon}
+                            alt={contact.isFavorite ? 'filled star icon' : 'empty star icon'}
+                            className='favorite'
+                        />
+                    </button>
+                    <h2 className='name'>
+                        {contact.firstName} {contact.lastName}
+                    </h2>
+                    <p className='contact'>{contact.phone}</p>
+                    <p className='email'>{contact.email}</p>
+                </div>
+            </article>
+        </main>
+    );
+}
+```
+
+## Lesson 20: Complex state - Updating state objects
+
+App.jsx:
+```jsx
+function toggleFavorite() {
+    setContact(prevContact => {
+        return {
+            ...prevContact,
+            isFavorite: !prevContact.isFavorite
+        }
+    });
+}
+```
+
+## Lesson 21: React forms intro
+
+> "Any kind of interaction with the data that exists in a database from your application will often times be handled by submitting a form."
+
+## Lesson 22: Form basics
 
 
-2026/06/25-2026/07/30 - React
+
+Parei: 6:31:33
+
+2026/06/25-2026/08/04 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
