@@ -7,7 +7,7 @@ if (velocidade > 60) {
     console.log('Você ultrapassou a velocidade permitida de 60km/h. Cuidado!');
 }
 
-console.log(':)');
+console.log(':O');
 
 // Exercício 2: Condição composta
 var país = 'EUA';
