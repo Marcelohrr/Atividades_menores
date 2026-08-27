@@ -21,6 +21,7 @@ body {
     background-color: var(--fundo-principal);
     color: var(--texto);
     transition: background-color .2s, color .2s;
+    padding-bottom: 50px;
 }
 
 body.escuro {
@@ -35,12 +36,14 @@ body.escuro {
 header {
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     z-index: 1;
     background-color: var(--destaque);
     color: var(--texto);
-    padding: 10px;
+    padding: 11px;
     transition: background-color .2s, color .2s;
 }
 
@@ -363,6 +366,16 @@ footer a:active {
 }
 
 @media screen and (min-width: 768px) {
+    body {
+        padding-bottom: 0;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        padding: 10px;
+    }
+
     #skills-container {
         grid-template-columns: 1fr 1fr;
     }
