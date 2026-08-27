@@ -3,7 +3,7 @@ const botaoAdicionar = document.querySelector('input#botaoAdicionar');
 const botaoAnalisar = document.querySelector('input#botaoAnalisar');
 const box = document.querySelector('div#resultado');
 if (!botaoAdicionar || !botaoAnalisar || !box)
-    throw new Error('Elementos não encontrados no DOM.');
+    throw new Error('Erro: Elementos não encontrados no DOM.');
 let boxEstilo = false;
 botaoAdicionar.addEventListener('click', function () { return adicionar(box); });
 botaoAnalisar.addEventListener('click', function () { return analisar(box); });
