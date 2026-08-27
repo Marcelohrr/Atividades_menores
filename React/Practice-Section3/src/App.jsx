@@ -1,57 +1,18 @@
-import { useState } from 'react';
-
-import avatar from './images/user.png';
-import starFilled from './images/star-filled.png';
-import starEmpty from './images/star-empty.png';
+// import { useState } from 'react';
 
 export default function App() {
-    const [contact, setContact] = useState({
-        firstName: 'John',
-        lastName: 'Doe',
-        phone: '+1 (212) 555-1212',
-        email: 'itsmyrealname@example.com',
-        isFavorite: false
-    });
-
-    let starIcon = contact.isFavorite ? starFilled : starEmpty;
-
-    function toggleFavorite() {
-        setContact(prevContact => {
-            return {
-                ...prevContact,
-                isFavorite: !prevContact.isFavorite
-            }
-        });
-    }
-
     return (
-        <main>
-            <article className='card'>
-                <img
-                    src={avatar}
-                    className='avatar'
-                    alt='User profile picture of John Doe'
-                />
-                <div className='info'>
-                    <button
-                        onClick={toggleFavorite}
-                        aria-pressed={contact.isFavorite}
-                        aria-label={contact.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                        className='favorite-button'
-                    >
-                        <img
-                            src={starIcon}
-                            alt={contact.isFavorite ? 'filled star icon' : 'empty star icon'}
-                            className='favorite'
-                        />
-                    </button>
-                    <h2 className='name'>
-                        {contact.firstName} {contact.lastName}
-                    </h2>
-                    <p className='contact'>{contact.phone}</p>
-                    <p className='email'>{contact.email}</p>
-                </div>
-            </article>
-        </main>
+        <section>
+            <h1>Signup form</h1>
+            <form method="POST">
+                <label htmlFor="email">E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="joe@schmoe.com" />
+
+                <label htmlFor="password">Password:</label>
+                <input type="password" name="password" id="password" />
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
     );
 }

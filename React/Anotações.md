@@ -2170,9 +2170,10 @@ function toggleFavorite() {
 
 ## Lesson 22: Form basics
 
+> "...`type` is one of the most important [attributes] that we're going to add to our inputs. I would say maybe the second most important thing is to give it a `name` attribute. The `name` attribute is how we're going to access the data that is `input` [...] by the user."
 
+> "...it could be tempting [to use] the `placeholder` attribute to say this is going to be where the e-mail goes (`placeholder="Email"`). In fact, I think this is something you will very commonly see, but it's a habit that I'm going to try and weed it out of you right now. A `placeholder` is not the correct tool to use as a label for your `input`. A `placeholder`, instead, can be a great place to put an example of what should be filled in [...], but for accessibility reasons it's much more difficult for screen readers, for example, to make any sense of an `input` — it won't read the `placeholder` text [...] I can get around that with an `aria-label`, but whenever possible we should just use a `label` element."
 
-Parei: 6:31:33
+> "we need to associate this `label` with this specific `input`. We can do that with an `htmlFor` attribute. [...] its value needs to be the `id` of the `input` that you want to use [for the `label` gets associated with the `input`]."
 
-2026/06/25-2026/08/04 - React
-Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
+> "The `button` element is a little bit unique and it has a quirk that is important to remember. [...] there is a different type of `input` called submit (`type="submit"`). [...] Buttons, if they're placed inside of a `form`, they act like an `input` `type="submit"` — or rather buttons also have a type property and by default, outside of a `form`, the type is button (`type="button"`); inside of a `form` the type is submit (`type="submit"`)."
