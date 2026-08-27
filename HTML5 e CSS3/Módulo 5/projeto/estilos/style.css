@@ -237,14 +237,21 @@ article#formacao h3#ultimo {
 }
 
 .formacao-container .instituicao,
-.formacao-container .nome {
+.formacao-container .nome,
+.formacao-container .nome a {
     color: var(--destaque-inverso);
     font-size: 1.1rem;
     transition: color .2s;
 }
 
+.formacao-container .nome a {
+    color: var(--destaque-inverso);
+}
+
 .formacao-container .curso:active .instituicao,
-.formacao-container .curso:active .nome {
+.formacao-container .curso:active .nome,
+.formacao-container .curso:hover .nome a,
+.formacao-container .curso:active .nome a {
     color: var(--destaque);
 }
 
