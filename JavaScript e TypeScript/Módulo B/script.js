@@ -4,12 +4,12 @@
 Comentário de bloco
 */
 
-var n1 = 1 // Declaração de variável
-n1 = null // Atribuição de variável
+var n1 = 1; // Declaração de variável
+n1 = null; // Atribuição de variável
 
-var s1 = "Aprendendo" // String normal
-var s2 = 'JS' // String normal
-var s3 = `:)` // Template literals: permite interpolação de variáveis com ${} e quebras de linha
+var s1 = "Aprendendo"; // String normal
+var s2 = 'JS'; // String normal
+var s3 = `:)`; // Template literals: permite interpolação de variáveis com ${} e quebras de linha
 
 /*
 var funciona para declarar variáveis, mas não é recomendado, porque:
