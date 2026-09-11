@@ -2176,4 +2176,123 @@ function toggleFavorite() {
 
 > "we need to associate this `label` with this specific `input`. We can do that with an `htmlFor` attribute. [...] its value needs to be the `id` of the `input` that you want to use [for the `label` gets associated with the `input`]."
 
-> "The `button` element is a little bit unique and it has a quirk that is important to remember. [...] there is a different type of `input` called submit (`type="submit"`). [...] Buttons, if they're placed inside of a `form`, they act like an `input` `type="submit"` — or rather buttons also have a type property and by default, outside of a `form`, the type is button (`type="button"`); inside of a `form` the type is submit (`type="submit"`)."
+> "The `button` element is a little bit unique and it has a quirk that is important to remember. [...] there is a different type of `input` called submit (`type="submit"`). [...] Buttons, if they're placed inside of a `form`, they act like an `<input type="submit" />` — or rather buttons also have a type property and by default, outside of a `form`, the type is button (`type="button"`); inside of a `form` the type is submit (`type="submit"`)."
+
+## Lesson 23: Form submission
+
+App.jsx:
+```jsx
+export default function App() {
+    function handleSubmit(event) {
+        event.preventDefault();
+    }
+
+    return (
+        <section>
+            <h1>Signup form</h1>
+            <form onSubmit={handleSubmit} method="POST">
+                <label htmlFor="email">E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="joe@schmoe.com" />
+
+                <label htmlFor="password">Password:</label>
+                <input type="password" name="password" id="password" />
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    );
+}
+```
+
+> "...this `event` that's being passed to the `handleSubmit` function is actually pretty powerful. It has a lot of information about it. First of all, I can get access to the actual `form` DOM node. [...] if I pass the entire `formElement` to [`FormData()`], then what I get back is the data from that form. This `formData` object will give me access to each of the values of my inputs by using a simple `get()` method."
+
+```jsx
+export default function App() {
+    function handleSubmit(event) {
+        event.preventDefault();
+        const formElement = event.currentTarget;
+        const formData = new FormData(formElement);
+        const email = formData.get('email'); // "...this is why 'name' is so important to put in our inputs — I can use that name property of 'email' to get the data from the form."
+        // Gather the info from the form
+        // Submit it to a backend — "This backend would be in charge of doing data sanitization and submitting that info to a database or, in the case of a signup form, maybe sending a confirmation e-mail or something like that."
+        formElement.reset();
+    }
+}
+```
+
+## Lesson 24: Form action
+
+> "[`<form action="">`] ...this is where you would tell where your browser should send the information from the form to. Often times this would end up being, for example [`<form action="phpfile.php">`]. And the code in that PHP file would then receive that form and process it, save it to a database, return some kind of new HTML, whatever it might be. With our [`onSubmit={handleSubmit}`], we're able to do a lot of this on the client side. And that's pretty nice, but we do find ourselves handling a lot of things imperatively within our own code base. For example, if I'm handling the submission in my JavaScript, of course I'm going to want to prevent the default of a full page refresh; and since this is a form that I'm submitting, ofcourse I'm going to need to get the form element and create some form data from it; if I'm submitting the form, of course I'm going to want the form to reset at the end. There's a number of sensible defaults that we kind of just wish were being handled for us. And in React 19 we can! React 19 allows us to not only use a regular action for a backend file if we need to like we have here, but we also can pass a function to it. Maybe, instead of sticking with the name of the event that I'm trying to handle, like [`onSubmit={handleSubmit}`], maybe we just make this a little more declarative, like:"
+
+App.jsx:
+```jsx
+export default function App() {
+    function signUp(formData) { // "...when you're passing a function to your action, it doesn't receive an event, because we're not handling an event per se, but instead it's just automatically going to receive the form data. This is awesome!"
+        // event.preventDefault(); — "Behind the scenes, the action function is going to prevent the default for us, so we can get rid of that."
+        /*
+        "These next two lines of code where us trying to get access to the form data, which it's already giving us, so we can get rid of both of those."
+
+        const formElement = event.currentTarget;
+        const formData = new FormData(formElement);
+        */
+        const email = formData.get('email');
+        // formElement.reset(); — "And it's going to reset the form for us automatically, so I can get rid of that!"
+        const password = formData.get('password');
+    }
+
+    // "...we had [<form method="POST">], but if we're specifying a function in the action, then we don't need to do that manually." — Aqui action não é mais uma URL. Quando esse formulário for enviado, será executada a função signUp e o React trata o envio do formulário através dessa função.
+    return (
+        <section>
+            <h1>Signup form</h1>
+            <form action={signUp}>
+                <label htmlFor="email">E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="joe@schmoe.com" />
+
+                <label htmlFor="password">Password:</label>
+                <input type="password" name="password" id="password" />
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    );
+}
+```
+
+## Lesson 25: Chef Claude - Refactor form submission
+
+**Challenge:** Use form action instead of onSubmit to handle the data from the form.
+
+main.jsx:
+```jsx
+import { useState } from 'react';
+
+export default function Main() {
+    const [ingredients, setIngredients] = useState([]);
+
+    const ingredientsListItems = ingredients.map(i => <li key={i}>{i}</li>);
+
+    function addIngredient(formData) {
+        const newIngredient = formData.get('ingredient');
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
+    }
+
+    return (
+        <main>
+            <form action={addIngredient} className="add-ingredient-form">
+                <label htmlFor="ingredient">Add ingredient:</label>
+                <input type="text" name="ingredient" id="ingredient" required placeholder="e.g. oregano" />
+                <button type="submit">Add ingredient</button>
+            </form>
+
+            <ul>
+                {ingredientsListItems}
+            </ul>
+        </main>
+    );
+}
+```
+
+Parei: 6:52:40
+
+2026/06/25-2026/09/11 - React
+Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
