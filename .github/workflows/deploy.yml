@@ -1,0 +1,74 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - Curso_em_Vídeo
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Pega a branch Curso_em_Vídeo,
+      # que atualmente é a base do seu site
+      - name: Checkout site atual
+        uses: actions/checkout@v4
+        with:
+          ref: Curso_em_Vídeo
+          path: site
+
+      # 2. Pega a branch freeCodeCamp,
+      # onde estão os projetos React
+      - name: Checkout projetos React
+        uses: actions/checkout@v4
+        with:
+          ref: freeCodeCamp
+          path: react-projects
+
+      # 3. Instala o Node
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: react-projects/React/ChefClaude/package-lock.json
+
+      # 4. Instala as dependências do ChefClaude
+      - name: Install dependencies
+        working-directory: react-projects/React/ChefClaude
+        run: npm ci
+
+      # 5. Gera o build do ChefClaude
+      - name: Build ChefClaude
+        working-directory: react-projects/React/ChefClaude
+        run: npm run build
+
+      # 6. Coloca o ChefClaude compilado dentro
+      # da estrutura que será publicada
+      - name: Copy ChefClaude
+        run: |
+          rm -rf site/React/ChefClaude
+          mkdir -p site/React/ChefClaude
+          cp -r react-projects/React/ChefClaude/dist/. site/React/ChefClaude/
+
+      # 7. Configura o GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 8. Prepara tudo que está em "site" para publicação
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      # 9. Publica
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
