@@ -1,4 +1,12 @@
+import React from "react";
+
 export default function Joke(props) {
+    const [isShown, setIsShown] = React.useState(false);
+
+    function toggleShown() {
+        setIsShown(prevShown => !prevShown);
+    }
+
     return (
         <article className="joke-card">
             {props.setup && ( // "Conditional rendering"
@@ -7,19 +15,16 @@ export default function Joke(props) {
                 </p>
             )}
 
-            {
-                props.setup
-                    ? (
-                    <p className="punchline">
-                        <strong>Resposta:</strong> {props.punchline}
-                    </p>
-                    )
-                    : (
-                    <p className="punchline">
-                        <strong>Piada:</strong> {props.punchline}
-                    </p>
-                    )
-            }
+            {isShown && (
+                <p className="punchline">
+                    <strong>
+                        {props.setup ? "Resposta: " : "Piada: "}
+                    </strong>
+                    {props.punchline}
+                </p>
+            )}
+
+            <button onClick={toggleShown}>{isShown ? "Hide punchline" : "Show punchline"}</button>
         </article>
-    )
+    );
 }

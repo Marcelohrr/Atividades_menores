@@ -2401,10 +2401,155 @@ function signUp(formData) {
 
 > "...it means that we render parts of our page based on a condition. If that condition evaluates to true, then React will render that portion of the page; if it's false, it simply won't be rendered. And as a reminder, when I say it won't be rendered, I mean it won't even be added to the document."
 
-## Lesson 32: Chef Claude - Conditional rendering - &&
+## Lessons 32–35: Conditional rendering - && and ternary
+
+**Challenge:** Create state `isShown` (boolean, default to `false`); add a button that toggles the value back and forth.
+
+Joke.jsx:
+```jsx
+import React from "react";
+
+export default function Joke(props) {
+    const [isShown, setIsShown] = React.useState(false);
+
+    function toggleShown() {
+        setIsShown(prevShown => !prevShown);
+    }
+
+    return (
+        <article className="joke-card">
+            {props.setup && ( // "Conditional rendering"
+                <p className="setup">
+                    <strong>Pergunta:</strong> {props.setup}
+                </p>
+            )}
+
+            {isShown && (
+                <p className="punchline">
+                    <strong>
+                        {props.setup ? "Resposta: " : "Piada: "}
+                    </strong>
+                    {props.punchline}
+                </p>
+            )}
+
+            <button onClick={toggleShown}>{isShown ? "Hide punchline" : "Show punchline"}</button>
+        </article>
+    );
+}
+```
+
+> "...because this state is being saved inside of the `Joke` component, each one gets to maintain its own state."
+
+```js
+if (false && console.log('This code is running.')) // "...an operation that we can know if it ran or not. [...] the console.log did not run at all! What's really happening is that left to right operation [...], it sees that this is a [&&], but because the first one condition already evaluated to false, it kind of short circuits the rest of this line, and it doesn't need to even evaluate [the next part of the operation], because it knows that it's going to evaluate to false or some kind of falsy value."
+{
+    console.log('The if condition was true!');
+}
+```
+
+Alternativa mais segura do que o uso de &&:
+
+```jsx
+{0 && <p>Olá</p>} // Comportamento inesperado: renderiza "0"
+
+{0 ? <p>Olá</p> : null} // Cai em null e não renderiza nada
+```
+
+## Lesson 36: Conditional rendering practice
+
+**Challenge:** If there are no unread messages, display "You're all caught up!"; if there's exactly 1 unread message, it should read "You have 1 unread message"; if there are > 1 unread messages, display "You have <n> unread messages".
+
+```jsx
+import React from "react";
+
+export default function Joke(props) {
+    const [messages, setMessages] = React.useState(['a', 'b']);
+
+    return (
+        <div>
+            <h1>{messages.length === 0 ?
+                "You're all caught up!" :
+                messages.length === 1 ?
+                    "You have 1 unread message." :
+                    `You have ${messages.length} unread messages.`
+            }</h1>
+        </div>
+    );
+}
+```
+
+Alternativas mais elegantes:
+
+```jsx
+import React from "react";
+
+export default function Joke(props) {
+    const [messages, setMessages] = React.useState(['a', 'b']);
+
+    let text;
+
+    if (messages.length === 0) {
+        text = "You're all caught up!";
+    } else if (messages.length === 1) {
+        text = "You have 1 unread message."
+    } else {
+        text = `You have ${messages.length} unread messages.`
+    }
+
+    return (
+        <div>
+            <h1>{text}</h1>
+        </div>
+    );
+}
+```
+
+Ou:
+
+```jsx
+import React from "react";
+
+export default function Joke(props) {
+    const [messages, setMessages] = React.useState(['a', 'b']);
+
+    function determineText() {
+        if (messages.length === 0) {
+            return "You're all caught up!";
+        } else if (messages.length === 1) {
+            return "You have 1 unread message.";
+        } else {
+            return `You have ${messages.length} unread messages.`;
+        }
+    }
+
+    return (
+        <div>
+            <h1>{determineText()}</h1>
+        </div>
+    );
+}
+```
+
+## Lesson 37: Conditional rendering quiz
+
+1. What is "conditional rendering"?
+> Uma estrutura condicional para renderização de conteúdo.
+
+2. When would you use &&?
+> Para renderizar ou não um conteúdo, em função de uma condição booleana.
+
+3. When would you use a ternary?
+> Para renderizar um de dois conteúdos diferentes, em função de uma condição não booleana, ou para evitar comportamentos inesperados com &&.
+
+4. What if you need to decide between > 2 options on what to display?
+> É preferível fazer a lógica fora do `return` e salvar o valor de renderização em uma variável ou então retornar esse valor em uma função.
+
+## Lesson 38: Chef Claude - Conditional rendering challenge 1
 
 
-Parei: 7:20:00
+
+Parei: 7:48:30
 
 2026/06/25-2026/09/12 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
