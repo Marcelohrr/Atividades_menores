@@ -2292,7 +2292,119 @@ export default function Main() {
 }
 ```
 
-Parei: 6:52:40
+## Lessons 26–29: Forms - textarea & defaultValue, radio, checkbox, select and option
 
-2026/06/25-2026/09/11 - React
+App.jsx:
+```jsx
+export default function App() {
+    function signUp(formData) {
+    const email = formData.get('email');
+
+        const password = formData.get('password');
+
+        const employmentStatus = formData.get('employmentStatus');
+        console.log(employmentStatus);
+
+        const dietaryRestrictions = formData.getAll('dietaryRestrictions'); // To get an array with all of the checked values
+        console.log(dietaryRestrictions);
+
+        const favoriteColor = formData.get('favoriteColor');
+        console.log(favoriteColor);
+    }
+    
+    return (
+        <section>
+            <h1>Signup form</h1>
+            <form action={signUp}>
+                <label htmlFor="email">E-mail:</label>
+                <input type="email" name="email" id="email" placeholder="joe@schmoe.com" defaultValue="joe@schmoe.com" />
+
+                <label htmlFor="password">Password:</label>
+                <input type="password" name="password" id="password" />
+
+                <label htmlFor="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+
+                <fieldset>
+                    <legend>Employment Status</legend>
+
+                    <input type="radio" name="employmentStatus" id="unemployed" value="unemployed" />
+                    <label htmlFor="unemployed">Unemployed</label>
+
+                    <input type="radio" name="employmentStatus" id="part-time" value="part-time" />
+                    <label htmlFor="part-time">Part-time</label>
+
+                    <input type="radio" name="employmentStatus" id="full-time" value="full-time" defaultChecked={true} />
+                    <label htmlFor="full-time">Full-time</label>
+                </fieldset>
+
+                <label htmlFor="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+
+                <fieldset>
+                    <legend>Dietary restrictions</legend>
+
+                    <input type="checkbox" name="dietaryRestrictions" id="kosher" value="kosher" defaultChecked={true} />
+                    <label htmlFor="kosher">Kosher</label>
+
+                    <input type="checkbox" name="dietaryRestrictions" id="vegan" value="vegan" />
+                    <label htmlFor="vegan">Vegan</label>
+
+                    <input type="checkbox" name="dietaryRestrictions" id="gluten-free" value="gluten-free" defaultChecked={true} />
+                    <label htmlFor="gluten-free">Gluten-free</label>
+                </fieldset>
+
+                <label htmlFor="favoriteColor">What is your favorite color?</label>
+                <select name="favoriteColor" id="favoriteColor" required>
+                    <option value="" disabled>-- Choose a color --</option>
+                    <option value="Red"></option>
+                    <option value="Green"></option>
+                    <option value="Blue"></option>
+                </select>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    );
+}
+```
+
+> "As you can imagine, if our form had say 40 or 50 fields, it could become a bit annoying to have to select the data for every single one of them. There is a quick shortcut that we can use to more concisely grab all of the data from the form. It's not a silver bullet, sometimes you will need to select all of the individual items by themselves. Maybe, for example, if you had to do some king of manual sanitization of your inputs — although in the end you would probably want to use something that was a little more robust, like using the zod library."
+
+## Lesson 30: Forms - Object.fromEntries
+
+```jsx
+function signUp(formData) {
+    const data = Object.fromEntries(formData);
+    const dietaryData = formData.getAll('dietaryRestrictions');
+    const allData = {
+        ...data,
+        dietaryRestrictions: dietaryData
+    }
+}
+```
+
+Mais curto:
+
+```jsx
+function signUp(formData) {
+    const data = Object.fromEntries(formData);
+    const dietaryRestrictions = formData.getAll('dietaryRestrictions');
+    const allData = {
+        ...data,
+        dietaryRestrictions
+    }
+}
+```
+
+## Lesson 31: Chef Claude - Conditional rendering intro
+
+> "...it means that we render parts of our page based on a condition. If that condition evaluates to true, then React will render that portion of the page; if it's false, it simply won't be rendered. And as a reminder, when I say it won't be rendered, I mean it won't even be added to the document."
+
+## Lesson 32: Chef Claude - Conditional rendering - &&
+
+
+Parei: 7:20:00
+
+2026/06/25-2026/09/12 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
