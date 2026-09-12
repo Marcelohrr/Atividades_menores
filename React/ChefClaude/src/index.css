@@ -100,9 +100,38 @@ main {
     margin-right: 0.5rem;
 }
 
+section > h2 {
+    margin-top: 2rem;
+}
+
 ul {
     padding: 1rem 0;
     list-style-position: inside;
+}
+
+.get-recipe-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: bisque;
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.get-recipe-container div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.get-recipe-container button {
+    background-color: brown;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 /* 3. Footer */

@@ -2547,6 +2547,8 @@ export default function Joke(props) {
 
 ## Lesson 38: Chef Claude - Conditional rendering challenge 1
 
+**Challenge:** Using conditional rendering, only render the new <section> if there are ingredients added to the list of ingredients.
+
 
 
 Parei: 7:48:30
