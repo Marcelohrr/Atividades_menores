@@ -113,6 +113,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     background-color: bisque;
     margin-top: 1rem;
     padding: 2rem;

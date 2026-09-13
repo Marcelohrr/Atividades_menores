@@ -2545,13 +2545,369 @@ export default function Joke(props) {
 4. What if you need to decide between > 2 options on what to display?
 > É preferível fazer a lógica fora do `return` e salvar o valor de renderização em uma variável ou então retornar esse valor em uma função.
 
-## Lesson 38: Chef Claude - Conditional rendering challenge 1
+## Lessons 38–39: Chef Claude - Conditional rendering challenges
 
 **Challenge:** Using conditional rendering, only render the new <section> if there are ingredients added to the list of ingredients.
 
+**Challenge:** Only display the div.get-recipe-container if the ingredients list has more than 3 items in it.
+
+Main.jsx
+```jsx
+import { useState } from 'react';
+
+export default function Main() {
+    const [ingredients, setIngredients] = useState([]);
+
+    const ingredientsListItems = ingredients.map(i => <li key={i}>{i}</li>);
+
+    function addIngredient(formData) {
+        const newIngredient = formData.get('ingredient');
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
+    }
+
+    return (
+        <main>
+            <form action={addIngredient} className="add-ingredient-form">
+                <label htmlFor="ingredient">Add ingredient:</label>
+                <input type="text" name="ingredient" id="ingredient" required placeholder="e.g. oregano" />
+                <button type="submit">Add ingredient</button>
+            </form>
+
+            {ingredients.length > 0 && (
+                <section>
+                    <h2>Ingredients on hand:</h2>
+                    <ul className='ingredients-list' aria-live='polite'>
+                        {ingredientsListItems}
+                    </ul>
+                    {ingredients.length >= 4 && (<div className='get-recipe-container'>
+                        <div>
+                            <h3>Ready for a recipe?</h3>
+                            <p>Generate a recipe from your list of ingredients.</p>
+                        </div>
+                        <button>Get a recipe</button>
+                    </div>)}
+                </section>
+            )}
+        </main>
+    );
+}
+```
+
+## Lesson 40: Chef Claude - Get recipe placeholder challenge
+
+**Challenge:** 1. Create a boolean state that, for now, will represent whether we're gotten a recipe back from the "chef". Default to `false`. Can call it `recipeShown`; 2. Grab the markup in recipeCode.md and paste it below. This will be a placeholder for the content that will come back from the chef once we set up that feature; 3. When the user clicks the "Get recipe" button, flip the `recipeShown` state to true; 4. Only display the recipe code content if `recipeShown` is true.
+
+Main.jsx
+```jsx
+import { useState } from 'react';
+
+export default function Main() {
+    const [ingredients, setIngredients] = useState(['a', 'b', 'c', 'd']);
+
+    const [recipeShown, setRecipeShown] = useState(false);
+
+    const ingredientsListItems = ingredients.map(i => <li key={i}>{i}</li>);
+
+    function addIngredient(formData) {
+        const newIngredient = formData.get('ingredient');
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
+    }
+
+    function toggleRecipeShown() {
+        setRecipeShown(prevRecipeShown => (!prevRecipeShown))
+    }
+
+    return (
+        <main>
+            <form action={addIngredient} className="add-ingredient-form">
+                <label htmlFor="ingredient">Add ingredient:</label>
+                <input type="text" name="ingredient" id="ingredient" required placeholder="e.g. oregano" />
+                <button type="submit">Add ingredient</button>
+            </form>
+
+            {ingredients.length > 0 && (
+                <section>
+                    <h2>Ingredients on hand:</h2>
+                    <ul className='ingredients-list' aria-live='polite'>
+                        {ingredientsListItems}
+                    </ul>
+                    {ingredients.length >= 4 && (<div className='get-recipe-container'>
+                        <div>
+                            <h3>Ready for a recipe?</h3>
+                            <p>Generate a recipe from your list of ingredients.</p>
+                        </div>
+                        <button onClick={toggleRecipeShown} type="button">Get a recipe</button>
+                    </div>)}
+                </section>
+            )}
+
+            {recipeShown === true && (
+                <h1>A receia vai aparecer aqui!</h1>
+            )}
+        </main>
+    );
+}
+```
+
+## Lesson 41: Passing state as props
+
+> "...any components that we have inside of our App component in this case will get rerendered [by default by React], whether they rely on the state or not [...] even if you have a component that doesn't technically need to rerender, doing so by React is super, super fast and it's not something that often leads to any kind of performance issues; and if it does, there are things that you can do to improve the performance. Again, that's outside the scope of this course. It's most important to know that if we have a state change inside of one component, like we have inside of our App component, React will rerender its own elements that that component is in charge of rerendering and it will rerender all of the child components that are nested inside of the return of this component.If those components have their own children to display, those also will get rerendered."
+
+## Lesson 42: Setting state from child components
+
+> "...in JavaScript, elements that we pull from the DOM [...] have a DOM property called `onClick`. [But, with custom components in React,] any of the properties that we put on our custom component in React, they're chosen by us. [...] this [`<Star onClick={toggleFavorite} />`] is simply going to be yet another prop that we need to receive inside the Star component [...]. This `onClick` is just another custom property or prop that we're passing to our Star component"
+
+Star.jsx:
+```jsx
+<button onClick={props.Click} /> // Para explicitar que é uma propriedade customizada, podemos chamar de um nome diferente, como por exemplo "handleClick". Fica: <button onClick={props.handleClick} />
+```
+
+## Lesson 43: Passing data around React
+
+> "In React, data can only flow downwards. [...] we are forced to pull our state up to a higher level and pass down through props to the components that need the information from that state. As you can imagine, this can get a bit cumbersome over time, and there are a number of different solutions that can help us avoid having to pass props many levels down — tools like context, which is built into React, or thirdparty libraries, like Redux or Zustand, which were created to help this data management problem."
+
+> "...it's best practice to keep your state as locally defined as it needs to be."
+
+## Lesson 44: Sound pads challenge, part 1
+
+**Challenge:** 1. Initialize state with the default value of the array pulled in from pads.js; 2. Map over that state array and display each one as a <button>.
+
+App.jsx:
+```jsx
+import { useState } from 'react';
+import padsData from "./pads";
+
+export default function App() {
+    const [pads, setPads] = useState(padsData);
+
+    const buttonElements = pads.map(pad => (
+        <button key={pad.id}></button>
+    ));
+
+    return (
+        <main>
+            <div className="pad-container">
+                {buttonElements}
+            </div>
+        </main>
+    );
+}
+```
+
+## Lesson 45: Dynamic styles
+
+Inline style:
+```jsx
+const styles = {
+    backgroundColor: "red"
+}
+
+const buttonElements = pads.map(pad => (
+    <button style={styles} key={pad.id}></button>
+));
+```
+
+**Challenge:** Use a ternaty to determine the backgroundColor of the buttons. If darkMode is true, set them to "#222"; else "#ccc".
+
+index.jsx:
+```jsx
+import ReactDOM from 'react-dom/client';
+import App from "./App";
+
+ReactDOM
+    .createRoot(document.getElementById('root'))
+    .render(<App darkMode={true} />);
+```
+
+App.jsx:
+```jsx
+import { useState } from 'react';
+import padsData from "./pads";
+
+export default function App({ darkMode }) {
+    const [pads, setPads] = useState(padsData);
+
+    const buttonElements = pads.map(pad => (
+        <button style={{background: darkMode ? "#222" : "#ccc"}} key={pad.id}></button>
+    ));
+
+    return (
+        <main>
+            <div className="pad-container">
+                {buttonElements}
+            </div>
+        </main>
+    );
+}
+```
+
+## Lesson 46: Sound pads challenge, part 2
+
+**Challenge:** 1. Create a separate component called "Pad" and replace the `button` above with our <Pad /> component; 2. Pass the Pad component a prop called `color` with the value of the same name from the `padsData` objects; 3. In the Pad component, apply an inline style to the <button> to set the backgroundColor of the button.
+
+App.jsx:
+```jsx
+import { useState } from 'react';
+import padsData from "./pads";
+import Pad from "./Pad";
+
+export default function App({ darkMode }) {
+    const [pads, setPads] = useState(padsData);
+
+    const buttonElements = pads.map(pad => (
+        <Pad key={pad.id} color={pad.color} />
+    ));
+
+    return (
+        <main>
+            <div className="pad-container">
+                {buttonElements}
+            </div>
+        </main>
+    );
+}
+```
+
+Pad.jsx:
+```jsx
+export default function Pad(props) {
+    return (
+        <button style={{backgroundColor: props.color}}></button>
+    );
+}
+```
+
+## Lesson 47: Sound pads challenge, part 3
+
+index.css:
+```css
+button {
+    opacity: 0.1;
+}
+
+button.on {
+    opacity: 1;
+}
+```
+
+**Challenge:** Our buttons got turned off by default! Update the code so if the button is "on", it has the className of "on".
+
+App.jsx:
+```jsx
+import { useState } from 'react';
+import padsData from "./pads";
+import Pad from "./Pad";
+
+export default function App({ darkMode }) {
+    const [pads, setPads] = useState(padsData);
+
+    const buttonElements = pads.map(pad => (
+        <Pad key={pad.id} color={pad.color} on={pad.on} />
+    ));
+
+    return (
+        <main>
+            <div className="pad-container">
+                {buttonElements}
+            </div>
+        </main>
+    );
+}
+```
+
+Pad.jsx:
+```jsx
+export default function Pad(props) {
+    return (
+        <button
+            style={{backgroundColor: props.color}}
+            className={props.on ? "on" : undefined}
+        ></button>
+    );
+}
+```
+
+## Lessons 48–50: Sound pads challenge, parts 4.1–4.3 - local state, shared state and updating item in array
+
+**Challenge:** Create state controlling wheter this pad is "on" or "off". Use the incoming `props.on` to determine the initial state. Create an event listener so when the pad is clicked, it toggles from "on" to "off".
+
+Pad.jsx:
+```jsx
+import { useState } from 'react';
+    
+export default function Pad(props) {
+    const [on, setOn] = useState(props.on);
+
+    function toggle() {
+        setOn(prevOn => !prevOn);
+    }
+
+    return (
+        <button
+            style={{backgroundColor: props.color}}
+            className={on ? "on" : undefined}
+            onClick={toggle}
+        ></button>
+    );
+}
+```
+
+> "...that is called derived state. [...] you probably don't need derived state. [...] the biggest problem with derived state is that you can end up with multiple sources of truth. You see, the way that we have this written, we have the state living in the app component, which is supposed to represent the current state of all of the pads. But in reality, once we derive state inside the `Pad` and allow it to update itself, as soon as any of these pads gets clicked, it's going to be out of sync with the parent state that we had. And because of that, we have two different sources of truth. [...] because we have two sources of truth, certain potential features in the future suddenly become a little bit more difficult to add."
+
+**Challenge:** Create a toggle() function that logs "clicked!" to the console. Pass that function down to each of the Pad components and set it up so when they get clicked, the function runs.
+
+**Challenge:** Call setPads to update the state of the one pad that was clicked. Map over the previous pads array, and if the current item you're iterating over has the same id as the `id` passed to this function, then return a new object with the `on` value set to the opposite of what it was before. Otherwise (if the ids don't match), just return the previous item as it was, unchanged.
+
+App.jsx:
+```jsx
+import { useState } from 'react';
+import padsData from "./pads";
+import Pad from "./Pad";
+
+export default function App({ darkMode }) {
+    const [pads, setPads] = useState(padsData);
+
+    const buttonElements = pads.map(pad => (
+        <Pad toggle={toggle} id={pad.id} key={pad.id} color={pad.color} on={pad.on} />
+    ));
+
+    function toggle(id) {
+        setPads(prevPads => prevPads.map(pad => { // map over the pads array, and if the current item has the same id as the one passed to this function, then flip its `on` value
+            return pad.id === id
+                ? {...pad, on: !pad.on}
+                : pad;
+        }))
+    }
+
+    return (
+        <main>
+            <div className="pad-container">
+                {buttonElements}
+            </div>
+        </main>
+    );
+}
+```
+
+Pad.jsx:
+```jsx
+import { useState } from 'react';
+    
+export default function Pad(props) {
+    return (
+        <button
+            style={{backgroundColor: props.color}}
+            className={props.on ? "on" : undefined}
+            onClick={() => props.toggle(props.id)}
+        ></button>
+    );
+}
+```
+
+> "...this is the best practice in React when you're dealing with state in this way. It's better to have an unified source of truth."
 
 
-Parei: 7:48:30
+Parei: 9:07:52
 
-2026/06/25-2026/09/12 - React
+2026/06/25-2026/09/13 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
