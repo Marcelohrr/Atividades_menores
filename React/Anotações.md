@@ -790,7 +790,7 @@ import Footer from './Footer';
 
 **Challenge:** Place the gray React logo in the background. Don't use an <img> element, but rather set it as the `background-image` of the <main> element.
 
-**Resolução dos desafios acima na pasta ReactFacts**
+**Resolução dos desafios na pasta ReactFacts**
 
 ---
 
@@ -2906,8 +2906,17 @@ export default function Pad(props) {
 
 > "...this is the best practice in React when you're dealing with state in this way. It's better to have an unified source of truth."
 
+## Lesson 51: Chef Claude challenge: refactor to separate components
 
-Parei: 9:07:52
+**Challenge:** Clean up our code! Move the entire recipe <section> into its own ClaudeRecipe component; move the list of ingredients <section> into its own IngredientsList component.
 
-2026/06/25-2026/09/13 - React
+**Resolução do desafio na pasta ChefClaude**
+
+## Leson 52: API Sign Ups
+
+
+
+Parei: 9:17:42
+
+2026/06/25-2026/09/21 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
