@@ -1,19 +1,48 @@
 import { useState } from 'react';
 import IngredientsList from './IngredientsList.jsx';
-import ClaudeRecipe from './ClaudeRecipe.jsx';
+import GastroRecipe from './GastroRecipe.jsx';
 
 export default function Main() {
     const [ingredients, setIngredients] = useState([]);
-
     const [recipeShown, setRecipeShown] = useState(false);
+    const [recipe, setRecipe] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     function addIngredient(formData) {
         const newIngredient = formData.get('ingredient');
         setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
     }
 
-    function toggleRecipeShown() {
-        setRecipeShown(prevRecipeShown => (!prevRecipeShown));
+    async function toggleRecipeShown() {
+        setIsLoading(true);
+        setError('');
+
+        try {
+            const response = await fetch('/api/generate-recipe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ingredients: ingredients
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Erro ao gerar receita.');
+            }
+
+            setRecipe(data.recipe);
+            setRecipeShown(true);
+        } catch (error) {
+            console.error(error);
+            setError(error.message);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (
@@ -28,10 +57,19 @@ export default function Main() {
                 <IngredientsList
                     ingredients={ingredients}
                     toggleRecipeShown={toggleRecipeShown}
+                    isLoading={isLoading}
                 />
             }
 
-            {recipeShown === true && <ClaudeRecipe />}
+            {error && (
+                <p role="alert">
+                    {error}
+                </p>
+            )}
+
+            {recipeShown === true &&
+                <GastroRecipe recipe={recipe} />
+            }
         </main>
     );
 }

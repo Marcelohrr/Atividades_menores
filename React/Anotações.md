@@ -2912,11 +2912,11 @@ export default function Pad(props) {
 
 **Resolução do desafio na pasta ChefClaude**
 
-## Leson 52: API Sign Ups
+## Lessons 52–53: API Sign Ups, AI code walkthrough
 
 
 
 Parei: 9:17:42
 
-2026/06/25-2026/09/21 - React
+2026/06/25-2026/09/22 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
