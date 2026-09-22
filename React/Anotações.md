@@ -2916,7 +2916,7 @@ export default function Pad(props) {
 
 
 
-Parei: 9:17:42
+Parei: 9:26:31
 
 2026/06/25-2026/09/22 - React
 Anotações do vídeo "Learn React JS - Full Beginner’s Tutorial & Practice Projects" (freeCodeCamp.org, 2024).
