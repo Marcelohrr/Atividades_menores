@@ -42,25 +42,25 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: react-projects/React/ChefClaude/package-lock.json
+          cache-dependency-path: react-projects/React/ChefGastro/package-lock.json
 
-      # 4. Instala as dependências do ChefClaude
+      # 4. Instala as dependências do ChefGastro
       - name: Install dependencies
-        working-directory: react-projects/React/ChefClaude
+        working-directory: react-projects/React/ChefGastro
         run: npm ci
 
-      # 5. Gera o build do ChefClaude
-      - name: Build ChefClaude
-        working-directory: react-projects/React/ChefClaude
+      # 5. Gera o build do ChefGastro
+      - name: Build ChefGastro
+        working-directory: react-projects/React/ChefGastro
         run: npm run build
 
-      # 6. Coloca o ChefClaude compilado dentro
+      # 6. Coloca o ChefGastro compilado dentro
       # da estrutura que será publicada
-      - name: Copy ChefClaude
+      - name: Copy ChefGastro
         run: |
-          rm -rf site/React/ChefClaude
-          mkdir -p site/React/ChefClaude
-          cp -r react-projects/React/ChefClaude/dist/. site/React/ChefClaude/
+          rm -rf site/React/ChefGastro
+          mkdir -p site/React/ChefGastro
+          cp -r react-projects/React/ChefGastro/dist/. site/React/ChefGastro/
 
       # 7. Configura o GitHub Pages
       - name: Setup Pages
